@@ -1,4 +1,4 @@
-module kapua-tb-go-client
+module wwwin-github.cisco.com/pov-services/kapua-tb-go-client
 
 go 1.19
 
