@@ -29,20 +29,29 @@ func NewClient(host, authToken *string) *Client {
 }
 
 type service[R any, RC embeddedData[R]] struct {
-	client         *Client
-	collectionPath string
-	singlePath     string
+	readService[R, RC]
 }
 
-func (s *service[R, RC]) getAll() ([]R, error) {
+type readService[R any, RC embeddedData[R]] struct {
+	client       *Client
+	resourcePath string
+	topologyUid  string
+}
+
+func (s *readService[R, RC]) getAll() ([]R, error) {
 
 	rest := resty.New()
+
+	topologyPath := getTopologyPath(s.topologyUid)
+	url := fmt.Sprintf("%s%s%s", s.client.HostURL, topologyPath, s.resourcePath)
+
+	fmt.Printf("URL: %s\n", url)
 
 	resp, err := rest.R().
 		SetResult(collection[RC]{}).
 		SetError([]vndError{}).
 		SetAuthToken(s.client.Token).
-		Get(fmt.Sprintf(s.collectionPath, s.client.HostURL))
+		Get(url)
 
 	if err != nil {
 		return nil, err
@@ -51,19 +60,30 @@ func (s *service[R, RC]) getAll() ([]R, error) {
 	if resp.IsError() {
 		return nil, generateError(*resp)
 	}
-
+	
 	return resp.Result().(*collection[RC]).Embedded.getData(), nil
+}
+
+func getTopologyPath(topologyUid string) string {
+	if topologyUid != "" {
+		return fmt.Sprintf("/topologies/%s", topologyUid)
+	} else {
+		return ""
+	}
 }
 
 func (s *service[R, RC]) getOne(uid string) (*R, error) {
 
 	rest := resty.New()
 
+	url := singleResourceUrl(s.client.HostURL, s.resourcePath, uid)
+	fmt.Printf("URL: %s\n", url)
+
 	resp, err := rest.R().
 		SetResult(new(R)).
 		SetError([]vndError{}).
 		SetAuthToken(s.client.Token).
-		Get(fmt.Sprintf(s.singlePath, s.client.HostURL, uid))
+		Get(url)
 
 	if err != nil {
 		return nil, err
@@ -80,12 +100,15 @@ func (s *service[R, RC]) create(resource R) (*R, error) {
 
 	rest := resty.New()
 
+	url := fmt.Sprintf("%s%s", s.client.HostURL, s.resourcePath)
+	fmt.Printf("URL: %s\n", url)
+
 	resp, err := rest.R().
 		SetBody(resource).
 		SetResult(new(R)).
 		SetError([]vndError{}).
 		SetAuthToken(s.client.Token).
-		Post(fmt.Sprintf(s.collectionPath, s.client.HostURL))
+		Post(url)
 
 	if err != nil {
 		return nil, err
@@ -102,10 +125,13 @@ func (s *service[R, RC]) update(uid string, resource R) (*R, error) {
 
 	rest := resty.New()
 
+	url := singleResourceUrl(s.client.HostURL, s.resourcePath, uid)
+	fmt.Printf("URL: %s\n", url)
+
 	current, err := rest.R().
 		SetError([]vndError{}).
 		SetAuthToken(s.client.Token).
-		Get(fmt.Sprintf(s.singlePath, s.client.HostURL, uid))
+		Get(url)
 
 	if err != nil {
 		return nil, err
@@ -123,7 +149,7 @@ func (s *service[R, RC]) update(uid string, resource R) (*R, error) {
 		SetResult(new(R)).
 		SetError([]vndError{}).
 		SetAuthToken(s.client.Token).
-		Put(fmt.Sprintf(s.singlePath, s.client.HostURL, uid))
+		Put(url)
 
 	if err != nil {
 		return nil, err
@@ -136,14 +162,17 @@ func (s *service[R, RC]) update(uid string, resource R) (*R, error) {
 	return updated.Result().(*R), nil
 }
 
-func (s service[R, RC]) delete(uid string) error {
+func (s *service[R, RC]) delete(uid string) error {
 
 	rest := resty.New()
+
+	url := singleResourceUrl(s.client.HostURL, s.resourcePath, uid)
+	fmt.Printf("URL: %s\n", url)
 
 	resp, err := rest.R().
 		SetError([]vndError{}).
 		SetAuthToken(s.client.Token).
-		Delete(fmt.Sprintf(s.singlePath, s.client.HostURL, uid))
+		Delete(url)
 
 	if err != nil {
 		return err
@@ -154,4 +183,10 @@ func (s service[R, RC]) delete(uid string) error {
 	}
 
 	return nil
+}
+
+func singleResourceUrl(hostUrl, resourcePath, uid string) string {
+	singlePath := fmt.Sprintf("%s/%s", resourcePath, uid)
+	url := fmt.Sprintf("%s%s", hostUrl, singlePath)
+	return url
 }

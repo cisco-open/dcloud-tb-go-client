@@ -5,14 +5,16 @@ const pathOne = path + "/%s"
 
 func (c *Client) getTopologyService() *service[Topology, topologyCollection] {
 	return &service[Topology, topologyCollection]{
-		client:         c,
-		singlePath:     "%s/topologies/%s",
-		collectionPath: "%s/topologies",
+		readService[Topology, topologyCollection]{
+			client:       c,
+			resourcePath: "/topologies",
+		},
 	}
 }
 
 func (c *Client) GetAllTopologies() ([]Topology, error) {
-	return c.getTopologyService().getAll()
+	topologies, err := c.getTopologyService().getAll()
+	return topologies, err
 }
 
 func (c *Client) GetTopology(uid string) (*Topology, error) {
