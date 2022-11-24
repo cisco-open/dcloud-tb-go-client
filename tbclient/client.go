@@ -28,17 +28,17 @@ func NewClient(host, authToken *string) *Client {
 	return &c
 }
 
-type service[R any, RC embeddedData[R]] struct {
-	readService[R, RC]
+type resourceService[R any, RC embeddedData[R]] struct {
+	collectionService[R, RC]
 }
 
-type readService[R any, RC embeddedData[R]] struct {
+type collectionService[R any, RC embeddedData[R]] struct {
 	client       *Client
 	resourcePath string
 	topologyUid  string
 }
 
-func (s *readService[R, RC]) getAll() ([]R, error) {
+func (s *collectionService[R, RC]) getAll() ([]R, error) {
 
 	rest := resty.New()
 
@@ -60,7 +60,7 @@ func (s *readService[R, RC]) getAll() ([]R, error) {
 	if resp.IsError() {
 		return nil, generateError(*resp)
 	}
-	
+
 	return resp.Result().(*collection[RC]).Embedded.getData(), nil
 }
 
@@ -72,7 +72,7 @@ func getTopologyPath(topologyUid string) string {
 	}
 }
 
-func (s *service[R, RC]) getOne(uid string) (*R, error) {
+func (s *resourceService[R, RC]) getOne(uid string) (*R, error) {
 
 	rest := resty.New()
 
@@ -96,7 +96,7 @@ func (s *service[R, RC]) getOne(uid string) (*R, error) {
 	return resp.Result().(*R), nil
 }
 
-func (s *service[R, RC]) create(resource R) (*R, error) {
+func (s *resourceService[R, RC]) create(resource R) (*R, error) {
 
 	rest := resty.New()
 
@@ -121,7 +121,7 @@ func (s *service[R, RC]) create(resource R) (*R, error) {
 	return resp.Result().(*R), nil
 }
 
-func (s *service[R, RC]) update(uid string, resource R) (*R, error) {
+func (s *resourceService[R, RC]) update(uid string, resource R) (*R, error) {
 
 	rest := resty.New()
 
@@ -162,7 +162,7 @@ func (s *service[R, RC]) update(uid string, resource R) (*R, error) {
 	return updated.Result().(*R), nil
 }
 
-func (s *service[R, RC]) delete(uid string) error {
+func (s *resourceService[R, RC]) delete(uid string) error {
 
 	rest := resty.New()
 

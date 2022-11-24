@@ -3,9 +3,9 @@ package tbclient
 const path = "%s/topologies"
 const pathOne = path + "/%s"
 
-func (c *Client) getTopologyService() *service[Topology, topologyCollection] {
-	return &service[Topology, topologyCollection]{
-		readService[Topology, topologyCollection]{
+func (c *Client) getTopologyService() *resourceService[Topology, topologyCollection] {
+	return &resourceService[Topology, topologyCollection]{
+		collectionService[Topology, topologyCollection]{
 			client:       c,
 			resourcePath: "/topologies",
 		},

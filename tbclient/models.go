@@ -44,6 +44,23 @@ type inventoryNetworkCollection struct {
 	Data []InventoryNetwork `json:"inventoryNetworks"`
 }
 
-func (t inventoryNetworkCollection) getData() []InventoryNetwork {
-	return t.Data
+func (i inventoryNetworkCollection) getData() []InventoryNetwork {
+	return i.Data
+}
+
+// Network
+type Network struct {
+	Uid              string           `json:"uid,omitempty"`
+	Name             string           `json:"name"`
+	Description      string           `json:"description"`
+	InventoryNetwork InventoryNetwork `json:"inventoryNetwork"`
+	Topology         Topology         `json:"topology"`
+}
+
+type networkCollection struct {
+	Data []Network `json:"networks"`
+}
+
+func (n networkCollection) getData() []Network {
+	return n.Data
 }
