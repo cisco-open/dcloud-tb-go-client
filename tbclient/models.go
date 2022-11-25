@@ -35,9 +35,9 @@ func (t topologyCollection) getData() []Topology {
 
 // InventoryNetwork
 type InventoryNetwork struct {
-	Id     string `json:"id"`
-	Type   string `json:"type"`
-	Subnet string `json:"subnet"`
+	Id     string `json:"id,omitempty"`
+	Type   string `json:"type,omitempty"`
+	Subnet string `json:"subnet,omitempty"`
 }
 
 type inventoryNetworkCollection struct {
