@@ -64,3 +64,53 @@ type networkCollection struct {
 func (n networkCollection) getData() []Network {
 	return n.Data
 }
+
+// Nic Type
+type NicType struct {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type nicTypeCollection struct {
+	Data []NicType `json:"vmNetworkInterfaceTypes"`
+}
+
+func (n nicTypeCollection) getData() []NicType {
+	return n.Data
+}
+
+// VM
+
+type InventoryVmNic struct {
+	InventoryNetworkId string `json:"inventoryNetworkId"`
+	Name               string `json:"name"`
+	MacAddress         string `json:"macAddress"`
+	Type               string `json:"type"`
+	RdpEnabled         bool   `json:"rdpEnabled"`
+	SshEnabled         bool   `json:"sshEnabled"`
+}
+
+type InventoryVmRemoteAccess struct {
+	RdpAutoLogin bool `json:"rdpAutoLogin"`
+	RdpEnabled   bool `json:"rdpEnabled"`
+	SshEnabled   bool `json:"sshEnabled"`
+}
+
+type InventoryVm struct {
+	Id                  string                  `json:"id,omitempty"`
+	Datacenter          string                  `json:"datacenter,omitempty"`
+	OriginalName        string                  `json:"originalName,omitempty"`
+	OriginalDescription string                  `json:"originalDescription,omitempty"`
+	CpuQty              uint64                  `json:"cpuQty,omitempty"`
+	MemoryMb            uint64                  `json:"memoryMb,omitempty"`
+	NetworkInterfaces   []InventoryVmNic        `json:"networkInterfaces,omitempty"`
+	RemoteAccess        InventoryVmRemoteAccess `json:"remoteAccess,omitempty"`
+}
+
+type inventoryVmCollection struct {
+	Data []InventoryVm `json:"inventoryVms"`
+}
+
+func (v inventoryVmCollection) getData() []InventoryVm {
+	return v.Data
+}
