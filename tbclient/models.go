@@ -50,11 +50,11 @@ func (i inventoryNetworkCollection) getData() []InventoryNetwork {
 
 // Network
 type Network struct {
-	Uid              string           `json:"uid,omitempty"`
-	Name             string           `json:"name"`
-	Description      string           `json:"description"`
-	InventoryNetwork InventoryNetwork `json:"inventoryNetwork"`
-	Topology         Topology         `json:"topology"`
+	Uid              string            `json:"uid,omitempty"`
+	Name             string            `json:"name"`
+	Description      string            `json:"description"`
+	InventoryNetwork *InventoryNetwork `json:"inventoryNetwork"`
+	Topology         *Topology         `json:"topology"`
 }
 
 type networkCollection struct {
@@ -79,7 +79,21 @@ func (n nicTypeCollection) getData() []NicType {
 	return n.Data
 }
 
-// VM
+// OS Family
+type OsFamily struct {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type osFamilyCollection struct {
+	Data []OsFamily `json:"osFamilies"`
+}
+
+func (o osFamilyCollection) getData() []OsFamily {
+	return o.Data
+}
+
+// Inventory VM
 
 type InventoryVmNic struct {
 	InventoryNetworkId string `json:"inventoryNetworkId"`
@@ -97,14 +111,14 @@ type InventoryVmRemoteAccess struct {
 }
 
 type InventoryVm struct {
-	Id                  string                  `json:"id,omitempty"`
-	Datacenter          string                  `json:"datacenter,omitempty"`
-	OriginalName        string                  `json:"originalName,omitempty"`
-	OriginalDescription string                  `json:"originalDescription,omitempty"`
-	CpuQty              uint64                  `json:"cpuQty,omitempty"`
-	MemoryMb            uint64                  `json:"memoryMb,omitempty"`
-	NetworkInterfaces   []InventoryVmNic        `json:"networkInterfaces,omitempty"`
-	RemoteAccess        InventoryVmRemoteAccess `json:"remoteAccess,omitempty"`
+	Id                  string                   `json:"id,omitempty"`
+	Datacenter          string                   `json:"datacenter,omitempty"`
+	OriginalName        string                   `json:"originalName,omitempty"`
+	OriginalDescription string                   `json:"originalDescription,omitempty"`
+	CpuQty              uint64                   `json:"cpuQty,omitempty"`
+	MemoryMb            uint64                   `json:"memoryMb,omitempty"`
+	NetworkInterfaces   []InventoryVmNic         `json:"networkInterfaces,omitempty"`
+	RemoteAccess        *InventoryVmRemoteAccess `json:"remoteAccess,omitempty"`
 }
 
 type inventoryVmCollection struct {
@@ -112,5 +126,71 @@ type inventoryVmCollection struct {
 }
 
 func (v inventoryVmCollection) getData() []InventoryVm {
+	return v.Data
+}
+
+// Virtual Machine
+
+type VmNic struct {
+	Uid        string   `json:"uid,omitempty"`
+	Name       string   `json:"name,omitempty"`
+	MacAddress string   `json:"macAddress,omitempty"`
+	Type       string   `json:"type,omitempty"`
+	InUse      bool     `json:"inUse,omitempty"`
+	Network    *Network `json:"network"`
+}
+
+type VmAdvancedSettings struct {
+	NameInHypervisor      string `json:"nameInHypervisor,omitempty"`
+	BiosUuid              string `json:"biosUuid,omitempty"`
+	NotStarted            bool   `json:"notStarted,omitempty"`
+	AllDisksNonPersistent bool   `json:"allDisksNonPersistent,omitempty"`
+}
+
+type VmRemoteAccessDisplayCredentials struct {
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
+}
+
+type VmRemoteAccessInternalUrl struct {
+	Location    string `json:"location,omitempty"`
+	Description string `json:"description,omitempty"`
+}
+
+type VmRemoteAccess struct {
+	Username           string                            `json:"username,omitempty"`
+	Password           string                            `json:"password,omitempty"`
+	VmConsoleEnabled   bool                              `json:"vmConsoleEnabled,omitempty"`
+	DisplayCredentials *VmRemoteAccessDisplayCredentials `json:"displayCredentials,omitempty"`
+	InternalUrls       []VmRemoteAccessInternalUrl       `json:"internalUrls,omitempty"`
+}
+
+type VmGuestAutomation struct {
+	Command   string `json:"command,omitempty"`
+	DelaySecs uint32 `json:"delaySecs"`
+}
+
+type Vm struct {
+	Uid                  string              `json:"uid,omitempty"`
+	Name                 string              `json:"name,omitempty"`
+	Description          string              `json:"description,omitempty"`
+	MemoryMb             uint64              `json:"memoryMb,omitempty"`
+	CpuQty               uint64              `json:"cpuQty,omitempty"`
+	NestedHypervisor     bool                `json:"nestedHypervisor,omitempty"`
+	InventoryVmId        string              `json:"inventoryVmId,omitempty"`
+	TopologyInvariantUid string              `json:"topologyInvariantUid,omitempty"`
+	OsFamily             string              `json:"osFamily,omitempty"`
+	RemoteAccess         *VmRemoteAccess     `json:"remoteAccess"`
+	VmNetworkInterfaces  []VmNic             `json:"vmNetworkInterfaces"`
+	AdvancedSettings     *VmAdvancedSettings `json:"advancedSettings"`
+	GuestAutomation      *VmGuestAutomation  `json:"guestAutomation"`
+	Topology             *Topology           `json:"topology"`
+}
+
+type vmCollection struct {
+	Data []Vm `json:"vms"`
+}
+
+func (v vmCollection) getData() []Vm {
 	return v.Data
 }
