@@ -131,13 +131,24 @@ func (v inventoryVmCollection) getData() []InventoryVm {
 
 // Virtual Machine
 
+type VmNicRdp struct {
+	Enabled   bool `json:"enabled"`
+	AutoLogin bool `json:"autoLogin"`
+}
+
+type VmNicSsh struct {
+	Enabled bool `json:"enabled"`
+}
+
 type VmNic struct {
-	Uid        string   `json:"uid,omitempty"`
-	Name       string   `json:"name,omitempty"`
-	MacAddress string   `json:"macAddress,omitempty"`
-	Type       string   `json:"type,omitempty"`
-	InUse      bool     `json:"inUse,omitempty"`
-	Network    *Network `json:"network"`
+	Uid        string    `json:"uid,omitempty"`
+	Name       string    `json:"name,omitempty"`
+	MacAddress string    `json:"macAddress,omitempty"`
+	Type       string    `json:"type,omitempty"`
+	InUse      bool      `json:"inUse,omitempty"`
+	Rdp        *VmNicRdp `json:"rdp"`
+	Ssh        *VmNicSsh `json:"ssh"`
+	Network    *Network  `json:"network"`
 }
 
 type VmAdvancedSettings struct {
