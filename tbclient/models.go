@@ -144,6 +144,7 @@ type VmNic struct {
 	Uid        string    `json:"uid,omitempty"`
 	Name       string    `json:"name,omitempty"`
 	MacAddress string    `json:"macAddress,omitempty"`
+	IpAddress  string    `json:"ipAddress,omitempty"`
 	Type       string    `json:"type,omitempty"`
 	InUse      bool      `json:"inUse,omitempty"`
 	Rdp        *VmNicRdp `json:"rdp"`
