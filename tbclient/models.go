@@ -174,7 +174,7 @@ type VmRemoteAccess struct {
 	Password           string                            `json:"password,omitempty"`
 	VmConsoleEnabled   bool                              `json:"vmConsoleEnabled,omitempty"`
 	DisplayCredentials *VmRemoteAccessDisplayCredentials `json:"displayCredentials,omitempty"`
-	InternalUrls       []VmRemoteAccessInternalUrl       `json:"internalUrls,omitempty"`
+	InternalUrls       []VmRemoteAccessInternalUrl       `json:"internalUrls"`
 }
 
 type VmGuestAutomation struct {

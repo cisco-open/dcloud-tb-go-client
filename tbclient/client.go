@@ -3,6 +3,8 @@ package tbclient
 import (
 	"fmt"
 	"github.com/go-resty/resty/v2"
+	"io"
+	"log"
 )
 
 // Default to local servic instance
@@ -13,6 +15,7 @@ const ifMatch = "IF-MATCH"
 type Client struct {
 	HostURL string
 	Token   string
+	Debug   bool
 }
 
 func NewClient(host, authToken *string) *Client {
@@ -41,6 +44,7 @@ type collectionService[R any, RC embeddedData[R]] struct {
 func (s *collectionService[R, RC]) getAll() ([]R, error) {
 
 	rest := resty.New()
+	rest.SetDebug(s.client.Debug)
 
 	topologyPath := getTopologyPath(s.topologyUid)
 	url := fmt.Sprintf("%s%s%s", s.client.HostURL, topologyPath, s.resourcePath)
@@ -75,6 +79,7 @@ func getTopologyPath(topologyUid string) string {
 func (s *resourceService[R, RC]) getOne(uid string) (*R, error) {
 
 	rest := resty.New()
+	rest.SetDebug(s.client.Debug)
 
 	url := singleResourceUrl(s.client.HostURL, s.resourcePath, uid)
 	fmt.Printf("URL: %s\n", url)
@@ -99,6 +104,7 @@ func (s *resourceService[R, RC]) getOne(uid string) (*R, error) {
 func (s *resourceService[R, RC]) create(resource R) (*R, error) {
 
 	rest := resty.New()
+	rest.SetDebug(s.client.Debug)
 
 	url := fmt.Sprintf("%s%s", s.client.HostURL, s.resourcePath)
 	fmt.Printf("URL: %s\n", url)
@@ -124,6 +130,7 @@ func (s *resourceService[R, RC]) create(resource R) (*R, error) {
 func (s *resourceService[R, RC]) update(uid string, resource R) (*R, error) {
 
 	rest := resty.New()
+	rest.SetDebug(s.client.Debug)
 
 	url := singleResourceUrl(s.client.HostURL, s.resourcePath, uid)
 	fmt.Printf("URL: %s\n", url)
@@ -159,12 +166,22 @@ func (s *resourceService[R, RC]) update(uid string, resource R) (*R, error) {
 		return nil, generateError(*updated)
 	}
 
+	request := updated.Request
+	b, err := io.ReadAll(request.RawRequest.Body)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	fmt.Println(string(b))
+	log.Printf("[INFO] Request Body: %s", string(b))
+
 	return updated.Result().(*R), nil
 }
 
 func (s *resourceService[R, RC]) delete(uid string) error {
 
 	rest := resty.New()
+	rest.SetDebug(s.client.Debug)
 
 	url := singleResourceUrl(s.client.HostURL, s.resourcePath, uid)
 	fmt.Printf("URL: %s\n", url)
