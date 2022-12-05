@@ -207,6 +207,21 @@ func (v vmCollection) getData() []Vm {
 	return v.Data
 }
 
+// Hardware Scripts
+
+type InventoryHwScript struct {
+	Uid  string `json:"uid"`
+	Name string `json:"name"`
+}
+
+type inventoryHwScriptollection struct {
+	Data []InventoryHwScript `json:"inventoryHardwareScripts"`
+}
+
+func (hws inventoryHwScriptollection) getData() []InventoryHwScript {
+	return hws.Data
+}
+
 // Hardware
 
 type InventoryHwNic struct {
