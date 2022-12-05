@@ -1,8 +1,5 @@
 package tbclient
 
-const path = "%s/topologies"
-const pathOne = path + "/%s"
-
 func (c *Client) getTopologyService() *resourceService[Topology, topologyCollection] {
 	return &resourceService[Topology, topologyCollection]{
 		collectionService[Topology, topologyCollection]{
