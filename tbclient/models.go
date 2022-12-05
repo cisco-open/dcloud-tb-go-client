@@ -206,3 +206,26 @@ type vmCollection struct {
 func (v vmCollection) getData() []Vm {
 	return v.Data
 }
+
+// Hardware
+
+type InventoryHwNic struct {
+	Id string `json:"id"`
+}
+
+type InventoryHw struct {
+	Id                       string           `json:"id,omitempty"`
+	Name                     string           `json:"name,omitempty"`
+	Description              string           `json:"description,omitempty"`
+	PowerControlAvailable    bool             `json:"powerControlAvailable"`
+	HardwareConsoleAvailable bool             `json:"hardwareConsoleAvailable"`
+	NetworkInterfaces        []InventoryHwNic `json:"networkInterfaces"`
+}
+
+type inventoryHwCollection struct {
+	Data []InventoryHw `json:"inventoryHardwareItems"`
+}
+
+func (hw inventoryHwCollection) getData() []InventoryHw {
+	return hw.Data
+}
