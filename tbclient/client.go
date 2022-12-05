@@ -3,19 +3,18 @@ package tbclient
 import (
 	"fmt"
 	"github.com/go-resty/resty/v2"
-	"io"
-	"log"
 )
 
-// Default to local servic instance
+// HostURL Defaulted to local service instance
 const HostURL = "http://localhost:8080"
 const etag = "ETag"
 const ifMatch = "IF-MATCH"
 
 type Client struct {
-	HostURL string
-	Token   string
-	Debug   bool
+	HostURL   string
+	Token     string
+	Debug     bool
+	UserAgent string
 }
 
 func NewClient(host, authToken *string) *Client {
@@ -43,13 +42,10 @@ type collectionService[R any, RC embeddedData[R]] struct {
 
 func (s *collectionService[R, RC]) getAll() ([]R, error) {
 
-	rest := resty.New()
-	rest.SetDebug(s.client.Debug)
+	rest := s.createRestClient()
 
 	topologyPath := getTopologyPath(s.topologyUid)
 	url := fmt.Sprintf("%s%s%s", s.client.HostURL, topologyPath, s.resourcePath)
-
-	fmt.Printf("URL: %s\n", url)
 
 	resp, err := rest.R().
 		SetResult(collection[RC]{}).
@@ -68,21 +64,11 @@ func (s *collectionService[R, RC]) getAll() ([]R, error) {
 	return resp.Result().(*collection[RC]).Embedded.getData(), nil
 }
 
-func getTopologyPath(topologyUid string) string {
-	if topologyUid != "" {
-		return fmt.Sprintf("/topologies/%s", topologyUid)
-	} else {
-		return ""
-	}
-}
-
 func (s *resourceService[R, RC]) getOne(uid string) (*R, error) {
 
-	rest := resty.New()
-	rest.SetDebug(s.client.Debug)
+	rest := s.createRestClient()
 
 	url := singleResourceUrl(s.client.HostURL, s.resourcePath, uid)
-	fmt.Printf("URL: %s\n", url)
 
 	resp, err := rest.R().
 		SetResult(new(R)).
@@ -103,11 +89,10 @@ func (s *resourceService[R, RC]) getOne(uid string) (*R, error) {
 
 func (s *resourceService[R, RC]) create(resource R) (*R, error) {
 
-	rest := resty.New()
-	rest.SetDebug(s.client.Debug)
+	rest := s.createRestClient()
+	rest.SetHeader("Content-Type", "application/json")
 
 	url := fmt.Sprintf("%s%s", s.client.HostURL, s.resourcePath)
-	fmt.Printf("URL: %s\n", url)
 
 	resp, err := rest.R().
 		SetBody(resource).
@@ -129,11 +114,10 @@ func (s *resourceService[R, RC]) create(resource R) (*R, error) {
 
 func (s *resourceService[R, RC]) update(uid string, resource R) (*R, error) {
 
-	rest := resty.New()
-	rest.SetDebug(s.client.Debug)
+	rest := s.createRestClient()
+	rest.SetHeader("Content-Type", "application/json")
 
 	url := singleResourceUrl(s.client.HostURL, s.resourcePath, uid)
-	fmt.Printf("URL: %s\n", url)
 
 	current, err := rest.R().
 		SetError([]vndError{}).
@@ -166,25 +150,14 @@ func (s *resourceService[R, RC]) update(uid string, resource R) (*R, error) {
 		return nil, generateError(*updated)
 	}
 
-	request := updated.Request
-	b, err := io.ReadAll(request.RawRequest.Body)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	fmt.Println(string(b))
-	log.Printf("[INFO] Request Body: %s", string(b))
-
 	return updated.Result().(*R), nil
 }
 
 func (s *resourceService[R, RC]) delete(uid string) error {
 
-	rest := resty.New()
-	rest.SetDebug(s.client.Debug)
+	rest := s.createRestClient()
 
 	url := singleResourceUrl(s.client.HostURL, s.resourcePath, uid)
-	fmt.Printf("URL: %s\n", url)
 
 	resp, err := rest.R().
 		SetError([]vndError{}).
@@ -206,4 +179,21 @@ func singleResourceUrl(hostUrl, resourcePath, uid string) string {
 	singlePath := fmt.Sprintf("%s/%s", resourcePath, uid)
 	url := fmt.Sprintf("%s%s", hostUrl, singlePath)
 	return url
+}
+
+func (s *collectionService[R, RC]) createRestClient() *resty.Client {
+	rest := resty.New()
+	rest.SetDebug(s.client.Debug)
+	if s.client.UserAgent != "" {
+		rest.SetHeader("User-Agent", s.client.UserAgent)
+	}
+	return rest
+}
+
+func getTopologyPath(topologyUid string) string {
+	if topologyUid != "" {
+		return fmt.Sprintf("/topologies/%s", topologyUid)
+	} else {
+		return ""
+	}
 }
