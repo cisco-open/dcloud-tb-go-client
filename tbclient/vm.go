@@ -23,8 +23,7 @@ func (c *Client) GetAllInventoryVms(topologyUid string) ([]InventoryVm, error) {
 }
 
 func (c *Client) GetAllVms(topologyUid string) ([]Vm, error) {
-	networks, err := c.getVmService(topologyUid).getAll()
-	return networks, err
+	return c.getVmService(topologyUid).getAll()
 }
 
 func (c *Client) GetVm(uid string) (*Vm, error) {

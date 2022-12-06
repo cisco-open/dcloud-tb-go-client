@@ -23,8 +23,7 @@ func (c *Client) GetAllInventoryNetworks(topologyUid string) ([]InventoryNetwork
 }
 
 func (c *Client) GetAllNetworks(topologyUid string) ([]Network, error) {
-	networks, err := c.getNetworkService(topologyUid).getAll()
-	return networks, err
+	return c.getNetworkService(topologyUid).getAll()
 }
 
 func (c *Client) GetNetwork(uid string) (*Network, error) {

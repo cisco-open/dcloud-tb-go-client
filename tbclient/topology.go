@@ -10,8 +10,7 @@ func (c *Client) getTopologyService() *resourceService[Topology, topologyCollect
 }
 
 func (c *Client) GetAllTopologies() ([]Topology, error) {
-	topologies, err := c.getTopologyService().getAll()
-	return topologies, err
+	return c.getTopologyService().getAll()
 }
 
 func (c *Client) GetTopology(uid string) (*Topology, error) {

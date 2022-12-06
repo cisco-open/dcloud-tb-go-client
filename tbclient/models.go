@@ -211,7 +211,7 @@ func (v vmCollection) getData() []Vm {
 
 type InventoryHwScript struct {
 	Uid  string `json:"uid"`
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 type inventoryHwScriptollection struct {
@@ -232,8 +232,8 @@ type InventoryHw struct {
 	Id                       string           `json:"id,omitempty"`
 	Name                     string           `json:"name,omitempty"`
 	Description              string           `json:"description,omitempty"`
-	PowerControlAvailable    bool             `json:"powerControlAvailable"`
-	HardwareConsoleAvailable bool             `json:"hardwareConsoleAvailable"`
+	PowerControlAvailable    bool             `json:"powerControlAvailable,omitempty"`
+	HardwareConsoleAvailable bool             `json:"hardwareConsoleAvailable,omitempty"`
 	NetworkInterfaces        []InventoryHwNic `json:"networkInterfaces"`
 }
 
@@ -242,5 +242,32 @@ type inventoryHwCollection struct {
 }
 
 func (hw inventoryHwCollection) getData() []InventoryHw {
+	return hw.Data
+}
+
+type HwNic struct {
+	Network          Network        `json:"network"`
+	NetworkInterface InventoryHwNic `json:"networkInterface"`
+}
+
+type Hw struct {
+	Uid                    string             `json:"uid,omitempty"`
+	Name                   string             `json:"name,omitempty"`
+	PowerControlEnabled    bool               `json:"powerControlEnabled"`
+	HardwareConsoleEnabled bool               `json:"hardwareConsoleEnabled"`
+	StartupScript          *InventoryHwScript `json:"inventoryStartupScript"`
+	CustomScript           *InventoryHwScript `json:"inventoryCustomScript"`
+	ShutdownScript         *InventoryHwScript `json:"inventoryShutdownScript"`
+	TemplateConfigScript   *InventoryHwScript `json:"inventoryTemplateConfigScript"`
+	NetworkInterfaces      []HwNic            `json:"hardwareNetworkInterfaces"`
+	InventoryHardwareItem  *InventoryHw       `json:"inventoryHardwareItem"`
+	Topology               *Topology          `json:"topology"`
+}
+
+type hwCollection struct {
+	Data []Hw `json:"hardwareItems"`
+}
+
+func (hw hwCollection) getData() []Hw {
 	return hw.Data
 }
