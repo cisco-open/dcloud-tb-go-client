@@ -1,15 +1,15 @@
 package tbclient
 
-func (c *Client) getInventoryHwScriptService(topologyUid string) *collectionService[InventoryHwScript, inventoryHwScriptollection] {
-	return &collectionService[InventoryHwScript, inventoryHwScriptollection]{
+func (c *Client) getInventoryHwScriptService(topologyUid string) *collectionService[InventoryHwScript, inventoryHwScriptCollection] {
+	return &collectionService[InventoryHwScript, inventoryHwScriptCollection]{
 		client:       c,
 		resourcePath: "/inventory-hardware-scripts",
 		topologyUid:  topologyUid,
 	}
 }
 
-func (c *Client) getInventoryHwTemplateConfigService(topologyUid string) *collectionService[InventoryHwScript, inventoryHwScriptollection] {
-	return &collectionService[InventoryHwScript, inventoryHwScriptollection]{
+func (c *Client) getInventoryHwTemplateConfigService(topologyUid string) *collectionService[InventoryHwScript, inventoryHwScriptCollection] {
+	return &collectionService[InventoryHwScript, inventoryHwScriptCollection]{
 		client:       c,
 		resourcePath: "/inventory-hardware-templates",
 		topologyUid:  topologyUid,

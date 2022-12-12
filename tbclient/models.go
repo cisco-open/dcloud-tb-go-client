@@ -214,11 +214,11 @@ type InventoryHwScript struct {
 	Name string `json:"name,omitempty"`
 }
 
-type inventoryHwScriptollection struct {
+type inventoryHwScriptCollection struct {
 	Data []InventoryHwScript `json:"inventoryHardwareScripts"`
 }
 
-func (hws inventoryHwScriptollection) getData() []InventoryHwScript {
+func (hws inventoryHwScriptCollection) getData() []InventoryHwScript {
 	return hws.Data
 }
 
@@ -253,8 +253,8 @@ type HwNic struct {
 type Hw struct {
 	Uid                    string             `json:"uid,omitempty"`
 	Name                   string             `json:"name,omitempty"`
-	PowerControlEnabled    bool               `json:"powerControlEnabled"`
-	HardwareConsoleEnabled bool               `json:"hardwareConsoleEnabled"`
+	PowerControlEnabled    bool               `json:"powerControlEnabled,omitempty"`
+	HardwareConsoleEnabled bool               `json:"hardwareConsoleEnabled,omitempty"`
 	StartupScript          *InventoryHwScript `json:"inventoryStartupScript"`
 	CustomScript           *InventoryHwScript `json:"inventoryCustomScript"`
 	ShutdownScript         *InventoryHwScript `json:"inventoryShutdownScript"`
