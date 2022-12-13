@@ -146,7 +146,7 @@ type VmNic struct {
 	MacAddress string    `json:"macAddress,omitempty"`
 	IpAddress  string    `json:"ipAddress,omitempty"`
 	Type       string    `json:"type,omitempty"`
-	InUse      bool      `json:"inUse,omitempty"`
+	InUse      bool      `json:"inUse"`
 	Rdp        *VmNicRdp `json:"rdp"`
 	Ssh        *VmNicSsh `json:"ssh"`
 	Network    *Network  `json:"network"`
@@ -155,8 +155,8 @@ type VmNic struct {
 type VmAdvancedSettings struct {
 	NameInHypervisor      string `json:"nameInHypervisor,omitempty"`
 	BiosUuid              string `json:"biosUuid,omitempty"`
-	NotStarted            bool   `json:"notStarted,omitempty"`
-	AllDisksNonPersistent bool   `json:"allDisksNonPersistent,omitempty"`
+	NotStarted            bool   `json:"notStarted"`
+	AllDisksNonPersistent bool   `json:"allDisksNonPersistent"`
 }
 
 type VmRemoteAccessDisplayCredentials struct {
@@ -172,7 +172,7 @@ type VmRemoteAccessInternalUrl struct {
 type VmRemoteAccess struct {
 	Username           string                            `json:"username,omitempty"`
 	Password           string                            `json:"password,omitempty"`
-	VmConsoleEnabled   bool                              `json:"vmConsoleEnabled,omitempty"`
+	VmConsoleEnabled   bool                              `json:"vmConsoleEnabled"`
 	DisplayCredentials *VmRemoteAccessDisplayCredentials `json:"displayCredentials,omitempty"`
 	InternalUrls       []VmRemoteAccessInternalUrl       `json:"internalUrls"`
 }
@@ -188,7 +188,7 @@ type Vm struct {
 	Description          string              `json:"description,omitempty"`
 	MemoryMb             uint64              `json:"memoryMb,omitempty"`
 	CpuQty               uint64              `json:"cpuQty,omitempty"`
-	NestedHypervisor     bool                `json:"nestedHypervisor,omitempty"`
+	NestedHypervisor     *bool               `json:"nestedHypervisor,omitempty"`
 	InventoryVmId        string              `json:"inventoryVmId,omitempty"`
 	TopologyInvariantUid string              `json:"topologyInvariantUid,omitempty"`
 	OsFamily             string              `json:"osFamily,omitempty"`
@@ -232,8 +232,8 @@ type InventoryHw struct {
 	Id                       string           `json:"id,omitempty"`
 	Name                     string           `json:"name,omitempty"`
 	Description              string           `json:"description,omitempty"`
-	PowerControlAvailable    bool             `json:"powerControlAvailable,omitempty"`
-	HardwareConsoleAvailable bool             `json:"hardwareConsoleAvailable,omitempty"`
+	PowerControlAvailable    bool             `json:"powerControlAvailable"`
+	HardwareConsoleAvailable bool             `json:"hardwareConsoleAvailable"`
 	NetworkInterfaces        []InventoryHwNic `json:"networkInterfaces"`
 }
 
@@ -253,8 +253,8 @@ type HwNic struct {
 type Hw struct {
 	Uid                    string             `json:"uid,omitempty"`
 	Name                   string             `json:"name,omitempty"`
-	PowerControlEnabled    bool               `json:"powerControlEnabled,omitempty"`
-	HardwareConsoleEnabled bool               `json:"hardwareConsoleEnabled,omitempty"`
+	PowerControlEnabled    *bool              `json:"powerControlEnabled,omitempty"`
+	HardwareConsoleEnabled *bool              `json:"hardwareConsoleEnabled,omitempty"`
 	StartupScript          *InventoryHwScript `json:"inventoryStartupScript"`
 	CustomScript           *InventoryHwScript `json:"inventoryCustomScript"`
 	ShutdownScript         *InventoryHwScript `json:"inventoryShutdownScript"`
