@@ -188,7 +188,7 @@ type Vm struct {
 	Description          string              `json:"description,omitempty"`
 	MemoryMb             uint64              `json:"memoryMb,omitempty"`
 	CpuQty               uint64              `json:"cpuQty,omitempty"`
-	NestedHypervisor     *bool               `json:"nestedHypervisor,omitempty"`
+	NestedHypervisor     *bool               `json:"nestedHypervisor"`
 	InventoryVmId        string              `json:"inventoryVmId,omitempty"`
 	TopologyInvariantUid string              `json:"topologyInvariantUid,omitempty"`
 	OsFamily             string              `json:"osFamily,omitempty"`
@@ -253,8 +253,8 @@ type HwNic struct {
 type Hw struct {
 	Uid                    string             `json:"uid,omitempty"`
 	Name                   string             `json:"name,omitempty"`
-	PowerControlEnabled    *bool              `json:"powerControlEnabled,omitempty"`
-	HardwareConsoleEnabled *bool              `json:"hardwareConsoleEnabled,omitempty"`
+	PowerControlEnabled    *bool              `json:"powerControlEnabled"`
+	HardwareConsoleEnabled *bool              `json:"hardwareConsoleEnabled"`
 	StartupScript          *InventoryHwScript `json:"inventoryStartupScript"`
 	CustomScript           *InventoryHwScript `json:"inventoryCustomScript"`
 	ShutdownScript         *InventoryHwScript `json:"inventoryShutdownScript"`
