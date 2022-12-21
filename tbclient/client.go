@@ -11,10 +11,11 @@ const etag = "ETag"
 const ifMatch = "IF-MATCH"
 
 type Client struct {
-	HostURL   string
-	Token     string
-	Debug     bool
-	UserAgent string
+	HostURL     string
+	Token       string
+	Debug       bool
+	UserAgent   string
+	DisableGzip bool
 }
 
 func NewClient(host, authToken *string) *Client {
@@ -186,6 +187,9 @@ func (s *collectionService[R, RC]) createRestClient() *resty.Client {
 	rest.SetDebug(s.client.Debug)
 	if s.client.UserAgent != "" {
 		rest.SetHeader("User-Agent", s.client.UserAgent)
+	}
+	if s.client.DisableGzip {
+		rest.SetHeader("Accept-Encoding", "")
 	}
 	return rest
 }
