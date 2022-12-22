@@ -56,6 +56,12 @@ var template1InventoryHwScript = InventoryHwScript{
 	Name: "en-sw-3850-16-v1.txt",
 }
 
+var primaryInventoryNetwork = InventoryNetwork{
+	Id:     "VLAN-PRIMARY",
+	Type:   "ROUTED",
+	Subnet: "198.18.128.0 /18",
+}
+
 var routedInventoryNetwork = InventoryNetwork{
 	Id:     "L3-VLAN-1",
 	Type:   "ROUTED",
@@ -74,6 +80,163 @@ var routedNetwork = Network{
 	Description:      "Routed Network description",
 	InventoryNetwork: &InventoryNetwork{Id: routedInventoryNetwork.Id},
 	Topology:         &Topology{Uid: lonTopology.Uid},
+}
+
+var lonDefaultNetwork = Network{
+	Uid:              "lontopologyv1nwk",
+	Name:             "Default Network",
+	Description:      "Default Network description",
+	InventoryNetwork: &primaryInventoryNetwork,
+	Topology:         &Topology{Uid: lonTopology.Uid},
+}
+
+var inventoryVm = InventoryVm{
+	Id:                  "templatevm3",
+	Datacenter:          "LON",
+	OriginalName:        "na-edge1",
+	OriginalDescription: "na-edge1",
+	CpuQty:              2,
+	MemoryMb:            4096,
+	NetworkInterfaces: []InventoryVmNic{
+		// TODO - contract needs to specify additional fields
+		{
+			InventoryNetworkId: "VLAN-PRIMARY",
+			Name:               "Network adapter 1",
+			IpAddress:          "198.18.133.115",
+		},
+		{
+			InventoryNetworkId: "VLAN-PRIMARY",
+			Name:               "Network adapter 2",
+		},
+		{
+			InventoryNetworkId: "L2-VLAN-15",
+			Name:               "Network adapter 3",
+		},
+		{
+			InventoryNetworkId: "L2-VLAN-20",
+			Name:               "Network adapter 4",
+		},
+	},
+	RemoteAccess: &InventoryVmRemoteAccess{
+		RdpAutoLogin: true,
+		RdpEnabled:   true,
+		SshEnabled:   true,
+	},
+}
+
+var nestedHypervisor = false
+
+var vm = Vm{
+	Uid:              "lonvm1",
+	Name:             "Mail Server 1",
+	Description:      "Mail Server 1",
+	MemoryMb:         6144,
+	CpuQty:           3,
+	NestedHypervisor: &nestedHypervisor,
+	InventoryVmId:    "templatevm2",
+	OsFamily:         "LINUX",
+	RemoteAccess: &VmRemoteAccess{
+		Username:         "user_name",
+		Password:         "password",
+		VmConsoleEnabled: true,
+		DisplayCredentials: &VmRemoteAccessDisplayCredentials{
+			Username: "display_user_name",
+			Password: "display_password",
+		},
+		InternalUrls: []VmRemoteAccessInternalUrl{
+			{
+				Location:    "http://198.18.131.200:8080/myApp/start?foo=bar",
+				Description: "My App Launch Page",
+			},
+		},
+	},
+	VmNetworkInterfaces: []VmNic{
+		{
+			Uid:        "lonvm1msnic",
+			IpAddress:  "198.18.131.200",
+			Name:       "Network adapter 1",
+			MacAddress: "00:50:56:00:00:07",
+			Type:       "VIRTUAL_E1000",
+			InUse:      true,
+			Rdp: &VmNicRdp{
+				Enabled:   true,
+				AutoLogin: true,
+			},
+			Ssh: &VmNicSsh{Enabled: true},
+			Network: &Network{
+				// Contract is missing 'description' field
+				Uid:              lonDefaultNetwork.Uid,
+				Name:             lonDefaultNetwork.Name,
+				InventoryNetwork: lonDefaultNetwork.InventoryNetwork,
+			},
+		},
+		{
+			Uid:        "lonvm1natnic",
+			IpAddress:  "198.18.131.201",
+			Name:       "Network adapter 2",
+			MacAddress: "00:50:56:00:00:08",
+			Type:       "VIRTUAL_E1000",
+			Network: &Network{
+				// Contract is missing 'description' field
+				Uid:              lonDefaultNetwork.Uid,
+				Name:             lonDefaultNetwork.Name,
+				InventoryNetwork: lonDefaultNetwork.InventoryNetwork,
+			},
+		},
+	},
+	AdvancedSettings: &VmAdvancedSettings{
+		NameInHypervisor:      "Demo_007-VM",
+		BiosUuid:              "61 62 63 64 65 66 67 68-69 6a 6b 6c 6d 6e 6f 70",
+		NotStarted:            false,
+		AllDisksNonPersistent: false,
+	},
+	GuestAutomation: &VmGuestAutomation{
+		Command:   "cd /var/; sh script.sh",
+		DelaySecs: 120,
+	},
+	Topology: &Topology{Uid: lonTopology.Uid},
+}
+
+var createVm = Vm{
+	Uid:              "newvm",
+	Name:             "vmtemplate1 name",
+	Description:      "vmtemplate1 description",
+	MemoryMb:         8192,
+	CpuQty:           4,
+	NestedHypervisor: &nestedHypervisor,
+	InventoryVmId:    "templatevm1",
+	RemoteAccess: &VmRemoteAccess{
+		Username:         "user_name",
+		Password:         "password",
+		VmConsoleEnabled: false,
+	},
+	VmNetworkInterfaces: []VmNic{
+		{
+			Uid:       "newvmnic1",
+			IpAddress: "198.18.131.200",
+			Name:      "Network adapter 0",
+			Network: &Network{
+				// Contract is missing 'description' field
+				Uid: lonDefaultNetwork.Uid,
+			},
+		},
+		{
+			Uid:       "newvmnic2",
+			IpAddress: "198.18.131.201",
+			Name:      "Network adapter 0",
+			Network: &Network{
+				// Contract is missing 'description' field
+				Uid: routedNetwork.Uid,
+			},
+		},
+	},
+	AdvancedSettings: &VmAdvancedSettings{
+		NameInHypervisor:      "Win_10-VM-1",
+		BiosUuid:              "61 62 63 64 65 66 67 68-69 6a 6b 6c 6d 6e 6f 70",
+		NotStarted:            false,
+		AllDisksNonPersistent: false,
+	},
+	Topology: &Topology{Uid: lonTopology.Uid},
 }
 
 func (suite *ContractTestSuite) SetupSuite() {
@@ -222,6 +385,81 @@ func (suite *ContractTestSuite) TestDeleteNetwork() {
 	suite.Nil(err)
 }
 
+func (suite *ContractTestSuite) TestGetAllVms() {
+
+	// When
+	vms, err := suite.tbClient.GetAllVms(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(3, len(vms))
+	suite.Contains(vms, vm)
+}
+
+func (suite *ContractTestSuite) TestGetVm() {
+
+	// Given
+	expectedVm := vm
+	// Work around contract data inconsistencies
+	nic := vm.VmNetworkInterfaces[1]
+	nic.InUse = true
+	nic.Network.InventoryNetwork = nil
+	expectedVm.VmNetworkInterfaces[1] = nic
+
+	// When
+	actualVm, err := suite.tbClient.GetVm(vm.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(expectedVm, *actualVm)
+}
+
+func (suite *ContractTestSuite) TestUpdateVm() {
+
+	// TODO - Contract needs to be updated to remove 'hiddenFromSession' as this field is no longer used
+	suite.T().Skip("Skipping until contracts are updated")
+
+	// Given
+	expectedVm := vm
+	expectedVm.Name = "New Name"
+
+	// When
+	actualVm, err := suite.tbClient.UpdateVm(expectedVm)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(expectedVm, *actualVm)
+}
+
+func (suite *ContractTestSuite) TestCreateVm() {
+	// Given
+	expectedVm := createVm
+	expectedVm.Uid = ""
+
+	// When
+	actualVm, err := suite.tbClient.CreateVm(expectedVm)
+	suite.handleError(err)
+
+	// Then
+	expectedVm.Uid = "newvm"
+
+	// TODO - contract gives unpredictable network names, need to blank them for assert
+	for _, nic := range actualVm.VmNetworkInterfaces {
+		nic.Network.Name = ""
+	}
+	suite.Equal(expectedVm, *actualVm)
+}
+
+func (suite *ContractTestSuite) TestDeleteVm() {
+
+	// When
+	err := suite.tbClient.DeleteVm(vm.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Nil(err)
+}
+
 // Inventory Tests
 
 func (suite *ContractTestSuite) TestGetAllOsFamilies() {
@@ -277,6 +515,20 @@ func (suite *ContractTestSuite) TestGetAllInventoryNetworks() {
 	// Then
 	suite.Equal(25, len(inventoryNetworks))
 	suite.Contains(inventoryNetworks, routedInventoryNetwork)
+}
+
+func (suite *ContractTestSuite) TestGetAllInventoryVms() {
+
+	// TODO - Contract needs to be updated to remove 'filter' as mandatory
+	suite.T().Skip("Skipping until contracts are updated")
+
+	// When
+	inventoryVms, err := suite.tbClient.GetAllInventoryVms(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(2, len(inventoryVms))
+	suite.Contains(inventoryVms, inventoryVm)
 }
 
 func TestContractTestSuite(t *testing.T) {

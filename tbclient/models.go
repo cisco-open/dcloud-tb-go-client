@@ -98,6 +98,7 @@ func (o osFamilyCollection) getData() []OsFamily {
 type InventoryVmNic struct {
 	InventoryNetworkId string `json:"inventoryNetworkId"`
 	Name               string `json:"name"`
+	IpAddress          string `json:"ipAddress"`
 	MacAddress         string `json:"macAddress"`
 	Type               string `json:"type"`
 	RdpEnabled         bool   `json:"rdpEnabled"`
