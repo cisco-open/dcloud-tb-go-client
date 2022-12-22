@@ -26,31 +26,54 @@ type ContractTestSuite struct {
 	tbClient Client
 }
 
-var testResources = map[string]interface{}{
-	"lontopology": Topology{
-		Uid:         "lontopology",
-		Name:        "lontopology name",
-		Description: "lontopology description",
-		Datacenter:  "LON",
-		Notes:       "Notes",
-		Status:      "DRAFT",
-	},
-	"linux": OsFamily{
-		Id:   "LINUX",
-		Name: "Linux",
-	},
-	"e1000": NicType{
-		Id:   "VIRTUAL_E1000",
-		Name: "VirtualE1000",
-	},
-	"script1": InventoryHwScript{
-		Uid:  "script1",
-		Name: "EN-3850-switch-start.xml",
-	},
-	"template1": InventoryHwScript{
-		Uid:  "template1",
-		Name: "en-sw-3850-16-v1.txt",
-	},
+// Test Data
+var lonTopology = Topology{
+	Uid:         "lontopology",
+	Name:        "lontopology name",
+	Description: "lontopology description",
+	Datacenter:  "LON",
+	Notes:       "Notes",
+	Status:      "DRAFT",
+}
+
+var linuxOsFamily = OsFamily{
+	Id:   "LINUX",
+	Name: "Linux",
+}
+
+var e1000NicType = NicType{
+	Id:   "VIRTUAL_E1000",
+	Name: "VirtualE1000",
+}
+
+var script1InventoryHwScript = InventoryHwScript{
+	Uid:  "script1",
+	Name: "EN-3850-switch-start.xml",
+}
+
+var template1InventoryHwScript = InventoryHwScript{
+	Uid:  "template1",
+	Name: "en-sw-3850-16-v1.txt",
+}
+
+var routedInventoryNetwork = InventoryNetwork{
+	Id:     "L3-VLAN-1",
+	Type:   "ROUTED",
+	Subnet: "198.18.1.0 /24",
+}
+
+var routedInventoryNetwork2 = InventoryNetwork{
+	Id:     "L3-VLAN-2",
+	Type:   "ROUTED",
+	Subnet: "198.18.2.0 /24",
+}
+
+var routedNetwork = Network{
+	Uid:              "routednetwork",
+	Name:             "Routed Network",
+	Description:      "Routed Network description",
+	InventoryNetwork: &InventoryNetwork{Id: routedInventoryNetwork.Id},
+	Topology:         &Topology{Uid: lonTopology.Uid},
 }
 
 func (suite *ContractTestSuite) SetupSuite() {
@@ -61,11 +84,13 @@ func (suite *ContractTestSuite) TearDownSuite() {
 	suite.docker.client.ContainerRemove(*suite.docker.ctx, suite.docker.containerId, types.ContainerRemoveOptions{Force: true})
 }
 
+// Asset Tests
+
 func (suite *ContractTestSuite) TestGetAllTopologies() {
 
 	// Given
-	lontopology := testResources["lontopology"].(Topology)
-	lontopology.Notes = "" // Get All Topologies contract is missing 'notes' field
+	expectedTopology := lonTopology
+	expectedTopology.Notes = "" // Get All Topologies contract is missing 'notes' field
 
 	// When
 	topologies, err := suite.tbClient.GetAllTopologies()
@@ -73,59 +98,130 @@ func (suite *ContractTestSuite) TestGetAllTopologies() {
 
 	// Then
 	suite.Equal(9, len(topologies))
-	suite.Contains(topologies, lontopology)
+	suite.Contains(topologies, expectedTopology)
 }
 
 func (suite *ContractTestSuite) TestGetTopology() {
-	// Given
-	topologyUid := "lontopology"
 
 	// When
-	topology, err := suite.tbClient.GetTopology(topologyUid)
+	actualTopology, err := suite.tbClient.GetTopology(lonTopology.Uid)
 	suite.handleError(err)
 
 	// Then
-	suite.Equal(testResources[topologyUid], *topology)
+	suite.Equal(lonTopology, *actualTopology)
 }
 
 func (suite *ContractTestSuite) TestUpdateTopology() {
 	// Given
-	lontopology := testResources["lontopology"].(Topology)
-	lontopology.Name = "lontopology name updated"
+	expectedTopology := lonTopology
+	expectedTopology.Name = "lontopology name updated"
 
 	// When
-	topology, err := suite.tbClient.UpdateTopology(lontopology)
+	actualTopology, err := suite.tbClient.UpdateTopology(expectedTopology)
 	suite.handleError(err)
 
 	// Then
-	suite.Equal(lontopology, *topology)
+	suite.Equal(expectedTopology, *actualTopology)
 }
 
 func (suite *ContractTestSuite) TestCreateTopology() {
 	// Given
-	newTopology := testResources["lontopology"].(Topology)
+	newTopology := lonTopology
 	newTopology.Uid = ""
 
 	// When
-	topology, err := suite.tbClient.CreateTopology(newTopology)
+	actualTopology, err := suite.tbClient.CreateTopology(newTopology)
 	suite.handleError(err)
 
 	// Then
 	newTopology.Uid = "newtopology"
-	suite.Equal(newTopology, *topology)
+	suite.Equal(newTopology, *actualTopology)
 }
 
 func (suite *ContractTestSuite) TestDeleteTopology() {
-	// Given
-	topologyUid := "lontopology"
 
 	// When
-	err := suite.tbClient.DeleteTopology(topologyUid)
+	err := suite.tbClient.DeleteTopology(lonTopology.Uid)
 	suite.handleError(err)
 
 	// Then
 	suite.Nil(err)
 }
+
+func (suite *ContractTestSuite) TestGetAllNetworks() {
+
+	// Given
+	expectedNetwork := routedNetwork
+	expectedNetwork.InventoryNetwork = &routedInventoryNetwork
+
+	// When
+	networks, err := suite.tbClient.GetAllNetworks(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(4, len(networks))
+	suite.Contains(networks, expectedNetwork)
+}
+
+func (suite *ContractTestSuite) TestGetNetwork() {
+
+	// Given
+	expectedNetwork := routedNetwork
+	expectedNetwork.InventoryNetwork = &routedInventoryNetwork
+
+	// When
+	actualNetwork, err := suite.tbClient.GetNetwork(routedNetwork.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(expectedNetwork, *actualNetwork)
+}
+
+func (suite *ContractTestSuite) TestUpdateNetwork() {
+	// Given
+	expectedInventoryNetwork := routedInventoryNetwork2
+	expectedInventoryNetwork.Subnet = "198.18.3.0 /24"
+
+	expectedNetwork := routedNetwork
+	expectedNetwork.Name = "Updated Routed Network"
+	expectedNetwork.InventoryNetwork = &InventoryNetwork{Id: expectedInventoryNetwork.Id}
+
+	// When
+	actualNetwork, err := suite.tbClient.UpdateNetwork(expectedNetwork)
+	suite.handleError(err)
+
+	// Then
+	expectedNetwork.InventoryNetwork = &expectedInventoryNetwork
+	suite.Equal(expectedNetwork, *actualNetwork)
+}
+
+func (suite *ContractTestSuite) TestCreateNetwork() {
+	// Given
+	newNetwork := routedNetwork
+	newNetwork.Uid = ""
+	newNetwork.InventoryNetwork = &InventoryNetwork{Id: routedInventoryNetwork2.Id}
+
+	// When
+	actualNetwork, err := suite.tbClient.CreateNetwork(newNetwork)
+	suite.handleError(err)
+
+	// Then
+	newNetwork.Uid = "newroutednetwork"
+	newNetwork.InventoryNetwork = &routedInventoryNetwork2
+	suite.Equal(newNetwork, *actualNetwork)
+}
+
+func (suite *ContractTestSuite) TestDeleteNetwork() {
+
+	// When
+	err := suite.tbClient.DeleteNetwork(routedNetwork.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Nil(err)
+}
+
+// Inventory Tests
 
 func (suite *ContractTestSuite) TestGetAllOsFamilies() {
 
@@ -135,7 +231,7 @@ func (suite *ContractTestSuite) TestGetAllOsFamilies() {
 
 	// Then
 	suite.Equal(4, len(osFamilies))
-	suite.Contains(osFamilies, testResources["linux"])
+	suite.Contains(osFamilies, linuxOsFamily)
 }
 
 func (suite *ContractTestSuite) TestGetAllNicTypes() {
@@ -146,29 +242,40 @@ func (suite *ContractTestSuite) TestGetAllNicTypes() {
 
 	// Then
 	suite.Equal(5, len(nicTypes))
-	suite.Contains(nicTypes, testResources["e1000"])
+	suite.Contains(nicTypes, e1000NicType)
 }
 
 func (suite *ContractTestSuite) TestGetAllInventoryHwScripts() {
 
 	// When
-	hwScripts, err := suite.tbClient.GetAllInventoryHwScripts("lontopology")
+	hwScripts, err := suite.tbClient.GetAllInventoryHwScripts(lonTopology.Uid)
 	suite.handleError(err)
 
 	// Then
 	suite.Equal(4, len(hwScripts))
-	suite.Contains(hwScripts, testResources["script1"])
+	suite.Contains(hwScripts, script1InventoryHwScript)
 }
 
 func (suite *ContractTestSuite) TestGetAllInventoryHwTemplateConfigs() {
 
 	// When
-	configTemplates, err := suite.tbClient.GetAllInventoryHwTemplateConfigs("lontopology")
+	configTemplates, err := suite.tbClient.GetAllInventoryHwTemplateConfigs(lonTopology.Uid)
 	suite.handleError(err)
 
 	// Then
 	suite.Equal(2, len(configTemplates))
-	suite.Contains(configTemplates, testResources["template1"])
+	suite.Contains(configTemplates, template1InventoryHwScript)
+}
+
+func (suite *ContractTestSuite) TestGetAllInventoryNetworks() {
+
+	// When
+	inventoryNetworks, err := suite.tbClient.GetAllInventoryNetworks(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(25, len(inventoryNetworks))
+	suite.Contains(inventoryNetworks, routedInventoryNetwork)
 }
 
 func TestContractTestSuite(t *testing.T) {
