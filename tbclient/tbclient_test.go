@@ -77,7 +77,8 @@ var routedNetwork = Network{
 }
 
 func (suite *ContractTestSuite) SetupSuite() {
-	suite.docker, suite.tbClient = startStubrunner()
+	suite.docker = startStubrunner(suite)
+	suite.tbClient = createTbClient(suite)
 }
 
 func (suite *ContractTestSuite) TearDownSuite() {
@@ -282,21 +283,19 @@ func TestContractTestSuite(t *testing.T) {
 	suite.Run(t, new(ContractTestSuite))
 }
 
-func startStubrunner() (DockerContainer, Client) {
+func startStubrunner(suite *ContractTestSuite) DockerContainer {
 	ctx := context.Background()
+
 	cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
-	if err != nil {
-		panic(err)
-	}
+	suite.handleError(err)
 	defer cli.Close()
 
 	imageName := "springcloud/spring-cloud-contract-stub-runner:2.2.2.RELEASE"
 
 	out, err := cli.ImagePull(ctx, imageName, types.ImagePullOptions{})
-	if err != nil {
-		panic(err)
-	}
+	suite.handleError(err)
 	defer out.Close()
+
 	io.Copy(os.Stdout, out)
 
 	environment := []string{
@@ -308,12 +307,6 @@ func startStubrunner() (DockerContainer, Client) {
 
 	host_config := &container.HostConfig{
 		PortBindings: nat.PortMap{
-			"8080/tcp": []nat.PortBinding{
-				{
-					HostIP:   "0.0.0.0",
-					HostPort: "8080",
-				},
-			},
 			"9876/tcp": []nat.PortBinding{
 				{
 					HostIP:   "0.0.0.0",
@@ -327,18 +320,23 @@ func startStubrunner() (DockerContainer, Client) {
 		Image: imageName,
 		Env:   environment,
 		ExposedPorts: nat.PortSet{
-			"8083/tcp": struct{}{},
 			"9876/tcp": struct{}{},
 		},
 	}, host_config, nil, nil, "")
-	if err != nil {
-		panic(err)
-	}
+	suite.handleError(err)
 
 	if err := cli.ContainerStart(ctx, resp.ID, types.ContainerStartOptions{}); err != nil {
-		panic(err)
+		suite.FailNow(err.Error())
 	}
 
+	return DockerContainer{
+		client:      cli,
+		ctx:         &ctx,
+		containerId: resp.ID,
+	}
+}
+
+func createTbClient(suite *ContractTestSuite) Client {
 	c := Client{
 		HostURL:     "http://localhost:9876",
 		Token:       "oauthAuthorized",
@@ -348,20 +346,14 @@ func startStubrunner() (DockerContainer, Client) {
 	timeout := time.Now().Add(time.Minute)
 	for _, err := c.GetAllTopologies(); err != nil; _, err = c.GetAllTopologies() {
 		if time.Now().After(timeout) {
-			panic("Timeout starting stub runner")
+			suite.T().Log("Timeout starting stub runner")
+			suite.handleError(err)
 		}
-		fmt.Println("Waiting for stub runner...")
+		fmt.Println("Waiting another 5s for stub runner...")
 		time.Sleep(5 * time.Second)
 	}
-	if err != nil {
-		panic(err)
-	}
 
-	return DockerContainer{
-		client:      cli,
-		ctx:         &ctx,
-		containerId: resp.ID,
-	}, c
+	return c
 }
 
 func (suite *ContractTestSuite) handleError(err error) {
