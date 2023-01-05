@@ -96,11 +96,11 @@ func (o osFamilyCollection) getData() []OsFamily {
 // Inventory VM
 
 type InventoryVmNic struct {
-	InventoryNetworkId string `json:"inventoryNetworkId"`
-	Name               string `json:"name"`
-	IpAddress          string `json:"ipAddress"`
-	MacAddress         string `json:"macAddress"`
-	Type               string `json:"type"`
+	InventoryNetworkId string `json:"inventoryNetworkId,omitempty"`
+	Name               string `json:"name,omitempty"`
+	IpAddress          string `json:"ipAddress,omitempty"`
+	MacAddress         string `json:"macAddress,omitempty"`
+	Type               string `json:"type,omitempty"`
 	RdpEnabled         bool   `json:"rdpEnabled"`
 	SshEnabled         bool   `json:"sshEnabled"`
 }
