@@ -247,6 +247,7 @@ func (hw inventoryHwCollection) getData() []InventoryHw {
 }
 
 type HwNic struct {
+	Uid              string         `json:"uid,omitempty"`
 	Network          Network        `json:"network"`
 	NetworkInterface InventoryHwNic `json:"networkInterface"`
 }

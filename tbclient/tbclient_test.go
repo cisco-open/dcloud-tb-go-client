@@ -239,6 +239,62 @@ var createVm = Vm{
 	Topology: &Topology{Uid: lonTopology.Uid},
 }
 
+var inventoryHw = InventoryHw{
+	Id:                       "86",
+	Name:                     "ISA3000-FTD",
+	Description:              "ISA3000-FTD",
+	PowerControlAvailable:    true,
+	HardwareConsoleAvailable: true,
+	NetworkInterfaces: []InventoryHwNic{
+		{
+			Id: "GigabitEthernet1/1",
+		},
+		{
+			Id: "GigabitEthernet1/2",
+		},
+	},
+}
+
+var powerControlEnabled = true
+var hardwareConsoleEnabled = true
+
+var hw = Hw{
+	Uid:                    "lonhardwareitem2",
+	Name:                   "ISA3000-FTD",
+	PowerControlEnabled:    &powerControlEnabled,
+	HardwareConsoleEnabled: &hardwareConsoleEnabled,
+	StartupScript: &InventoryHwScript{
+		Uid:  "script1",
+		Name: "EN-3850-switch-start.xml",
+	},
+	CustomScript: &InventoryHwScript{
+		Uid:  "script3",
+		Name: "custom.xml",
+	},
+	ShutdownScript: &InventoryHwScript{
+		Uid:  "script2",
+		Name: "EN-3850-switch-stop.xml",
+	},
+	TemplateConfigScript: &InventoryHwScript{
+		Uid:  "template1",
+		Name: "en-sw-3850-16-v1.txt",
+	},
+	NetworkInterfaces: []HwNic{
+		{
+			Uid: "hwnetworkiface1",
+			Network: Network{
+				Uid:  lonDefaultNetwork.Uid,
+				Name: lonDefaultNetwork.Name,
+			},
+			NetworkInterface: InventoryHwNic{
+				Id: "GigabitEthernet1/1",
+			},
+		},
+	},
+	InventoryHardwareItem: &inventoryHw,
+	Topology:              &Topology{Uid: lonTopology.Uid},
+}
+
 func (suite *ContractTestSuite) SetupSuite() {
 	suite.docker = startStubrunner(suite)
 	suite.tbClient = createTbClient(suite)
@@ -246,6 +302,24 @@ func (suite *ContractTestSuite) SetupSuite() {
 
 func (suite *ContractTestSuite) TearDownSuite() {
 	suite.docker.client.ContainerRemove(*suite.docker.ctx, suite.docker.containerId, types.ContainerRemoveOptions{Force: true})
+}
+
+// Error Tests
+
+func (suite *ContractTestSuite) TestErrorHandling() {
+
+	// Given
+	badNetwork := routedNetwork
+	badNetwork.InventoryNetwork = &routedInventoryNetwork2
+	badNetwork.Name = ""
+
+	// When
+	_, err := suite.tbClient.CreateNetwork(badNetwork)
+
+	// Then
+	suite.ErrorContains(err, "Field 'name' size must be between 1 and 255")
+	suite.ErrorContains(err, "Field 'name' must not be blank")
+	suite.ErrorContains(err, "[Server Response: 400 Bad Request]")
 }
 
 // Asset Tests
@@ -460,6 +534,90 @@ func (suite *ContractTestSuite) TestDeleteVm() {
 	suite.Nil(err)
 }
 
+func (suite *ContractTestSuite) TestGetAllHws() {
+
+	// When
+	hws, err := suite.tbClient.GetAllHws(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(4, len(hws))
+	suite.Contains(hws, hw)
+}
+
+func (suite *ContractTestSuite) TestGetHw() {
+
+	// Given
+	expectedHw := hw
+
+	// When
+	actualHw, err := suite.tbClient.GetHw(hw.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(expectedHw, *actualHw)
+}
+
+func (suite *ContractTestSuite) TestUpdateHw() {
+
+	// Given
+	expectedHw := hw
+	expectedHw.Name = "New Name"
+
+	newNics := make([]HwNic, 2)
+	newNics[0] = expectedHw.NetworkInterfaces[0]
+	newNics[1] = HwNic{
+		Uid: "newhwnetworkiface",
+		Network: Network{
+			Uid:  routedNetwork.Uid,
+			Name: routedNetwork.Name,
+		},
+		NetworkInterface: InventoryHwNic{
+			Id: "GigabitEthernet1/2",
+		},
+	}
+
+	expectedHw.NetworkInterfaces = newNics
+
+	// When
+	actualHw, err := suite.tbClient.UpdateHw(expectedHw)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(expectedHw, *actualHw)
+}
+
+func (suite *ContractTestSuite) TestCreateHw() {
+	// Given
+	// Modify to match contracts
+	expectedHw := hw
+	expectedHw.Uid = ""
+	expectedHw.TemplateConfigScript = nil
+	expectedHw.StartupScript = nil
+	expectedHw.CustomScript = nil
+	expectedHw.ShutdownScript = nil
+	expectedHw.NetworkInterfaces = make([]HwNic, 0)
+
+	// When
+	actualHw, err := suite.tbClient.CreateHw(expectedHw)
+	suite.handleError(err)
+
+	// Then
+	expectedHw.Uid = "newhardwareitem"
+	expectedHw.Name = "ISA3000-FTD(1)"
+	suite.Equal(expectedHw, *actualHw)
+}
+
+func (suite *ContractTestSuite) TestDeleteHw() {
+
+	// When
+	err := suite.tbClient.DeleteHw(hw.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Nil(err)
+}
+
 // Inventory Tests
 
 func (suite *ContractTestSuite) TestGetAllOsFamilies() {
@@ -531,6 +689,17 @@ func (suite *ContractTestSuite) TestGetAllInventoryVms() {
 	suite.Contains(inventoryVms, inventoryVm)
 }
 
+func (suite *ContractTestSuite) TestGetAllInventoryHws() {
+
+	// When
+	inventoryHws, err := suite.tbClient.GetAllInventoryHws(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(5, len(inventoryHws))
+	suite.Contains(inventoryHws, inventoryHw)
+}
+
 func TestContractTestSuite(t *testing.T) {
 	suite.Run(t, new(ContractTestSuite))
 }
@@ -553,8 +722,8 @@ func startStubrunner(suite *ContractTestSuite) DockerContainer {
 	environment := []string{
 		"STUBRUNNER_STUBS_MODE=REMOTE",
 		"STUBRUNNER_IDS=com.cisco.kapua:kapua-content-studio-api-contracts:1.0-SNAPSHOT:stubs:9876",
-		"REPO_WITH_BINARIES_URL=http://engci-maven.cisco.com/artifactory/xse-snapshot/",
-		"STUBRUNNER_REPOSITORY_ROOT=http://engci-maven.cisco.com/artifactory/xse-snapshot/",
+		"REPO_WITH_BINARIES_URL=https://engci-maven.cisco.com/artifactory/xse-snapshot/",
+		"STUBRUNNER_REPOSITORY_ROOT=https://engci-maven.cisco.com/artifactory/xse-snapshot/",
 	}
 
 	host_config := &container.HostConfig{
