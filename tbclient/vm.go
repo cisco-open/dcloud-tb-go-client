@@ -1,3 +1,7 @@
+/**
+Copyright (c) 2023 Cisco Systems, Inc. and its affiliates
+*/
+
 package tbclient
 
 func (c *Client) getInventoryVmService(topologyUid string) *collectionService[InventoryVm, inventoryVmCollection] {
