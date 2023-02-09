@@ -36,9 +36,10 @@ type resourceService[R any, RC embeddedData[R]] struct {
 }
 
 type collectionService[R any, RC embeddedData[R]] struct {
-	client       *Client
-	resourcePath string
-	topologyUid  string
+	client         *Client
+	resourcePath   string
+	topologyUid    string
+	requestHeaders map[string]string
 }
 
 func (s *collectionService[R, RC]) getAll() ([]R, error) {
@@ -191,6 +192,7 @@ func (s *collectionService[R, RC]) createRestClient() *resty.Client {
 	if s.client.DisableGzip {
 		rest.SetHeader("Accept-Encoding", "")
 	}
+	rest.SetHeaders(s.requestHeaders)
 	return rest
 }
 
@@ -201,3 +203,5 @@ func getTopologyPath(topologyUid string) string {
 		return ""
 	}
 }
+
+var emptyHeaders = map[string]string{}
