@@ -1,0 +1,29 @@
+{
+  "id" : "21bc04a2-a439-4109-a6cf-1a1faa5e4f42",
+  "request" : {
+    "urlPath" : "/hardware-items",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$.['inventoryHardwareItem'][?(@.['id'] == '5')]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'noreader')]"
+    } ]
+  },
+  "response" : {
+    "status" : 503,
+    "body" : "[{\"logref\":\"FRQVIEAIBGHYPIDSSALX\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
+    "headers" : {
+      "Content-Type" : "application/vnd.error+json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "21bc04a2-a439-4109-a6cf-1a1faa5e4f42"
+}

@@ -1,0 +1,21 @@
+{
+  "id" : "efef7e53-be40-4267-96c5-4738ffaa0c25",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/inventory-hardware-items",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"inventoryHardwareItems\":[{\"id\":\"1\",\"name\":\"PSTN Services\",\"description\":\"PSTN Services (VCube)\",\"networkInterfaces\":[],\"powerControlAvailable\":false,\"hardwareConsoleAvailable\":false},{\"id\":\"3\",\"name\":\"Rack Switch\",\"description\":\"Top Of Rack Switch\",\"networkInterfaces\":[],\"powerControlAvailable\":false,\"hardwareConsoleAvailable\":true},{\"id\":\"5\",\"name\":\"Voice Gateway Router\",\"description\":\"Voice Gateway Router\",\"powerControlAvailable\":false,\"hardwareConsoleAvailable\":true,\"networkInterfaces\":[{\"id\":\"GigabitEthernet0/0\"},{\"id\":\"GigabitEthernet0/1\"}]},{\"id\":\"86\",\"name\":\"ISA3000-FTD\",\"description\":\"ISA3000-FTD\",\"powerControlAvailable\":true,\"hardwareConsoleAvailable\":true,\"networkInterfaces\":[{\"id\":\"GigabitEthernet1/1\"},{\"id\":\"GigabitEthernet1/2\"}]},{\"id\":\"30\",\"name\":\"ASA 5515 SFR\",\"description\":\"ASA 5515 SFR\",\"powerControlAvailable\":false,\"hardwareConsoleAvailable\":true,\"networkInterfaces\":[{\"id\":\"GigabitEthernet0/0\"},{\"id\":\"GigabitEthernet0/1\"}]}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "efef7e53-be40-4267-96c5-4738ffaa0c25"
+}

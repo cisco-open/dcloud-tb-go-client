@@ -1,0 +1,21 @@
+{
+  "id" : "39c6deb3-751d-4303-a9eb-e903790522bb",
+  "request" : {
+    "urlPath" : "/datacenters",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"datacenters\":[{\"id\":\"LON\",\"region\":\"EMEA\",\"location\":\"London, United Kingdom\"},{\"id\":\"RTP\",\"region\":\"US East\",\"location\":\"Raleigh, North Carolina, USA\"},{\"id\":\"SNG\",\"region\":\"APJ\",\"location\":\"Singapore\"},{\"id\":\"SJC\",\"region\":\"US West\",\"location\":\"San Jose, California, USA\"},{\"id\":\"SYD\",\"region\":\"ANZ\",\"location\":\"Sydney, Australia\"}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "39c6deb3-751d-4303-a9eb-e903790522bb"
+}

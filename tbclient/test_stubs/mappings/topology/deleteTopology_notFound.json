@@ -1,0 +1,17 @@
+{
+  "id" : "195d7e71-c970-4a63-b163-f2e0c19f775a",
+  "request" : {
+    "urlPath" : "/topologies/notfound",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 404,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "195d7e71-c970-4a63-b163-f2e0c19f775a"
+}

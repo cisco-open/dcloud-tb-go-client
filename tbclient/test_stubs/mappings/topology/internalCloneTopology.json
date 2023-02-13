@@ -1,0 +1,52 @@
+{
+  "id" : "165a2f7e-9283-43b5-8b61-35c93bb22182",
+  "request" : {
+    "urlPath" : "/internal/topologies/rtptopology/clones",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['demoId'] =~ /([1-9]\\d*)/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['demoPromoted'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['datacenter'] =~ /^LON$|^RTP$/)]"
+    }, {
+      "matchesJsonPath" : "$.['fromVersion'][?(@.['uid'] =~ /[a-zA-Z0-9]+/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['name'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['description'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['ownerEmail'] =~ /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}/)]"
+    }, {
+      "matchesJsonPath" : "$.['vms'][*][?(@.['nameInHypervisor'] == 'Demo_007-VM')]"
+    }, {
+      "matchesJsonPath" : "$.['vms'][*][?(@.['inventoryVmId'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryHardwareItemIds'][*][?(@.['sourceId'] == '153')]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryHardwareItemIds'][*][?(@.['targetId'] == '86')]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryLicenseIds'][*][?(@.['sourceId'] == '1')]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryLicenseIds'][*][?(@.['targetId'] == '24')]"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "body" : "{\"uid\":\"newclonetopology\",\"latestVersion\":{\"uid\":\"newclonetopologyv2\"},\"syncedVersion\":{\"uid\":\"newclonetopologyv1\"},\"name\":\"{{{jsonPath request.body '$.name'}}}\",\"description\":\"{{{jsonPath request.body '$.description'}}}\",\"datacenter\":\"LON\",\"demoId\":{{{jsonPath request.body '$.demoId'}}} ,\"demoPromoted\":{{{jsonPath request.body '$.demoPromoted'}}} ,\"status\":\"SAVED_CONTENT\",\"sharedWithCurrentUser\":false,\"inSyncWithDcloud\":true,\"lastUpdated\":\"2020-12-15T14:00:00.000000Z\",\"accessRoleAssignments\":[{\"uid\":\"newclonetopologyown\",\"email\":\"{{{jsonPath request.body '$.ownerEmail'}}}\",\"accessRole\":\"OWNER\",\"grantedBy\":\"owner@cisco.com\",\"grantedOn\":\"2020-12-16T14:00:00.000000Z\",\"topology\":{\"uid\":\"newclonetopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/access-role-assignments/newclonetopologyown\"},\"topology\":{\"href\":\"http://localhost/topologies/newclonetopology\"}}}],\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/newclonetopology\"},\"delete\":{\"href\":\"http://localhost/topologies/newclonetopology\"},\"clones\":{\"href\":\"http://localhost/topologies/newclonetopology/clones\"},\"networks\":{\"href\":\"http://localhost/topologies/newclonetopology/networks\"},\"remoteAccess\":{\"href\":\"http://localhost/topologies/newclonetopology/remote-access\"},\"licenses\":{\"href\":\"http://localhost/topologies/newclonetopology/licenses\"},\"hardwareItems\":{\"href\":\"http://localhost/topologies/newclonetopology/hardware-items\"},\"telephonyItems\":{\"href\":\"http://localhost/topologies/newclonetopology/telephony-items\"},\"hardwareStartOrder\":{\"href\":\"http://localhost/topologies/newclonetopology/hardware-start-order\"},\"vms\":{\"href\":\"http://localhost/topologies/newclonetopology/vms\"},\"vmStartOrder\":{\"href\":\"http://localhost/topologies/newclonetopology/vm-start-order\"},\"vmStopOrder\":{\"href\":\"http://localhost/topologies/newclonetopology/vm-stop-order\"},\"natRules\":{\"href\":\"http://localhost/topologies/newclonetopology/nat-rules\"},\"documentation\":{\"href\":\"http://localhost/documentation/newclonetopology\"},\"diagram\":{\"href\":\"http://localhost/topologies/newclonetopology/diagram\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "165a2f7e-9283-43b5-8b61-35c93bb22182"
+}

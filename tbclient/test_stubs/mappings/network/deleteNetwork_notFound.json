@@ -1,0 +1,17 @@
+{
+  "id" : "695f8cf0-1ac8-4fac-986c-5fa23b7b535e",
+  "request" : {
+    "urlPath" : "/networks/notfound",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 404,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "695f8cf0-1ac8-4fac-986c-5fa23b7b535e"
+}

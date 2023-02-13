@@ -1,0 +1,21 @@
+{
+  "id" : "5b06d894-b9ce-4840-ab06-5c6fb40478b5",
+  "request" : {
+    "urlPath" : "/topologies/prolontopology/networks",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"networks\":[{\"uid\":\"prolontopologyv2nwk\",\"name\":\"Default Network\",\"description\":\"Default Network description\",\"inventoryNetwork\":{\"id\":\"VLAN-PRIMARY\",\"type\":\"ROUTED\",\"subnet\":\"198.18.128.0 /18\"},\"vmConnectionInfo\":{\"maxConnections\":29,\"currentConnections\":[{\"uid\":\"prolonvm1nic1\",\"ipAddress\":\"198.18.133.111\",\"name\":\"Network adapter 0\",\"macAddress\":\"00:50:56:00:00:09\",\"type\":\"VIRTUAL_E1000\"},{\"uid\":\"prolonvm1nic2\",\"ipAddress\":\"198.18.133.111\",\"name\":\"Network adapter 1\",\"macAddress\":\"00:50:56:00:00:10\",\"type\":\"VIRTUAL_E1000\"}]},\"topology\":{\"uid\":\"prolontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/networks/prolontopologyv2nwk\"},\"topology\":{\"href\":\"http://localhost/topologies/prolontopology\"}}}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "5b06d894-b9ce-4840-ab06-5c6fb40478b5"
+}

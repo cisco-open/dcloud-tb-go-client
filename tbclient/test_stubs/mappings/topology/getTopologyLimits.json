@@ -1,0 +1,16 @@
+{
+  "id" : "54df0c44-2a5b-401f-b794-5ed8e6f50952",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/limits",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"cpuCores\":{\"current\":15,\"limit\":100},\"memoryMb\":{\"current\":29184,\"limit\":204800},\"natRules\":{\"current\":2,\"limit\":1},\"hardware\":{\"current\":3,\"limit\":1},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/lontopology/limits\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "54df0c44-2a5b-401f-b794-5ed8e6f50952"
+}

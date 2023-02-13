@@ -1,0 +1,33 @@
+{
+  "id" : "618ec2ce-f0fa-40d6-9641-9bd9eb269693",
+  "request" : {
+    "urlPath" : "/topologies",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['name'] == '')]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['description'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['datacenter'] =~ /^LON$|^RTP$/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['notes'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    } ]
+  },
+  "response" : {
+    "status" : 400,
+    "body" : "[{\"logref\":\"IOWYTYTCGUBHWGRMMGRR\",\"message\":\"Field 'name' size must be between 1 and 255\",\"links\":[]},{\"logref\":\"YIKFOVNIVRVPSGKQOPCJ\",\"message\":\"Field 'name' must not be blank\",\"links\":[]}]",
+    "headers" : {
+      "Content-Type" : "application/vnd.error+json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "618ec2ce-f0fa-40d6-9641-9bd9eb269693"
+}

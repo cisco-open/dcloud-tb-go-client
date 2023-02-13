@@ -1,0 +1,21 @@
+{
+  "id" : "ef45b0bd-9a6a-461f-8d70-54ca7136a8fe",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/inventory-hardware-templates",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"inventoryHardwareScripts\":[{\"uid\":\"template1\",\"name\":\"en-sw-3850-16-v1.txt\"},{\"uid\":\"template2\",\"name\":\"ngfw-5515-1.0.0.txt\"}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "ef45b0bd-9a6a-461f-8d70-54ca7136a8fe"
+}

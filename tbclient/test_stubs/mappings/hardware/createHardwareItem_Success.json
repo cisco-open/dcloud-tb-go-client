@@ -1,0 +1,30 @@
+{
+  "id" : "057aeb4c-250a-408d-8b33-68027c32e0af",
+  "request" : {
+    "urlPath" : "/hardware-items",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$.['inventoryHardwareItem'][?(@.['id'] == '86')]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "body" : "{\"uid\":\"newhardwareitem\",\"name\":\"ISA3000-FTD(1)\",\"powerControlEnabled\":true,\"hardwareConsoleEnabled\":true,\"hardwareNetworkInterfaces\":[],\"inventoryHardwareItem\":{\"id\":\"{{{jsonPath request.body '$.inventoryHardwareItem.id'}}}\",\"name\":\"ISA3000-FTD\",\"description\":\"ISA3000-FTD\",\"powerControlAvailable\":true,\"hardwareConsoleAvailable\":true,\"networkInterfaces\":[{\"id\":\"GigabitEthernet1/1\"},{\"id\":\"GigabitEthernet1/2\"}]},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}/newhardwareitem\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}/newhardwareitem\"},\"node\":{\"href\":\"http://localhost/nodes/newhardwareitemnode\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "057aeb4c-250a-408d-8b33-68027c32e0af"
+}

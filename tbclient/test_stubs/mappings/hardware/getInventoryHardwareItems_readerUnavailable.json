@@ -1,0 +1,21 @@
+{
+  "id" : "a8c6381c-9ad2-458e-80b8-6ef060731d31",
+  "request" : {
+    "urlPath" : "/topologies/noreader/inventory-hardware-items",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 503,
+    "body" : "[{\"logref\":\"DMJHMNPNPEBOCAZMLECC\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
+    "headers" : {
+      "Content-Type" : "application/vnd.error+json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "a8c6381c-9ad2-458e-80b8-6ef060731d31"
+}

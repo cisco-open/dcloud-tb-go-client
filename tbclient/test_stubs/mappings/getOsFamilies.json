@@ -1,0 +1,21 @@
+{
+  "id" : "13b597a1-109d-4528-b49d-31f5bc4efe7f",
+  "request" : {
+    "urlPath" : "/os-families",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"osFamilies\":[{\"id\":\"LINUX\",\"name\":\"Linux\"},{\"id\":\"WINDOWS\",\"name\":\"Windows\"},{\"id\":\"VMWARE\",\"name\":\"VMware\"},{\"id\":\"UCSM\",\"name\":\"UCSM\"}]},\"_links\":{\"self\":{\"href\":\"http://localhost/os-families\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "13b597a1-109d-4528-b49d-31f5bc4efe7f"
+}

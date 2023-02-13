@@ -1,0 +1,16 @@
+{
+  "id" : "284f4468-9ab5-4deb-ab0d-fdb5746b50ce",
+  "request" : {
+    "urlPath" : "/datacenters/lon/templated-topologies",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"templatedTopologies\":[{\"topologyTemplate\":{\"uid\":\"lontemplate1\",\"name\":\"lontemplate1 name\",\"description\":\"lontemplate1 description\",\"contact\":\"contact@cisco.com\",\"userEnabled\":true,\"lastUpdated\":\"2020-12-16T14:00:00.000000Z\",\"lastUpdatedBy\":\"owner@cisco.com\",\"architectures\":[{\"uid\":\"arcen\",\"name\":\"Enterprise Networking\"},{\"uid\":\"arccollab\",\"name\":\"Collaboration\"},{\"uid\":\"missingarch\"}],\"topology\":{\"uid\":\"prolontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/topology-templates/lontemplate1\"},\"topology\":{\"href\":\"http://localhost/topologies/prolontopology\"}}},\"topology\":{\"uid\":\"prolontopology\",\"name\":\"prolontopology v2 name\",\"description\":\"prolontopology description\",\"demoId\":\"12345\",\"datacenter\":\"LON\",\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/prolontopology\"}}}},{\"topology\":{\"uid\":\"prolontopology2\",\"name\":\"prolontopology2 v2 name\",\"description\":\"prolontopology2 description\",\"demoId\":\"67890\",\"datacenter\":\"LON\",\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/prolontopology2\"}}}}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "284f4468-9ab5-4deb-ab0d-fdb5746b50ce"
+}

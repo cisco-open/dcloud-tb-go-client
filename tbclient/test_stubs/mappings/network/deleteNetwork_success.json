@@ -1,0 +1,17 @@
+{
+  "id" : "a456976e-ea20-4ac3-9816-4ac9c9782861",
+  "request" : {
+    "urlPath" : "/networks/routednetwork",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 204,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "a456976e-ea20-4ac3-9816-4ac9c9782861"
+}

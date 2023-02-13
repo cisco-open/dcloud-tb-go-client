@@ -1,0 +1,41 @@
+{
+  "id" : "19ab43a6-0584-4952-a945-530dac081b6c",
+  "request" : {
+    "urlPath" : "/internal/topologies/rtptopology/clones",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['demoId'] =~ /([1-9]\\d*)/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['demoPromoted'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['fromVersion'][?(@.['uid'] =~ /[a-zA-Z0-9]+/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['name'] == '')]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['description'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['ownerEmail'] =~ /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}/)]"
+    }, {
+      "matchesJsonPath" : "$.['vms'][*][?(@.['nameInHypervisor'] == 'Demo_007-VM')]"
+    }, {
+      "matchesJsonPath" : "$.['vms'][*][?(@.['inventoryVmId'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    } ]
+  },
+  "response" : {
+    "status" : 400,
+    "body" : "[{\"logref\":\"UVDHDVXCFRUJWHEUMMMA\",\"message\":\"Field 'name' must not be blank\",\"links\":[]}]",
+    "headers" : {
+      "Content-Type" : "application/vnd.error+json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "19ab43a6-0584-4952-a945-530dac081b6c"
+}

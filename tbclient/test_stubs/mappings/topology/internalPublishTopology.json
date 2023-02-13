@@ -1,0 +1,20 @@
+{
+  "id" : "60c87639-0293-4a65-b7b7-8f6faf6615aa",
+  "request" : {
+    "urlPath" : "/internal/topologies/publications",
+    "method" : "PATCH",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'prolontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "60c87639-0293-4a65-b7b7-8f6faf6615aa"
+}

@@ -1,0 +1,57 @@
+{
+  "id" : "2a18bac8-99f8-4e41-941e-834813a28a4e",
+  "request" : {
+    "urlPath" : "/hardware-items/lonhardwareitem2",
+    "method" : "PUT",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      },
+      "If-Match" : {
+        "equalTo" : "FIX_ETAG_FOR_TESTS"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['uid'] == 'lonhardwareitem2')]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['name'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['powerControlEnabled'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['hardwareConsoleEnabled'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryStartupScript'][?(@.['uid'] =~ /^script1$|^script2$|^script3$|^script4$/)]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryShutdownScript'][?(@.['uid'] =~ /^script1$|^script2$|^script3$|^script4$/)]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryCustomScript'][?(@.['uid'] =~ /^script1$|^script2$|^script3$|^script4$/)]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryTemplateConfigScript'][?(@.['uid'] =~ /^template1$|^template2$/)]"
+    }, {
+      "matchesJsonPath" : "$.['hardwareNetworkInterfaces'][*][?(@.['uid'] =~ /[a-zA-Z0-9]+/)]"
+    }, {
+      "matchesJsonPath" : "$.['hardwareNetworkInterfaces'][*].['networkInterface'][?(@.['id'] == 'GigabitEthernet1/1')]"
+    }, {
+      "matchesJsonPath" : "$.['hardwareNetworkInterfaces'][*].['network'][?(@.['uid'] =~ /^lontopologyv1nwk$|^routednetwork$|^unroutednetwork$/)]"
+    }, {
+      "matchesJsonPath" : "$.['hardwareNetworkInterfaces'][*].['networkInterface'][?(@.['id'] == 'GigabitEthernet1/2')]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryHardwareItem'][?(@.['id'] == '86')]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"lonhardwareitem2\",\"name\":\"{{{jsonPath request.body '$.name'}}}\",\"powerControlEnabled\":{{{jsonPath request.body '$.powerControlEnabled'}}} ,\"hardwareConsoleEnabled\":{{{jsonPath request.body '$.hardwareConsoleEnabled'}}} ,\"inventoryStartupScript\":{\"uid\":\"script1\",\"name\":\"EN-3850-switch-start.xml\"},\"inventoryShutdownScript\":{\"uid\":\"script2\",\"name\":\"EN-3850-switch-stop.xml\"},\"inventoryCustomScript\":{\"uid\":\"script3\",\"name\":\"custom.xml\"},\"inventoryTemplateConfigScript\":{\"uid\":\"template1\",\"name\":\"en-sw-3850-16-v1.txt\"},\"hardwareNetworkInterfaces\":[{\"uid\":\"hwnetworkiface1\",\"networkInterface\":{\"id\":\"GigabitEthernet1/1\"},\"network\":{\"uid\":\"lontopologyv1nwk\",\"name\":\"Default Network\",\"_links\":{\"self\":{\"href\":\"http://localhost/networks/{{{jsonPath request.body '$.hardwareNetworkInterfaces[0].network.uid'}}}\"}}}},{\"uid\":\"newhwnetworkiface\",\"networkInterface\":{\"id\":\"GigabitEthernet1/2\"},\"network\":{\"uid\":\"routednetwork\",\"name\":\"Routed Network\",\"_links\":{\"self\":{\"href\":\"http://localhost/networks/{{{jsonPath request.body '$.hardwareNetworkInterfaces[1].network.uid'}}}\"}}}}],\"inventoryHardwareItem\":{\"id\":\"{{{jsonPath request.body '$.inventoryHardwareItem.id'}}}\",\"name\":\"ISA3000-FTD\",\"description\":\"ISA3000-FTD\",\"powerControlAvailable\":true,\"hardwareConsoleAvailable\":true,\"networkInterfaces\":[{\"id\":\"GigabitEthernet1/1\"},{\"id\":\"GigabitEthernet1/2\"}]},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"},\"node\":{\"href\":\"http://localhost/nodes/lonhwitem2node\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "2a18bac8-99f8-4e41-941e-834813a28a4e"
+}

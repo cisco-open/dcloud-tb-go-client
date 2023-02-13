@@ -1,0 +1,18 @@
+{
+  "id" : "27f1633f-e634-493c-a8ed-0a0c08887ccf",
+  "request" : {
+    "urlPath" : "/networks/noreaderv1nwk",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 400,
+    "body" : "[{\"logref\":\"IJFKPWTERRKQXHIPHLBE\",\"message\":\"There must be at least one routed network\",\"links\":[]}]",
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "27f1633f-e634-493c-a8ed-0a0c08887ccf"
+}

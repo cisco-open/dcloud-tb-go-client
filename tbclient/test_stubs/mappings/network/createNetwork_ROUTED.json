@@ -1,0 +1,34 @@
+{
+  "id" : "eda8750c-35f6-4544-aeca-43a3ef2d2742",
+  "request" : {
+    "urlPath" : "/networks",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['name'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['description'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryNetwork'][?(@.['id'] =~ /^L3-VLAN-2$|^L3-VLAN-3$|^L3-VLAN-4$/)]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "body" : "{\"uid\":\"newroutednetwork\",\"name\":\"{{{jsonPath request.body '$.name'}}}\",\"description\":\"{{{jsonPath request.body '$.description'}}}\",\"inventoryNetwork\":{\"id\":\"{{{jsonPath request.body '$.inventoryNetwork.id'}}}\",\"type\":\"ROUTED\",\"subnet\":\"198.18.2.0 /24\"},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}/newroutednetwork\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}/newroutednetwork\"},\"node\":{\"href\":\"http://localhost/nodes/newroutednetworknode\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "eda8750c-35f6-4544-aeca-43a3ef2d2742"
+}

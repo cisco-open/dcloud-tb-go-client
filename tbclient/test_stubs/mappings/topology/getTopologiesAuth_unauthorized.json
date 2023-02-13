@@ -1,0 +1,17 @@
+{
+  "id" : "b0e31021-adf6-407d-be2e-ba43254e0dd6",
+  "request" : {
+    "urlPath" : "/topologies",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "absent" : true
+      }
+    }
+  },
+  "response" : {
+    "status" : 401,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "b0e31021-adf6-407d-be2e-ba43254e0dd6"
+}

@@ -1,0 +1,16 @@
+{
+  "id" : "5d4d320e-1b7b-4acd-a446-001239f1adaf",
+  "request" : {
+    "urlPath" : "/internal/topologies/notfound/publications",
+    "method" : "DELETE"
+  },
+  "response" : {
+    "status" : 404,
+    "body" : "[{\"logref\":\"LIHMNJJQMUVZLFWUDKZZ\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
+    "headers" : {
+      "Content-Type" : "application/vnd.error+json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "5d4d320e-1b7b-4acd-a446-001239f1adaf"
+}

@@ -1,0 +1,22 @@
+{
+  "id" : "c4f58d18-a0c1-4c83-93f0-04763cbfe0ab",
+  "request" : {
+    "urlPath" : "/topologies/rtptopology",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"rtptopology\",\"name\":\"rtptopology name\",\"description\":\"rtptopology description\",\"datacenter\":\"RTP\",\"notes\":\"Notes\",\"demoId\":789812787,\"demoPromoted\":true,\"demoPublished\":true,\"status\":\"CUSTOM_CONTENT\",\"sharedWithCurrentUser\":false,\"inSyncWithDcloud\":true,\"activeTemplate\":false,\"lastUpdated\":\"2020-12-15T14:00:00.000000Z\",\"accessRoleAssignments\":[{\"uid\":\"rtptopologyown\",\"email\":\"owner@cisco.com\",\"accessRole\":\"OWNER\",\"grantedBy\":\"owner@cisco.com\",\"grantedOn\":\"2020-12-16T14:00:00.000000Z\",\"topology\":{\"uid\":\"rtptopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/access-role-assignments/rtptopologyown\"},\"topology\":{\"href\":\"http://localhost/topologies/rtptopology\"}}}],\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"},\"clones\":{\"href\":\"http://localhost{{{request.url}}}/clones\"},\"networks\":{\"href\":\"http://localhost{{{request.url}}}/networks\"},\"licenses\":{\"href\":\"http://localhost{{{request.url}}}/licenses\"},\"hardwareItems\":{\"href\":\"http://localhost{{{request.url}}}/hardware-items\"},\"telephonyItems\":{\"href\":\"http://localhost{{{request.url}}}/telephony-items\"},\"documentation\":{\"href\":\"http://localhost/documentation/rtptopology\"},\"diagram\":{\"href\":\"http://localhost{{{request.url}}}/diagram\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "c4f58d18-a0c1-4c83-93f0-04763cbfe0ab"
+}

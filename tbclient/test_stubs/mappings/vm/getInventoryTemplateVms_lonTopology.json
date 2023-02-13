@@ -1,0 +1,21 @@
+{
+  "id" : "bb82eccb-76cf-4ae9-a88b-345e3839e1a6",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/inventory-template-vms",
+    "method" : "GET",
+    "queryParameters" : {
+      "filter" : {
+        "equalTo" : "type:equalTo:VM"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"inventoryVms\":[{\"datacenter\":\"LON\",\"id\":\"templatevm2\",\"originalName\":\"mail1\",\"originalDescription\":\"mail1\",\"cpuQty\":2,\"memoryMb\":4096,\"networkInterfaces\":[{\"inventoryNetworkId\":\"VLAN-PRIMARY\",\"name\":\"Network adapter 0\",\"ipAddress\":\"198.18.133.2\"}],\"name\":\"vmtemplate2 name\",\"description\":\"vmtemplate2 description\",\"username\":\"username\",\"password\":\"password\",\"managementIp\":\"10.1.1.1\",\"templateVersion\":\"0.0.1\",\"lastUpdated\":\"2020-12-16T14:00:00.000000Z\",\"licensed\":true,\"type\":\"VM\",\"architectures\":[{\"uid\":\"arcsec\",\"name\":\"Security\"},{\"uid\":\"arcinfosec\",\"name\":\"InfoSec\"}]},{\"datacenter\":\"LON\",\"id\":\"templatevm3\",\"originalName\":\"na-edge1\",\"originalDescription\":\"na-edge1\",\"cpuQty\":2,\"memoryMb\":4096,\"networkInterfaces\":[{\"inventoryNetworkId\":\"VLAN-PRIMARY\",\"name\":\"Network adapter 1\",\"ipAddress\":\"198.18.133.115\"},{\"inventoryNetworkId\":\"VLAN-PRIMARY\",\"name\":\"Network adapter 2\"},{\"inventoryNetworkId\":\"L2-VLAN-15\",\"name\":\"Network adapter 3\"},{\"inventoryNetworkId\":\"L2-VLAN-20\",\"name\":\"Network adapter 4\"}],\"remoteAccess\":{\"sshEnabled\":true,\"rdpEnabled\":true,\"rdpAutoLogin\":true},\"type\":\"VM\"},{\"datacenter\":\"LON\",\"id\":\"templatevm1\",\"originalName\":\"Collab-mssql1\",\"originalDescription\":\"Collab-mssql1\",\"cpuQty\":4,\"memoryMb\":8192,\"networkInterfaces\":[{\"inventoryNetworkId\":\"VLAN-PRIMARY\",\"name\":\"Network adapter 0\",\"ipAddress\":\"198.18.133.115\",\"type\":\"VIRTUAL_E1000\",\"rdpEnabled\":false,\"sshEnabled\":false}],\"remoteAccess\":{\"credentials\":{\"username\":\"user_name\",\"password\":\"password\"},\"rdpAutoLogin\":false,\"rdpEnabled\":false,\"sshEnabled\":false},\"name\":\"vmtemplate1 name\",\"description\":\"vmtemplate1 description\",\"architectures\":[{\"name\":\"Enterprise Networking\",\"description\":\"Cisco Enterprise Networking Products\",\"uid\":\"arcen\"},{\"name\":\"Collaboration\",\"description\":\"Cisco Collaboration Products\",\"uid\":\"arccollab\"}],\"lastUpdated\":\"2020-12-16T14:00:00.000000Z\",\"username\":\"username\",\"password\":\"password\",\"managementIp\":\"10.1.1.1\",\"templateVersion\":\"0.0.1\",\"licensed\":true,\"type\":\"VM\",\"vm\":{\"uid\":\"existingvmtempvm\"}}]},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/lontopology/inventory-template-vms\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "bb82eccb-76cf-4ae9-a88b-345e3839e1a6"
+}

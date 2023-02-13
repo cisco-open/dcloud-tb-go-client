@@ -1,0 +1,91 @@
+{
+  "id" : "5d582bdb-921a-4042-8e4c-b29ae61f7d7d",
+  "request" : {
+    "urlPath" : "/vms/lonvm1",
+    "method" : "PUT",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      },
+      "If-Match" : {
+        "equalTo" : "FIX_ETAG_FOR_TESTS"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['uid'] == 'lonvm1')]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['name'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['description'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['cpuQty'] =~ /-?(\\d+)/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['memoryMb'] =~ /-?(\\d+)/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['nestedHypervisor'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['osFamily'] =~ /^WINDOWS$|^LINUX$|^VMWARE$|^UCSM$/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['inventoryVmId'] == 'templatevm2')]"
+    }, {
+      "matchesJsonPath" : "$.['remoteAccess'][?(@.['vmConsoleEnabled'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['remoteAccess'][?(@.['username'] =~ /[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['remoteAccess'][?(@.['password'] =~ /[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['remoteAccess'].['displayCredentials'][?(@.['username'] =~ /[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['remoteAccess'].['displayCredentials'][?(@.['password'] =~ /[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['remoteAccess'].['internalUrls'][*][?(@.['location'] =~ /^(?:(?:[A-Za-z][+-.\\w^_]*:\\/{2})?(?:\\S+(?::\\S*)?@)?(?:(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))|(?:localhost))(?::\\d{2,5})?(?:\\/\\S*)?)$/)]"
+    }, {
+      "matchesJsonPath" : "$.['remoteAccess'].['internalUrls'][*][?(@.['description'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['guestAutomation'][?(@.['command'] =~ /[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['guestAutomation'][?(@.['delaySecs'] =~ /^[0-9]\\d*$/)]"
+    }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['uid'] =~ /[a-zA-Z0-9]+/)]"
+    }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['ipAddress'] == '198.18.131.200')]"
+    }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['macAddress'] =~ /00:50:56(:[a-f0-9]{2}){3}/)]"
+    }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['type'] =~ /^VIRTUAL_E1000$|^VIRTUAL_E1000E$|^VIRTUAL_PCNET_32$|^VIRTUAL_VMXNET_2$|^VIRTUAL_VMXNET_3$/)]"
+    }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*].['rdp'][?(@.['enabled'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*].['rdp'][?(@.['autoLogin'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*].['ssh'][?(@.['enabled'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*].['network'][?(@.['uid'] == 'lontopologyv1nwk')]"
+    }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['ipAddress'] == '198.18.131.201')]"
+    }, {
+      "matchesJsonPath" : "$.['advancedSettings'][?(@.['nameInHypervisor'] =~ /^[-\\w]*$/)]"
+    }, {
+      "matchesJsonPath" : "$.['advancedSettings'][?(@.['biosUuid'] =~ /^(\\p{XDigit}{2}[- ]*){15}\\p{XDigit}{2}$/)]"
+    }, {
+      "matchesJsonPath" : "$.['advancedSettings'][?(@.['notStarted'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['advancedSettings'][?(@.['allDisksNonPersistent'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"lonvm1\",\"name\":\"{{{jsonPath request.body '$.name'}}}\",\"description\":\"{{{jsonPath request.body '$.description'}}}\",\"cpuQty\":{{{jsonPath request.body '$.cpuQty'}}} ,\"memoryMb\":{{{jsonPath request.body '$.memoryMb'}}} ,\"nestedHypervisor\":{{{jsonPath request.body '$.nestedHypervisor'}}} ,\"osFamily\":\"{{{jsonPath request.body '$.osFamily'}}}\",\"inventoryVmId\":\"{{{jsonPath request.body '$.inventoryVmId'}}}\",\"remoteAccess\":{\"vmConsoleEnabled\":{{{jsonPath request.body '$.remoteAccess.vmConsoleEnabled'}}} ,\"username\":\"{{{jsonPath request.body '$.remoteAccess.username'}}}\",\"password\":\"{{{jsonPath request.body '$.remoteAccess.password'}}}\",\"displayCredentials\":{\"username\":\"{{{jsonPath request.body '$.remoteAccess.displayCredentials.username'}}}\",\"password\":\"{{{jsonPath request.body '$.remoteAccess.displayCredentials.password'}}}\"},\"internalUrls\":[{\"location\":\"{{{jsonPath request.body '$.remoteAccess.internalUrls[0].location'}}}\",\"description\":\"{{{jsonPath request.body '$.remoteAccess.internalUrls[0].description'}}}\"}]},\"guestAutomation\":{\"command\":\"{{{jsonPath request.body '$.guestAutomation.command'}}}\",\"delaySecs\":{{{jsonPath request.body '$.guestAutomation.delaySecs'}}} },\"vmNetworkInterfaces\":[{\"ipAddress\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].ipAddress'}}}\",\"macAddress\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].macAddress'}}}\",\"type\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].type'}}}\",\"rdp\":{\"enabled\":{{{jsonPath request.body '$.vmNetworkInterfaces.[0].rdp.enabled'}}} ,\"autoLogin\":{{{jsonPath request.body '$.vmNetworkInterfaces.[0].rdp.autoLogin'}}} },\"ssh\":{\"enabled\":{{{jsonPath request.body '$.vmNetworkInterfaces.[0].ssh.enabled'}}} },\"inUse\":true,\"network\":{\"uid\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].network.uid'}}}\",\"name\":\"Default Network\",\"_links\":{\"self\":{\"href\":\"http://localhost/networks/{{{jsonPath request.body '$.vmNetworkInterfaces.[0].network.uid'}}}\"}}}},{\"ipAddress\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[1].ipAddress'}}}\",\"macAddress\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[1].macAddress'}}}\",\"type\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[1].type'}}}\",\"inUse\":true,\"network\":{\"uid\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[1].network.uid'}}}\",\"name\":\"Default Network\",\"_links\":{\"self\":{\"href\":\"http://localhost/networks/{{{jsonPath request.body '$.vmNetworkInterfaces.[1].network.uid'}}}\"}}}}],\"advancedSettings\":{\"nameInHypervisor\":\"{{{jsonPath request.body '$.advancedSettings.nameInHypervisor'}}}\",\"biosUuid\":\"{{{jsonPath request.body '$.advancedSettings.biosUuid'}}}\",\"notStarted\":{{{jsonPath request.body '$.advancedSettings.notStarted'}}} ,\"allDisksNonPersistent\":{{{jsonPath request.body '$.advancedSettings.allDisksNonPersistent'}}} },\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"node\":{\"href\":\"http://localhost/nodes/lonvm1node\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "5d582bdb-921a-4042-8e4c-b29ae61f7d7d"
+}

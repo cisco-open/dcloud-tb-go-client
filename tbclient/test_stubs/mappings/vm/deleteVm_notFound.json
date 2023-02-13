@@ -1,0 +1,17 @@
+{
+  "id" : "3ee2abd8-6e39-44f7-8a93-afebd6178e0c",
+  "request" : {
+    "urlPath" : "/vms/notfound",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 404,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "3ee2abd8-6e39-44f7-8a93-afebd6178e0c"
+}

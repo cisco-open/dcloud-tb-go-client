@@ -1,0 +1,17 @@
+{
+  "id" : "b492f081-9071-4ae0-b50c-31bb352c4f4e",
+  "request" : {
+    "urlPath" : "/hardware-items/notfound",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 404,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "b492f081-9071-4ae0-b50c-31bb352c4f4e"
+}
