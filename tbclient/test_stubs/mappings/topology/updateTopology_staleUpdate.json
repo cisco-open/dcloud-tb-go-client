@@ -1,0 +1,38 @@
+{
+  "id" : "8aebc6f6-c8ec-480a-9721-a23aedac2b4f",
+  "request" : {
+    "urlPath" : "/topologies/lontopology",
+    "method" : "PUT",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "If-Match" : {
+        "equalTo" : "RANDOM_ETAG"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['uid'] == 'lontopology')]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['name'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['description'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['datacenter'] =~ /^LON$|^RTP$/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['notes'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    } ]
+  },
+  "response" : {
+    "status" : 412,
+    "body" : "[{\"logref\":\"WDXXTCLSZWMJNIAPSYBF\",\"message\":\"This object has been modified by another user and has changed before your save. Please refresh and make your changes and save again\",\"links\":[]}]",
+    "headers" : {
+      "Content-Type" : "application/vnd.error+json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "8aebc6f6-c8ec-480a-9721-a23aedac2b4f"
+}

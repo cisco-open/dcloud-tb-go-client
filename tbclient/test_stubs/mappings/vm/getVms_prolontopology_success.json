@@ -1,0 +1,21 @@
+{
+  "id" : "25ef4978-b63a-4330-8959-f746b22cc1dd",
+  "request" : {
+    "urlPath" : "/topologies/prolontopology/vms",
+    "method" : "GET",
+    "queryParameters" : {
+      "filter" : {
+        "equalTo" : "type:equalTo:VM"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"vms\":[{\"uid\":\"prolonvm1\",\"name\":\"Collab DB\",\"description\":\"Collab DB\",\"cpuQty\":8,\"memoryMb\":4608,\"nestedHypervisor\":false,\"osFamily\":\"WINDOWS\",\"inventoryVmId\":\"templatevm1\",\"remoteAccess\":{\"vmConsoleEnabled\":false},\"vmNetworkInterfaces\":[{\"uid\":\"prolonvm1nic1\",\"ipAddress\":\"198.18.133.111\",\"name\":\"Network adapter 1\",\"macAddress\":\"00:50:56:00:00:09\",\"type\":\"VIRTUAL_E1000\",\"inUse\":false,\"network\":{\"uid\":\"prolontopologyv2nwk\",\"name\":\"Default Network\",\"inventoryNetwork\":{\"id\":\"VLAN-PRIMARY\",\"type\":\"ROUTED\",\"subnet\":\"198.18.128.0 /18\"},\"_links\":{\"self\":{\"href\":\"http://localhost/networks/prolontopologyv2nwk\"}}}}],\"advancedSettings\":{\"nameInHypervisor\":\"Win_10-VM\",\"biosUuid\":\"61 62 63 64 65 66 67 68-69 6a 6b 6c 6d 6e 6f 70\",\"notStarted\":false,\"allDisksNonPersistent\":false},\"topology\":{\"uid\":\"prolontopology\"},\"type\":\"VM\",\"_links\":{\"self\":{\"href\":\"http://localhost/vms/prolonvm1\"},\"topology\":{\"href\":\"http://localhost/topologies/prolontopology\"}}}]},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/prolontopology/vms\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "25ef4978-b63a-4330-8959-f746b22cc1dd"
+}

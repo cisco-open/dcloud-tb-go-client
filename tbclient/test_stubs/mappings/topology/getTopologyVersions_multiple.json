@@ -1,0 +1,21 @@
+{
+  "id" : "5db672b4-49ef-4a9a-90e6-1cbc6002dad2",
+  "request" : {
+    "urlPath" : "/topologies/loninsync/versions",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"versions\":[{\"uid\":\"loninsyncv1\",\"name\":\"loninsync name\",\"topology\":{\"uid\":\"loninsync\"},\"created\":\"2020-12-16T14:00:00.000000Z\",\"lastUpdated\":\"2021-01-16T14:00:00.000000Z\",\"_links\":{\"topology\":{\"href\":\"http://localhost/topologies/loninsync\"}}},{\"uid\":\"loninsyncv2\",\"name\":\"loninsync v2 name\",\"topology\":{\"uid\":\"loninsync\"},\"created\":\"2021-01-16T14:00:00.000000Z\",\"lastUpdated\":\"2021-01-18T14:00:00.000000Z\",\"_links\":{\"topology\":{\"href\":\"http://localhost/topologies/loninsync\"}}}]},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/loninsync/versions\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "5db672b4-49ef-4a9a-90e6-1cbc6002dad2"
+}

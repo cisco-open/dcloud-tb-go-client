@@ -1,0 +1,72 @@
+{
+  "id" : "204b0a64-d10e-4016-8e26-feb319bdd726",
+  "request" : {
+    "urlPath" : "/vms/lonvm1",
+    "method" : "PUT",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      },
+      "If-Match" : {
+        "equalTo" : "FIX_ETAG_FOR_TESTS"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['uid'] == 'differentuid')]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['name'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['description'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['cpuQty'] == 3)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['memoryMb'] == 6144)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['nestedHypervisor'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['osFamily'] =~ /^WINDOWS$|^LINUX$|^VMWARE$|^UCSM$/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['inventoryVmId'] == 'templatevm2')]"
+    }, {
+      "matchesJsonPath" : "$.['remoteAccess'][?(@.['vmConsoleEnabled'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['remoteAccess'][?(@.['username'] =~ /[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['remoteAccess'][?(@.['password'] =~ /[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['guestAutomation'][?(@.['command'] =~ /[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['guestAutomation'][?(@.['delaySecs'] =~ /^[0-9]\\d*$/)]"
+    }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['ipAddress'] == '198.18.131.200')]"
+    }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['macAddress'] =~ /00:50:56(:[a-f0-9]{2}){3}/)]"
+    }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['type'] =~ /^VIRTUAL_E1000$|^VIRTUAL_E1000E$|^VIRTUAL_PCNET_32$|^VIRTUAL_VMXNET_2$|^VIRTUAL_VMXNET_3$/)]"
+    }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*].['network'][?(@.['uid'] == 'lontopologyv1nwk')]"
+    }, {
+      "matchesJsonPath" : "$.['advancedSettings'][?(@.['nameInHypervisor'] =~ /^[-\\w]*$/)]"
+    }, {
+      "matchesJsonPath" : "$.['advancedSettings'][?(@.['biosUuid'] =~ /^(\\p{XDigit}{2}[- ]*){15}\\p{XDigit}{2}$/)]"
+    }, {
+      "matchesJsonPath" : "$.['advancedSettings'][?(@.['notStarted'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['advancedSettings'][?(@.['allDisksNonPersistent'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 400,
+    "body" : "[{\"logref\":\"SWWOFSUTLNVZQEBBYYIL\",\"message\":\"Payload uid does not match the path variable uid\",\"links\":[]}]",
+    "headers" : {
+      "Content-Type" : "application/vnd.error+json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "204b0a64-d10e-4016-8e26-feb319bdd726"
+}

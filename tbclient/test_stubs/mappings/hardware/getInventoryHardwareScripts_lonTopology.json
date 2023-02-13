@@ -1,0 +1,21 @@
+{
+  "id" : "42e103c0-0f34-4ff9-8539-8b375993a3e3",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/inventory-hardware-scripts",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"inventoryHardwareScripts\":[{\"uid\":\"script1\",\"name\":\"EN-3850-switch-start.xml\"},{\"uid\":\"script2\",\"name\":\"EN-3850-switch-stop.xml\"},{\"uid\":\"script3\",\"name\":\"custom.xml\"},{\"uid\":\"script4\",\"name\":\"addvcube.xml\"}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "42e103c0-0f34-4ff9-8539-8b375993a3e3"
+}

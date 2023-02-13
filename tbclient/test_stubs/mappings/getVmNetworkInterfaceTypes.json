@@ -1,0 +1,21 @@
+{
+  "id" : "4b0f20b1-0ac5-49dd-9738-427eddae447b",
+  "request" : {
+    "urlPath" : "/vm-network-interface-types",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"vmNetworkInterfaceTypes\":[{\"id\":\"VIRTUAL_E1000\",\"name\":\"VirtualE1000\"},{\"id\":\"VIRTUAL_E1000E\",\"name\":\"VirtualE1000E\"},{\"id\":\"VIRTUAL_PCNET_32\",\"name\":\"VirtualPCNet32\"},{\"id\":\"VIRTUAL_VMXNET_2\",\"name\":\"VirtualVmxnet2\"},{\"id\":\"VIRTUAL_VMXNET_3\",\"name\":\"VirtualVmxnet3\"}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "4b0f20b1-0ac5-49dd-9738-427eddae447b"
+}

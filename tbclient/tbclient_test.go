@@ -9,11 +9,14 @@ import (
 	"fmt"
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
+	"github.com/docker/docker/api/types/mount"
 	"github.com/docker/docker/client"
 	"github.com/docker/go-connections/nat"
 	"github.com/stretchr/testify/suite"
 	"io"
 	"os"
+	"path/filepath"
+	"runtime"
 	"testing"
 	"time"
 )
@@ -227,7 +230,7 @@ var createVm = Vm{
 		{
 			Uid:       "newvmnic2",
 			IpAddress: "198.18.131.201",
-			Name:      "Network adapter 0",
+			Name:      "Network adapter 1",
 			Network: &Network{
 				// Contract is missing 'description' field
 				Uid: routedNetwork.Uid,
@@ -300,7 +303,7 @@ var hw = Hw{
 }
 
 func (suite *ContractTestSuite) SetupSuite() {
-	suite.docker = startStubrunner(suite)
+	suite.docker = startWiremock(suite)
 	suite.tbClient = createTbClient(suite)
 }
 
@@ -332,7 +335,6 @@ func (suite *ContractTestSuite) TestGetAllTopologies() {
 
 	// Given
 	expectedTopology := lonTopology
-	expectedTopology.Notes = "" // Get All Topologies contract is missing 'notes' field
 
 	// When
 	topologies, err := suite.tbClient.GetAllTopologies()
@@ -494,11 +496,10 @@ func (suite *ContractTestSuite) TestGetVm() {
 
 func (suite *ContractTestSuite) TestUpdateVm() {
 
-	// TODO - Contract needs to be updated to remove 'hiddenFromSession' as this field is no longer used
-	suite.T().Skip("Skipping until contracts are updated")
-
 	// Given
 	expectedVm := vm
+
+	// Change Value
 	expectedVm.Name = "New Name"
 
 	// When
@@ -506,6 +507,20 @@ func (suite *ContractTestSuite) TestUpdateVm() {
 	suite.handleError(err)
 
 	// Then
+
+	// Work around contract data inconsistencies
+	nic0 := vm.VmNetworkInterfaces[0]
+	nic0.Uid = ""
+	nic0.Name = ""
+	nic0.Network.InventoryNetwork = nil
+	expectedVm.VmNetworkInterfaces[0] = nic0
+
+	nic1 := vm.VmNetworkInterfaces[1]
+	nic1.Uid = ""
+	nic1.Name = ""
+	nic1.Network.InventoryNetwork = nil
+	nic1.InUse = true
+	expectedVm.VmNetworkInterfaces[1] = nic1
 	suite.Equal(expectedVm, *actualVm)
 }
 
@@ -708,14 +723,14 @@ func TestContractTestSuite(t *testing.T) {
 	suite.Run(t, new(ContractTestSuite))
 }
 
-func startStubrunner(suite *ContractTestSuite) DockerContainer {
+func startWiremock(suite *ContractTestSuite) DockerContainer {
 	ctx := context.Background()
 
 	cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
 	suite.handleError(err)
 	defer cli.Close()
 
-	imageName := "springcloud/spring-cloud-contract-stub-runner:2.2.2.RELEASE"
+	imageName := "wiremock/wiremock:2.35.0"
 
 	out, err := cli.ImagePull(ctx, imageName, types.ImagePullOptions{})
 	suite.handleError(err)
@@ -723,31 +738,34 @@ func startStubrunner(suite *ContractTestSuite) DockerContainer {
 
 	io.Copy(os.Stdout, out)
 
-	environment := []string{
-		"STUBRUNNER_STUBS_MODE=REMOTE",
-		"STUBRUNNER_IDS=com.cisco.kapua:kapua-content-studio-api-contracts:1.0-SNAPSHOT:stubs:9876",
-		"REPO_WITH_BINARIES_URL=https://engci-maven.cisco.com/artifactory/xse-snapshot/",
-		"STUBRUNNER_REPOSITORY_ROOT=https://engci-maven.cisco.com/artifactory/xse-snapshot/",
-	}
+	_, b, _, _ := runtime.Caller(0)
+	mappingDir := filepath.Join(filepath.Dir(b), "test_stubs", "mappings")
 
-	host_config := &container.HostConfig{
+	hostConfig := &container.HostConfig{
 		PortBindings: nat.PortMap{
-			"9876/tcp": []nat.PortBinding{
+			"8080/tcp": []nat.PortBinding{
 				{
 					HostIP:   "0.0.0.0",
 					HostPort: "9876",
 				},
 			},
 		},
+		Mounts: []mount.Mount{
+			{
+				Type:   mount.TypeBind,
+				Source: mappingDir,
+				Target: "/home/wiremock/mappings",
+			},
+		},
 	}
 
 	resp, err := cli.ContainerCreate(ctx, &container.Config{
 		Image: imageName,
-		Env:   environment,
 		ExposedPorts: nat.PortSet{
-			"9876/tcp": struct{}{},
+			"8080/tcp": struct{}{},
 		},
-	}, host_config, nil, nil, "")
+		Cmd: []string{"--global-response-templating"},
+	}, hostConfig, nil, nil, "")
 	suite.handleError(err)
 
 	if err := cli.ContainerStart(ctx, resp.ID, types.ContainerStartOptions{}); err != nil {
@@ -766,6 +784,7 @@ func createTbClient(suite *ContractTestSuite) Client {
 		HostURL:     "http://localhost:9876",
 		Token:       "oauthAuthorized",
 		DisableGzip: true,
+		Debug:       false,
 	}
 
 	timeout := time.Now().Add(time.Minute)

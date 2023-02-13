@@ -1,0 +1,22 @@
+{
+  "id" : "31d1bc3a-294e-4f62-bd45-e40a91542070",
+  "request" : {
+    "urlPath" : "/networks/lontopologyv1nwk",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"lontopologyv1nwk\",\"name\":\"Default Network\",\"description\":\"Default Network description\",\"inventoryNetwork\":{\"id\":\"VLAN-PRIMARY\",\"type\":\"ROUTED\",\"subnet\":\"198.18.128.0 /18\"},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"node\":{\"href\":\"http://localhost/nodes/londefnetworknode\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "31d1bc3a-294e-4f62-bd45-e40a91542070"
+}

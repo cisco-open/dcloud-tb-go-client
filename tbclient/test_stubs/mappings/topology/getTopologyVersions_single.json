@@ -1,0 +1,21 @@
+{
+  "id" : "b10934d7-8c22-4c0c-b9ad-c82b5d0727ef",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/versions",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"versions\":[{\"uid\":\"lontopologyv1\",\"name\":\"lontopology name\",\"topology\":{\"uid\":\"lontopology\"},\"created\":\"2020-12-16T14:00:00.000000Z\",\"lastUpdated\":\"2021-01-16T14:00:00.000000Z\",\"_links\":{\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"}}}]},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/lontopology/versions\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "b10934d7-8c22-4c0c-b9ad-c82b5d0727ef"
+}

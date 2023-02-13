@@ -1,0 +1,22 @@
+{
+  "id" : "2e860dd8-39e6-44b6-9cae-d3b8b30eb1e5",
+  "request" : {
+    "urlPath" : "/hardware-items/lonhardwareitem2",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"lonhardwareitem2\",\"name\":\"ISA3000-FTD\",\"powerControlEnabled\":true,\"hardwareConsoleEnabled\":true,\"inventoryStartupScript\":{\"uid\":\"script1\",\"name\":\"EN-3850-switch-start.xml\"},\"inventoryShutdownScript\":{\"uid\":\"script2\",\"name\":\"EN-3850-switch-stop.xml\"},\"inventoryCustomScript\":{\"uid\":\"script3\",\"name\":\"custom.xml\"},\"inventoryTemplateConfigScript\":{\"uid\":\"template1\",\"name\":\"en-sw-3850-16-v1.txt\"},\"hardwareNetworkInterfaces\":[{\"uid\":\"hwnetworkiface1\",\"networkInterface\":{\"id\":\"GigabitEthernet1/1\"},\"network\":{\"uid\":\"lontopologyv1nwk\",\"name\":\"Default Network\",\"_links\":{\"self\":{\"href\":\"http://localhost/networks/lontopologyv1nwk\"}}}}],\"inventoryHardwareItem\":{\"id\":\"86\",\"name\":\"ISA3000-FTD\",\"description\":\"ISA3000-FTD\",\"powerControlAvailable\":true,\"hardwareConsoleAvailable\":true,\"networkInterfaces\":[{\"id\":\"GigabitEthernet1/1\"},{\"id\":\"GigabitEthernet1/2\"}]},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/hardware-items/lonhardwareitem2\"},\"delete\":{\"href\":\"http://localhost/hardware-items/lonhardwareitem2\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"node\":{\"href\":\"http://localhost/nodes/lonhwitem2node\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "2e860dd8-39e6-44b6-9cae-d3b8b30eb1e5"
+}

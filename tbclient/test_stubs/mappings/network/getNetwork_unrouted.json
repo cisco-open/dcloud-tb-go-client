@@ -1,0 +1,22 @@
+{
+  "id" : "d23c51d8-63ea-4d97-8fc3-069297af5f59",
+  "request" : {
+    "urlPath" : "/networks/unroutednetwork",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"unroutednetwork\",\"name\":\"Unrouted Network\",\"description\":\"Unrouted Network description\",\"inventoryNetwork\":{\"id\":\"L2-VLAN-1\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.5.0 /24\"},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "d23c51d8-63ea-4d97-8fc3-069297af5f59"
+}

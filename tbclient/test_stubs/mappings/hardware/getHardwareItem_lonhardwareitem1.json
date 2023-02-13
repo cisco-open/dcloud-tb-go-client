@@ -1,0 +1,22 @@
+{
+  "id" : "194e15c3-ce84-43f1-844e-e55a5b5813c0",
+  "request" : {
+    "urlPath" : "/hardware-items/lonhardwareitem1",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"lonhardwareitem1\",\"name\":\"VCube PSTN Services\",\"hardwareNetworkInterfaces\":[],\"inventoryHardwareItem\":{\"id\":\"1\",\"name\":\"PSTN Services\",\"description\":\"PSTN Services (VCube)\",\"networkInterfaces\":[],\"powerControlAvailable\":false,\"hardwareConsoleAvailable\":false},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/hardware-items/lonhardwareitem1\"},\"delete\":{\"href\":\"http://localhost/hardware-items/lonhardwareitem1\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"node\":{\"href\":\"http://localhost/nodes/lonhwitem1node\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "194e15c3-ce84-43f1-844e-e55a5b5813c0"
+}

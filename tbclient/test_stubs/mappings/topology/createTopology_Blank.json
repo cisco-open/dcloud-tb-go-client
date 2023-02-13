@@ -1,0 +1,34 @@
+{
+  "id" : "be4c2172-534e-4b19-972f-897fbaa79896",
+  "request" : {
+    "urlPath" : "/topologies",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['name'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['description'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['datacenter'] =~ /^LON$|^RTP$/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['notes'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "body" : "{\"uid\":\"newtopology\",\"name\":\"{{{jsonPath request.body '$.name'}}}\",\"description\":\"{{{jsonPath request.body '$.description'}}}\",\"datacenter\":\"{{{jsonPath request.body '$.datacenter'}}}\",\"notes\":\"{{{jsonPath request.body '$.notes'}}}\",\"lastUpdated\":\"2020-12-16T14:00:00.000000Z\",\"status\":\"DRAFT\",\"sharedWithCurrentUser\":false,\"inSyncWithDcloud\":false,\"activeTemplate\":false,\"accessRoleAssignments\":[{\"uid\":\"newowner\",\"email\":\"owner@cisco.com\",\"accessRole\":\"OWNER\",\"grantedBy\":\"owner@cisco.com\",\"grantedOn\":\"2020-12-16T14:00:00.000000Z\",\"topology\":{\"uid\":\"newtopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/access-role-assignments/newowner\"},\"topology\":{\"href\":\"http://localhost/topologies/newtopology\"}}}],\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/newtopology\"},\"delete\":{\"href\":\"http://localhost/topologies/newtopology\"},\"clones\":{\"href\":\"http://localhost/topologies/newtopology/clones\"},\"networks\":{\"href\":\"http://localhost/topologies/newtopology/networks\"},\"licenses\":{\"href\":\"http://localhost/topologies/newtopology/licenses\"},\"hardwareItems\":{\"href\":\"http://localhost/topologies/newtopology/hardware-items\"},\"telephonyItems\":{\"href\":\"http://localhost/topologies/newtopology/telephony-items\"},\"documentation\":{\"href\":\"http://localhost/documentation/newtopology\"},\"diagram\":{\"href\":\"http://localhost/topologies/newtopology/diagram\"},\"push\":{\"href\":\"http://localhost/demos\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "be4c2172-534e-4b19-972f-897fbaa79896"
+}

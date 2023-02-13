@@ -1,0 +1,22 @@
+{
+  "id" : "d815466a-0eaa-4bf8-9c9a-3d7e3fe6aa19",
+  "request" : {
+    "urlPath" : "/topologies/noreader",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"noreader\",\"name\":\"noreader name\",\"description\":\"noreader description\",\"datacenter\":\"SNG\",\"notes\":\"New notes\",\"lastUpdated\":\"2020-12-16T14:00:00.000000Z\",\"demoPromoted\":false,\"status\":\"CUSTOM_CONTENT\",\"accessRoleAssignments\":[{\"uid\":\"noreaderown\",\"email\":\"owner@cisco.com\",\"accessRole\":\"OWNER\",\"grantedBy\":\"owner@cisco.com\",\"grantedOn\":\"2020-12-16T14:00:00.000000Z\",\"topology\":{\"uid\":\"noreader\"},\"_links\":{\"self\":{\"href\":\"http://localhost/access-role-assignments/noreaderown\"},\"topology\":{\"href\":\"http://localhost/topologies/noreader\"}}}],\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"clones\":{\"href\":\"http://localhost{{{request.url}}}/clones\"},\"networks\":{\"href\":\"http://localhost{{{request.url}}}/networks\"},\"licenses\":{\"href\":\"http://localhost{{{request.url}}}/licenses\"},\"hardwareItems\":{\"href\":\"http://localhost{{{request.url}}}/hardware-items\"},\"telephonyItems\":{\"href\":\"http://localhost{{{request.url}}}/telephony-items\"},\"diagram\":{\"href\":\"http://localhost{{{request.url}}}/diagram\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "d815466a-0eaa-4bf8-9c9a-3d7e3fe6aa19"
+}

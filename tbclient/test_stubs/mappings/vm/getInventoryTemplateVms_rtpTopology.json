@@ -1,0 +1,21 @@
+{
+  "id" : "f9d9d02c-2962-4dd3-ba5c-feeac4c12171",
+  "request" : {
+    "urlPath" : "/topologies/rtptopology/inventory-template-vms",
+    "method" : "GET",
+    "queryParameters" : {
+      "filter" : {
+        "equalTo" : "type:equalTo:VM"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"inventoryVms\":[]}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "f9d9d02c-2962-4dd3-ba5c-feeac4c12171"
+}

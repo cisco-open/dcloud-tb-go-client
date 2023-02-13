@@ -1,0 +1,22 @@
+{
+  "id" : "7d85fd30-9a4b-4b0f-a8c6-ec83bbb880ce",
+  "request" : {
+    "urlPath" : "/internal/topologies/loninsync/vm-replacements",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['vmInvariantUid'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['inventoryVmId'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "7d85fd30-9a4b-4b0f-a8c6-ec83bbb880ce"
+}

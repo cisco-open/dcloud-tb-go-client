@@ -1,0 +1,22 @@
+{
+  "id" : "5d6fb03e-d9d3-428a-817c-0ffb314652a2",
+  "request" : {
+    "urlPath" : "/topologies/prolontopology",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"prolontopology\",\"name\":\"prolontopology v2 name\",\"description\":\"prolontopology description\",\"datacenter\":\"LON\",\"notes\":\"Notes\",\"lastUpdated\":\"2020-12-16T14:00:00.000000Z\",\"status\":\"CUSTOM_CONTENT\",\"demoId\":12345,\"demoPromoted\":true,\"inSyncWithDcloud\":true,\"activeTemplate\":true,\"accessRoleAssignments\":[{\"uid\":\"prolontopologyown\",\"email\":\"owner@cisco.com\",\"accessRole\":\"OWNER\",\"grantedBy\":\"owner@cisco.com\",\"grantedOn\":\"2020-12-16T14:00:00.000000Z\",\"topology\":{\"uid\":\"prolontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/access-role-assignments/prolontopologyown\"},\"topology\":{\"href\":\"http://localhost/topologies/prolontopology\"}}}],\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"},\"clones\":{\"href\":\"http://localhost{{{request.url}}}/clones\"},\"networks\":{\"href\":\"http://localhost{{{request.url}}}/networks\"},\"remoteAccess\":{\"href\":\"http://localhost{{{request.url}}}/remote-access\"},\"licenses\":{\"href\":\"http://localhost{{{request.url}}}/licenses\"},\"hardwareItems\":{\"href\":\"http://localhost{{{request.url}}}/hardware-items\"},\"telephonyItems\":{\"href\":\"http://localhost{{{request.url}}}/telephony-items\"},\"hardwareStartOrder\":{\"href\":\"http://localhost{{{request.url}}}/hardware-start-order\"},\"vms\":{\"href\":\"http://localhost{{{request.url}}}/vms\"},\"vmStartOrder\":{\"href\":\"http://localhost{{{request.url}}}/vm-start-order\"},\"vmStopOrder\":{\"href\":\"http://localhost{{{request.url}}}/vm-stop-order\"},\"natRules\":{\"href\":\"http://localhost{{{request.url}}}/nat-rules\"},\"documentation\":{\"href\":\"http://localhost/documentation/prolontopology\"},\"diagram\":{\"href\":\"http://localhost{{{request.url}}}/diagram\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "5d6fb03e-d9d3-428a-817c-0ffb314652a2"
+}

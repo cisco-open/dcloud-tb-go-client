@@ -1,0 +1,21 @@
+{
+  "id" : "0e682308-28cb-40ac-a017-d812fbf94151",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/networks",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"networks\":[{\"uid\":\"lontopologyv1nwk\",\"name\":\"Default Network\",\"description\":\"Default Network description\",\"inventoryNetwork\":{\"id\":\"VLAN-PRIMARY\",\"type\":\"ROUTED\",\"subnet\":\"198.18.128.0 /18\"},\"vmConnectionInfo\":{\"maxConnections\":29,\"currentConnections\":[{\"uid\":\"lonvm1msnic\",\"ipAddress\":\"198.18.131.200\",\"name\":\"Network adapter 1\",\"macAddress\":\"00:50:56:00:00:07\",\"type\":\"VIRTUAL_E1000\"},{\"uid\":\"lonvm1natnic\",\"ipAddress\":\"198.18.131.201\",\"name\":\"Network adapter 2\",\"macAddress\":\"00:50:56:00:00:08\",\"type\":\"VIRTUAL_E1000\"},{\"uid\":\"lonvm2nic1\",\"ipAddress\":\"198.18.133.111\",\"name\":\"Network adapter 1\",\"macAddress\":\"00:50:56:00:00:09\",\"type\":\"VIRTUAL_E1000\"},{\"uid\":\"lonvhw1nic1\",\"ipAddress\":\"198.18.133.111\",\"name\":\"Network adapter 1\",\"macAddress\":\"00:50:56:00:00:09\",\"type\":\"VIRTUAL_E1000\"},{\"uid\":\"lonvm2pxnic\",\"ipAddress\":\"198.18.133.110\",\"name\":\"Network adapter 3\",\"macAddress\":\"00:50:56:00:00:10\",\"type\":\"VIRTUAL_E1000\"}]},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/networks/lontopologyv1nwk\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"delete\":{\"href\":\"http://localhost/networks/lontopologyv1nwk\"}}},{\"uid\":\"routednetwork\",\"name\":\"Routed Network\",\"description\":\"Routed Network description\",\"inventoryNetwork\":{\"id\":\"L3-VLAN-1\",\"type\":\"ROUTED\",\"subnet\":\"198.18.1.0 /24\"},\"vmConnectionInfo\":{\"maxConnections\":29,\"currentConnections\":[]},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/networks/routednetwork\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"delete\":{\"href\":\"http://localhost/networks/routednetwork\"}}},{\"uid\":\"unroutednetwork\",\"name\":\"Unrouted Network\",\"description\":\"Unrouted Network description\",\"inventoryNetwork\":{\"id\":\"L2-VLAN-1\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.5.0 /24\"},\"vmConnectionInfo\":{\"maxConnections\":30,\"currentConnections\":[]},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/networks/unroutednetwork\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"delete\":{\"href\":\"http://localhost/networks/unroutednetwork\"}}},{\"uid\":\"notfound\",\"name\":\"Not found Network\",\"description\":\"Not found Network description\",\"inventoryNetwork\":{\"id\":\"L2-VLAN-1\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.5.0 /24\"},\"vmConnectionInfo\":{\"maxConnections\":30,\"currentConnections\":[]},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/networks/notfound\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"delete\":{\"href\":\"http://localhost/networks/notfound\"}}}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "0e682308-28cb-40ac-a017-d812fbf94151"
+}

@@ -1,0 +1,16 @@
+{
+  "id" : "d87e0a38-dc83-4a66-be52-6b1b0cd195ba",
+  "request" : {
+    "urlPath" : "/datacenters/lon/inventory-template-topologies",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"inventoryTopologies\":[{\"datacenter\":\"LON\",\"uid\":\"prolontopology\",\"originalName\":\"prolontopology v2 name\",\"originalDescription\":\"prolontopology description\",\"demoId\":\"12345\",\"name\":\"lontemplate1 name\",\"description\":\"lontemplate1 description\",\"architectures\":[{\"uid\":\"arcen\",\"name\":\"Enterprise Networking\"},{\"uid\":\"arccollab\",\"name\":\"Collaboration\"}],\"lastUpdated\":\"2020-12-16T14:00:00.000000Z\"},{\"datacenter\":\"LON\",\"uid\":\"prolontopology2\",\"originalName\":\"prolontopology2 v2 name\",\"originalDescription\":\"prolontopology2 description\",\"demoId\":\"67890\"}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "d87e0a38-dc83-4a66-be52-6b1b0cd195ba"
+}

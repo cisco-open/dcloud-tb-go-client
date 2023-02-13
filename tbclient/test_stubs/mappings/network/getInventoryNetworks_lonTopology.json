@@ -1,0 +1,21 @@
+{
+  "id" : "6902a2f3-6fd7-451a-a766-69d7782fbf35",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/inventory-networks",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"inventoryNetworks\":[{\"id\":\"VLAN-PRIMARY\",\"type\":\"ROUTED\",\"subnet\":\"198.18.128.0 /18\"},{\"id\":\"L3-VLAN-1\",\"type\":\"ROUTED\",\"subnet\":\"198.18.1.0 /24\"},{\"id\":\"L3-VLAN-2\",\"type\":\"ROUTED\",\"subnet\":\"198.18.2.0 /24\"},{\"id\":\"L3-VLAN-3\",\"type\":\"ROUTED\",\"subnet\":\"198.18.3.0 /24\"},{\"id\":\"L3-VLAN-4\",\"type\":\"ROUTED\",\"subnet\":\"198.18.4.0 /24\"},{\"id\":\"L2-VLAN-1\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.5.0 /24\"},{\"id\":\"L2-VLAN-2\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.6.0 /24\"},{\"id\":\"L2-VLAN-3\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.7.0 /24\"},{\"id\":\"L2-VLAN-4\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.8.0 /24\"},{\"id\":\"L2-VLAN-5\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.9.0 /24\"},{\"id\":\"L2-VLAN-6\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.10.0 /24\"},{\"id\":\"L2-VLAN-7\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.11.0 /24\"},{\"id\":\"L2-VLAN-8\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.12.0 /24\"},{\"id\":\"L2-VLAN-9\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.13.0 /24\"},{\"id\":\"L2-VLAN-10\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.14.0 /24\"},{\"id\":\"L2-VLAN-11\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.15.0 /24\"},{\"id\":\"L2-VLAN-12\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.16.0 /24\"},{\"id\":\"L2-VLAN-13\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.17.0 /24\"},{\"id\":\"L2-VLAN-14\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.18.0 /24\"},{\"id\":\"L2-VLAN-15\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.19.0 /24\"},{\"id\":\"L2-VLAN-16\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.20.0 /24\"},{\"id\":\"L2-VLAN-17\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.21.0 /24\"},{\"id\":\"L2-VLAN-18\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.22.0 /24\"},{\"id\":\"L2-VLAN-19\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.23.0 /24\"},{\"id\":\"L2-VLAN-20\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.24.0 /24\"}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "6902a2f3-6fd7-451a-a766-69d7782fbf35"
+}

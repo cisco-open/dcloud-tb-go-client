@@ -1,0 +1,17 @@
+{
+  "id" : "a1a0c521-1d7f-4056-812d-33507d24714a",
+  "request" : {
+    "urlPath" : "/topologies/lontopology",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 204,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "a1a0c521-1d7f-4056-812d-33507d24714a"
+}

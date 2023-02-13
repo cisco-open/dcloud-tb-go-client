@@ -1,0 +1,22 @@
+{
+  "id" : "9532cb16-1bbe-49dc-a813-8a43e5bf7070",
+  "request" : {
+    "urlPath" : "/networks/routednetwork",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"routednetwork\",\"name\":\"Routed Network\",\"description\":\"Routed Network description\",\"inventoryNetwork\":{\"id\":\"L3-VLAN-1\",\"type\":\"ROUTED\",\"subnet\":\"198.18.1.0 /24\"},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "9532cb16-1bbe-49dc-a813-8a43e5bf7070"
+}

@@ -1,0 +1,17 @@
+{
+  "id" : "bedc21e6-6830-4eb3-8c3d-421881284824",
+  "request" : {
+    "urlPath" : "/internal/topologies/notfound",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 404,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "bedc21e6-6830-4eb3-8c3d-421881284824"
+}
