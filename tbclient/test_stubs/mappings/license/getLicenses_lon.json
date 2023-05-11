@@ -1,0 +1,21 @@
+{
+  "id" : "520121e9-61fd-4bb6-b4ca-ad956a08d167",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/licenses",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"licenses\":[{\"uid\":\"license1\",\"quantity\":1,\"inventoryLicense\":{\"id\":\"24\",\"name\":\"APIC License\",\"quantity\":3},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/licenses/license1\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"delete\":{\"href\":\"http://localhost/licenses/license1\"}}},{\"uid\":\"notfound\",\"quantity\":2,\"inventoryLicense\":{\"id\":\"43\",\"name\":\"Spark-DIDs\",\"quantity\":0},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/licenses/notfound\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"delete\":{\"href\":\"http://localhost/licenses/notfound\"}}}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "520121e9-61fd-4bb6-b4ca-ad956a08d167"
+}

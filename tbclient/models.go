@@ -277,3 +277,19 @@ type hwCollection struct {
 func (hw hwCollection) getData() []Hw {
 	return hw.Data
 }
+
+// License
+
+type InventoryLicense struct {
+	Id       string `json:"id,omitempty"`
+	Name     string `json:"name,omitempty"`
+	Quantity int    `json:"quantity,omitempty"`
+}
+
+type inventoryLicenseCollection struct {
+	Data []InventoryLicense `json:"inventoryLicenses"`
+}
+
+func (inventoryLicense inventoryLicenseCollection) getData() []InventoryLicense {
+	return inventoryLicense.Data
+}

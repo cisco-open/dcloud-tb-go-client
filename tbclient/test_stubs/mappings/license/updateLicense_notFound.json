@@ -1,0 +1,36 @@
+{
+  "id" : "67277fd7-796a-4765-b895-c45dafc35f1e",
+  "request" : {
+    "urlPath" : "/licenses/notfound",
+    "method" : "PUT",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      },
+      "If-Match" : {
+        "equalTo" : "FIX_ETAG_FOR_TESTS"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['uid'] == 'notfound')]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['quantity'] =~ /-?(\\d+)/)]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryLicense'][?(@.['id'] == '24')]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 404,
+    "body" : "[{\"logref\":\"DUQGRPVNGAQQCBDZMZFD\",\"message\":\"The requested License resource was not found\",\"links\":[]}]",
+    "headers" : {
+      "Content-Type" : "application/vnd.error+json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "67277fd7-796a-4765-b895-c45dafc35f1e"
+}

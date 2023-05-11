@@ -302,6 +302,12 @@ var hw = Hw{
 	Topology:              &Topology{Uid: lonTopology.Uid},
 }
 
+var inventoryLicense = InventoryLicense{
+	Id:       "24",
+	Name:     "APIC License",
+	Quantity: 3,
+}
+
 func (suite *ContractTestSuite) SetupSuite() {
 	suite.docker = startWiremock(suite)
 	suite.tbClient = createTbClient(suite)
@@ -717,6 +723,17 @@ func (suite *ContractTestSuite) TestGetAllInventoryHws() {
 	// Then
 	suite.Equal(5, len(inventoryHws))
 	suite.Contains(inventoryHws, inventoryHw)
+}
+
+func (suite *ContractTestSuite) TestGetAllInventoryLicenses() {
+
+	// When
+	inventoryLicenses, err := suite.tbClient.GetAllInventoryLicenses(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(3, len(inventoryLicenses))
+	suite.Contains(inventoryLicenses, inventoryLicense)
 }
 
 func TestContractTestSuite(t *testing.T) {
