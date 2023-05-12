@@ -290,6 +290,21 @@ type inventoryLicenseCollection struct {
 	Data []InventoryLicense `json:"inventoryLicenses"`
 }
 
-func (inventoryLicense inventoryLicenseCollection) getData() []InventoryLicense {
-	return inventoryLicense.Data
+func (i inventoryLicenseCollection) getData() []InventoryLicense {
+	return i.Data
+}
+
+type License struct {
+	Uid              string            `json:"uid,omitempty"`
+	Quantity         int               `json:"quantity,omitempty"`
+	InventoryLicense *InventoryLicense `json:"inventoryLicense"`
+	Topology         *Topology         `json:"topology"`
+}
+
+type licenseCollection struct {
+	Data []License `json:"licenses"`
+}
+
+func (l licenseCollection) getData() []License {
+	return l.Data
 }

@@ -308,6 +308,13 @@ var inventoryLicense = InventoryLicense{
 	Quantity: 3,
 }
 
+var license = License{
+	Uid:              "license1",
+	Quantity:         1,
+	InventoryLicense: &inventoryLicense,
+	Topology:         &Topology{Uid: lonTopology.Uid},
+}
+
 func (suite *ContractTestSuite) SetupSuite() {
 	suite.docker = startWiremock(suite)
 	suite.tbClient = createTbClient(suite)
@@ -643,6 +650,73 @@ func (suite *ContractTestSuite) TestDeleteHw() {
 	suite.Nil(err)
 }
 
+// License Tests
+
+func (suite *ContractTestSuite) TestGetAllLicenses() {
+
+	// When
+	licenses, err := suite.tbClient.GetAllLicenses(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(2, len(licenses))
+	suite.Contains(licenses, license)
+}
+
+func (suite *ContractTestSuite) TestGetLicense() {
+
+	// Given
+	expectedLicense := license
+
+	// When
+	actualLicense, err := suite.tbClient.GetLicense(license.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(expectedLicense, *actualLicense)
+}
+
+func (suite *ContractTestSuite) TestUpdateLicense() {
+
+	// Given
+	expectedLicense := license
+	expectedLicense.Quantity = license.Quantity + 1
+
+	// When
+	actualLicense, err := suite.tbClient.UpdateLicense(expectedLicense)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(expectedLicense, *actualLicense)
+}
+
+func (suite *ContractTestSuite) TestCreateLicense() {
+	// Given
+	expectedLicense := license
+	// Modify to match contracts
+	expectedLicense.InventoryLicense = &InventoryLicense{Id: "24"}
+
+	// When
+	actualLicense, err := suite.tbClient.CreateLicense(expectedLicense)
+	suite.handleError(err)
+
+	// Then
+	expectedLicense.Uid = "newlicense"
+	expectedLicense.InventoryLicense.Name = "mimic"
+	expectedLicense.InventoryLicense.Quantity = 6
+	suite.Equal(expectedLicense, *actualLicense)
+}
+
+func (suite *ContractTestSuite) TestDeleteLicense() {
+
+	// When
+	err := suite.tbClient.DeleteLicense(license.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Nil(err)
+}
+
 // Inventory Tests
 
 func (suite *ContractTestSuite) TestGetAllOsFamilies() {
@@ -807,10 +881,10 @@ func createTbClient(suite *ContractTestSuite) Client {
 	timeout := time.Now().Add(time.Minute)
 	for _, err := c.GetAllTopologies(); err != nil; _, err = c.GetAllTopologies() {
 		if time.Now().After(timeout) {
-			suite.T().Log("Timeout starting stub runner")
+			suite.T().Log("Timeout starting wiremock")
 			suite.handleError(err)
 		}
-		fmt.Println("Waiting another 5s for stub runner...")
+		fmt.Println("Waiting another 5s for wiremock...")
 		time.Sleep(5 * time.Second)
 	}
 
