@@ -1,0 +1,45 @@
+{
+  "id" : "e279659f-ad5c-459b-be45-74af60207a97",
+  "request" : {
+    "urlPath" : "/hardware-start-order/lontopologyv1sso",
+    "method" : "PUT",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      },
+      "If-Match" : {
+        "equalTo" : "FIX_ETAG_FOR_TESTS"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['uid'] == 'lontopologyv1sso')]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['ordered'] == true)]"
+    }, {
+      "matchesJsonPath" : "$.['positions'][*][?(@.['position'] =~ /^1$|^2$|^3$/)]"
+    }, {
+      "matchesJsonPath" : "$.['positions'][*][?(@.['delaySeconds'] =~ /([1-9]\\d*)/)]"
+    }, {
+      "matchesJsonPath" : "$.['positions'][*].['hardwareItem'][?(@.['uid'] == 'lonhardwareitem1')]"
+    }, {
+      "matchesJsonPath" : "$.['positions'][*].['hardwareItem'][?(@.['uid'] == 'lonhardwareitem2')]"
+    }, {
+      "matchesJsonPath" : "$.['positions'][*].['hardwareItem'][?(@.['uid'] == 'lonhardwareitem3')]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"topology\":{\"uid\":\"lontopology\"},\"uid\":\"lontopologyv1sso\",\"ordered\":{{{jsonPath request.body '$.ordered'}}} ,\"positions\":[{\"position\":{{{jsonPath request.body '$.positions[0].position'}}} ,\"delaySeconds\":{{{jsonPath request.body '$.positions[0].delaySeconds'}}} ,\"hardwareItem\":{\"uid\":\"lonhardwareitem1\",\"name\":\"VCube PSTN Services\"},\"_links\":{\"hardwareItem\":{\"href\":\"http://localhost/hardware-items/lonhardwareitem1\"}}},{\"position\":{{{jsonPath request.body '$.positions[1].position'}}} ,\"delaySeconds\":{{{jsonPath request.body '$.positions[1].delaySeconds'}}} ,\"hardwareItem\":{\"uid\":\"lonhardwareitem2\",\"name\":\"ISA3000-FTD\"},\"_links\":{\"hardwareItem\":{\"href\":\"http://localhost/hardware-items/lonhardwareitem2\"}}},{\"position\":{{{jsonPath request.body '$.positions[2].position'}}} ,\"delaySeconds\":{{{jsonPath request.body '$.positions[2].delaySeconds'}}} ,\"hardwareItem\":{\"uid\":\"lonhardwareitem3\",\"name\":\"ISA3000-FTD No.2\"},\"_links\":{\"hardwareItem\":{\"href\":\"http://localhost/hardware-items/lonhardwareitem3\"}}}],\"_links\":{\"self\":{\"href\":\"http://localhost/hardware-start-order/lontopologyv1sso\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "e279659f-ad5c-459b-be45-74af60207a97"
+}

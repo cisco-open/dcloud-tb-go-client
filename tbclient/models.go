@@ -308,3 +308,43 @@ type licenseCollection struct {
 func (l licenseCollection) getData() []License {
 	return l.Data
 }
+
+// Start/Stop Order
+
+type VmStartPosition struct {
+	Position     int `json:"position"`
+	DelaySeconds int `json:"delaySeconds"`
+	Vm           *Vm `json:"vm"`
+}
+
+type VmStartOrder struct {
+	Uid       string            `json:"uid,omitempty"`
+	Ordered   bool              `json:"ordered"`
+	Positions []VmStartPosition `json:"positions"`
+	Topology  *Topology         `json:"topology"`
+}
+
+type VmStopPosition struct {
+	Position int `json:"position"`
+	Vm       *Vm `json:"vm"`
+}
+
+type VmStopOrder struct {
+	Uid       string           `json:"uid,omitempty"`
+	Ordered   bool             `json:"ordered"`
+	Positions []VmStopPosition `json:"positions"`
+	Topology  *Topology        `json:"topology"`
+}
+
+type HwStartPosition struct {
+	Position     int `json:"position"`
+	DelaySeconds int `json:"delaySeconds"`
+	Hw           *Hw `json:"hardwareItem"`
+}
+
+type HwStartOrder struct {
+	Uid       string            `json:"uid,omitempty"`
+	Ordered   bool              `json:"ordered"`
+	Positions []HwStartPosition `json:"positions"`
+	Topology  *Topology         `json:"topology"`
+}

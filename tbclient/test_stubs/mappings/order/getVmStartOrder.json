@@ -1,0 +1,22 @@
+{
+  "id" : "f79d590d-22cd-455d-b18b-f46860f42cf1",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/vm-start-order",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"topology\":{\"uid\":\"lontopology\"},\"uid\":\"lontopologyv1sso\",\"ordered\":false,\"positions\":[{\"position\":1,\"delaySeconds\":0,\"vm\":{\"uid\":\"lonvm1\",\"name\":\"Mail Server 1\"},\"_links\":{\"vm\":{\"href\":\"http://localhost/vms/lonvm1\"}}},{\"position\":2,\"delaySeconds\":10,\"vm\":{\"uid\":\"lonvm2\",\"name\":\"Collab DB\"},\"_links\":{\"vm\":{\"href\":\"http://localhost/vms/lonvm2\"}}}],\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/lontopology/vm-start-order\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "f79d590d-22cd-455d-b18b-f46860f42cf1"
+}

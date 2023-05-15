@@ -1,0 +1,42 @@
+{
+  "id" : "d5e87f8c-2fac-41f7-a927-95780f453f41",
+  "request" : {
+    "urlPath" : "/vm-stop-order/notfound",
+    "method" : "PUT",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      },
+      "If-Match" : {
+        "equalTo" : "FIX_ETAG_FOR_TESTS"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['uid'] == 'notfound')]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['ordered'] == true)]"
+    }, {
+      "matchesJsonPath" : "$.['positions'][*][?(@.['position'] == 1)]"
+    }, {
+      "matchesJsonPath" : "$.['positions'][*].['vm'][?(@.['uid'] == 'lonvm1')]"
+    }, {
+      "matchesJsonPath" : "$.['positions'][*][?(@.['position'] == 2)]"
+    }, {
+      "matchesJsonPath" : "$.['positions'][*].['vm'][?(@.['uid'] == 'lonvm2')]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 404,
+    "body" : "[{\"logref\":\"YFDBOZXZRHHRTHPXOUXX\",\"message\":\"The requested Start Stop Order resource was not found\",\"links\":[]}]",
+    "headers" : {
+      "Content-Type" : "application/vnd.error+json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "d5e87f8c-2fac-41f7-a927-95780f453f41"
+}

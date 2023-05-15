@@ -11,7 +11,7 @@ import (
 
 // HostURL Defaulted to local service instance
 const HostURL = "http://localhost:8080"
-const etag = "ETag"
+const etagHeader = "ETag"
 const ifMatch = "IF-MATCH"
 
 type Client struct {
@@ -48,23 +48,14 @@ type collectionService[R any, RC embeddedData[R]] struct {
 
 func (s *collectionService[R, RC]) getAll() ([]R, error) {
 
-	rest := s.createRestClient()
-
 	topologyPath := getTopologyPath(s.topologyUid)
+
+	rest := s.createRestClient()
 	url := fmt.Sprintf("%s%s%s", s.client.HostURL, topologyPath, s.resourcePath)
 
-	resp, err := rest.R().
-		SetResult(collection[RC]{}).
-		SetError([]vndError{}).
-		SetAuthToken(s.client.Token).
-		Get(url)
-
+	resp, err := executeGet(rest, s.client.Token, url, collection[RC]{})
 	if err != nil {
 		return nil, err
-	}
-
-	if resp.IsError() {
-		return nil, generateError(*resp)
 	}
 
 	return resp.Result().(*collection[RC]).Embedded.getData(), nil
@@ -73,21 +64,11 @@ func (s *collectionService[R, RC]) getAll() ([]R, error) {
 func (s *resourceService[R, RC]) getOne(uid string) (*R, error) {
 
 	rest := s.createRestClient()
-
 	url := singleResourceUrl(s.client.HostURL, s.resourcePath, uid)
 
-	resp, err := rest.R().
-		SetResult(new(R)).
-		SetError([]vndError{}).
-		SetAuthToken(s.client.Token).
-		Get(url)
-
+	resp, err := executeGet(rest, s.client.Token, url, new(R))
 	if err != nil {
 		return nil, err
-	}
-
-	if resp.IsError() {
-		return nil, generateError(*resp)
 	}
 
 	return resp.Result().(*R), nil
@@ -125,35 +106,18 @@ func (s *resourceService[R, RC]) update(uid string, resource R) (*R, error) {
 
 	url := singleResourceUrl(s.client.HostURL, s.resourcePath, uid)
 
-	current, err := rest.R().
-		SetError([]vndError{}).
-		SetAuthToken(s.client.Token).
-		Get(url)
+	current, err := executeGet(rest, s.client.Token, url, new(R))
 
 	if err != nil {
 		return nil, err
 	}
 
-	if current.IsError() {
-		return nil, generateError(*current)
-	}
+	etag := current.Header().Get(etagHeader)
 
-	etag := current.Header().Get(etag)
-
-	updated, err := rest.R().
-		SetHeader(ifMatch, etag).
-		SetBody(resource).
-		SetResult(new(R)).
-		SetError([]vndError{}).
-		SetAuthToken(s.client.Token).
-		Put(url)
+	updated, err := executePut(rest, s.client.Token, url, resource, new(R), etag)
 
 	if err != nil {
 		return nil, err
-	}
-
-	if updated.IsError() {
-		return nil, generateError(*updated)
 	}
 
 	return updated.Result().(*R), nil
@@ -188,15 +152,20 @@ func singleResourceUrl(hostUrl, resourcePath, uid string) string {
 }
 
 func (s *collectionService[R, RC]) createRestClient() *resty.Client {
+	rest := s.client.createRestClient()
+	rest.SetHeaders(s.requestHeaders)
+	return rest
+}
+
+func (c *Client) createRestClient() *resty.Client {
 	rest := resty.New()
-	rest.SetDebug(s.client.Debug)
-	if s.client.UserAgent != "" {
-		rest.SetHeader("User-Agent", s.client.UserAgent)
+	rest.SetDebug(c.Debug)
+	if c.UserAgent != "" {
+		rest.SetHeader("User-Agent", c.UserAgent)
 	}
-	if s.client.DisableGzip {
+	if c.DisableGzip {
 		rest.SetHeader("Accept-Encoding", "")
 	}
-	rest.SetHeaders(s.requestHeaders)
 	return rest
 }
 
@@ -206,6 +175,43 @@ func getTopologyPath(topologyUid string) string {
 	} else {
 		return ""
 	}
+}
+
+func executeGet(rest *resty.Client, authToken string, url string, result interface{}) (*resty.Response, error) {
+
+	resp, err := rest.R().
+		SetResult(result).
+		SetError([]vndError{}).
+		SetAuthToken(authToken).
+		Get(url)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.IsError() {
+		return nil, generateError(*resp)
+	}
+	return resp, nil
+}
+
+func executePut(rest *resty.Client, authToken string, url string, body interface{}, result interface{}, etag string) (*resty.Response, error) {
+	resp, err := rest.R().
+		SetHeader(ifMatch, etag).
+		SetBody(body).
+		SetResult(result).
+		SetError([]vndError{}).
+		SetAuthToken(authToken).
+		Put(url)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.IsError() {
+		return nil, generateError(*resp)
+	}
+	return resp, nil
 }
 
 var emptyHeaders = map[string]string{}
