@@ -1,0 +1,21 @@
+{
+  "id" : "420842f1-e1fb-4584-a79b-6be3d52c4447",
+  "request" : {
+    "urlPath" : "/licenses/noreader",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 503,
+    "body" : "[{\"logref\":\"FPNXLXBNHUGZDNBVYLJT\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
+    "headers" : {
+      "Content-Type" : "application/vnd.error+json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "420842f1-e1fb-4584-a79b-6be3d52c4447"
+}

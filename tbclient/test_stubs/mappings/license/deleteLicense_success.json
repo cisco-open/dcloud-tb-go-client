@@ -1,0 +1,17 @@
+{
+  "id" : "7bf3d140-b505-4109-9893-aa20cdff769f",
+  "request" : {
+    "urlPath" : "/licenses/license1",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 204,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "7bf3d140-b505-4109-9893-aa20cdff769f"
+}

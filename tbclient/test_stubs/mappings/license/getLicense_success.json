@@ -1,0 +1,22 @@
+{
+  "id" : "c15cb836-da11-4fe0-90e6-aa244e92fad5",
+  "request" : {
+    "urlPath" : "/licenses/license1",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"license1\",\"quantity\":1,\"inventoryLicense\":{\"id\":\"24\",\"name\":\"APIC License\",\"quantity\":3},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "c15cb836-da11-4fe0-90e6-aa244e92fad5"
+}

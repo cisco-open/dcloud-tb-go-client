@@ -1,0 +1,21 @@
+{
+  "id" : "00aa06c9-e3ab-4fdf-a221-f9a473393f52",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/inventory-licenses",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"inventoryLicenses\":[{\"id\":\"24\",\"name\":\"APIC License\",\"quantity\":3},{\"id\":\"40\",\"name\":\"mimic\",\"quantity\":6},{\"id\":\"43\",\"name\":\"Spark-DIDs\",\"quantity\":0}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "00aa06c9-e3ab-4fdf-a221-f9a473393f52"
+}

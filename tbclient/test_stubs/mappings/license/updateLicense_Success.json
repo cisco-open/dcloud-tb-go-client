@@ -1,0 +1,37 @@
+{
+  "id" : "1bb81d6e-ad81-46cd-a8b4-0471f7c0360f",
+  "request" : {
+    "urlPath" : "/licenses/license1",
+    "method" : "PUT",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      },
+      "If-Match" : {
+        "equalTo" : "FIX_ETAG_FOR_TESTS"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['uid'] == 'license1')]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['quantity'] =~ /([1-9]\\d*)/)]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryLicense'][?(@.['id'] == '24')]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"license1\",\"quantity\":{{{jsonPath request.body '$.quantity'}}} ,\"inventoryLicense\":{\"id\":\"{{{jsonPath request.body '$.inventoryLicense.id'}}}\",\"name\":\"APIC License\",\"quantity\":3},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "1bb81d6e-ad81-46cd-a8b4-0471f7c0360f"
+}

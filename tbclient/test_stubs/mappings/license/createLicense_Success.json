@@ -1,0 +1,32 @@
+{
+  "id" : "33ae73c6-73a3-4efc-96fc-368634f18419",
+  "request" : {
+    "urlPath" : "/licenses",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['quantity'] =~ /([1-9]\\d*)/)]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryLicense'][?(@.['id'] =~ /^24$|^40$|^43$/)]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "body" : "{\"uid\":\"newlicense\",\"quantity\":{{{jsonPath request.body '$.quantity'}}} ,\"inventoryLicense\":{\"id\":\"{{{jsonPath request.body '$.inventoryLicense.id'}}}\",\"name\":\"mimic\",\"quantity\":6},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}/newlicense\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}/newlicense\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "33ae73c6-73a3-4efc-96fc-368634f18419"
+}

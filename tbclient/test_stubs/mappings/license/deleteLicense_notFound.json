@@ -1,0 +1,17 @@
+{
+  "id" : "aa02cf25-fe68-4176-ba3c-53235891eba8",
+  "request" : {
+    "urlPath" : "/licenses/notfound",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 404,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "aa02cf25-fe68-4176-ba3c-53235891eba8"
+}
