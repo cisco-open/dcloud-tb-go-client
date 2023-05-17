@@ -315,6 +315,63 @@ var license = License{
 	Topology:         &Topology{Uid: lonTopology.Uid},
 }
 
+var vmStartOrder = VmStartOrder{
+	Uid:     "lontopologyv1sso",
+	Ordered: false,
+	Positions: []VmStartPosition{
+		{
+			Position:     1,
+			DelaySeconds: 0,
+			Vm:           &Vm{Uid: vm.Uid, Name: vm.Name},
+		},
+		{
+			Position:     2,
+			DelaySeconds: 10,
+			Vm:           &Vm{Uid: "lonvm2", Name: "Collab DB"},
+		},
+	},
+	Topology: &Topology{Uid: lonTopology.Uid},
+}
+
+var vmStopOrder = VmStopOrder{
+	Uid:     "lontopologyv1sso",
+	Ordered: false,
+	Positions: []VmStopPosition{
+		{
+			Position: 1,
+			Vm:       &Vm{Uid: "lonvm2", Name: "Collab DB"},
+		},
+		{
+			Position: 2,
+			Vm:       &Vm{Uid: vm.Uid, Name: vm.Name},
+		},
+	},
+	Topology: &Topology{Uid: lonTopology.Uid},
+}
+
+var hwStartOrder = HwStartOrder{
+	Uid:     "lontopologyv1sso",
+	Ordered: false,
+	Positions: []HwStartPosition{
+		{
+			Position:     1,
+			DelaySeconds: 0,
+			Hw:           &Hw{Uid: "lonhardwareitem1", Name: "VCube PSTN Services"},
+		},
+		{
+			Position:     2,
+			DelaySeconds: 30,
+			Hw:           &Hw{Uid: "lonhardwareitem2", Name: "ISA3000-FTD"},
+		},
+		{
+			Position:     3,
+			DelaySeconds: 60,
+			Hw:           &Hw{Uid: "lonhardwareitem3", Name: "ISA3000-FTD No.2"},
+		},
+	},
+	Topology: &Topology{Uid: lonTopology.Uid},
+}
+
 func (suite *ContractTestSuite) SetupSuite() {
 	suite.docker = startWiremock(suite)
 	suite.tbClient = createTbClient(suite)
@@ -715,6 +772,98 @@ func (suite *ContractTestSuite) TestDeleteLicense() {
 
 	// Then
 	suite.Nil(err)
+}
+
+// VM Start Order
+
+func (suite *ContractTestSuite) TestGetVmStartOrder() {
+
+	// When
+	actualVmStartOrder, err := suite.tbClient.GetVmStartOrder(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(vmStartOrder, *actualVmStartOrder)
+}
+
+func (suite *ContractTestSuite) TestUpdateVmStartOrder() {
+
+	// Given
+	expectedVmStartOrder := vmStartOrder
+	expectedVmStartOrder.Ordered = true
+	// Swap the Positions (Slice ordering matters to suite.Equal)
+	pos1 := expectedVmStartOrder.Positions[0]
+	pos2 := expectedVmStartOrder.Positions[1]
+	pos2.Position = 1
+	pos1.Position = 2
+	expectedVmStartOrder.Positions[0] = pos2
+	expectedVmStartOrder.Positions[1] = pos1
+
+	// When
+	actualVmStartOrder, err := suite.tbClient.UpdateVmStartOrder(expectedVmStartOrder)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(expectedVmStartOrder, *actualVmStartOrder)
+}
+
+// VM Stop Order
+
+func (suite *ContractTestSuite) TestGetVmStopOrder() {
+
+	// When
+	actualVmStopOrder, err := suite.tbClient.GetVmStopOrder(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(vmStopOrder, *actualVmStopOrder)
+}
+
+func (suite *ContractTestSuite) TestUpdateVmStopOrder() {
+
+	// Given
+	expectedVmStopOrder := vmStopOrder
+	expectedVmStopOrder.Ordered = true
+	// Swap the Positions (Slice ordering matters to suite.Equal)
+	pos1 := expectedVmStopOrder.Positions[0]
+	pos2 := expectedVmStopOrder.Positions[1]
+	pos2.Position = 1
+	pos1.Position = 2
+	expectedVmStopOrder.Positions[0] = pos2
+	expectedVmStopOrder.Positions[1] = pos1
+
+	// When
+	actualVmStopOrder, err := suite.tbClient.UpdateVmStopOrder(expectedVmStopOrder)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(expectedVmStopOrder, *actualVmStopOrder)
+}
+
+// Hw Start Order
+
+func (suite *ContractTestSuite) TestGetHwStartOrder() {
+
+	// When
+	actualHwStartOrder, err := suite.tbClient.GetHwStartOrder(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(hwStartOrder, *actualHwStartOrder)
+}
+
+func (suite *ContractTestSuite) TestUpdateHwStartOrder() {
+
+	// Given
+	expectedHwStartOrder := hwStartOrder
+	expectedHwStartOrder.Ordered = true
+
+	// When
+	actualHwStartOrder, err := suite.tbClient.UpdateHwStartOrder(expectedHwStartOrder)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(expectedHwStartOrder, *actualHwStartOrder)
 }
 
 // Inventory Tests

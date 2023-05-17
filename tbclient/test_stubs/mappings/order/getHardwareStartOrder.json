@@ -1,0 +1,22 @@
+{
+  "id" : "badae853-f64a-4c1b-b2c1-e40ec43f5b02",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/hardware-start-order",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"topology\":{\"uid\":\"lontopology\"},\"uid\":\"lontopologyv1sso\",\"ordered\":false,\"positions\":[{\"position\":1,\"delaySeconds\":0,\"hardwareItem\":{\"uid\":\"lonhardwareitem1\",\"name\":\"VCube PSTN Services\"},\"_links\":{\"hardwareItem\":{\"href\":\"http://localhost/hardware-items/lonhardwareitem1\"}}},{\"position\":2,\"delaySeconds\":30,\"hardwareItem\":{\"uid\":\"lonhardwareitem2\",\"name\":\"ISA3000-FTD\"},\"_links\":{\"hardwareItem\":{\"href\":\"http://localhost/hardware-items/lonhardwareitem2\"}}},{\"position\":3,\"delaySeconds\":60,\"hardwareItem\":{\"uid\":\"lonhardwareitem3\",\"name\":\"ISA3000-FTD No.2\"},\"_links\":{\"hardwareItem\":{\"href\":\"http://localhost/hardware-items/lonhardwareitem3\"}}}],\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/lontopology/hardware-start-order\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "badae853-f64a-4c1b-b2c1-e40ec43f5b02"
+}

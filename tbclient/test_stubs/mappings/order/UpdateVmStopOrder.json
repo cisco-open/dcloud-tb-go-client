@@ -1,0 +1,43 @@
+{
+  "id" : "38088948-f758-4944-876d-7fc968f4fa38",
+  "request" : {
+    "urlPath" : "/vm-stop-order/lontopologyv1sso",
+    "method" : "PUT",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      },
+      "If-Match" : {
+        "equalTo" : "FIX_ETAG_FOR_TESTS"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['uid'] == 'lontopologyv1sso')]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['ordered'] == true)]"
+    }, {
+      "matchesJsonPath" : "$.['positions'][*][?(@.['position'] == 1)]"
+    }, {
+      "matchesJsonPath" : "$.['positions'][*].['vm'][?(@.['uid'] == 'lonvm1')]"
+    }, {
+      "matchesJsonPath" : "$.['positions'][*][?(@.['position'] == 2)]"
+    }, {
+      "matchesJsonPath" : "$.['positions'][*].['vm'][?(@.['uid'] == 'lonvm2')]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"topology\":{\"uid\":\"lontopology\"},\"uid\":\"lontopologyv1sso\",\"ordered\":{{{jsonPath request.body '$.ordered'}}} ,\"positions\":[{\"position\":1,\"vm\":{\"uid\":\"lonvm1\",\"name\":\"Mail Server 1\"},\"_links\":{\"vm\":{\"href\":\"http://localhost/vms/lonvm1\"}}},{\"position\":2,\"vm\":{\"uid\":\"lonvm2\",\"name\":\"Collab DB\"},\"_links\":{\"vm\":{\"href\":\"http://localhost/vms/lonvm2\"}}}],\"_links\":{\"self\":{\"href\":\"http://localhost/vm-stop-order/lontopologyv1sso\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "38088948-f758-4944-876d-7fc968f4fa38"
+}
