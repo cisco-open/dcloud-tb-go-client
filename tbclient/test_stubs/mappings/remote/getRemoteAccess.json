@@ -1,0 +1,22 @@
+{
+  "id" : "91f13385-2ea9-4ab3-85aa-0609d9088c0f",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/remote-access",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"topology\":{\"uid\":\"lontopology\"},\"uid\":\"lontopologyv1rm\",\"anyconnectEnabled\":true,\"endpointKitEnabled\":true,\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/lontopology/remote-access\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "91f13385-2ea9-4ab3-85aa-0609d9088c0f"
+}
