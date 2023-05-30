@@ -1,0 +1,37 @@
+{
+  "id" : "a4a191fc-07fd-4372-9b20-1da74bc8873a",
+  "request" : {
+    "urlPath" : "/remote-access/lontopologyv1rm",
+    "method" : "PUT",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      },
+      "If-Match" : {
+        "equalTo" : "FIX_ETAG_FOR_TESTS"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['uid'] == 'lontopologyv1rm')]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['anyconnectEnabled'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['endpointKitEnabled'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"topology\":{\"uid\":\"lontopology\"},\"uid\":\"lontopologyv1rm\",\"anyconnectEnabled\":{{{jsonPath request.body '$.anyconnectEnabled'}}} ,\"endpointKitEnabled\":{{{jsonPath request.body '$.endpointKitEnabled'}}} ,\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "a4a191fc-07fd-4372-9b20-1da74bc8873a"
+}

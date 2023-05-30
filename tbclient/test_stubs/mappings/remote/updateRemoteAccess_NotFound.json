@@ -1,0 +1,36 @@
+{
+  "id" : "71bfe4c9-8fdc-4686-a1d1-995773e85316",
+  "request" : {
+    "urlPath" : "/remote-access/notfound",
+    "method" : "PUT",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      },
+      "If-Match" : {
+        "equalTo" : "FIX_ETAG_FOR_TESTS"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['uid'] == 'notfound')]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['anyconnectEnabled'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['endpointKitEnabled'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 404,
+    "body" : "[{\"logref\":\"GLXZKBMZPYCXYKPSQYRV\",\"message\":\"The requested Remote Access resource was not found\",\"links\":[]}]",
+    "headers" : {
+      "Content-Type" : "application/vnd.error+json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "71bfe4c9-8fdc-4686-a1d1-995773e85316"
+}

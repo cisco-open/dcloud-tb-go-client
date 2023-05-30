@@ -151,6 +151,47 @@ func singleResourceUrl(hostUrl, resourcePath, uid string) string {
 	return url
 }
 
+type singleNestedResourceService[R any] struct {
+	client       *Client
+	resourcePath string
+	topologyUid  string
+}
+
+func (s *singleNestedResourceService[R]) get() (*R, error) {
+
+	rest := s.client.createRestClient()
+	url := fmt.Sprintf("%s/topologies/%s%s", s.client.HostURL, s.topologyUid, s.resourcePath)
+
+	resp, err := executeGet(rest, s.client.Token, url, new(R))
+	if err != nil {
+		return nil, err
+	}
+
+	return resp.Result().(*R), nil
+}
+
+func (s *singleNestedResourceService[R]) update(uid string, resource R) (*R, error) {
+
+	rest := s.client.createRestClient()
+	getUrl := fmt.Sprintf("%s/topologies/%s%s", s.client.HostURL, s.topologyUid, s.resourcePath)
+
+	current, err := executeGet(rest, s.client.Token, getUrl, new(R))
+	if err != nil {
+		return nil, err
+	}
+
+	etag := current.Header().Get(etagHeader)
+
+	putUrl := fmt.Sprintf("%s%s/%s", s.client.HostURL, s.resourcePath, uid)
+
+	updated, err := executePut(rest, s.client.Token, putUrl, resource, new(R), etag)
+	if err != nil {
+		return nil, err
+	}
+
+	return updated.Result().(*R), nil
+}
+
 func (s *collectionService[R, RC]) createRestClient() *resty.Client {
 	rest := s.client.createRestClient()
 	rest.SetHeaders(s.requestHeaders)
