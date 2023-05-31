@@ -348,3 +348,12 @@ type HwStartOrder struct {
 	Positions []HwStartPosition `json:"positions"`
 	Topology  *Topology         `json:"topology"`
 }
+
+// Remote Access
+
+type RemoteAccess struct {
+	Uid                string    `json:"uid,omitempty"`
+	AnyconnectEnabled  bool      `json:"anyconnectEnabled"`
+	EndpointKitEnabled bool      `json:"endpointKitEnabled"`
+	Topology           *Topology `json:"topology"`
+}

@@ -372,6 +372,13 @@ var hwStartOrder = HwStartOrder{
 	Topology: &Topology{Uid: lonTopology.Uid},
 }
 
+var remoteAccess = RemoteAccess{
+	Uid:                "lontopologyv1rm",
+	AnyconnectEnabled:  true,
+	EndpointKitEnabled: true,
+	Topology:           &Topology{Uid: lonTopology.Uid},
+}
+
 func (suite *ContractTestSuite) SetupSuite() {
 	suite.docker = startWiremock(suite)
 	suite.tbClient = createTbClient(suite)
@@ -864,6 +871,32 @@ func (suite *ContractTestSuite) TestUpdateHwStartOrder() {
 
 	// Then
 	suite.Equal(expectedHwStartOrder, *actualHwStartOrder)
+}
+
+// Remote Access
+
+func (suite *ContractTestSuite) TestGetRemoteAccess() {
+
+	// When
+	actualRemoteAccess, err := suite.tbClient.GetRemoteAccess(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(remoteAccess, *actualRemoteAccess)
+}
+
+func (suite *ContractTestSuite) TestUpdateRemoteAccess() {
+
+	// Given
+	expectedRemoteAccess := remoteAccess
+	expectedRemoteAccess.EndpointKitEnabled = false
+
+	// When
+	actualRemoteAccess, err := suite.tbClient.UpdateRemoteAccess(expectedRemoteAccess)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(expectedRemoteAccess, *actualRemoteAccess)
 }
 
 // Inventory Tests
