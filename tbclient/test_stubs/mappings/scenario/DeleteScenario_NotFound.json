@@ -1,0 +1,16 @@
+{
+  "id" : "d9287a5d-0cca-4d7f-893f-ae8ccb675fa8",
+  "request" : {
+    "urlPath" : "/topologies/noreader/scenario",
+    "method" : "DELETE"
+  },
+  "response" : {
+    "status" : 404,
+    "body" : "[{\"logref\":\"HYVQOPYCWKTCVDFKPADG\",\"message\":\"The requested Scenario resource was not found\",\"links\":[]}]",
+    "headers" : {
+      "Content-Type" : "application/vnd.error+json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "d9287a5d-0cca-4d7f-893f-ae8ccb675fa8"
+}

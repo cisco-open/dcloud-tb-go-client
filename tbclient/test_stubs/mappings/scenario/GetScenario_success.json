@@ -1,0 +1,17 @@
+{
+  "id" : "89d687c3-4edc-4285-a317-2195eaed41e0",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/scenario",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"lonscenario\",\"question\":\"Which version of the demo do you want to launch?\",\"scenarioOptions\":[{\"uid\":\"scenariooption1\",\"internalName\":\"Version_A\",\"displayName\":\"Version A\"},{\"uid\":\"scenariooption2\",\"internalName\":\"Version_B\",\"displayName\":\"Version B\"}],\"enabled\":true,\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/lontopology/scenario\"},\"delete\":{\"href\":\"http://localhost/topologies/lontopology/scenario\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "89d687c3-4edc-4285-a317-2195eaed41e0"
+}
