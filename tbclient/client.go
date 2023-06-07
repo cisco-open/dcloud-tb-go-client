@@ -156,9 +156,10 @@ func singleResourceUrl(hostUrl, resourcePath, uid string) string {
 }
 
 type singleNestedResourceService[R any] struct {
-	client       *Client
-	resourcePath string
-	topologyUid  string
+	client         *Client
+	resourcePath   string
+	topologyUid    string
+	putUsingGetUrl bool
 }
 
 func (s *singleNestedResourceService[R]) get() (*R, error) {
@@ -186,7 +187,12 @@ func (s *singleNestedResourceService[R]) update(uid string, resource R) (*R, err
 
 	etag := current.Header().Get(etagHeader)
 
-	putUrl := fmt.Sprintf("%s%s/%s", s.client.HostURL, s.resourcePath, uid)
+	var putUrl string
+	if s.putUsingGetUrl {
+		putUrl = getUrl
+	} else {
+		putUrl = fmt.Sprintf("%s%s/%s", s.client.HostURL, s.resourcePath, uid)
+	}
 
 	updated, err := executePut(rest, s.client.Token, putUrl, resource, new(R), etag)
 	if err != nil {

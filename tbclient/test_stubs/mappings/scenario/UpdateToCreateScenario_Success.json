@@ -1,0 +1,34 @@
+{
+  "id" : "66bf8264-e405-485a-bb38-85dfdf68d57e",
+  "request" : {
+    "urlPath" : "/topologies/rtptopology/scenario",
+    "method" : "PUT",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "If-Match" : {
+        "equalTo" : "0"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['question'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['scenarioOptions'][*][?(@.['internalName'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['scenarioOptions'][*][?(@.['displayName'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['enabled'] =~ /(true|false)/)]"
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"question\":\"{{{jsonPath request.body '$.question'}}}\",\"scenarioOptions\":[{\"uid\":\"newrtpscenario1\",\"internalName\":\"{{{jsonPath request.body '$.scenarioOptions[0].internalName'}}}\",\"displayName\":\"{{{jsonPath request.body '$.scenarioOptions[0].displayName'}}}\"},{\"uid\":\"newrtpscenario2\",\"internalName\":\"{{{jsonPath request.body '$.scenarioOptions[1].internalName'}}}\",\"displayName\":\"{{{jsonPath request.body '$.scenarioOptions[1].displayName'}}}\"}],\"enabled\":{{{jsonPath request.body '$.enabled'}}} ,\"topology\":{\"uid\":\"rtptopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/rtptopology/scenario\"},\"delete\":{\"href\":\"http://localhost/topologies/rtptopology/scenario\"},\"topology\":{\"href\":\"http://localhost/topologies/rtptopology\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "66bf8264-e405-485a-bb38-85dfdf68d57e"
+}

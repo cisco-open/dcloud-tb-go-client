@@ -361,3 +361,18 @@ type RemoteAccess struct {
 	EndpointKitEnabled bool      `json:"endpointKitEnabled"`
 	Topology           *Topology `json:"topology"`
 }
+
+// Scenario
+type ScenarioOption struct {
+	Uid          string `json:"uid,omitempty"`
+	InternalName string `json:"internalName,omitempty"`
+	DisplayName  string `json:"displayName,omitempty"`
+}
+
+type Scenario struct {
+	Uid      string           `json:"uid,omitempty"`
+	Question string           `json:"question,omitempty"`
+	Enabled  bool             `json:"enabled"`
+	Options  []ScenarioOption `json:"scenarioOptions"`
+	Topology *Topology        `json:"topology"`
+}

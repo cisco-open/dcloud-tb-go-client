@@ -383,6 +383,26 @@ var remoteAccess = RemoteAccess{
 	Topology:           &Topology{Uid: lonTopology.Uid},
 }
 
+var scenarioOption1 = ScenarioOption{
+	Uid:          "scenariooption1",
+	InternalName: "Version_A",
+	DisplayName:  "Version A",
+}
+
+var scenarioOption2 = ScenarioOption{
+	Uid:          "scenariooption2",
+	InternalName: "Version_B",
+	DisplayName:  "Version B",
+}
+
+var scenario = Scenario{
+	Uid:      "lonscenario",
+	Question: "Which version of the demo do you want to launch?",
+	Enabled:  true,
+	Options:  []ScenarioOption{scenarioOption1, scenarioOption2},
+	Topology: &Topology{Uid: lonTopology.Uid},
+}
+
 func (suite *ContractTestSuite) SetupSuite() {
 	suite.docker = startWiremock(suite)
 	suite.tbClient = createTbClient(suite)
@@ -901,6 +921,33 @@ func (suite *ContractTestSuite) TestUpdateRemoteAccess() {
 
 	// Then
 	suite.Equal(expectedRemoteAccess, *actualRemoteAccess)
+}
+
+// Scenario
+
+func (suite *ContractTestSuite) TestGetScenario() {
+
+	// When
+	actualScenario, err := suite.tbClient.GetScenario(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(scenario, *actualScenario)
+}
+
+func (suite *ContractTestSuite) TestUpdateScenario() {
+
+	// Given
+	expectedScenario := scenario
+	expectedScenario.Question = "What would you like today?"
+
+	// When
+	actualScenario, err := suite.tbClient.UpdateScenario(expectedScenario)
+	suite.handleError(err)
+
+	// Then
+	expectedScenario.Uid = "" // Missing in contract stub
+	suite.Equal(expectedScenario, *actualScenario)
 }
 
 // Inventory Tests

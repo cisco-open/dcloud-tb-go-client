@@ -1,0 +1,38 @@
+{
+  "id" : "8bbc8c61-482e-4a09-9cda-e66af468a711",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/scenario",
+    "method" : "PUT",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "If-Match" : {
+        "equalTo" : "FIX_ETAG_FOR_TESTS"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['question'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['scenarioOptions'][*][?(@.['uid'] == 'scenariooption1')]"
+    }, {
+      "matchesJsonPath" : "$.['scenarioOptions'][*][?(@.['internalName'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['scenarioOptions'][*][?(@.['displayName'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['scenarioOptions'][*][?(@.['uid'] == 'scenariooption2')]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['enabled'] =~ /(true|false)/)]"
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"question\":\"{{{jsonPath request.body '$.question'}}}\",\"scenarioOptions\":[{\"uid\":\"scenariooption1\",\"internalName\":\"{{{jsonPath request.body '$.scenarioOptions[0].internalName'}}}\",\"displayName\":\"{{{jsonPath request.body '$.scenarioOptions[0].displayName'}}}\"},{\"uid\":\"scenariooption2\",\"internalName\":\"{{{jsonPath request.body '$.scenarioOptions[1].internalName'}}}\",\"displayName\":\"{{{jsonPath request.body '$.scenarioOptions[1].displayName'}}}\"}],\"enabled\":{{{jsonPath request.body '$.enabled'}}} ,\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/lontopology/scenario\"},\"delete\":{\"href\":\"http://localhost/topologies/lontopology/scenario\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "8bbc8c61-482e-4a09-9cda-e66af468a711"
+}
