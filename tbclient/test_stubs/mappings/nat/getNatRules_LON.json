@@ -1,0 +1,21 @@
+{
+  "id" : "81a7489d-225c-4970-a572-258ca1eaad95",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/nat-rules",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"natRules\":[{\"uid\":\"lonvmnatrule1\",\"eastWest\":false,\"inUse\":true,\"target\":{\"type\":\"VM_NIC\",\"targetItem\":{\"uid\":\"lonvm1natnic\"},\"name\":\"Mail Server 1\",\"ipAddress\":\"198.18.131.201\"},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/nat-rules/lonvmnatrule1\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"delete\":{\"href\":\"http://localhost/nat-rules/lonvmnatrule1\"}}},{\"uid\":\"lonipnatrule1\",\"eastWest\":false,\"inUse\":true,\"target\":{\"type\":\"IP\",\"name\":\"Some Device\",\"ipAddress\":\"198.18.131.100\"},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/nat-rules/lonvmnatrule1\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"delete\":{\"href\":\"http://localhost/nat-rules/lonvmnatrule1\"}}}]},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/lontopology/nat-rules\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "81a7489d-225c-4970-a572-258ca1eaad95"
+}

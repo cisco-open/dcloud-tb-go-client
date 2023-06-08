@@ -363,6 +363,7 @@ type RemoteAccess struct {
 }
 
 // Scenario
+
 type ScenarioOption struct {
 	Uid          string `json:"uid,omitempty"`
 	InternalName string `json:"internalName,omitempty"`
@@ -375,4 +376,18 @@ type Scenario struct {
 	Enabled  bool             `json:"enabled"`
 	Options  []ScenarioOption `json:"scenarioOptions"`
 	Topology *Topology        `json:"topology"`
+}
+
+// IP NAT Rule
+
+type IpNatTarget struct {
+	IpAddress string `json:"ipAddress"`
+	Name      string `json:"name"`
+}
+
+type IpNatRule struct {
+	Uid      string      `json:"uid,omitempty"`
+	EastWest bool        `json:"eastWest"`
+	Target   IpNatTarget `json:"target"`
+	Topology *Topology   `json:"topology"`
 }

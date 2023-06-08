@@ -403,6 +403,16 @@ var scenario = Scenario{
 	Topology: &Topology{Uid: lonTopology.Uid},
 }
 
+var ipNatRule = IpNatRule{
+	Uid:      "lonipnatrule1",
+	EastWest: false,
+	Target: IpNatTarget{
+		IpAddress: "198.18.131.100",
+		Name:      "Some Device",
+	},
+	Topology: &Topology{Uid: lonTopology.Uid},
+}
+
 func (suite *ContractTestSuite) SetupSuite() {
 	suite.docker = startWiremock(suite)
 	suite.tbClient = createTbClient(suite)
@@ -949,6 +959,37 @@ func (suite *ContractTestSuite) TestUpdateScenario() {
 	expectedScenario.Uid = "" // Missing in contract stub
 	suite.Equal(expectedScenario, *actualScenario)
 }
+
+// IP Nat Rule
+
+func (suite *ContractTestSuite) TestGetAllIpNatRules() {
+
+	// When
+	ipNatRules, err := suite.tbClient.GetAllIpNatRules(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(1, len(ipNatRules))
+	suite.Contains(ipNatRules, ipNatRule)
+}
+
+// TODO - "Get One" Tests when Contracts are updated
+
+func (suite *ContractTestSuite) TestCreateIpNatRule() {
+
+	// Given
+	expectedIpNatRule := ipNatRule
+
+	// When
+	actualIpNatRule, err := suite.tbClient.CreateIpNatRule(expectedIpNatRule)
+	suite.handleError(err)
+
+	// Then
+	expectedIpNatRule.Uid = "newipnat"
+	suite.Equal(expectedIpNatRule, *actualIpNatRule)
+}
+
+// ToDo "Delete" Tests when Contracts are updated
 
 // Inventory Tests
 

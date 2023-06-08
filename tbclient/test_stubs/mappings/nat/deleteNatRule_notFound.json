@@ -1,0 +1,17 @@
+{
+  "id" : "851feb8f-7623-4853-ad24-dca53658da43",
+  "request" : {
+    "urlPath" : "/nat-rules/notfound",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 404,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "851feb8f-7623-4853-ad24-dca53658da43"
+}

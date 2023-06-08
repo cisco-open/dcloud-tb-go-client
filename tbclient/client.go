@@ -54,10 +54,9 @@ func (s *collectionService[R, RC]) getAll() ([]R, error) {
 
 	topologyPath := getTopologyPath(s.topologyUid)
 
-	rest := s.createRestClient()
 	url := fmt.Sprintf("%s%s%s", s.client.HostURL, topologyPath, s.resourcePath)
 
-	resp, err := executeGet(rest, s.client.Token, url, collection[RC]{})
+	resp, err := executeGet(s.createRestClient(), s.client.Token, url, collection[RC]{})
 	if err != nil {
 		return nil, err
 	}
@@ -67,10 +66,9 @@ func (s *collectionService[R, RC]) getAll() ([]R, error) {
 
 func (s *resourceService[R, RC]) getOne(uid string) (*R, error) {
 
-	rest := s.createRestClient()
 	url := singleResourceUrl(s.client.HostURL, s.resourcePath, uid)
 
-	resp, err := executeGet(rest, s.client.Token, url, new(R))
+	resp, err := executeGet(s.createRestClient(), s.client.Token, url, new(R))
 	if err != nil {
 		return nil, err
 	}
@@ -80,17 +78,9 @@ func (s *resourceService[R, RC]) getOne(uid string) (*R, error) {
 
 func (s *resourceService[R, RC]) create(resource R) (*R, error) {
 
-	rest := s.createRestClient()
-	rest.SetHeader("Content-Type", "application/json")
-
 	url := fmt.Sprintf("%s%s", s.client.HostURL, s.resourcePath)
 
-	resp, err := rest.R().
-		SetBody(resource).
-		SetResult(new(R)).
-		SetError([]vndError{}).
-		SetAuthToken(s.client.Token).
-		Post(url)
+	resp, err := executePost(s.createRestClient(), s.client.Token, url, resource, new(R))
 
 	if err != nil {
 		return nil, err
@@ -106,7 +96,6 @@ func (s *resourceService[R, RC]) create(resource R) (*R, error) {
 func (s *resourceService[R, RC]) update(uid string, resource R) (*R, error) {
 
 	rest := s.createRestClient()
-	rest.SetHeader("Content-Type", "application/json")
 
 	url := singleResourceUrl(s.client.HostURL, s.resourcePath, uid)
 
@@ -129,21 +118,11 @@ func (s *resourceService[R, RC]) update(uid string, resource R) (*R, error) {
 
 func (s *resourceService[R, RC]) delete(uid string) error {
 
-	rest := s.createRestClient()
-
 	url := singleResourceUrl(s.client.HostURL, s.resourcePath, uid)
 
-	resp, err := rest.R().
-		SetError([]vndError{}).
-		SetAuthToken(s.client.Token).
-		Delete(url)
-
+	err := executeDelete(s.createRestClient(), s.client.Token, url)
 	if err != nil {
 		return err
-	}
-
-	if resp.IsError() && resp.StatusCode() != 404 {
-		return generateError(*resp)
 	}
 
 	return nil
@@ -164,10 +143,9 @@ type singleNestedResourceService[R any] struct {
 
 func (s *singleNestedResourceService[R]) get() (*R, error) {
 
-	rest := s.client.createRestClient()
 	url := fmt.Sprintf("%s/topologies/%s%s", s.client.HostURL, s.topologyUid, s.resourcePath)
 
-	resp, err := executeGet(rest, s.client.Token, url, new(R))
+	resp, err := executeGet(s.client.createRestClient(), s.client.Token, url, new(R))
 	if err != nil {
 		return nil, err
 	}
@@ -180,7 +158,7 @@ func (s *singleNestedResourceService[R]) update(uid string, resource R) (*R, err
 	rest := s.client.createRestClient()
 	getUrl := fmt.Sprintf("%s/topologies/%s%s", s.client.HostURL, s.topologyUid, s.resourcePath)
 
-	current, err := executeGet(rest, s.client.Token, getUrl, new(R))
+	current, err := executeGet(s.client.createRestClient(), s.client.Token, getUrl, new(R))
 	if err != nil {
 		return nil, err
 	}
@@ -229,7 +207,6 @@ func getTopologyPath(topologyUid string) string {
 }
 
 func executeGet(rest *resty.Client, authToken string, url string, result interface{}) (*resty.Response, error) {
-
 	resp, err := rest.R().
 		SetResult(result).
 		SetError([]vndError{}).
@@ -263,6 +240,41 @@ func executePut(rest *resty.Client, authToken string, url string, body interface
 		return nil, generateError(*resp)
 	}
 	return resp, nil
+}
+
+func executePost(rest *resty.Client, authToken string, url string, body interface{}, result interface{}) (*resty.Response, error) {
+	resp, err := rest.R().
+		SetBody(body).
+		SetResult(result).
+		SetError([]vndError{}).
+		SetAuthToken(authToken).
+		Post(url)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.IsError() {
+		return nil, generateError(*resp)
+	}
+	return resp, nil
+}
+
+func executeDelete(rest *resty.Client, authToken string, url string) error {
+	resp, err := rest.R().
+		SetError([]vndError{}).
+		SetAuthToken(authToken).
+		Delete(url)
+
+	if err != nil {
+		return err
+	}
+
+	if resp.IsError() && resp.StatusCode() != 404 {
+		return generateError(*resp)
+	}
+
+	return nil
 }
 
 var emptyHeaders = map[string]string{}
