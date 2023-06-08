@@ -17,7 +17,7 @@ Please note that all interactions within the project are subject to our [Code of
 
 ## Reporting Issues
 
-Before reporting a new issue, please search our [issues list](https://github.com/cisco-open/kapua-tb-go-client/issues) to ensure that it hasn't already been reported or fixed.
+Before reporting a new issue, please search our [issues list](https://github.com/cisco-open/dcloud-tb-go-client/issues) to ensure that it hasn't already been reported or fixed.
 
 When creating a new issue, include a clear title, a detailed description, relevant information, and if possible, a test case.
 
@@ -29,8 +29,8 @@ When creating a new issue, include a clear title, a detailed description, releva
 
 To set up your development environment for the dCloud Topology Builder Go Client, follow the instructions below:
 
-1. Clone the repository: `git clone https://github.com/cisco-open/kapua-tb-go-client.git`
-2. Navigate to the project directory: `kapua-tb-go-client`
+1. Clone the repository: `git clone https://github.com/cisco-open/dcloud-tb-go-client.git`
+2. Navigate to the project directory: `dcloud-tb-go-client`
 3. Install the necessary dependencies: https://go.dev/doc/install
 
 ### Building the dCloud Topology Builder Go Client

@@ -1,4 +1,4 @@
-module github.com/cisco-open/kapua-tb-go-client
+module github.com/cisco-open/dcloud-tb-go-client
 
 go 1.19
 
