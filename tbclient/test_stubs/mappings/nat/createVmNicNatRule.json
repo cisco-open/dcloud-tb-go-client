@@ -1,0 +1,32 @@
+{
+  "id" : "00e88462-a312-4565-bb6f-45eb0c0fe16f",
+  "request" : {
+    "urlPath" : "/vm-nic-nat-rules",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['eastWest'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['target'].['targetItem'][?(@.['uid'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "body" : "{\"uid\":\"newvmnat\",\"eastWest\":{{{jsonPath request.body '$.eastWest'}}} ,\"inUse\":false,\"target\":{\"type\":\"VM_NIC\",\"targetItem\":{\"uid\":\"{{{jsonPath request.body '$.target.targetItem.uid'}}}\"},\"name\":\"Collab DB\",\"ipAddress\":\"198.18.133.111\"},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost/nat-rules/newvmnat\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"delete\":{\"href\":\"http://localhost/nat-rules/newvmnat\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "00e88462-a312-4565-bb6f-45eb0c0fe16f"
+}

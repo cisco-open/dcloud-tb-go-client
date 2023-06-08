@@ -1,0 +1,34 @@
+{
+  "id" : "e228afed-8313-46a4-9c4e-dd21c14a9e2c",
+  "request" : {
+    "urlPath" : "/ip-nat-rules",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['eastWest'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['target'][?(@.['name'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['target'][?(@.['ipAddress'] =~ /([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])/)]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "body" : "{\"uid\":\"newipnat\",\"eastWest\":{{{jsonPath request.body '$.eastWest'}}} ,\"inUse\":false,\"target\":{\"type\":\"IP\",\"name\":\"{{{jsonPath request.body '$.target.name'}}}\",\"ipAddress\":\"{{{jsonPath request.body '$.target.ipAddress'}}}\"},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost/nat-rules/newipnat\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"delete\":{\"href\":\"http://localhost/nat-rules/newipnat\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "e228afed-8313-46a4-9c4e-dd21c14a9e2c"
+}

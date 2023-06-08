@@ -1,0 +1,33 @@
+{
+  "id" : "71c6e6f6-a34c-4520-842a-9cd88fadafa1",
+  "request" : {
+    "urlPath" : "/ip-nat-rules",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['eastWest'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['target'][?(@.['name'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['target'][?(@.['ipAddress'] =~ /([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])/)]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'notfound')]"
+    } ]
+  },
+  "response" : {
+    "status" : 400,
+    "body" : "[{\"logref\":\"GXBRNPSSDAKQVFNGEMIU\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
+    "headers" : {
+      "Content-Type" : "application/vnd.error+json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "71c6e6f6-a34c-4520-842a-9cd88fadafa1"
+}
