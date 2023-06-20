@@ -413,6 +413,17 @@ var ipNatRule = IpNatRule{
 	Topology: &Topology{Uid: lonTopology.Uid},
 }
 
+var vmNatRule = VmNatRule{
+	Uid:      "lonvmnatrule1",
+	EastWest: false,
+	Target: VmNatTarget{
+		VmNic:     &VmNic{Uid: "lonvm1natnic"},
+		IpAddress: "198.18.131.201",
+		Name:      "Mail Server 1",
+	},
+	Topology: &Topology{Uid: lonTopology.Uid},
+}
+
 func (suite *ContractTestSuite) SetupSuite() {
 	suite.docker = startWiremock(suite)
 	suite.tbClient = createTbClient(suite)
@@ -990,6 +1001,40 @@ func (suite *ContractTestSuite) TestCreateIpNatRule() {
 }
 
 // ToDo "Delete" Tests when Contracts are updated
+
+// VM Nat Rule
+
+func (suite *ContractTestSuite) TestGetAllVmNatRules() {
+
+	// When
+	vmNatRules, err := suite.tbClient.GetAllVmNatRules(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(1, len(vmNatRules))
+	suite.Contains(vmNatRules, vmNatRule)
+}
+
+// TODO - "Get One" Tests when Contracts are updated
+
+func (suite *ContractTestSuite) TestCreateVmNatRule() {
+
+	// Given
+	expectedVmNatRule := vmNatRule
+
+	// When
+	actualVmNatRule, err := suite.tbClient.CreateVmNatRule(expectedVmNatRule)
+	suite.handleError(err)
+
+	// Then
+	// Use Contract Values
+	expectedVmNatRule.Uid = "newvmnat"
+	expectedVmNatRule.Target.Name = "Collab DB"
+	expectedVmNatRule.Target.IpAddress = "198.18.133.111"
+	suite.Equal(expectedVmNatRule, *actualVmNatRule)
+}
+
+// ToDo "Delete" Tests when Contracts are updated to include "Get One"
 
 // Inventory Tests
 
