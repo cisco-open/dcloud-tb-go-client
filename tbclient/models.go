@@ -391,3 +391,18 @@ type IpNatRule struct {
 	Target   IpNatTarget `json:"target"`
 	Topology *Topology   `json:"topology"`
 }
+
+// VM NAT Rule
+
+type VmNatTarget struct {
+	IpAddress string `json:"ipAddress,omitempty"`
+	Name      string `json:"name,omitempty"`
+	VmNic     *VmNic `json:"targetItem"`
+}
+
+type VmNatRule struct {
+	Uid      string      `json:"uid,omitempty"`
+	EastWest bool        `json:"eastWest"`
+	Target   VmNatTarget `json:"target"`
+	Topology *Topology   `json:"topology"`
+}
