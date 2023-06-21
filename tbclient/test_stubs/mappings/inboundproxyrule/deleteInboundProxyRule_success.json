@@ -1,0 +1,17 @@
+{
+  "id" : "941bd2a9-c835-4cb5-ae7d-c1808b49730f",
+  "request" : {
+    "urlPath" : "/inbound-proxy-rules/loninboundproxy1",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 204,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "941bd2a9-c835-4cb5-ae7d-c1808b49730f"
+}

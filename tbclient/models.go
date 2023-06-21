@@ -406,3 +406,34 @@ type VmNatRule struct {
 	Target   VmNatTarget `json:"target"`
 	Topology *Topology   `json:"topology"`
 }
+
+// Inbound Proxy Rule
+
+type InboundProxyVmNicTarget struct {
+	Uid       string `json:"uid,omitempty"`
+	IpAddress string `json:"ipAddress"`
+	Vm        *Vm    `json:"vm"`
+}
+
+type InboundProxyHyperlink struct {
+	Show bool   `json:"show"`
+	Text string `json:"text"`
+}
+
+type InboundProxyRule struct {
+	Uid         string                   `json:"uid,omitempty"`
+	TcpPort     int                      `json:"tcpPort"`
+	Ssl         bool                     `json:"ssl"`
+	UrlPath     string                   `json:"urlPath"`
+	VmNicTarget *InboundProxyVmNicTarget `json:"vmNicTarget"`
+	Hyperlink   *InboundProxyHyperlink   `json:"hyperlink"`
+	Topology    *Topology                `json:"topology"`
+}
+
+type inboundProxyRulesCollection struct {
+	Data []InboundProxyRule `json:"inboundProxyRules"`
+}
+
+func (r inboundProxyRulesCollection) getData() []InboundProxyRule {
+	return r.Data
+}
