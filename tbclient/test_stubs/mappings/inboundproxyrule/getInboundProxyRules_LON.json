@@ -1,0 +1,21 @@
+{
+  "id" : "d18133d9-eb9e-4817-bbba-2cf9ac074284",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/inbound-proxy-rules",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"inboundProxyRules\":[{\"uid\":\"loninboundproxy1\",\"vmNicTarget\":{\"uid\":\"lonvm2pxnic\",\"ipAddress\":\"198.18.133.110\",\"vm\":{\"uid\":\"lonvm2\",\"name\":\"Collab DB\"},\"_links\":{\"vm\":{\"href\":\"http://localhost/vms/lonvm2\"}}},\"tcpPort\":433,\"ssl\":true,\"urlPath\":\"/demo/demo101\",\"hyperlink\":{\"show\":true,\"text\":\"Click me...\"},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/inbound-proxy-rules/loninboundproxy1\"},\"delete\":{\"href\":\"http://localhost/inbound-proxy-rules/loninboundproxy1\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"}}},{\"uid\":\"loninboundproxy2\",\"vmNicTarget\":{\"uid\":\"lonvm2nic1\",\"ipAddress\":\"198.18.133.111\",\"vm\":{\"uid\":\"lonvm2\",\"name\":\"Collab DB\"},\"_links\":{\"vm\":{\"href\":\"http://localhost/vms/lonvm2\"}}},\"tcpPort\":444,\"ssl\":false,\"urlPath\":\"/demo/demo102\",\"hyperlink\":{\"show\":false,\"text\":\"Click more...\"},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/inbound-proxy-rules/loninboundproxy2\"},\"delete\":{\"href\":\"http://localhost/inbound-proxy-rules/loninboundproxy2\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"}}}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "d18133d9-eb9e-4817-bbba-2cf9ac074284"
+}

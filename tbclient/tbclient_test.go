@@ -424,6 +424,26 @@ var vmNatRule = VmNatRule{
 	Topology: &Topology{Uid: lonTopology.Uid},
 }
 
+var inboundProxyRule = InboundProxyRule{
+	Uid:     "loninboundproxy1",
+	TcpPort: 433,
+	Ssl:     true,
+	UrlPath: "/demo/demo101",
+	VmNicTarget: &InboundProxyVmNicTarget{
+		Uid:       "lonvm2pxnic",
+		IpAddress: "198.18.133.110",
+		Vm: &Vm{
+			Uid:  "lonvm2",
+			Name: "Collab DB",
+		},
+	},
+	Hyperlink: &InboundProxyHyperlink{
+		Show: true,
+		Text: "Click me...",
+	},
+	Topology: &Topology{Uid: lonTopology.Uid},
+}
+
 func (suite *ContractTestSuite) SetupSuite() {
 	suite.docker = startWiremock(suite)
 	suite.tbClient = createTbClient(suite)
@@ -1035,6 +1055,51 @@ func (suite *ContractTestSuite) TestCreateVmNatRule() {
 }
 
 // ToDo "Delete" Tests when Contracts are updated to include "Get One"
+
+// Inbound Proxy Rule Tests
+
+func (suite *ContractTestSuite) TestGetAllInboundProxyRules() {
+
+	// When
+	inboundProxyRules, err := suite.tbClient.GetAllInboundProxyRules(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(2, len(inboundProxyRules))
+	suite.Contains(inboundProxyRules, inboundProxyRule)
+}
+
+func (suite *ContractTestSuite) TestCreateInboundProxyRule() {
+	// Given
+	expectedInboundProxyRule := inboundProxyRule
+
+	// When
+	actualInboundProxyRule, err := suite.tbClient.CreateInboundProxyRule(expectedInboundProxyRule)
+	suite.handleError(err)
+
+	// Then
+	// Match Contract Wiremock Stubs
+	expectedInboundProxyRule.Uid = "newloninboundproxy"
+	expectedInboundProxyRule.VmNicTarget = &InboundProxyVmNicTarget{
+		Uid:       inboundProxyRule.VmNicTarget.Uid,
+		IpAddress: "192.168.0.2",
+		Vm: &Vm{
+			Uid:  "ZKRqFhxWT2M6QvAHnXDS",
+			Name: "KQJXAGVGLIVKONVBPNSE",
+		},
+	}
+	suite.Equal(expectedInboundProxyRule, *actualInboundProxyRule)
+}
+
+func (suite *ContractTestSuite) TestDeleteInboundProxyRule() {
+
+	// When
+	err := suite.tbClient.DeleteInboundProxyRule(inboundProxyRule.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Nil(err)
+}
 
 // Inventory Tests
 

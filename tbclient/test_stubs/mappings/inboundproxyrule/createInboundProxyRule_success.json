@@ -1,0 +1,40 @@
+{
+  "id" : "6778f778-9130-429e-9bc4-e8a093b52156",
+  "request" : {
+    "urlPath" : "/inbound-proxy-rules",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$.['vmNicTarget'][?(@.['uid'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['tcpPort'] =~ /^([0-9]|[1-5]?[0-9]{2,4}|6[1-4][0-9]{3}|65[1-4][0-9]{2}|655[1-2][0-9]|6553[1-5])$/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['ssl'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['urlPath'] =~ /[\\S\\s]+/)]"
+    }, {
+      "matchesJsonPath" : "$.['hyperlink'][?(@.['show'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['hyperlink'][?(@.['text'] =~ /[\\S\\s]+/)]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "body" : "{\"uid\":\"newloninboundproxy\",\"vmNicTarget\":{\"uid\":\"{{{jsonPath request.body '$.vmNicTarget.uid'}}}\",\"ipAddress\":\"192.168.0.2\",\"vm\":{\"uid\":\"ZKRqFhxWT2M6QvAHnXDS\",\"name\":\"KQJXAGVGLIVKONVBPNSE\"},\"_links\":{\"vm\":{\"href\":\"http://localhost/vms/lonvm2\"}}},\"tcpPort\":{{{jsonPath request.body '$.tcpPort'}}} ,\"ssl\":{{{jsonPath request.body '$.ssl'}}} ,\"urlPath\":\"{{{jsonPath request.body '$.urlPath'}}}\",\"hyperlink\":{\"show\":{{{jsonPath request.body '$.hyperlink.show'}}} ,\"text\":\"{{{jsonPath request.body '$.hyperlink.text'}}}\"},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}/newloninboundproxy\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}/newloninboundproxy\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "6778f778-9130-429e-9bc4-e8a093b52156"
+}

@@ -1,0 +1,17 @@
+{
+  "id" : "8f48fe43-c171-49b9-8579-7de2417277e4",
+  "request" : {
+    "urlPath" : "/inbound-proxy-rules/notfound",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 404,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "8f48fe43-c171-49b9-8579-7de2417277e4"
+}
