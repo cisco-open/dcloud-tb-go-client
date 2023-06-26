@@ -430,10 +430,38 @@ type InboundProxyRule struct {
 	Topology    *Topology                `json:"topology"`
 }
 
-type inboundProxyRulesCollection struct {
+type inboundProxyRuleCollection struct {
 	Data []InboundProxyRule `json:"inboundProxyRules"`
 }
 
-func (r inboundProxyRulesCollection) getData() []InboundProxyRule {
+func (r inboundProxyRuleCollection) getData() []InboundProxyRule {
+	return r.Data
+}
+
+// DNS Asset
+
+type InventoryDnsAsset struct {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type inventoryDnsAssetCollection struct {
+	Data []InventoryDnsAsset `json:"inventoryDnsAssets"`
+}
+
+func (r inventoryDnsAssetCollection) getData() []InventoryDnsAsset {
+	return r.Data
+}
+
+type InventorySrvProtocol struct {
+	Id       string `json:"id"`
+	Protocol string `json:"protocol"`
+}
+
+type inventorySrvProtocolCollection struct {
+	Data []InventorySrvProtocol `json:"srvProtocols"`
+}
+
+func (r inventorySrvProtocolCollection) getData() []InventorySrvProtocol {
 	return r.Data
 }

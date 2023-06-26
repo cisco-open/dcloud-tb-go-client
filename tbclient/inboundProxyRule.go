@@ -8,9 +8,9 @@
 
 package tbclient
 
-func (c *Client) getInboundProxyRuleService(topologyUid string) *resourceService[InboundProxyRule, inboundProxyRulesCollection] {
-	return &resourceService[InboundProxyRule, inboundProxyRulesCollection]{
-		collectionService[InboundProxyRule, inboundProxyRulesCollection]{
+func (c *Client) getInboundProxyRuleService(topologyUid string) *resourceService[InboundProxyRule, inboundProxyRuleCollection] {
+	return &resourceService[InboundProxyRule, inboundProxyRuleCollection]{
+		collectionService[InboundProxyRule, inboundProxyRuleCollection]{
 			client:       c,
 			resourcePath: "/inbound-proxy-rules",
 			topologyUid:  topologyUid,

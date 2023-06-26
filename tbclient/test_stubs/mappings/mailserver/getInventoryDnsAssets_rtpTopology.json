@@ -1,0 +1,21 @@
+{
+  "id" : "e052f2e9-cb53-41fa-8a28-0ebf3d8df9c7",
+  "request" : {
+    "urlPath" : "/topologies/rtptopology/inventory-dns-assets",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"inventoryDnsAssets\":[{\"id\":\"3\",\"name\":\"Collab Edge v2\"},{\"id\":\"4\",\"name\":\"CollabEdge_Swiss\"}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "e052f2e9-cb53-41fa-8a28-0ebf3d8df9c7"
+}

@@ -1,0 +1,21 @@
+{
+  "id" : "3ba53802-40b7-441f-a087-826391ca3bec",
+  "request" : {
+    "urlPath" : "/external-dns-records/lonextdnsrec1",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"lonextdnsrec1\",\"hostname\":\"lonhost\",\"aRecord\":\"lonhost.<subdomain>.dc-03.com\",\"natRule\":{\"uid\":\"lonvmnatrule1\",\"target\":{\"name\":\"Mail Server 1\",\"ipAddress\":\"198.18.131.201\"}},\"inventoryDnsAsset\":{\"id\":\"3\",\"name\":\"Collab Edge v2\"},\"srvRecords\":[{\"service\":\"_sip\",\"protocol\":\"TCP\",\"port\":5060}],\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/external-dns-records/lonextdnsrec1\"},\"delete\":{\"href\":\"http://localhost/external-dns-records/lonextdnsrec1\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"natRule\":{\"href\":\"http://localhost/nat-rules/lonvmnatrule1\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "3ba53802-40b7-441f-a087-826391ca3bec"
+}

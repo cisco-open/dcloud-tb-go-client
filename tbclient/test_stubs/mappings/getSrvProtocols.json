@@ -1,0 +1,21 @@
+{
+  "id" : "67e1b11e-2a21-4282-bfc4-8ff5016c9086",
+  "request" : {
+    "urlPath" : "/srv-protocols",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"srvProtocols\":[{\"id\":\"TCP\",\"protocol\":\"_tcp\"},{\"id\":\"UDP\",\"protocol\":\"_udp\"},{\"id\":\"TLS\",\"protocol\":\"_tls\"},{\"id\":\"MTLS\",\"protocol\":\"_tcp.mtls\"},{\"id\":\"SIPMTLS\",\"protocol\":\"_tcp.sipmtls\"}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "67e1b11e-2a21-4282-bfc4-8ff5016c9086"
+}

@@ -444,6 +444,16 @@ var inboundProxyRule = InboundProxyRule{
 	Topology: &Topology{Uid: lonTopology.Uid},
 }
 
+var inventoryDnsAsset = InventoryDnsAsset{
+	Id:   "3",
+	Name: "Collab Edge v2",
+}
+
+var inventorySrvProtocol = InventorySrvProtocol{
+	Id:       "TCP",
+	Protocol: "_tcp",
+}
+
 func (suite *ContractTestSuite) SetupSuite() {
 	suite.docker = startWiremock(suite)
 	suite.tbClient = createTbClient(suite)
@@ -1192,6 +1202,28 @@ func (suite *ContractTestSuite) TestGetAllInventoryLicenses() {
 	// Then
 	suite.Equal(3, len(inventoryLicenses))
 	suite.Contains(inventoryLicenses, inventoryLicense)
+}
+
+func (suite *ContractTestSuite) TestGetAllInventoryDnsAssets() {
+
+	// When
+	inventoryDnsAssets, err := suite.tbClient.GetAllInventoryDnsAssets(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(2, len(inventoryDnsAssets))
+	suite.Contains(inventoryDnsAssets, inventoryDnsAsset)
+}
+
+func (suite *ContractTestSuite) TestGetAllInventorySrvProtocols() {
+
+	// When
+	inventorySrvProtocols, err := suite.tbClient.GetAllInventorySrvProtocols()
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(5, len(inventorySrvProtocols))
+	suite.Contains(inventorySrvProtocols, inventorySrvProtocol)
 }
 
 func TestContractTestSuite(t *testing.T) {
