@@ -441,8 +441,8 @@ func (r inboundProxyRuleCollection) getData() []InboundProxyRule {
 // DNS Asset
 
 type InventoryDnsAsset struct {
-	Id   string `json:"id"`
-	Name string `json:"name"`
+	Id   string `json:"id,omitempty"`
+	Name string `json:"name,omitempty"`
 }
 
 type inventoryDnsAssetCollection struct {
@@ -463,5 +463,34 @@ type inventorySrvProtocolCollection struct {
 }
 
 func (r inventorySrvProtocolCollection) getData() []InventorySrvProtocol {
+	return r.Data
+}
+
+type ExternalDnsNatRule struct {
+	Uid string `json:"uid"`
+}
+
+type ExternalDnsSrvRecord struct {
+	Uid      string `json:"uid,omitempty"`
+	Service  string `json:"service"`
+	Protocol string `json:"protocol"`
+	Port     int    `json:"port"`
+}
+
+type ExternalDnsRecord struct {
+	Uid               string                 `json:"uid,omitempty"`
+	Hostname          string                 `json:"hostname,omitempty"`
+	ARecord           string                 `json:"aRecord,omitempty"`
+	InventoryDnsAsset *InventoryDnsAsset     `json:"inventoryDnsAsset"`
+	NatRule           *ExternalDnsNatRule    `json:"natRule"`
+	SrvRecords        []ExternalDnsSrvRecord `json:"srvRecords"`
+	Topology          *Topology              `json:"topology"`
+}
+
+type externalDnsRecordCollection struct {
+	Data []ExternalDnsRecord `json:"externalDnsRecords"`
+}
+
+func (r externalDnsRecordCollection) getData() []ExternalDnsRecord {
 	return r.Data
 }

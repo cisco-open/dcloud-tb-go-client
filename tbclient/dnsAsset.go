@@ -23,10 +23,40 @@ func (c *Client) getInventorySrvProtocolService() *collectionService[InventorySr
 	}
 }
 
+func (c *Client) getExternalDnsRecordService(topologyUid string) *resourceService[ExternalDnsRecord, externalDnsRecordCollection] {
+	return &resourceService[ExternalDnsRecord, externalDnsRecordCollection]{
+		collectionService[ExternalDnsRecord, externalDnsRecordCollection]{
+			client:       c,
+			resourcePath: "/external-dns-records",
+			topologyUid:  topologyUid,
+		},
+	}
+}
+
 func (c *Client) GetAllInventoryDnsAssets(topologyUid string) ([]InventoryDnsAsset, error) {
 	return c.getInventoryDnsAssetService(topologyUid).getAll()
 }
 
 func (c *Client) GetAllInventorySrvProtocols() ([]InventorySrvProtocol, error) {
 	return c.getInventorySrvProtocolService().getAll()
+}
+
+func (c *Client) GetAllExternalDnsRecords(topologyUid string) ([]ExternalDnsRecord, error) {
+	return c.getExternalDnsRecordService(topologyUid).getAll()
+}
+
+func (c *Client) GetExternalDnsRecord(uid string) (*ExternalDnsRecord, error) {
+	return c.getExternalDnsRecordService("").getOne(uid)
+}
+
+func (c *Client) CreateExternalDnsRecord(externalDnsRecord ExternalDnsRecord) (*ExternalDnsRecord, error) {
+	return c.getExternalDnsRecordService("").create(externalDnsRecord)
+}
+
+func (c *Client) UpdateExternalDnsRecord(externalDnsRecord ExternalDnsRecord) (*ExternalDnsRecord, error) {
+	return c.getExternalDnsRecordService("").update(externalDnsRecord.Uid, externalDnsRecord)
+}
+
+func (c *Client) DeleteExternalDnsRecord(uid string) error {
+	return c.getExternalDnsRecordService("").delete(uid)
 }
