@@ -430,10 +430,67 @@ type InboundProxyRule struct {
 	Topology    *Topology                `json:"topology"`
 }
 
-type inboundProxyRulesCollection struct {
+type inboundProxyRuleCollection struct {
 	Data []InboundProxyRule `json:"inboundProxyRules"`
 }
 
-func (r inboundProxyRulesCollection) getData() []InboundProxyRule {
+func (r inboundProxyRuleCollection) getData() []InboundProxyRule {
+	return r.Data
+}
+
+// DNS Asset
+
+type InventoryDnsAsset struct {
+	Id   string `json:"id,omitempty"`
+	Name string `json:"name,omitempty"`
+}
+
+type inventoryDnsAssetCollection struct {
+	Data []InventoryDnsAsset `json:"inventoryDnsAssets"`
+}
+
+func (r inventoryDnsAssetCollection) getData() []InventoryDnsAsset {
+	return r.Data
+}
+
+type InventorySrvProtocol struct {
+	Id       string `json:"id"`
+	Protocol string `json:"protocol"`
+}
+
+type inventorySrvProtocolCollection struct {
+	Data []InventorySrvProtocol `json:"srvProtocols"`
+}
+
+func (r inventorySrvProtocolCollection) getData() []InventorySrvProtocol {
+	return r.Data
+}
+
+type ExternalDnsNatRule struct {
+	Uid string `json:"uid"`
+}
+
+type ExternalDnsSrvRecord struct {
+	Uid      string `json:"uid,omitempty"`
+	Service  string `json:"service"`
+	Protocol string `json:"protocol"`
+	Port     int    `json:"port"`
+}
+
+type ExternalDnsRecord struct {
+	Uid               string                 `json:"uid,omitempty"`
+	Hostname          string                 `json:"hostname,omitempty"`
+	ARecord           string                 `json:"aRecord,omitempty"`
+	InventoryDnsAsset *InventoryDnsAsset     `json:"inventoryDnsAsset"`
+	NatRule           *ExternalDnsNatRule    `json:"natRule"`
+	SrvRecords        []ExternalDnsSrvRecord `json:"srvRecords"`
+	Topology          *Topology              `json:"topology"`
+}
+
+type externalDnsRecordCollection struct {
+	Data []ExternalDnsRecord `json:"externalDnsRecords"`
+}
+
+func (r externalDnsRecordCollection) getData() []ExternalDnsRecord {
 	return r.Data
 }

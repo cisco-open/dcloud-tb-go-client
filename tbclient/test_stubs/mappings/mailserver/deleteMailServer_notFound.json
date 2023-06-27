@@ -1,0 +1,17 @@
+{
+  "id" : "470b231d-176d-4a82-9420-19d9993e2c6a",
+  "request" : {
+    "urlPath" : "/mail-servers/notfound",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 404,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "470b231d-176d-4a82-9420-19d9993e2c6a"
+}

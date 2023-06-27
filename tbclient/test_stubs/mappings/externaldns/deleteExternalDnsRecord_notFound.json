@@ -1,0 +1,17 @@
+{
+  "id" : "49e9e081-830d-42e7-b3c5-c4a2e8743b1f",
+  "request" : {
+    "urlPath" : "/external-dns-records/notfound",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 404,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "49e9e081-830d-42e7-b3c5-c4a2e8743b1f"
+}

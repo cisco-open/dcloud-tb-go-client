@@ -1,0 +1,21 @@
+{
+  "id" : "7045fd2c-1574-47c3-91c8-2629abad0ce5",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/mail-servers",
+    "method" : "GET",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"mailServers\":[{\"uid\":\"lonmailserver\",\"vmNicTarget\":{\"uid\":\"lonvm1msnic\",\"ipAddress\":\"198.18.131.200\",\"vm\":{\"uid\":\"lonvm1\",\"name\":\"Mail Server 1\"},\"_links\":{\"vm\":{\"href\":\"http://localhost/vms/lonvm1\"}}},\"inventoryDnsAsset\":{\"id\":\"3\",\"name\":\"Collab Edge v2\"},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/mail-servers/lonmailserver\"},\"delete\":{\"href\":\"http://localhost/mail-servers/lonmailserver\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"}}}]},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/lontopology/mail-servers\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "7045fd2c-1574-47c3-91c8-2629abad0ce5"
+}

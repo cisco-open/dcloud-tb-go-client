@@ -1,0 +1,17 @@
+{
+  "id" : "b65743ef-d34b-46f1-a570-3089dd721310",
+  "request" : {
+    "urlPath" : "/external-dns-records/lonextdnsrec1",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 204,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "b65743ef-d34b-46f1-a570-3089dd721310"
+}

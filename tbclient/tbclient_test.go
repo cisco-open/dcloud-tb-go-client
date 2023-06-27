@@ -444,6 +444,32 @@ var inboundProxyRule = InboundProxyRule{
 	Topology: &Topology{Uid: lonTopology.Uid},
 }
 
+var inventoryDnsAsset = InventoryDnsAsset{
+	Id:   "3",
+	Name: "Collab Edge v2",
+}
+
+var inventorySrvProtocol = InventorySrvProtocol{
+	Id:       "TCP",
+	Protocol: "_tcp",
+}
+
+var externalDnsRecord = ExternalDnsRecord{
+	Uid:               "lonextdnsrec1",
+	Hostname:          "lonhost",
+	ARecord:           "lonhost.<subdomain>.dc-03.com",
+	InventoryDnsAsset: &inventoryDnsAsset,
+	NatRule:           &ExternalDnsNatRule{Uid: "lonvmnatrule1"},
+	SrvRecords: []ExternalDnsSrvRecord{
+		{
+			Service:  "_sip",
+			Protocol: "TCP",
+			Port:     5060,
+		},
+	},
+	Topology: &Topology{Uid: lonTopology.Uid},
+}
+
 func (suite *ContractTestSuite) SetupSuite() {
 	suite.docker = startWiremock(suite)
 	suite.tbClient = createTbClient(suite)
@@ -1101,6 +1127,75 @@ func (suite *ContractTestSuite) TestDeleteInboundProxyRule() {
 	suite.Nil(err)
 }
 
+// External DNS Record Tests
+
+func (suite *ContractTestSuite) TestGetAllExternalDnsRecords() {
+
+	// When
+	externalDnsRecords, err := suite.tbClient.GetAllExternalDnsRecords(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(1, len(externalDnsRecords))
+	suite.Contains(externalDnsRecords, externalDnsRecord)
+}
+
+func (suite *ContractTestSuite) TestGetExternalDnsRecord() {
+
+	// Given
+	expectedExternalDnsRecord := externalDnsRecord
+
+	// When
+	actualExternalDnsRecord, err := suite.tbClient.GetExternalDnsRecord(externalDnsRecord.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(expectedExternalDnsRecord, *actualExternalDnsRecord)
+}
+
+func (suite *ContractTestSuite) TestUpdateExternalDnsRecord() {
+
+	// TODO - GET Contract needs to be updated to include ETAG
+	suite.T().Skip("Skipping until contracts are updated")
+
+	// Given
+	expectedExternalDnsRecord := externalDnsRecord
+	expectedExternalDnsRecord.ARecord = "newhost.<subdomain>.dc-03.com"
+	expectedExternalDnsRecord.NatRule = &ExternalDnsNatRule{Uid: "lonipnatrule1"}
+
+	// When
+	actualExternalDnsRecord, err := suite.tbClient.UpdateExternalDnsRecord(expectedExternalDnsRecord)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(expectedExternalDnsRecord, *actualExternalDnsRecord)
+}
+
+func (suite *ContractTestSuite) TestCreateExternalDnsRecord() {
+	// Given
+	expectedExternalDnsRecord := externalDnsRecord
+	expectedExternalDnsRecord.NatRule = &ExternalDnsNatRule{Uid: "lonipnatrule1"}
+	expectedExternalDnsRecord.SrvRecords = nil
+
+	// When
+	actualExternalDnsRecord, err := suite.tbClient.CreateExternalDnsRecord(expectedExternalDnsRecord)
+	suite.handleError(err)
+
+	// Then
+	expectedExternalDnsRecord.Uid = "newextdnsrec"
+	suite.Equal(expectedExternalDnsRecord, *actualExternalDnsRecord)
+}
+
+func (suite *ContractTestSuite) TestDeleteExternalDnsRecord() {
+
+	// When
+	err := suite.tbClient.DeleteExternalDnsRecord(externalDnsRecord.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Nil(err)
+}
+
 // Inventory Tests
 
 func (suite *ContractTestSuite) TestGetAllOsFamilies() {
@@ -1192,6 +1287,28 @@ func (suite *ContractTestSuite) TestGetAllInventoryLicenses() {
 	// Then
 	suite.Equal(3, len(inventoryLicenses))
 	suite.Contains(inventoryLicenses, inventoryLicense)
+}
+
+func (suite *ContractTestSuite) TestGetAllInventoryDnsAssets() {
+
+	// When
+	inventoryDnsAssets, err := suite.tbClient.GetAllInventoryDnsAssets(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(2, len(inventoryDnsAssets))
+	suite.Contains(inventoryDnsAssets, inventoryDnsAsset)
+}
+
+func (suite *ContractTestSuite) TestGetAllInventorySrvProtocols() {
+
+	// When
+	inventorySrvProtocols, err := suite.tbClient.GetAllInventorySrvProtocols()
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(5, len(inventorySrvProtocols))
+	suite.Contains(inventorySrvProtocols, inventorySrvProtocol)
 }
 
 func TestContractTestSuite(t *testing.T) {

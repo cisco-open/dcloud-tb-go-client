@@ -1,0 +1,17 @@
+{
+  "id" : "8f5d3cf3-a27a-4191-8084-1e8026caf46a",
+  "request" : {
+    "urlPath" : "/mail-servers/lonmailserver",
+    "method" : "DELETE",
+    "headers" : {
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    }
+  },
+  "response" : {
+    "status" : 204,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "8f5d3cf3-a27a-4191-8084-1e8026caf46a"
+}
