@@ -409,10 +409,10 @@ type VmNatRule struct {
 
 // Inbound Proxy Rule
 
-type InboundProxyVmNicTarget struct {
+type TrafficVmNicTarget struct {
 	Uid       string `json:"uid,omitempty"`
-	IpAddress string `json:"ipAddress"`
-	Vm        *Vm    `json:"vm"`
+	IpAddress string `json:"ipAddress,omitempty"`
+	Vm        *Vm    `json:"vm,omitempty"`
 }
 
 type InboundProxyHyperlink struct {
@@ -421,13 +421,13 @@ type InboundProxyHyperlink struct {
 }
 
 type InboundProxyRule struct {
-	Uid         string                   `json:"uid,omitempty"`
-	TcpPort     int                      `json:"tcpPort"`
-	Ssl         bool                     `json:"ssl"`
-	UrlPath     string                   `json:"urlPath"`
-	VmNicTarget *InboundProxyVmNicTarget `json:"vmNicTarget"`
-	Hyperlink   *InboundProxyHyperlink   `json:"hyperlink"`
-	Topology    *Topology                `json:"topology"`
+	Uid         string                 `json:"uid,omitempty"`
+	TcpPort     int                    `json:"tcpPort"`
+	Ssl         bool                   `json:"ssl"`
+	UrlPath     string                 `json:"urlPath"`
+	VmNicTarget *TrafficVmNicTarget    `json:"vmNicTarget"`
+	Hyperlink   *InboundProxyHyperlink `json:"hyperlink"`
+	Topology    *Topology              `json:"topology"`
 }
 
 type inboundProxyRuleCollection struct {
@@ -449,8 +449,8 @@ type inventoryDnsAssetCollection struct {
 	Data []InventoryDnsAsset `json:"inventoryDnsAssets"`
 }
 
-func (r inventoryDnsAssetCollection) getData() []InventoryDnsAsset {
-	return r.Data
+func (a inventoryDnsAssetCollection) getData() []InventoryDnsAsset {
+	return a.Data
 }
 
 type InventorySrvProtocol struct {
@@ -462,8 +462,8 @@ type inventorySrvProtocolCollection struct {
 	Data []InventorySrvProtocol `json:"srvProtocols"`
 }
 
-func (r inventorySrvProtocolCollection) getData() []InventorySrvProtocol {
-	return r.Data
+func (p inventorySrvProtocolCollection) getData() []InventorySrvProtocol {
+	return p.Data
 }
 
 type ExternalDnsNatRule struct {
@@ -493,4 +493,19 @@ type externalDnsRecordCollection struct {
 
 func (r externalDnsRecordCollection) getData() []ExternalDnsRecord {
 	return r.Data
+}
+
+type MailServer struct {
+	Uid               string              `json:"uid,omitempty"`
+	InventoryDnsAsset *InventoryDnsAsset  `json:"inventoryDnsAsset"`
+	VmNicTarget       *TrafficVmNicTarget `json:"vmNicTarget"`
+	Topology          *Topology           `json:"topology"`
+}
+
+type mailServerCollection struct {
+	Data []MailServer `json:"mailServers"`
+}
+
+func (m mailServerCollection) getData() []MailServer {
+	return m.Data
 }
