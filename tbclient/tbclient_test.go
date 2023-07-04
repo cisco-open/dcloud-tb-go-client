@@ -429,7 +429,7 @@ var inboundProxyRule = InboundProxyRule{
 	TcpPort: 433,
 	Ssl:     true,
 	UrlPath: "/demo/demo101",
-	VmNicTarget: &InboundProxyVmNicTarget{
+	VmNicTarget: &TrafficVmNicTarget{
 		Uid:       "lonvm2pxnic",
 		IpAddress: "198.18.133.110",
 		Vm: &Vm{
@@ -465,6 +465,20 @@ var externalDnsRecord = ExternalDnsRecord{
 			Service:  "_sip",
 			Protocol: "TCP",
 			Port:     5060,
+		},
+	},
+	Topology: &Topology{Uid: lonTopology.Uid},
+}
+
+var mailServer = MailServer{
+	Uid:               "lonmailserver",
+	InventoryDnsAsset: &inventoryDnsAsset,
+	VmNicTarget: &TrafficVmNicTarget{
+		Uid:       "lonvm1msnic",
+		IpAddress: "198.18.131.200",
+		Vm: &Vm{
+			Uid:  "lonvm1",
+			Name: "Mail Server 1",
 		},
 	},
 	Topology: &Topology{Uid: lonTopology.Uid},
@@ -1106,7 +1120,7 @@ func (suite *ContractTestSuite) TestCreateInboundProxyRule() {
 	// Then
 	// Match Contract Wiremock Stubs
 	expectedInboundProxyRule.Uid = "newloninboundproxy"
-	expectedInboundProxyRule.VmNicTarget = &InboundProxyVmNicTarget{
+	expectedInboundProxyRule.VmNicTarget = &TrafficVmNicTarget{
 		Uid:       inboundProxyRule.VmNicTarget.Uid,
 		IpAddress: "192.168.0.2",
 		Vm: &Vm{
@@ -1190,6 +1204,54 @@ func (suite *ContractTestSuite) TestDeleteExternalDnsRecord() {
 
 	// When
 	err := suite.tbClient.DeleteExternalDnsRecord(externalDnsRecord.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Nil(err)
+}
+
+func (suite *ContractTestSuite) TestGetAllMailServers() {
+
+	// When
+	mailServers, err := suite.tbClient.GetAllMailServers(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(1, len(mailServers))
+	suite.Contains(mailServers, mailServer)
+}
+
+func (suite *ContractTestSuite) TestCreateMailServer() {
+	// Given
+	// Match Contract expectations
+	expectedMailServer := mailServer
+	expectedMailServer.InventoryDnsAsset = &InventoryDnsAsset{
+		Id:   "3",
+		Name: "CollabEdge_Swiss",
+	}
+	expectedMailServer.VmNicTarget = &TrafficVmNicTarget{
+		Uid:       expectedMailServer.VmNicTarget.Uid,
+		IpAddress: "192.168.0.6",
+		Vm: &Vm{
+			Uid:  "Ga8pAwcn3yPyWztLHoKu",
+			Name: "OUZOSZGJWAFISJBCOCXU",
+		},
+	}
+	expectedMailServer.Uid = ""
+
+	// When
+	actualMailServer, err := suite.tbClient.CreateMailServer(expectedMailServer)
+	suite.handleError(err)
+
+	// Then
+	expectedMailServer.Uid = "newmailserver"
+	suite.Equal(expectedMailServer, *actualMailServer)
+}
+
+func (suite *ContractTestSuite) TestDeleteMailServer() {
+
+	// When
+	err := suite.tbClient.DeleteMailServer(mailServer.Uid)
 	suite.handleError(err)
 
 	// Then
