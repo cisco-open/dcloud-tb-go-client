@@ -1,5 +1,5 @@
 {
-  "id" : "2e9a3a2d-1592-46a9-9f2f-c6b54059fea1",
+  "id" : "27256699-bb49-4671-9579-bd2ee0f22b47",
   "request" : {
     "urlPath" : "/networks",
     "method" : "POST",
@@ -23,11 +23,11 @@
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"ONXQBNKJPKTYWEUBTZMV\",\"message\":\"Field 'name' size must be between 1 and 255\",\"links\":[]},{\"logref\":\"PLWVXHDASALLLUSXDJCI\",\"message\":\"Field 'name' must not be blank\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"XTYOPWAURGMVRPLVWKWZ\",\"message\":\"Field 'name' size must be between 1 and 255\",\"links\":[]},{\"logref\":\"FGCZHYKSPQPOXSGXDDXQ\",\"message\":\"Field 'name' must not be blank\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "2e9a3a2d-1592-46a9-9f2f-c6b54059fea1"
+  "uuid" : "27256699-bb49-4671-9579-bd2ee0f22b47"
 }

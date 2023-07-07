@@ -1,5 +1,5 @@
 {
-  "id" : "19ab43a6-0584-4952-a945-530dac081b6c",
+  "id" : "04c209dc-8067-4ef6-9720-97d4d850f3ba",
   "request" : {
     "urlPath" : "/internal/topologies/rtptopology/clones",
     "method" : "POST",
@@ -31,11 +31,11 @@
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"UVDHDVXCFRUJWHEUMMMA\",\"message\":\"Field 'name' must not be blank\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"WXMURXYHCCGHVGXRIFEN\",\"message\":\"Field 'name' must not be blank\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "19ab43a6-0584-4952-a945-530dac081b6c"
+  "uuid" : "04c209dc-8067-4ef6-9720-97d4d850f3ba"
 }

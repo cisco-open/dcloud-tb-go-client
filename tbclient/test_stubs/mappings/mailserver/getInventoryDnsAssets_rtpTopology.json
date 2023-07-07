@@ -1,5 +1,5 @@
 {
-  "id" : "e052f2e9-cb53-41fa-8a28-0ebf3d8df9c7",
+  "id" : "be5f5263-88f3-43c3-b24b-53b848abcbbc",
   "request" : {
     "urlPath" : "/topologies/rtptopology/inventory-dns-assets",
     "method" : "GET",
@@ -17,5 +17,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "e052f2e9-cb53-41fa-8a28-0ebf3d8df9c7"
+  "uuid" : "be5f5263-88f3-43c3-b24b-53b848abcbbc"
 }

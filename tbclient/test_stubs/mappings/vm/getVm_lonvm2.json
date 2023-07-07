@@ -1,17 +1,17 @@
 {
-  "id" : "3d81c197-7b9b-498a-99d2-10a603581059",
+  "id" : "c7a4a821-dfe8-492e-9d7e-55c347e3a3c0",
   "request" : {
     "urlPath" : "/vms/lonvm2",
     "method" : "GET"
   },
   "response" : {
     "status" : 200,
-    "body" : "{\"uid\":\"lonvm2\",\"name\":\"Collab DB\",\"description\":\"Collab DB\",\"cpuQty\":8,\"memoryMb\":4608,\"nestedHypervisor\":false,\"osFamily\":\"WINDOWS\",\"inventoryVmId\":\"templatevm1\",\"remoteAccess\":{\"vmConsoleEnabled\":false},\"vmNetworkInterfaces\":[{\"uid\":\"lonvm2nic1\",\"ipAddress\":\"198.18.133.111\",\"name\":\"Network adapter 1\",\"macAddress\":\"00:50:56:00:00:09\",\"type\":\"VIRTUAL_E1000\",\"inUse\":false,\"network\":{\"uid\":\"lontopologyv1nwk\",\"name\":\"Default Network\",\"inventoryNetwork\":{\"id\":\"VLAN-PRIMARY\",\"type\":\"ROUTED\",\"subnet\":\"198.18.128.0 /18\"},\"_links\":{\"self\":{\"href\":\"http://localhost/networks/lontopologyv1nwk\"}}}}],\"advancedSettings\":{\"nameInHypervisor\":\"Win_10-VM\",\"biosUuid\":\"61 62 63 64 65 66 67 68-69 6a 6b 6c 6d 6e 6f 70\",\"notStarted\":false,\"allDisksNonPersistent\":false},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/vms/lonvm2\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"node\":{\"href\":\"http://localhost/nodes/lonvm2node\"}}}",
+    "body" : "{\"uid\":\"lonvm2\",\"name\":\"Collab DB\",\"description\":\"Collab DB\",\"cpuQty\":8,\"memoryMb\":4608,\"nestedHypervisor\":false,\"osFamily\":\"WINDOWS\",\"inventoryVmId\":\"templatevm1\",\"remoteAccess\":{\"vmConsoleEnabled\":false},\"vmNetworkInterfaces\":[{\"uid\":\"lonvm2nic1\",\"ipAddress\":\"198.18.133.111\",\"name\":\"Network adapter 1\",\"macAddress\":\"00:50:56:00:00:09\",\"type\":\"VIRTUAL_E1000\",\"inUse\":false,\"assignDhcp\":false,\"network\":{\"uid\":\"lontopologyv1nwk\",\"name\":\"Default Network\",\"inventoryNetwork\":{\"id\":\"VLAN-PRIMARY\",\"type\":\"ROUTED\",\"subnet\":\"198.18.128.0 /18\"},\"_links\":{\"self\":{\"href\":\"http://localhost/networks/lontopologyv1nwk\"}}}}],\"advancedSettings\":{\"nameInHypervisor\":\"Win_10-VM\",\"biosUuid\":\"61 62 63 64 65 66 67 68-69 6a 6b 6c 6d 6e 6f 70\",\"notStarted\":false,\"allDisksNonPersistent\":false},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/vms/lonvm2\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"node\":{\"href\":\"http://localhost/nodes/lonvm2node\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "3d81c197-7b9b-498a-99d2-10a603581059"
+  "uuid" : "c7a4a821-dfe8-492e-9d7e-55c347e3a3c0"
 }

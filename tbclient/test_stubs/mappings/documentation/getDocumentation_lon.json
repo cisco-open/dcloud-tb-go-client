@@ -1,0 +1,17 @@
+{
+  "id" : "1c088477-64d2-4fe9-9315-3d2545d39f25",
+  "request" : {
+    "urlPath" : "/documentation/lontopology",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"lontopology\",\"documentationUrl\":\"http://www.google.com\",\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "1c088477-64d2-4fe9-9315-3d2545d39f25"
+}

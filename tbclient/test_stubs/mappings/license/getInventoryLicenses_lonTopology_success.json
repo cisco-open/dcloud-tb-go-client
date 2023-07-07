@@ -1,5 +1,5 @@
 {
-  "id" : "00aa06c9-e3ab-4fdf-a221-f9a473393f52",
+  "id" : "8f3b2840-64ec-4b96-afa1-8c9740d8b3f1",
   "request" : {
     "urlPath" : "/topologies/lontopology/inventory-licenses",
     "method" : "GET",
@@ -17,5 +17,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "00aa06c9-e3ab-4fdf-a221-f9a473393f52"
+  "uuid" : "8f3b2840-64ec-4b96-afa1-8c9740d8b3f1"
 }

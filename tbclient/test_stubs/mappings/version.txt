@@ -1,1 +1,1 @@
-Contract Version 1.10.7
+Contract Version 1.11.0

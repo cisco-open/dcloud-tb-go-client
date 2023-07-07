@@ -1,21 +1,16 @@
 {
-  "id" : "e91ee1c8-9cb1-4202-8224-6c1e3a74af6a",
+  "id" : "bbde1ce2-2a09-4a8b-8c7e-aa0eb8d7f333",
   "request" : {
     "urlPath" : "/topologies/noreader/inventory-template-vms",
-    "method" : "GET",
-    "queryParameters" : {
-      "filter" : {
-        "equalTo" : "type:equalTo:VM"
-      }
-    }
+    "method" : "GET"
   },
   "response" : {
     "status" : 503,
-    "body" : "[{\"logref\":\"LOMXPALWFVIAGWNQJKOU\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"HJSFXSFKZGABSGZSVKMA\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "e91ee1c8-9cb1-4202-8224-6c1e3a74af6a"
+  "uuid" : "bbde1ce2-2a09-4a8b-8c7e-aa0eb8d7f333"
 }

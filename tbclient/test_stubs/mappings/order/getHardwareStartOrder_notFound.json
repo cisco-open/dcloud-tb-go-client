@@ -1,5 +1,5 @@
 {
-  "id" : "c34d8b43-87da-4786-a600-c8310b95ca61",
+  "id" : "ec1a550d-c6e7-4f11-9792-94857c72dcd2",
   "request" : {
     "urlPath" : "/topologies/notfound/hardware-start-order",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"BMPTUZAXFZVTITPTQXRJ\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"ZKZCFGGHUZGUERILOZKG\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "c34d8b43-87da-4786-a600-c8310b95ca61"
+  "uuid" : "ec1a550d-c6e7-4f11-9792-94857c72dcd2"
 }

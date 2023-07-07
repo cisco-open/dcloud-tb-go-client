@@ -1,5 +1,5 @@
 {
-  "id" : "0b66d8a0-c506-4d65-b068-52a81a3875f3",
+  "id" : "baaed764-3e07-4538-acb5-eb9f0f57fa98",
   "request" : {
     "urlPath" : "/topologies",
     "method" : "GET",
@@ -17,5 +17,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "0b66d8a0-c506-4d65-b068-52a81a3875f3"
+  "uuid" : "baaed764-3e07-4538-acb5-eb9f0f57fa98"
 }

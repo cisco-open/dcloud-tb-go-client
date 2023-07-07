@@ -1,0 +1,30 @@
+{
+  "id" : "0ea59417-a1a8-41aa-86f3-3fa249fef465",
+  "request" : {
+    "urlPath" : "/documentation/lontopology",
+    "method" : "PUT",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "If-Match" : {
+        "equalTo" : "FIX_ETAG_FOR_TESTS"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['uid'] == 'lontopology')]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['documentationUrl'] =~ /^(?:(?:[A-Za-z][+-.\\w^_]*:\\/{2})?(?:\\S+(?::\\S*)?@)?(?:(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))|(?:localhost))(?::\\d{2,5})?(?:\\/\\S*)?)$/)]"
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"uid\":\"lontopology\",\"documentationUrl\":\"{{{jsonPath request.body '$.documentationUrl'}}}\",\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "0ea59417-a1a8-41aa-86f3-3fa249fef465"
+}

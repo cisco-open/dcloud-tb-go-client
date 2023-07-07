@@ -1,5 +1,5 @@
 {
-  "id" : "e919b8e1-314d-430e-b55a-0463c99e2311",
+  "id" : "94abffe9-05d4-4c1d-8486-95b76357f0ee",
   "request" : {
     "urlPath" : "/external-dns-records",
     "method" : "POST",
@@ -29,12 +29,12 @@
   },
   "response" : {
     "status" : 201,
-    "body" : "{\"uid\":\"newextdnsrec\",\"hostname\":\"{{{jsonPath request.body '$.hostname'}}}\",\"aRecord\":\"{{{jsonPath request.body '$.hostname'}}}.<subdomain>.dc-03.com\",\"natRule\":{\"uid\":\"lonipnatrule1\",\"target\":{\"name\":\"Some Device\",\"ipAddress\":\"198.18.131.100\"}},\"inventoryDnsAsset\":{\"id\":\"{{{jsonPath request.body '$.inventoryDnsAsset.id'}}}\",\"name\":\"CollabEdge_Swiss\"},\"srvRecords\":[{\"service\":\"{{{jsonPath request.body '$.srvRecords[0].service'}}}\",\"protocol\":\"{{{jsonPath request.body '$.srvRecords[0].protocol'}}}\",\"port\":{{{jsonPath request.body '$.srvRecords[0].port'}}} }],\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}/newextdnsrec\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}/newextdnsrec\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"natRule\":{\"href\":\"http://localhost/nat-rules/{{{jsonPath request.body '$.natRule.uid'}}}\"}}}",
+    "body" : "{\"uid\":\"newextdnsrec\",\"hostname\":\"{{{jsonPath request.body '$.hostname'}}}\",\"aRecord\":\"{{{jsonPath request.body '$.hostname'}}}.<subdomain>.dc-03.com\",\"natRule\":{\"uid\":\"lonipnatrule1\",\"target\":{\"name\":\"Some Device\",\"ipAddress\":\"198.18.131.100\"}},\"inventoryDnsAsset\":{\"id\":\"{{{jsonPath request.body '$.inventoryDnsAsset.id'}}}\",\"name\":\"Collab Edge v2\"},\"srvRecords\":[{\"service\":\"{{{jsonPath request.body '$.srvRecords[0].service'}}}\",\"protocol\":\"{{{jsonPath request.body '$.srvRecords[0].protocol'}}}\",\"port\":{{{jsonPath request.body '$.srvRecords[0].port'}}} }],\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}/newextdnsrec\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}/newextdnsrec\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"natRule\":{\"href\":\"http://localhost/nat-rules/{{{jsonPath request.body '$.natRule.uid'}}}\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "e919b8e1-314d-430e-b55a-0463c99e2311"
+  "uuid" : "94abffe9-05d4-4c1d-8486-95b76357f0ee"
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "25dc9974-cb7f-4d26-8ad1-1dafd8d4b5f8",
+  "id" : "d14ca771-a0e0-47d7-b864-b6151856a54c",
   "request" : {
     "urlPath" : "/nat-rules/lonvmnatrule1",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 204,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "25dc9974-cb7f-4d26-8ad1-1dafd8d4b5f8"
+  "uuid" : "d14ca771-a0e0-47d7-b864-b6151856a54c"
 }

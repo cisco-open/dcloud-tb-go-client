@@ -1,13 +1,8 @@
 {
-  "id" : "f9d9d02c-2962-4dd3-ba5c-feeac4c12171",
+  "id" : "2b3b2910-4657-4e05-8c23-4e95e18e008f",
   "request" : {
     "urlPath" : "/topologies/rtptopology/inventory-template-vms",
-    "method" : "GET",
-    "queryParameters" : {
-      "filter" : {
-        "equalTo" : "type:equalTo:VM"
-      }
-    }
+    "method" : "GET"
   },
   "response" : {
     "status" : 200,
@@ -17,5 +12,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "f9d9d02c-2962-4dd3-ba5c-feeac4c12171"
+  "uuid" : "2b3b2910-4657-4e05-8c23-4e95e18e008f"
 }

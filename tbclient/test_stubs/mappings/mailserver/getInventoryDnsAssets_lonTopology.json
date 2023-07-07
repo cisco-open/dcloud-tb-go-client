@@ -1,5 +1,5 @@
 {
-  "id" : "36d12550-db5c-44f8-a88c-099659cb0f19",
+  "id" : "7f49810f-6072-4128-a1a5-69caebb761a9",
   "request" : {
     "urlPath" : "/topologies/lontopology/inventory-dns-assets",
     "method" : "GET",
@@ -17,5 +17,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "36d12550-db5c-44f8-a88c-099659cb0f19"
+  "uuid" : "7f49810f-6072-4128-a1a5-69caebb761a9"
 }

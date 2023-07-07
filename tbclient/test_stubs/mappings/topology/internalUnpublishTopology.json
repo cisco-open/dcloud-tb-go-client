@@ -1,5 +1,5 @@
 {
-  "id" : "c1d3ba19-da45-4408-bce6-99a84c1896a8",
+  "id" : "7f45198b-93d2-4149-8147-a24600f7aa4e",
   "request" : {
     "urlPath" : "/internal/topologies/rtptopology/publications",
     "method" : "DELETE"
@@ -8,5 +8,5 @@
     "status" : 204,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "c1d3ba19-da45-4408-bce6-99a84c1896a8"
+  "uuid" : "7f45198b-93d2-4149-8147-a24600f7aa4e"
 }

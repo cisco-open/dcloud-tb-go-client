@@ -1,5 +1,5 @@
 {
-  "id" : "aa02cf25-fe68-4176-ba3c-53235891eba8",
+  "id" : "c9bb21d3-acbd-4449-931f-249c3bd33804",
   "request" : {
     "urlPath" : "/licenses/notfound",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 404,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "aa02cf25-fe68-4176-ba3c-53235891eba8"
+  "uuid" : "c9bb21d3-acbd-4449-931f-249c3bd33804"
 }

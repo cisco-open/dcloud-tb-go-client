@@ -1,5 +1,5 @@
 {
-  "id" : "df7b8db3-8359-4ec1-809d-e5a13b401b5f",
+  "id" : "a15ddcd0-4f26-4f1d-8c89-710a205bb278",
   "request" : {
     "urlPath" : "/internal/topologies/notfound/clones",
     "method" : "POST",
@@ -27,11 +27,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"GZEJPRFNSYSXFTZFMBEP\",\"message\":\"The requested Topology resource 'notfound|00000000-0000-0000-0000-01b039f7f429' was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"VJOVBWOHNRYLJFRGEJII\",\"message\":\"The requested Topology resource 'notfound|00000000-0000-0000-0000-01b039f7f429' was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "df7b8db3-8359-4ec1-809d-e5a13b401b5f"
+  "uuid" : "a15ddcd0-4f26-4f1d-8c89-710a205bb278"
 }

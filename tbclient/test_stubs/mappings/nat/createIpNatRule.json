@@ -1,5 +1,5 @@
 {
-  "id" : "e228afed-8313-46a4-9c4e-dd21c14a9e2c",
+  "id" : "c80c6e2e-27ba-4be3-821e-2218cd244ec0",
   "request" : {
     "urlPath" : "/ip-nat-rules",
     "method" : "POST",
@@ -30,5 +30,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "e228afed-8313-46a4-9c4e-dd21c14a9e2c"
+  "uuid" : "c80c6e2e-27ba-4be3-821e-2218cd244ec0"
 }

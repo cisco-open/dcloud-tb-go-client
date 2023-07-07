@@ -1,5 +1,5 @@
 {
-  "id" : "b492f081-9071-4ae0-b50c-31bb352c4f4e",
+  "id" : "f1202ee7-2650-4c44-91fb-a3984d78bc43",
   "request" : {
     "urlPath" : "/hardware-items/notfound",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 404,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "b492f081-9071-4ae0-b50c-31bb352c4f4e"
+  "uuid" : "f1202ee7-2650-4c44-91fb-a3984d78bc43"
 }

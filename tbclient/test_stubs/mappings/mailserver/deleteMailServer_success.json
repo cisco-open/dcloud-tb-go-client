@@ -1,5 +1,5 @@
 {
-  "id" : "8f5d3cf3-a27a-4191-8084-1e8026caf46a",
+  "id" : "18e89730-4862-43b8-827b-9c4eaec02995",
   "request" : {
     "urlPath" : "/mail-servers/lonmailserver",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 204,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "8f5d3cf3-a27a-4191-8084-1e8026caf46a"
+  "uuid" : "18e89730-4862-43b8-827b-9c4eaec02995"
 }

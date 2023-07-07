@@ -1,16 +1,16 @@
 {
-  "id" : "4d4f8412-2fa0-42ae-92c0-52d1a3a13b91",
+  "id" : "1596a037-1308-46be-b8d8-d22c6aa80cfd",
   "request" : {
     "urlPath" : "/topologies/notfoundtopology/scenario",
     "method" : "GET"
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"AYTRJJJQWZNCIHJFOOVN\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"ORADSNFCESXUNPVTQDGD\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "4d4f8412-2fa0-42ae-92c0-52d1a3a13b91"
+  "uuid" : "1596a037-1308-46be-b8d8-d22c6aa80cfd"
 }

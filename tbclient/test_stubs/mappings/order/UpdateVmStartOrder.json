@@ -1,5 +1,5 @@
 {
-  "id" : "4b459deb-c210-441f-b43f-9337d950d22e",
+  "id" : "fea3cb60-0449-4ca1-ad65-a34be2ed3de8",
   "request" : {
     "urlPath" : "/vm-start-order/lontopologyv1sso",
     "method" : "PUT",
@@ -41,5 +41,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "4b459deb-c210-441f-b43f-9337d950d22e"
+  "uuid" : "fea3cb60-0449-4ca1-ad65-a34be2ed3de8"
 }

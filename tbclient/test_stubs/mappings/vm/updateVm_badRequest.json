@@ -1,5 +1,5 @@
 {
-  "id" : "204b0a64-d10e-4016-8e26-feb319bdd726",
+  "id" : "7cdba564-90c7-4557-bdee-8feceeadde0f",
   "request" : {
     "urlPath" : "/vms/lonvm1",
     "method" : "PUT",
@@ -41,11 +41,17 @@
     }, {
       "matchesJsonPath" : "$.['guestAutomation'][?(@.['delaySecs'] =~ /^[0-9]\\d*$/)]"
     }, {
+      "matchesJsonPath" : "$.['shutdownAutomation'][?(@.['command'] =~ /[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['shutdownAutomation'][?(@.['delaySecs'] =~ /^[0-9]\\d*$/)]"
+    }, {
       "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['ipAddress'] == '198.18.131.200')]"
     }, {
       "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['macAddress'] =~ /00:50:56(:[a-f0-9]{2}){3}/)]"
     }, {
       "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['type'] =~ /^VIRTUAL_E1000$|^VIRTUAL_E1000E$|^VIRTUAL_PCNET_32$|^VIRTUAL_VMXNET_2$|^VIRTUAL_VMXNET_3$/)]"
+    }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['assignDhcp'] =~ /(true|false)/)]"
     }, {
       "matchesJsonPath" : "$.['vmNetworkInterfaces'][*].['network'][?(@.['uid'] == 'lontopologyv1nwk')]"
     }, {
@@ -62,11 +68,11 @@
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"SWWOFSUTLNVZQEBBYYIL\",\"message\":\"Payload uid does not match the path variable uid\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"HJDIDXCJSQUJPNSFPPFU\",\"message\":\"Payload uid does not match the path variable uid\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "204b0a64-d10e-4016-8e26-feb319bdd726"
+  "uuid" : "7cdba564-90c7-4557-bdee-8feceeadde0f"
 }

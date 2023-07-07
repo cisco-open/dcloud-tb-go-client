@@ -1,5 +1,5 @@
 {
-  "id" : "27f1633f-e634-493c-a8ed-0a0c08887ccf",
+  "id" : "a6b590b5-fdeb-4c98-bc30-4ed927c10847",
   "request" : {
     "urlPath" : "/networks/noreaderv1nwk",
     "method" : "DELETE",
@@ -11,8 +11,8 @@
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"IJFKPWTERRKQXHIPHLBE\",\"message\":\"There must be at least one routed network\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"RBQMZOLLHNHYVRHPUBOH\",\"message\":\"There must be at least one routed network\",\"links\":[]}]",
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "27f1633f-e634-493c-a8ed-0a0c08887ccf"
+  "uuid" : "a6b590b5-fdeb-4c98-bc30-4ed927c10847"
 }

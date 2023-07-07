@@ -1,5 +1,5 @@
 {
-  "id" : "39c6deb3-751d-4303-a9eb-e903790522bb",
+  "id" : "40bcec38-3bb8-4126-ae9b-aa1fcb91839e",
   "request" : {
     "urlPath" : "/datacenters",
     "method" : "GET",
@@ -17,5 +17,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "39c6deb3-751d-4303-a9eb-e903790522bb"
+  "uuid" : "40bcec38-3bb8-4126-ae9b-aa1fcb91839e"
 }
