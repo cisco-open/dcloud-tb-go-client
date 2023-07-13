@@ -1,5 +1,5 @@
 {
-  "id" : "60c87639-0293-4a65-b7b7-8f6faf6615aa",
+  "id" : "c13c1827-6f7a-4a62-9615-eb893c959143",
   "request" : {
     "urlPath" : "/internal/topologies/publications",
     "method" : "PATCH",
@@ -16,5 +16,5 @@
     "status" : 200,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "60c87639-0293-4a65-b7b7-8f6faf6615aa"
+  "uuid" : "c13c1827-6f7a-4a62-9615-eb893c959143"
 }

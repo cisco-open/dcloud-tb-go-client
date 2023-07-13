@@ -1,5 +1,5 @@
 {
-  "id" : "4e8d7ce8-3f49-45a3-a2f3-d725f5855c84",
+  "id" : "31da4a31-8e3d-415b-a2c6-4cb1ba94e785",
   "request" : {
     "urlPath" : "/datacenters/sng/inventory-demos",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 503,
-    "body" : "[{\"logref\":\"JSFZXZUDLNJRKLBDGJRP\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"KHRNWQLDSSGGCDDOGHSK\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "4e8d7ce8-3f49-45a3-a2f3-d725f5855c84"
+  "uuid" : "31da4a31-8e3d-415b-a2c6-4cb1ba94e785"
 }

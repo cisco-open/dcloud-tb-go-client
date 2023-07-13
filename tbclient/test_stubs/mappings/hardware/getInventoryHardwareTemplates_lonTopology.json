@@ -1,5 +1,5 @@
 {
-  "id" : "ef45b0bd-9a6a-461f-8d70-54ca7136a8fe",
+  "id" : "63d046e1-dbc7-4b84-9319-2eafdbe42fd3",
   "request" : {
     "urlPath" : "/topologies/lontopology/inventory-hardware-templates",
     "method" : "GET",
@@ -17,5 +17,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "ef45b0bd-9a6a-461f-8d70-54ca7136a8fe"
+  "uuid" : "63d046e1-dbc7-4b84-9319-2eafdbe42fd3"
 }

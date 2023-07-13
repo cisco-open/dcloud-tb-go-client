@@ -1,5 +1,5 @@
 {
-  "id" : "057aeb4c-250a-408d-8b33-68027c32e0af",
+  "id" : "8e53d641-60a8-433d-83c7-f01f18a4fbb3",
   "request" : {
     "urlPath" : "/hardware-items",
     "method" : "POST",
@@ -12,6 +12,28 @@
       }
     },
     "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['name'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['powerControlEnabled'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['hardwareConsoleEnabled'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryStartupScript'][?(@.['uid'] == 'script1')]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryShutdownScript'][?(@.['uid'] == 'script2')]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryCustomScript'][?(@.['uid'] == 'script3')]"
+    }, {
+      "matchesJsonPath" : "$.['inventoryTemplateConfigScript'][?(@.['uid'] == 'template1')]"
+    }, {
+      "matchesJsonPath" : "$.['hardwareNetworkInterfaces'][*][?(@.['uid'] =~ /[a-zA-Z0-9]+/)]"
+    }, {
+      "matchesJsonPath" : "$.['hardwareNetworkInterfaces'][*].['networkInterface'][?(@.['id'] == 'GigabitEthernet1/1')]"
+    }, {
+      "matchesJsonPath" : "$.['hardwareNetworkInterfaces'][*].['network'][?(@.['uid'] =~ /^lontopologyv1nwk$|^routednetwork$|^unroutednetwork$/)]"
+    }, {
+      "matchesJsonPath" : "$.['hardwareNetworkInterfaces'][*].['networkInterface'][?(@.['id'] == 'GigabitEthernet1/2')]"
+    }, {
       "matchesJsonPath" : "$.['inventoryHardwareItem'][?(@.['id'] == '86')]"
     }, {
       "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
@@ -19,12 +41,12 @@
   },
   "response" : {
     "status" : 201,
-    "body" : "{\"uid\":\"newhardwareitem\",\"name\":\"ISA3000-FTD(1)\",\"powerControlEnabled\":true,\"hardwareConsoleEnabled\":true,\"hardwareNetworkInterfaces\":[],\"inventoryHardwareItem\":{\"id\":\"{{{jsonPath request.body '$.inventoryHardwareItem.id'}}}\",\"name\":\"ISA3000-FTD\",\"description\":\"ISA3000-FTD\",\"powerControlAvailable\":true,\"hardwareConsoleAvailable\":true,\"networkInterfaces\":[{\"id\":\"GigabitEthernet1/1\"},{\"id\":\"GigabitEthernet1/2\"}]},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}/newhardwareitem\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}/newhardwareitem\"},\"node\":{\"href\":\"http://localhost/nodes/newhardwareitemnode\"}}}",
+    "body" : "{\"uid\":\"newhardwareitem\",\"name\":\"{{{jsonPath request.body '$.name'}}}\",\"powerControlEnabled\":{{{jsonPath request.body '$.powerControlEnabled'}}} ,\"hardwareConsoleEnabled\":{{{jsonPath request.body '$.hardwareConsoleEnabled'}}} ,\"inventoryStartupScript\":{\"uid\":\"script1\"},\"inventoryShutdownScript\":{\"uid\":\"script2\"},\"inventoryCustomScript\":{\"uid\":\"script3\"},\"inventoryTemplateConfigScript\":{\"uid\":\"template1\"},\"inventoryHardwareItem\":{\"id\":\"{{{jsonPath request.body '$.inventoryHardwareItem.id'}}}\",\"name\":\"ISA3000-FTD\",\"description\":\"ISA3000-FTD\",\"powerControlAvailable\":true,\"hardwareConsoleAvailable\":true,\"networkInterfaces\":[{\"id\":\"GigabitEthernet1/1\"},{\"id\":\"GigabitEthernet1/2\"}]},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}/newhardwareitem\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}/newhardwareitem\"},\"node\":{\"href\":\"http://localhost/nodes/newhardwareitemnode\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "057aeb4c-250a-408d-8b33-68027c32e0af"
+  "uuid" : "8e53d641-60a8-433d-83c7-f01f18a4fbb3"
 }

@@ -1,17 +1,17 @@
 {
-  "id" : "f3f8c4ed-97bb-41ec-b0b5-953e19afb79c",
+  "id" : "415a18c1-463e-4f23-be13-2eaf9ae276b0",
   "request" : {
     "urlPath" : "/vms/existingvmtempvm",
     "method" : "GET"
   },
   "response" : {
     "status" : 200,
-    "body" : "{\"uid\":\"existingvmtempvm\",\"name\":\"mail4\",\"description\":\"mail4\",\"cpuQty\":2,\"memoryMb\":4096,\"nestedHypervisor\":false,\"inventoryVmId\":\"templatevm4\",\"remoteAccess\":{\"username\":\"user_name\",\"password\":\"password\"},\"vmNetworkInterfaces\":[{\"uid\":\"existingvmtempvminvnic\",\"ipAddress\":\"198.18.133.2\",\"name\":\"Network adapter 0\",\"type\":\"VIRTUAL_E1000\",\"inUse\":false}],\"advancedSettings\":{\"nameInHypervisor\":\"mail1\",\"notStarted\":false,\"allDisksNonPersistent\":false},\"_links\":{\"self\":{\"href\":\"http://localhost/vms/existingvmtempvm\"}}}",
+    "body" : "{\"uid\":\"existingvmtempvm\",\"name\":\"mail4\",\"description\":\"mail4\",\"cpuQty\":2,\"memoryMb\":4096,\"nestedHypervisor\":false,\"inventoryVmId\":\"templatevm4\",\"remoteAccess\":{\"username\":\"user_name\",\"password\":\"password\"},\"vmNetworkInterfaces\":[{\"uid\":\"existingvmtempvminvnic\",\"ipAddress\":\"198.18.133.2\",\"name\":\"Network adapter 0\",\"type\":\"VIRTUAL_E1000\",\"inUse\":false,\"assignDhcp\":false}],\"advancedSettings\":{\"nameInHypervisor\":\"mail1\",\"notStarted\":false,\"allDisksNonPersistent\":false},\"_links\":{\"self\":{\"href\":\"http://localhost/vms/existingvmtempvm\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "f3f8c4ed-97bb-41ec-b0b5-953e19afb79c"
+  "uuid" : "415a18c1-463e-4f23-be13-2eaf9ae276b0"
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "11e3e89d-14fe-4c52-8e77-3c283b4fbbd2",
+  "id" : "3e117db3-1e6f-44b6-a670-55645214b72f",
   "request" : {
     "urlPath" : "/topologies/lontopology/clones",
     "method" : "POST",
@@ -19,11 +19,11 @@
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"EJSFVZOEJKDGXXKWPZNC\",\"message\":\"Field 'name' size must be between 1 and 255\",\"links\":[]},{\"logref\":\"ILCNFXBFUSIXTNPDLQDC\",\"message\":\"Field 'name' must not be blank\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"PBSXMJJCSXNBCZZUZHXP\",\"message\":\"Field 'name' size must be between 1 and 255\",\"links\":[]},{\"logref\":\"MYPZNXMAUEZTYKSPMSAX\",\"message\":\"Field 'name' must not be blank\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "11e3e89d-14fe-4c52-8e77-3c283b4fbbd2"
+  "uuid" : "3e117db3-1e6f-44b6-a670-55645214b72f"
 }

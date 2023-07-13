@@ -1,5 +1,5 @@
 {
-  "id" : "ad2afb7c-f5e8-4834-8e5a-9d1b0743a3d0",
+  "id" : "33574616-cd1e-414e-b7cb-0bd4c9ddab21",
   "request" : {
     "urlPath" : "/vms/notfound",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"RWVNEILWVOIXEPBQAWTR\",\"message\":\"The requested VM resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"OWIQLDBJDRCGKGXCLBXP\",\"message\":\"The requested VM resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "ad2afb7c-f5e8-4834-8e5a-9d1b0743a3d0"
+  "uuid" : "33574616-cd1e-414e-b7cb-0bd4c9ddab21"
 }

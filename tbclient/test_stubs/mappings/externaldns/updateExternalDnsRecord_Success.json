@@ -1,5 +1,5 @@
 {
-  "id" : "80a0e83b-7ea7-46d5-bfd9-42adb8c022b7",
+  "id" : "8f29722a-796c-488b-bf94-9a557bd78f4a",
   "request" : {
     "urlPath" : "/external-dns-records/lonextdnsrec1",
     "method" : "PUT",
@@ -41,5 +41,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "80a0e83b-7ea7-46d5-bfd9-42adb8c022b7"
+  "uuid" : "8f29722a-796c-488b-bf94-9a557bd78f4a"
 }

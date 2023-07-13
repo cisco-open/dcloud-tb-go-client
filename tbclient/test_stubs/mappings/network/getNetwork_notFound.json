@@ -1,5 +1,5 @@
 {
-  "id" : "a136a560-bba0-449c-a692-89330093ddb4",
+  "id" : "db93a3f1-7b80-4fec-b5d9-6c57be3d7fc0",
   "request" : {
     "urlPath" : "/networks/notfound",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"FTQMFNECENYZMIXVWUNT\",\"message\":\"The requested Network resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"ZAPKYVKLUSBHKFSHQKKB\",\"message\":\"The requested Network resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "a136a560-bba0-449c-a692-89330093ddb4"
+  "uuid" : "db93a3f1-7b80-4fec-b5d9-6c57be3d7fc0"
 }

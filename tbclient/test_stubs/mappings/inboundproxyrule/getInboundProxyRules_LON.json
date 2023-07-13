@@ -1,5 +1,5 @@
 {
-  "id" : "d18133d9-eb9e-4817-bbba-2cf9ac074284",
+  "id" : "df12280a-99dd-4e4c-84ce-56b1ff829b94",
   "request" : {
     "urlPath" : "/topologies/lontopology/inbound-proxy-rules",
     "method" : "GET",
@@ -17,5 +17,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "d18133d9-eb9e-4817-bbba-2cf9ac074284"
+  "uuid" : "df12280a-99dd-4e4c-84ce-56b1ff829b94"
 }

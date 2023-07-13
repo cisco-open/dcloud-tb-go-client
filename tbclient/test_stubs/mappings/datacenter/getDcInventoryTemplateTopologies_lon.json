@@ -1,5 +1,5 @@
 {
-  "id" : "d87e0a38-dc83-4a66-be52-6b1b0cd195ba",
+  "id" : "131d3350-7625-43be-9cff-88bcac2b881c",
   "request" : {
     "urlPath" : "/datacenters/lon/inventory-template-topologies",
     "method" : "GET"
@@ -12,5 +12,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "d87e0a38-dc83-4a66-be52-6b1b0cd195ba"
+  "uuid" : "131d3350-7625-43be-9cff-88bcac2b881c"
 }

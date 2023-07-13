@@ -1,5 +1,5 @@
 {
-  "id" : "d815466a-0eaa-4bf8-9c9a-3d7e3fe6aa19",
+  "id" : "e1b6c102-d0bd-49f8-9a1a-b75e0c9186b9",
   "request" : {
     "urlPath" : "/topologies/noreader",
     "method" : "GET",
@@ -18,5 +18,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "d815466a-0eaa-4bf8-9c9a-3d7e3fe6aa19"
+  "uuid" : "e1b6c102-d0bd-49f8-9a1a-b75e0c9186b9"
 }

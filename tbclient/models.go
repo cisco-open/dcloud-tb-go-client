@@ -156,6 +156,7 @@ type VmNic struct {
 	IpAddress  string    `json:"ipAddress,omitempty"`
 	Type       string    `json:"type,omitempty"`
 	InUse      bool      `json:"inUse"`
+	AssignDhcp bool      `json:"assignDhcp"`
 	Rdp        *VmNicRdp `json:"rdp"`
 	Ssh        *VmNicSsh `json:"ssh"`
 	Network    *Network  `json:"network"`
@@ -191,6 +192,10 @@ type VmGuestAutomation struct {
 	DelaySecs uint32 `json:"delaySecs"`
 }
 
+type VmDhcpConfig struct {
+	DefaultGatewayIp string `json:"defaultGatewayIp"`
+}
+
 type Vm struct {
 	Uid                  string              `json:"uid,omitempty"`
 	Name                 string              `json:"name,omitempty"`
@@ -205,6 +210,8 @@ type Vm struct {
 	VmNetworkInterfaces  []VmNic             `json:"vmNetworkInterfaces"`
 	AdvancedSettings     *VmAdvancedSettings `json:"advancedSettings"`
 	GuestAutomation      *VmGuestAutomation  `json:"guestAutomation"`
+	ShutdownAutomation   *VmGuestAutomation  `json:"shutdownAutomation"`
+	DhcpConfig           *VmDhcpConfig       `json:"dhcpConfig"`
 	Topology             *Topology           `json:"topology"`
 }
 
@@ -495,6 +502,8 @@ func (r externalDnsRecordCollection) getData() []ExternalDnsRecord {
 	return r.Data
 }
 
+// Mail Server
+
 type MailServer struct {
 	Uid               string              `json:"uid,omitempty"`
 	InventoryDnsAsset *InventoryDnsAsset  `json:"inventoryDnsAsset"`
@@ -508,4 +517,11 @@ type mailServerCollection struct {
 
 func (m mailServerCollection) getData() []MailServer {
 	return m.Data
+}
+
+// Documentation
+
+type Documentation struct {
+	Uid              string `json:"uid,omitempty"`
+	DocumentationUrl string `json:"documentationUrl"`
 }

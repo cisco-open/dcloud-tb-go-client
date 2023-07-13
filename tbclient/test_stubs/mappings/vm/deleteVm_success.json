@@ -1,5 +1,5 @@
 {
-  "id" : "b7cfe900-97c4-45a2-b444-816c5acd886a",
+  "id" : "dc5a27c1-4d5b-427e-b429-8e3b6db9a3bc",
   "request" : {
     "urlPath" : "/vms/lonvm1",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 204,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "b7cfe900-97c4-45a2-b444-816c5acd886a"
+  "uuid" : "dc5a27c1-4d5b-427e-b429-8e3b6db9a3bc"
 }

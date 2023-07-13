@@ -1,5 +1,5 @@
 {
-  "id" : "ac8d720e-4d0c-4437-8f48-e688c17f54ee",
+  "id" : "06d92471-db29-4fab-8bae-ef47de5d49de",
   "request" : {
     "urlPath" : "/internal/topologies/publications",
     "method" : "PATCH",
@@ -14,11 +14,11 @@
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"KOYCUSBPGXDWCLCBZDQO\",\"message\":\"Field 'topology' must not be null\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"ZUUYELDHRGMWSCZQNMOC\",\"message\":\"Field 'topology' must not be null\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "ac8d720e-4d0c-4437-8f48-e688c17f54ee"
+  "uuid" : "06d92471-db29-4fab-8bae-ef47de5d49de"
 }

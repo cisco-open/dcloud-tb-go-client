@@ -1,5 +1,5 @@
 {
-  "id" : "91f13385-2ea9-4ab3-85aa-0609d9088c0f",
+  "id" : "d31a7342-13a5-4898-975f-b5ab5fbf9870",
   "request" : {
     "urlPath" : "/topologies/lontopology/remote-access",
     "method" : "GET",
@@ -18,5 +18,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "91f13385-2ea9-4ab3-85aa-0609d9088c0f"
+  "uuid" : "d31a7342-13a5-4898-975f-b5ab5fbf9870"
 }

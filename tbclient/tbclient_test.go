@@ -169,6 +169,7 @@ var vm = Vm{
 			MacAddress: "00:50:56:00:00:07",
 			Type:       "VIRTUAL_E1000",
 			InUse:      true,
+			AssignDhcp: true,
 			Rdp: &VmNicRdp{
 				Enabled:   true,
 				AutoLogin: true,
@@ -187,6 +188,7 @@ var vm = Vm{
 			Name:       "Network adapter 2",
 			MacAddress: "00:50:56:00:00:08",
 			Type:       "VIRTUAL_E1000",
+			AssignDhcp: false,
 			Network: &Network{
 				// Contract is missing 'description' field
 				Uid:              lonDefaultNetwork.Uid,
@@ -204,6 +206,10 @@ var vm = Vm{
 	GuestAutomation: &VmGuestAutomation{
 		Command:   "cd /var/; sh script.sh",
 		DelaySecs: 120,
+	},
+	ShutdownAutomation: &VmGuestAutomation{
+		Command:   "cd /var/; sh shutdownscript.sh",
+		DelaySecs: 200,
 	},
 	Topology: &Topology{Uid: lonTopology.Uid},
 }
@@ -223,18 +229,20 @@ var createVm = Vm{
 	},
 	VmNetworkInterfaces: []VmNic{
 		{
-			Uid:       "newvmnic1",
-			IpAddress: "198.18.131.200",
-			Name:      "Network adapter 0",
+			Uid:        "newvmnic1",
+			IpAddress:  "198.18.131.200",
+			MacAddress: "00:50:56:10:11:12",
+			Name:       "Network adapter 0",
 			Network: &Network{
 				// Contract is missing 'description' field
 				Uid: lonDefaultNetwork.Uid,
 			},
 		},
 		{
-			Uid:       "newvmnic2",
-			IpAddress: "198.18.131.201",
-			Name:      "Network adapter 1",
+			Uid:        "newvmnic2",
+			IpAddress:  "198.18.131.201",
+			MacAddress: "00:50:56:10:11:13",
+			Name:       "Network adapter 1",
 			Network: &Network{
 				// Contract is missing 'description' field
 				Uid: routedNetwork.Uid,
@@ -484,6 +492,11 @@ var mailServer = MailServer{
 	Topology: &Topology{Uid: lonTopology.Uid},
 }
 
+var documentation = Documentation{
+	Uid:              "lontopology",
+	DocumentationUrl: "http://www.google.com",
+}
+
 func (suite *ContractTestSuite) SetupSuite() {
 	suite.docker = startWiremock(suite)
 	suite.tbClient = createTbClient(suite)
@@ -654,7 +667,7 @@ func (suite *ContractTestSuite) TestGetAllVms() {
 	suite.handleError(err)
 
 	// Then
-	suite.Equal(3, len(vms))
+	suite.Equal(2, len(vms))
 	suite.Contains(vms, vm)
 }
 
@@ -680,6 +693,7 @@ func (suite *ContractTestSuite) TestUpdateVm() {
 
 	// Given
 	expectedVm := vm
+	expectedVm.DhcpConfig = &VmDhcpConfig{DefaultGatewayIp: "198.18.130.1"} // Match Contract
 
 	// Change Value
 	expectedVm.Name = "New Name"
@@ -722,6 +736,7 @@ func (suite *ContractTestSuite) TestCreateVm() {
 	for _, nic := range actualVm.VmNetworkInterfaces {
 		nic.Network.Name = ""
 	}
+	actualVm.VmNetworkInterfaces[1].MacAddress = expectedVm.VmNetworkInterfaces[1].MacAddress // Missing in Contract
 	suite.Equal(expectedVm, *actualVm)
 }
 
@@ -793,11 +808,22 @@ func (suite *ContractTestSuite) TestCreateHw() {
 	// Modify to match contracts
 	expectedHw := hw
 	expectedHw.Uid = ""
-	expectedHw.TemplateConfigScript = nil
-	expectedHw.StartupScript = nil
-	expectedHw.CustomScript = nil
-	expectedHw.ShutdownScript = nil
-	expectedHw.NetworkInterfaces = make([]HwNic, 0)
+	expectedHw.TemplateConfigScript = &InventoryHwScript{Uid: hw.TemplateConfigScript.Uid}
+	expectedHw.CustomScript = &InventoryHwScript{Uid: hw.CustomScript.Uid}
+	expectedHw.ShutdownScript = &InventoryHwScript{Uid: hw.ShutdownScript.Uid}
+	expectedHw.StartupScript = &InventoryHwScript{Uid: hw.StartupScript.Uid}
+	expectedHw.NetworkInterfaces = []HwNic{
+		hw.NetworkInterfaces[0],
+		{
+			Network: Network{
+				Uid:  lonDefaultNetwork.Uid,
+				Name: lonDefaultNetwork.Name,
+			},
+			NetworkInterface: InventoryHwNic{
+				Id: "GigabitEthernet1/2",
+			},
+		},
+	}
 
 	// When
 	actualHw, err := suite.tbClient.CreateHw(expectedHw)
@@ -805,7 +831,7 @@ func (suite *ContractTestSuite) TestCreateHw() {
 
 	// Then
 	expectedHw.Uid = "newhardwareitem"
-	expectedHw.Name = "ISA3000-FTD(1)"
+	expectedHw.NetworkInterfaces = nil // Match Contract
 	suite.Equal(expectedHw, *actualHw)
 }
 
@@ -1122,10 +1148,10 @@ func (suite *ContractTestSuite) TestCreateInboundProxyRule() {
 	expectedInboundProxyRule.Uid = "newloninboundproxy"
 	expectedInboundProxyRule.VmNicTarget = &TrafficVmNicTarget{
 		Uid:       inboundProxyRule.VmNicTarget.Uid,
-		IpAddress: "192.168.0.2",
+		IpAddress: "192.168.0.6",
 		Vm: &Vm{
-			Uid:  "ZKRqFhxWT2M6QvAHnXDS",
-			Name: "KQJXAGVGLIVKONVBPNSE",
+			Uid:  "liKK6pJ1Z7rQ0tHI2KSW",
+			Name: "BRJVLNXVGASIWIRTLRZT",
 		},
 	}
 	suite.Equal(expectedInboundProxyRule, *actualInboundProxyRule)
@@ -1190,6 +1216,10 @@ func (suite *ContractTestSuite) TestCreateExternalDnsRecord() {
 	expectedExternalDnsRecord := externalDnsRecord
 	expectedExternalDnsRecord.NatRule = &ExternalDnsNatRule{Uid: "lonipnatrule1"}
 	expectedExternalDnsRecord.SrvRecords = nil
+	expectedExternalDnsRecord.InventoryDnsAsset = &InventoryDnsAsset{
+		Id:   "3",
+		Name: "CollabEdge_Swiss",
+	}
 
 	// When
 	actualExternalDnsRecord, err := suite.tbClient.CreateExternalDnsRecord(expectedExternalDnsRecord)
@@ -1222,20 +1252,21 @@ func (suite *ContractTestSuite) TestGetAllMailServers() {
 }
 
 func (suite *ContractTestSuite) TestCreateMailServer() {
+
 	// Given
 	// Match Contract expectations
 	expectedMailServer := mailServer
+	expectedMailServer.VmNicTarget = &TrafficVmNicTarget{
+		Uid:       expectedMailServer.VmNicTarget.Uid,
+		IpAddress: "192.168.0.8",
+		Vm: &Vm{
+			Uid:  "jFN4LQ5ghsb8VOd04wzM",
+			Name: "QRAYMCRXKDADAONQQVCC",
+		},
+	}
 	expectedMailServer.InventoryDnsAsset = &InventoryDnsAsset{
 		Id:   "3",
 		Name: "CollabEdge_Swiss",
-	}
-	expectedMailServer.VmNicTarget = &TrafficVmNicTarget{
-		Uid:       expectedMailServer.VmNicTarget.Uid,
-		IpAddress: "192.168.0.6",
-		Vm: &Vm{
-			Uid:  "Ga8pAwcn3yPyWztLHoKu",
-			Name: "OUZOSZGJWAFISJBCOCXU",
-		},
 	}
 	expectedMailServer.Uid = ""
 
@@ -1256,6 +1287,30 @@ func (suite *ContractTestSuite) TestDeleteMailServer() {
 
 	// Then
 	suite.Nil(err)
+}
+
+func (suite *ContractTestSuite) TestGetDocumentation() {
+
+	// When
+	actualDocumentation, err := suite.tbClient.GetDocumentation(documentation.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(documentation, *actualDocumentation)
+}
+
+func (suite *ContractTestSuite) TestUpdateDocumentation() {
+
+	// Given
+	expectedDocumentation := documentation
+	expectedDocumentation.DocumentationUrl = "https://www.cisco.com"
+
+	// When
+	actualDocumentation, err := suite.tbClient.UpdateDocumentation(expectedDocumentation)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(expectedDocumentation, *actualDocumentation)
 }
 
 // Inventory Tests
@@ -1317,15 +1372,12 @@ func (suite *ContractTestSuite) TestGetAllInventoryNetworks() {
 
 func (suite *ContractTestSuite) TestGetAllInventoryVms() {
 
-	// TODO - Contract needs to be updated to remove 'filter' as mandatory
-	suite.T().Skip("Skipping until contracts are updated")
-
 	// When
 	inventoryVms, err := suite.tbClient.GetAllInventoryVms(lonTopology.Uid)
 	suite.handleError(err)
 
 	// Then
-	suite.Equal(2, len(inventoryVms))
+	suite.Equal(4, len(inventoryVms))
 	suite.Contains(inventoryVms, inventoryVm)
 }
 

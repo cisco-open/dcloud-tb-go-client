@@ -1,5 +1,5 @@
 {
-  "id" : "9e79b728-2897-42b3-b1d4-01c12b689318",
+  "id" : "94c8790f-df9a-4d84-a6b9-fc021eeda819",
   "request" : {
     "urlPath" : "/vms",
     "method" : "POST",
@@ -12,9 +12,17 @@
       }
     },
     "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['cpuQty'] =~ /-?(\\d+)/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['memoryMb'] =~ /-?(\\d+)/)]"
+    }, {
       "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['ipAddress'] =~ /([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])/)]"
     }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['macAddress'] =~ /00:50:56(:[a-f0-9]{2}){3}/)]"
+    }, {
       "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['name'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['assignDhcp'] =~ /(true|false)/)]"
     }, {
       "matchesJsonPath" : "$.['vmNetworkInterfaces'][*].['network'][?(@.['uid'] =~ /^lontopologyv1nwk$|^routednetwork$|^unroutednetwork$/)]"
     }, {
@@ -25,12 +33,12 @@
   },
   "response" : {
     "status" : 201,
-    "body" : "{\"uid\":\"newvm\",\"name\":\"vmtemplate1 name\",\"description\":\"vmtemplate1 description\",\"cpuQty\":4,\"memoryMb\":8192,\"nestedHypervisor\":false,\"inventoryVmId\":\"{{{jsonPath request.body '$.inventoryVmId'}}}\",\"remoteAccess\":{\"vmConsoleEnabled\":false,\"username\":\"user_name\",\"password\":\"password\"},\"vmNetworkInterfaces\":[{\"uid\":\"newvmnic1\",\"ipAddress\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].ipAddress'}}}\",\"name\":\"Network adapter 0\",\"network\":{\"uid\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].network.uid'}}}\",\"name\":\"VZDHNQOAZXNXQLMUEBQQ\",\"_links\":{\"self\":{\"href\":\"http://localhost/networks/{{{jsonPath request.body '$.vmNetworkInterfaces.[0].network.uid'}}}\"}}}},{\"uid\":\"newvmnic2\",\"ipAddress\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[1].ipAddress'}}}\",\"name\":\"Network adapter 1\",\"network\":{\"uid\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[1].network.uid'}}}\",\"name\":\"LUNABAREILCVMAXQFXWK\",\"_links\":{\"self\":{\"href\":\"http://localhost/networks/{{{jsonPath request.body '$.vmNetworkInterfaces.[1].network.uid'}}}\"}}}}],\"advancedSettings\":{\"nameInHypervisor\":\"Win_10-VM-1\",\"biosUuid\":\"61 62 63 64 65 66 67 68-69 6a 6b 6c 6d 6e 6f 70\",\"notStarted\":false,\"allDisksNonPersistent\":false},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}/newvm\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"node\":{\"href\":\"http://localhost/nodes/newvmnode\"}}}",
+    "body" : "{\"uid\":\"newvm\",\"name\":\"vmtemplate1 name\",\"description\":\"vmtemplate1 description\",\"cpuQty\":4,\"memoryMb\":8192,\"nestedHypervisor\":false,\"inventoryVmId\":\"{{{jsonPath request.body '$.inventoryVmId'}}}\",\"remoteAccess\":{\"vmConsoleEnabled\":false,\"username\":\"user_name\",\"password\":\"password\"},\"vmNetworkInterfaces\":[{\"uid\":\"newvmnic1\",\"ipAddress\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].ipAddress'}}}\",\"macAddress\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].macAddress'}}}\",\"name\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].name'}}}\",\"assignDhcp\":{{{jsonPath request.body '$.vmNetworkInterfaces.[0].assignDhcp'}}} ,\"network\":{\"uid\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].network.uid'}}}\",\"name\":\"ACPHFJHFTBMSKNYUXSAJ\",\"_links\":{\"self\":{\"href\":\"http://localhost/networks/{{{jsonPath request.body '$.vmNetworkInterfaces.[0].network.uid'}}}\"}}}},{\"uid\":\"newvmnic2\",\"ipAddress\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[1].ipAddress'}}}\",\"name\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[1].name'}}}\",\"assignDhcp\":{{{jsonPath request.body '$.vmNetworkInterfaces.[1].assignDhcp'}}} ,\"network\":{\"uid\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[1].network.uid'}}}\",\"name\":\"JZZFRJCDWZRDRCHCWSVM\",\"_links\":{\"self\":{\"href\":\"http://localhost/networks/{{{jsonPath request.body '$.vmNetworkInterfaces.[1].network.uid'}}}\"}}}}],\"advancedSettings\":{\"nameInHypervisor\":\"Win_10-VM-1\",\"biosUuid\":\"61 62 63 64 65 66 67 68-69 6a 6b 6c 6d 6e 6f 70\",\"notStarted\":false,\"allDisksNonPersistent\":false},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}/newvm\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"node\":{\"href\":\"http://localhost/nodes/newvmnode\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "9e79b728-2897-42b3-b1d4-01c12b689318"
+  "uuid" : "94c8790f-df9a-4d84-a6b9-fc021eeda819"
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "13b597a1-109d-4528-b49d-31f5bc4efe7f",
+  "id" : "48b0a8bf-ba77-4449-9f40-468de4d6455e",
   "request" : {
     "urlPath" : "/os-families",
     "method" : "GET",
@@ -17,5 +17,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "13b597a1-109d-4528-b49d-31f5bc4efe7f"
+  "uuid" : "48b0a8bf-ba77-4449-9f40-468de4d6455e"
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "2a1a167f-ef54-49d8-a671-234075da1c24",
+  "id" : "276469b8-622a-4657-8a03-d792c5e732ef",
   "request" : {
     "urlPath" : "/internal/topologies/maxnetwork",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 204,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "2a1a167f-ef54-49d8-a671-234075da1c24"
+  "uuid" : "276469b8-622a-4657-8a03-d792c5e732ef"
 }

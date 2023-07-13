@@ -1,5 +1,5 @@
 {
-  "id" : "560be70c-9218-4bbd-8bdf-f64ad02bc408",
+  "id" : "44a7c26f-fcb3-4beb-9bd7-797c5454c57e",
   "request" : {
     "urlPath" : "/hardware-items",
     "method" : "POST",
@@ -19,11 +19,11 @@
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"KDBMXGWMEVWFAYRNRJNL\",\"message\":\"The requested dCloud Hardware resource 'notfound' was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"OOALYJPIXFOPSPCWWCXQ\",\"message\":\"The requested dCloud Hardware resource 'notfound' was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "560be70c-9218-4bbd-8bdf-f64ad02bc408"
+  "uuid" : "44a7c26f-fcb3-4beb-9bd7-797c5454c57e"
 }

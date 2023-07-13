@@ -1,5 +1,5 @@
 {
-  "id" : "81a7489d-225c-4970-a572-258ca1eaad95",
+  "id" : "4f80753f-f6d3-4513-8cd8-d283eff5a853",
   "request" : {
     "urlPath" : "/topologies/lontopology/nat-rules",
     "method" : "GET",
@@ -17,5 +17,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "81a7489d-225c-4970-a572-258ca1eaad95"
+  "uuid" : "4f80753f-f6d3-4513-8cd8-d283eff5a853"
 }
