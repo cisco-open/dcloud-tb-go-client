@@ -1,0 +1,12 @@
+{
+  "id" : "c86f46e6-a3ac-4360-8861-47a556ed4164",
+  "request" : {
+    "urlPath" : "/telephony-items/lontelephonyitem1",
+    "method" : "DELETE"
+  },
+  "response" : {
+    "status" : 204,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "c86f46e6-a3ac-4360-8861-47a556ed4164"
+}

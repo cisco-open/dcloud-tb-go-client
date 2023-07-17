@@ -1,0 +1,12 @@
+{
+  "id" : "448e3d73-75d1-4ce1-86f1-160dfce37e35",
+  "request" : {
+    "urlPath" : "/telephony-items/notfound",
+    "method" : "DELETE"
+  },
+  "response" : {
+    "status" : 404,
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "448e3d73-75d1-4ce1-86f1-160dfce37e35"
+}

@@ -525,3 +525,34 @@ type Documentation struct {
 	Uid              string `json:"uid,omitempty"`
 	DocumentationUrl string `json:"documentationUrl"`
 }
+
+// Telephony
+
+type InventoryTelephonyItem struct {
+	Id          string `json:"id"`
+	Name        string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+}
+
+type inventoryTelephonyItemCollection struct {
+	Data []InventoryTelephonyItem `json:"inventoryTelephonyItems"`
+}
+
+func (t inventoryTelephonyItemCollection) getData() []InventoryTelephonyItem {
+	return t.Data
+}
+
+type TelephonyItem struct {
+	Uid                    string                  `json:"uid,omitempty"`
+	Name                   string                  `json:"name,omitempty"`
+	InventoryTelephonyItem *InventoryTelephonyItem `json:"inventoryTelephonyItem"`
+	Topology               *Topology               `json:"topology"`
+}
+
+type telephonyItemCollection struct {
+	Data []TelephonyItem `json:"telephonyItems"`
+}
+
+func (t telephonyItemCollection) getData() []TelephonyItem {
+	return t.Data
+}

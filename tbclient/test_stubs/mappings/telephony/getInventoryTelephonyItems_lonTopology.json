@@ -1,0 +1,16 @@
+{
+  "id" : "c0d4fc0e-1809-4be9-a986-738300f9cefe",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/inventory-telephony-items",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"inventoryTelephonyItems\":[{\"id\":\"1\",\"name\":\"PSTN Services\",\"description\":\"PSTN Services (VCube)\"}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "c0d4fc0e-1809-4be9-a986-738300f9cefe"
+}

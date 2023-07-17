@@ -1,0 +1,16 @@
+{
+  "id" : "f9ec35f1-8cff-47ee-8478-f2c3b3e6c702",
+  "request" : {
+    "urlPath" : "/topologies/lontopology/telephony-items",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"telephonyItems\":[{\"uid\":\"lontelephonyitem1\",\"name\":\"PSTN Services\",\"inventoryTelephonyItem\":{\"id\":\"1\",\"name\":\"PSTN Services\",\"description\":\"PSTN Services (VCube)\"},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/telephony-items/lontelephonyitem1\"},\"delete\":{\"href\":\"http://localhost/telephony-items/lontelephonyitem1\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"}}}]},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/lontopology/telephony-items\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "f9ec35f1-8cff-47ee-8478-f2c3b3e6c702"
+}
