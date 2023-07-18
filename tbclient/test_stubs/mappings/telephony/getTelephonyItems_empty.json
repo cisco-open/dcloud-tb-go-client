@@ -1,0 +1,16 @@
+{
+  "id" : "61433472-b693-4163-b1f9-e4a4ef29856d",
+  "request" : {
+    "urlPath" : "/topologies/rtptopology/telephony-items",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"telephonyItems\":[]},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/rtptopology/telephony-items\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "61433472-b693-4163-b1f9-e4a4ef29856d"
+}

@@ -1,0 +1,27 @@
+{
+  "id" : "11b6660d-a691-46c6-bb0f-ca4fe2ae7f6a",
+  "request" : {
+    "urlPath" : "/telephony-items",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$.['inventoryTelephonyItem'][?(@.['id'] == '1')]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'rtptopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "body" : "{\"uid\":\"newtelephonyitem\",\"name\":\"PSTN Services\",\"inventoryTelephonyItem\":{\"id\":\"{{{jsonPath request.body '$.inventoryTelephonyItem.id'}}}\",\"name\":\"PSTN Services\",\"description\":\"PSTN Services (VCube)\"},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}/newtelephonyitem\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}/newtelephonyitem\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "FIX_ETAG_FOR_TESTS"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "11b6660d-a691-46c6-bb0f-ca4fe2ae7f6a"
+}

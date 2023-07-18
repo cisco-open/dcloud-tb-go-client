@@ -497,6 +497,19 @@ var documentation = Documentation{
 	DocumentationUrl: "http://www.google.com",
 }
 
+var inventoryTelephonyItem = InventoryTelephonyItem{
+	Id:          "1",
+	Name:        "PSTN Services",
+	Description: "PSTN Services (VCube)",
+}
+
+var telephonyItem = TelephonyItem{
+	Uid:                    "lontelephonyitem1",
+	Name:                   "PSTN Services",
+	InventoryTelephonyItem: &inventoryTelephonyItem,
+	Topology:               &Topology{Uid: lonTopology.Uid},
+}
+
 func (suite *ContractTestSuite) SetupSuite() {
 	suite.docker = startWiremock(suite)
 	suite.tbClient = createTbClient(suite)
@@ -1313,6 +1326,49 @@ func (suite *ContractTestSuite) TestUpdateDocumentation() {
 	suite.Equal(expectedDocumentation, *actualDocumentation)
 }
 
+func (suite *ContractTestSuite) TestGetAllTelephonyItems() {
+
+	// When
+	telephonyItems, err := suite.tbClient.GetAllTelephonyItems(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(1, len(telephonyItems))
+	suite.Equal(telephonyItems[0], telephonyItem)
+	suite.Contains(telephonyItems, telephonyItem)
+}
+
+func (suite *ContractTestSuite) TestCreateTelephonyItem() {
+
+	// Given
+	// Match contract
+	inputTelephonyItem := TelephonyItem{
+		InventoryTelephonyItem: &InventoryTelephonyItem{Id: inventoryTelephonyItem.Id},
+		Topology:               &Topology{Uid: "rtptopology"},
+	}
+
+	// When
+	actualTelephonyItem, err := suite.tbClient.CreateTelephonyItem(inputTelephonyItem)
+	suite.handleError(err)
+
+	// Then
+	// Match contracts
+	expectedTelephonyItem := telephonyItem
+	expectedTelephonyItem.Uid = "newtelephonyitem"
+	expectedTelephonyItem.Topology = inputTelephonyItem.Topology
+	suite.Equal(expectedTelephonyItem, *actualTelephonyItem)
+}
+
+func (suite *ContractTestSuite) TestDeleteTelephonyItem() {
+
+	// When
+	err := suite.tbClient.DeleteTelephonyItem(telephonyItem.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Nil(err)
+}
+
 // Inventory Tests
 
 func (suite *ContractTestSuite) TestGetAllOsFamilies() {
@@ -1423,6 +1479,17 @@ func (suite *ContractTestSuite) TestGetAllInventorySrvProtocols() {
 	// Then
 	suite.Equal(5, len(inventorySrvProtocols))
 	suite.Contains(inventorySrvProtocols, inventorySrvProtocol)
+}
+
+func (suite *ContractTestSuite) TestGetAllInventoryTelephonyItems() {
+
+	// When
+	inventoryTelephonyItems, err := suite.tbClient.GetAllInventoryTelephonyItems(lonTopology.Uid)
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(1, len(inventoryTelephonyItems))
+	suite.Contains(inventoryTelephonyItems, inventoryTelephonyItem)
 }
 
 func TestContractTestSuite(t *testing.T) {

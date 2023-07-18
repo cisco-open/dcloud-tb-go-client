@@ -1,0 +1,16 @@
+{
+  "id" : "62ebd742-ac7c-4393-901a-0143f187532f",
+  "request" : {
+    "urlPath" : "/topologies/loninsync/telephony-items",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"telephonyItems\":[{\"uid\":\"notfound\",\"name\":\"Not Found Telephony\",\"inventoryTelephonyItem\":{\"id\":\"1\",\"name\":\"PSTN Services\",\"description\":\"PSTN Services (VCube)\"},\"topology\":{\"uid\":\"loninsync\"},\"_links\":{\"self\":{\"href\":\"http://localhost/telephony-items/notfound\"},\"delete\":{\"href\":\"http://localhost/telephony-items/notfound\"},\"topology\":{\"href\":\"http://localhost/topologies/loninsync\"}}}]},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/loninsync/telephony-items\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "62ebd742-ac7c-4393-901a-0143f187532f"
+}
