@@ -27,7 +27,7 @@ func (c *Client) GetTopology(uid string) (*Topology, error) {
 }
 
 func (c *Client) CreateTopology(topology Topology) (*Topology, error) {
-	return c.getTopologyService(map[string]string{"x-defaultnetwork": "false"}).create(topology)
+	return c.getTopologyService(map[string]string{"X-CreateDefaultNetwork": "false"}).create(topology)
 }
 
 func (c *Client) UpdateTopology(topology Topology) (*Topology, error) {
