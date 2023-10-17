@@ -72,7 +72,7 @@ func (c *Client) GetIpNatRule(uid string) (*IpNatRule, error) {
 		return nil, err
 	}
 
-	natRule := resp.Result().(natRule)
+	natRule := resp.Result().(*natRule)
 	if natRule.Target.Type != "IP" {
 		return nil, errors.New("IP NAT Rule Not Found")
 	}
