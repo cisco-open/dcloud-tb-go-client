@@ -153,7 +153,7 @@ func (c *Client) GetVmNatRule(uid string) (*VmNatRule, error) {
 		return nil, err
 	}
 
-	natRule := resp.Result().(natRule)
+	natRule := resp.Result().(*natRule)
 	if natRule.Target.Type != "VM_NIC" {
 		return nil, errors.New("VM NAT Rule Not Found")
 	}
