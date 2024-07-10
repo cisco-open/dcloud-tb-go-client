@@ -1,0 +1,35 @@
+{
+  "id" : "e22b465b-2611-4690-8f0f-279cb3070f92",
+  "request" : {
+    "urlPath" : "/ip-nat-rules",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "contains" : "application/json"
+      },
+      "Authorization" : {
+        "contains" : "Bearer oauthAuthorized"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['eastWest'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['target'][?(@.['name'] =~ /^\\s*\\S[\\S\\s]*/)]"
+    }, {
+      "matchesJsonPath" : "$.['target'][?(@.['ipAddress'] =~ /([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['scope'] =~ /^PUBLIC$|^INTERNAL$/)]"
+    }, {
+      "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'prolontopology')]"
+    } ]
+  },
+  "response" : {
+    "status" : 422,
+    "body" : "[{\"logref\":\"SFKAHPUEBHCVNKZKPMRQ\",\"message\":\"You have reached the maximum number of Internal Nat Rules for a Topology\",\"links\":[]}]",
+    "headers" : {
+      "Content-Type" : "application/vnd.error+json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "e22b465b-2611-4690-8f0f-279cb3070f92"
+}

@@ -395,6 +395,7 @@ type IpNatTarget struct {
 type IpNatRule struct {
 	Uid      string      `json:"uid,omitempty"`
 	EastWest bool        `json:"eastWest"`
+	Scope    *string     `json:"scope"`
 	Target   IpNatTarget `json:"target"`
 	Topology *Topology   `json:"topology"`
 }
@@ -410,6 +411,7 @@ type VmNatTarget struct {
 type VmNatRule struct {
 	Uid      string      `json:"uid,omitempty"`
 	EastWest bool        `json:"eastWest"`
+	Scope    *string     `json:"scope"`
 	Target   VmNatTarget `json:"target"`
 	Topology *Topology   `json:"topology"`
 }

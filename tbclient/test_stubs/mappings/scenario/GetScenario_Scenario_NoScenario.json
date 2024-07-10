@@ -1,0 +1,17 @@
+{
+  "id" : "9c98b430-4bdc-4de3-9189-8c4efb60ff5e",
+  "request" : {
+    "urlPath" : "/topologies/rtptopology/scenario",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"enabled\":false,\"topology\":{\"uid\":\"rtptopology\"},\"_links\":{\"topology\":{\"href\":\"http://localhost/topologies/rtptopology\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "ETag" : "0"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "9c98b430-4bdc-4de3-9189-8c4efb60ff5e"
+}

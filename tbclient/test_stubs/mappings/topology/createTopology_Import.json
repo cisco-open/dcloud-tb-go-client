@@ -1,5 +1,5 @@
 {
-  "id" : "9224362c-b8a5-434d-a52e-3329bcedda86",
+  "id" : "0cb836c0-0be2-4efd-8d59-28e07396051c",
   "request" : {
     "urlPath" : "/topologies",
     "method" : "POST",
@@ -18,19 +18,19 @@
     }, {
       "matchesJsonPath" : "$[?(@.['datacenter'] =~ /^LON$|^RTP$/)]"
     }, {
-      "matchesJsonPath" : "$[?(@.['notes'] == 'OPTIONAL>>ClientDslProperty{\nclientValue=^\\s*\\S[\\S\\s]*, \n\tserverValue=SZMBHBSZQZSBSMYOXAEF}<<')]"
+      "matchesJsonPath" : "$[?(@.['notes'] == 'OPTIONAL>>ClientDslProperty{\nclientValue=^\\s*\\S[\\S\\s]*, \n\tserverValue=XOSWURIVPTBWOCRPWVPI}<<')]"
     }, {
       "matchesJsonPath" : "$[?(@.demoId =~ /(^\\s*\\S[\\S\\s]*)/)]"
     } ]
   },
   "response" : {
     "status" : 201,
-    "body" : "{\"uid\":\"importedtopology\",\"name\":\"{{{jsonPath request.body '$.name'}}}\",\"description\":\"{{{jsonPath request.body '$.description'}}}\",\"datacenter\":\"{{{jsonPath request.body '$.datacenter'}}}\",\"notes\":\"{{{jsonPath request.body '$.notes'}}}\",\"lastUpdated\":\"2020-12-16T14:00:00.000000Z\",\"status\":\"DRAFT\",\"accessRoleAssignments\":[{\"uid\":\"importedowner\",\"email\":\"owner@cisco.com\",\"accessRole\":\"OWNER\",\"grantedBy\":\"owner@cisco.com\",\"grantedOn\":\"2020-12-16T14:00:00.000000Z\",\"topology\":{\"uid\":\"importedtopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/access-role-assignments/importedowner\"},\"topology\":{\"href\":\"http://localhost/topologies/importedtopology\"}}}],\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/importedtopology\"},\"delete\":{\"href\":\"http://localhost/topologies/importedtopology\"},\"clones\":{\"href\":\"http://localhost/topologies/importedtopology/clones\"},\"networks\":{\"href\":\"http://localhost/topologies/importedtopology/networks\"},\"licenses\":{\"href\":\"http://localhost/topologies/importedtopology/licenses\"},\"hardwareItems\":{\"href\":\"http://localhost/topologies/importedtopology/hardware-items\"},\"telephonyItems\":{\"href\":\"http://localhost/topologies/importedtopology/telephony-items\"},\"documentation\":{\"href\":\"http://localhost/documentation/importedtopology\"},\"diagram\":{\"href\":\"http://localhost/topologies/importedtopology/diagram\"},\"push\":{\"href\":\"http://localhost/demos\"}}}",
+    "body" : "{\"uid\":\"importedtopology\",\"name\":\"{{{jsonPath request.body '$.name'}}}\",\"description\":\"{{{jsonPath request.body '$.description'}}}\",\"datacenter\":\"{{{jsonPath request.body '$.datacenter'}}}\",\"notes\":\"{{{jsonPath request.body '$.notes'}}}\",\"lastUpdated\":\"2020-12-16T14:00:00.000000Z\",\"status\":\"DRAFT\",\"accessRoleAssignments\":[{\"uid\":\"importedowner\",\"email\":\"owner@cisco.com\",\"accessRole\":\"OWNER\",\"grantedBy\":\"owner@cisco.com\",\"grantedOn\":\"2020-12-16T14:00:00.000000Z\",\"topology\":{\"uid\":\"importedtopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/access-role-assignments/importedowner\"},\"topology\":{\"href\":\"http://localhost/topologies/importedtopology\"}}}],\"warnings\":[],\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/importedtopology\"},\"delete\":{\"href\":\"http://localhost/topologies/importedtopology\"},\"clones\":{\"href\":\"http://localhost/topologies/importedtopology/clones\"},\"networks\":{\"href\":\"http://localhost/topologies/importedtopology/networks\"},\"licenses\":{\"href\":\"http://localhost/topologies/importedtopology/licenses\"},\"hardwareItems\":{\"href\":\"http://localhost/topologies/importedtopology/hardware-items\"},\"telephonyItems\":{\"href\":\"http://localhost/topologies/importedtopology/telephony-items\"},\"documentation\":{\"href\":\"http://localhost/documentation/importedtopology\"},\"diagram\":{\"href\":\"http://localhost/topologies/importedtopology/diagram\"},\"push\":{\"href\":\"http://localhost/demos\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "9224362c-b8a5-434d-a52e-3329bcedda86"
+  "uuid" : "0cb836c0-0be2-4efd-8d59-28e07396051c"
 }

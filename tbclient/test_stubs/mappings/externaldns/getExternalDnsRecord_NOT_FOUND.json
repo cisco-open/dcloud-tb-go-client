@@ -1,5 +1,5 @@
 {
-  "id" : "6f2fc065-609d-455f-bbb5-bc7cab546618",
+  "id" : "c1e3d94e-675b-4a75-a68d-18a875043ecb",
   "request" : {
     "urlPath" : "/external-dns-records/notfound",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"RMHJTJRPNZWFCPDAYTCP\",\"message\":\"The requested External DNS Record resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"TIHFPACVQIELTSZZVSYT\",\"message\":\"The requested External DNS Record resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "6f2fc065-609d-455f-bbb5-bc7cab546618"
+  "uuid" : "c1e3d94e-675b-4a75-a68d-18a875043ecb"
 }

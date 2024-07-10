@@ -1,5 +1,5 @@
 {
-  "id" : "8d4e28a7-4aee-4a94-ba52-d0cbf5b531c6",
+  "id" : "5f1fbe98-abeb-49b7-8646-35d3264eb8eb",
   "request" : {
     "urlPath" : "/licenses/license1",
     "method" : "GET",
@@ -18,5 +18,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "8d4e28a7-4aee-4a94-ba52-d0cbf5b531c6"
+  "uuid" : "5f1fbe98-abeb-49b7-8646-35d3264eb8eb"
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "fbca318d-03d2-4b3f-b725-fe2fa05d61f0",
+  "id" : "8403e369-eca7-46c5-9428-e07535bb18f6",
   "request" : {
     "urlPath" : "/topologies/rtptopology/scenario",
     "method" : "PUT",
@@ -30,5 +30,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "fbca318d-03d2-4b3f-b725-fe2fa05d61f0"
+  "uuid" : "8403e369-eca7-46c5-9428-e07535bb18f6"
 }

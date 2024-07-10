@@ -1,5 +1,5 @@
 {
-  "id" : "f49a42a6-3b43-4309-928c-d7db8cd665b0",
+  "id" : "adbb4da8-164d-4038-b12f-1ff4e636e78b",
   "request" : {
     "urlPath" : "/vm-stop-order/lontopologyv1sso",
     "method" : "PUT",
@@ -32,11 +32,11 @@
   },
   "response" : {
     "status" : 412,
-    "body" : "[{\"logref\":\"VVROILWLJMDYHFXGSWBM\",\"message\":\"This object has been modified by another user and has changed before your save. Please refresh and make your changes and save again\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"ZCRNVZBVXAGELUAGDYMS\",\"message\":\"This object has been modified by another user and has changed before your save. Please refresh and make your changes and save again\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "f49a42a6-3b43-4309-928c-d7db8cd665b0"
+  "uuid" : "adbb4da8-164d-4038-b12f-1ff4e636e78b"
 }

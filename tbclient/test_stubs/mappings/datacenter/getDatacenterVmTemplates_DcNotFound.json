@@ -1,5 +1,5 @@
 {
-  "id" : "3e3608ef-b25d-47de-afa6-5e8acb3b6cd0",
+  "id" : "142f1215-a35e-421c-ba0a-c63820300d19",
   "request" : {
     "urlPath" : "/datacenters/notfound/templated-inventory-vms",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"YGPUOZNYYDGQJHSXDMPB\",\"message\":\"The requested Datacenter resource 'notfound' was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"ERPKUNAWVYTLUJVXQUQO\",\"message\":\"The requested Datacenter resource 'notfound' was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "3e3608ef-b25d-47de-afa6-5e8acb3b6cd0"
+  "uuid" : "142f1215-a35e-421c-ba0a-c63820300d19"
 }

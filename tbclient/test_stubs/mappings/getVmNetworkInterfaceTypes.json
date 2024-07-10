@@ -1,5 +1,5 @@
 {
-  "id" : "1a844392-6592-4524-a0e0-9ff5510e8236",
+  "id" : "3179b126-ed13-493a-ac1e-9a70a5c0f1bf",
   "request" : {
     "urlPath" : "/vm-network-interface-types",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 200,
-    "body" : "{\"_embedded\":{\"vmNetworkInterfaceTypes\":[{\"id\":\"VIRTUAL_E1000\",\"name\":\"VirtualE1000\"},{\"id\":\"VIRTUAL_E1000E\",\"name\":\"VirtualE1000E\"},{\"id\":\"VIRTUAL_PCNET_32\",\"name\":\"VirtualPCNet32\"},{\"id\":\"VIRTUAL_VMXNET_2\",\"name\":\"VirtualVmxnet2\"},{\"id\":\"VIRTUAL_VMXNET_3\",\"name\":\"VirtualVmxnet3\"}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "body" : "{\"_embedded\":{\"vmNetworkInterfaceTypes\":[{\"id\":\"VIRTUAL_E1000\",\"name\":\"VirtualE1000\"},{\"id\":\"VIRTUAL_E1000E\",\"name\":\"VirtualE1000e\"},{\"id\":\"VIRTUAL_PCNET_32\",\"name\":\"VirtualPCNet32\"},{\"id\":\"VIRTUAL_VMXNET_2\",\"name\":\"VirtualVmxnet2\"},{\"id\":\"VIRTUAL_VMXNET_3\",\"name\":\"VirtualVmxnet3\"}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
     "headers" : {
       "Content-Type" : "application/json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "1a844392-6592-4524-a0e0-9ff5510e8236"
+  "uuid" : "3179b126-ed13-493a-ac1e-9a70a5c0f1bf"
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "ba7bb475-0659-4bbb-b466-3cb85bb341c2",
+  "id" : "95017c12-adcb-439c-97c3-e4dfbf96bbd1",
   "request" : {
     "urlPath" : "/topologies/lontopology/mail-servers",
     "method" : "GET",
@@ -17,5 +17,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "ba7bb475-0659-4bbb-b466-3cb85bb341c2"
+  "uuid" : "95017c12-adcb-439c-97c3-e4dfbf96bbd1"
 }

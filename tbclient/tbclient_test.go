@@ -411,9 +411,12 @@ var scenario = Scenario{
 	Topology: &Topology{Uid: lonTopology.Uid},
 }
 
+var publicScope = "PUBLIC"
+
 var ipNatRule = IpNatRule{
 	Uid:      "lonipnatrule1",
 	EastWest: false,
+	Scope:    &publicScope,
 	Target: IpNatTarget{
 		IpAddress: "198.18.131.100",
 		Name:      "Some Device",
@@ -424,6 +427,7 @@ var ipNatRule = IpNatRule{
 var vmNatRule = VmNatRule{
 	Uid:      "lonvmnatrule1",
 	EastWest: false,
+	Scope:    &publicScope,
 	Target: VmNatTarget{
 		VmNic:     &VmNic{Uid: "lonvm1natnic"},
 		IpAddress: "198.18.131.201",
@@ -1161,10 +1165,10 @@ func (suite *ContractTestSuite) TestCreateInboundProxyRule() {
 	expectedInboundProxyRule.Uid = "newloninboundproxy"
 	expectedInboundProxyRule.VmNicTarget = &TrafficVmNicTarget{
 		Uid:       inboundProxyRule.VmNicTarget.Uid,
-		IpAddress: "192.168.0.6",
+		IpAddress: "192.168.0.8",
 		Vm: &Vm{
-			Uid:  "liKK6pJ1Z7rQ0tHI2KSW",
-			Name: "BRJVLNXVGASIWIRTLRZT",
+			Uid:  "pcVmayo2nx7fQr8V21xO",
+			Name: "MWRGFTMMILZNATVKXRSM",
 		},
 	}
 	suite.Equal(expectedInboundProxyRule, *actualInboundProxyRule)
@@ -1229,10 +1233,6 @@ func (suite *ContractTestSuite) TestCreateExternalDnsRecord() {
 	expectedExternalDnsRecord := externalDnsRecord
 	expectedExternalDnsRecord.NatRule = &ExternalDnsNatRule{Uid: "lonipnatrule1"}
 	expectedExternalDnsRecord.SrvRecords = nil
-	expectedExternalDnsRecord.InventoryDnsAsset = &InventoryDnsAsset{
-		Id:   "3",
-		Name: "CollabEdge_Swiss",
-	}
 
 	// When
 	actualExternalDnsRecord, err := suite.tbClient.CreateExternalDnsRecord(expectedExternalDnsRecord)
@@ -1271,10 +1271,10 @@ func (suite *ContractTestSuite) TestCreateMailServer() {
 	expectedMailServer := mailServer
 	expectedMailServer.VmNicTarget = &TrafficVmNicTarget{
 		Uid:       expectedMailServer.VmNicTarget.Uid,
-		IpAddress: "192.168.0.8",
+		IpAddress: "192.168.0.3",
 		Vm: &Vm{
-			Uid:  "jFN4LQ5ghsb8VOd04wzM",
-			Name: "QRAYMCRXKDADAONQQVCC",
+			Uid:  "LDU9tBp7g5Zd4nZE2aNj",
+			Name: "HFDJPRCCGOZGHOMYSZGX",
 		},
 	}
 	expectedMailServer.InventoryDnsAsset = &InventoryDnsAsset{

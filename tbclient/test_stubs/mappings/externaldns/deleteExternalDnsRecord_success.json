@@ -1,5 +1,5 @@
 {
-  "id" : "22b0bf5c-3358-45a6-adac-7eac361e522a",
+  "id" : "201966e0-19b9-485c-81cf-df5379107c9a",
   "request" : {
     "urlPath" : "/external-dns-records/lonextdnsrec1",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 204,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "22b0bf5c-3358-45a6-adac-7eac361e522a"
+  "uuid" : "201966e0-19b9-485c-81cf-df5379107c9a"
 }

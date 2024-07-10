@@ -1,5 +1,5 @@
 {
-  "id" : "d3bb33dd-3128-4f32-99e9-295738944390",
+  "id" : "c0267ee5-6cb4-4cd0-8d78-2879bb3b4cba",
   "request" : {
     "urlPath" : "/networks/unroutednetwork",
     "method" : "GET",
@@ -11,12 +11,12 @@
   },
   "response" : {
     "status" : 200,
-    "body" : "{\"uid\":\"unroutednetwork\",\"name\":\"Unrouted Network\",\"description\":\"Unrouted Network description\",\"inventoryNetwork\":{\"id\":\"L2-VLAN-1\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.5.0 /24\"},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "body" : "{\"uid\":\"unroutednetwork\",\"name\":\"Unrouted Network\",\"description\":\"Unrouted Network description\",\"inventoryNetwork\":{\"id\":\"L2-VLAN-1\",\"type\":\"UNROUTED\",\"subnet\":\"198.18.5.0 /24\"},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"},\"node\":{\"href\":\"http://localhost/nodes/lonunroutedretworknode\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "d3bb33dd-3128-4f32-99e9-295738944390"
+  "uuid" : "c0267ee5-6cb4-4cd0-8d78-2879bb3b4cba"
 }

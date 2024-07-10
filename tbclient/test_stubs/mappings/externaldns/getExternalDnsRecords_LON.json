@@ -1,5 +1,5 @@
 {
-  "id" : "6c1cdaf3-59fd-4540-9323-81cbf666c8d7",
+  "id" : "9ae984d6-4604-4f85-ba17-3d58158ca913",
   "request" : {
     "urlPath" : "/topologies/lontopology/external-dns-records",
     "method" : "GET",
@@ -17,5 +17,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "6c1cdaf3-59fd-4540-9323-81cbf666c8d7"
+  "uuid" : "9ae984d6-4604-4f85-ba17-3d58158ca913"
 }

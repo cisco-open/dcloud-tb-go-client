@@ -1,5 +1,5 @@
 {
-  "id" : "a45f55bb-0236-4c67-b22a-7f4886030ffc",
+  "id" : "8ee369a5-8cbe-4230-9e0b-bb25b8eddb26",
   "request" : {
     "urlPath" : "/topologies/lontopology/clones",
     "method" : "POST",
@@ -19,12 +19,12 @@
   },
   "response" : {
     "status" : 201,
-    "body" : "{\"uid\":\"clonetopology\",\"name\":\"{{{jsonPath request.body '$.name'}}}\",\"description\":\"{{{jsonPath request.body '$.description'}}}\",\"datacenter\":\"LON\",\"lastUpdated\":\"2020-12-16T14:00:00.000000Z\",\"status\":\"DRAFT\",\"sharedWithCurrentUser\":false,\"inSyncWithDcloud\":false,\"activeTemplate\":false,\"accessRoleAssignments\":[{\"uid\":\"cloneowner\",\"email\":\"owner@cisco.com\",\"accessRole\":\"OWNER\",\"grantedBy\":\"owner@cisco.com\",\"grantedOn\":\"2020-12-16T14:00:00.000000Z\",\"topology\":{\"uid\":\"clonetopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/access-role-assignments/cloneowner\"},\"topology\":{\"href\":\"http://localhost/topologies/clonetopology\"}}}],\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/clonetopology\"},\"delete\":{\"href\":\"http://localhost/topologies/clonetopology\"},\"clones\":{\"href\":\"http://localhost/topologies/clonetopology/clones\"},\"networks\":{\"href\":\"http://localhost/topologies/clonetopology/networks\"},\"licenses\":{\"href\":\"http://localhost/topologies/clonetopology/licenses\"},\"hardwareItems\":{\"href\":\"http://localhost/topologies/clonetopology/hardware-items\"},\"telephonyItems\":{\"href\":\"http://localhost/topologies/clonetopology/telephony-items\"},\"documentation\":{\"href\":\"http://localhost/documentation/clonetopology\"},\"diagram\":{\"href\":\"http://localhost/topologies/clonetopology/diagram\"},\"push\":{\"href\":\"http://localhost/demos\"}}}",
+    "body" : "{\"uid\":\"clonetopology\",\"name\":\"{{{jsonPath request.body '$.name'}}}\",\"description\":\"{{{jsonPath request.body '$.description'}}}\",\"datacenter\":\"LON\",\"lastUpdated\":\"2020-12-16T14:00:00.000000Z\",\"status\":\"DRAFT\",\"sharedWithCurrentUser\":false,\"inSyncWithDcloud\":false,\"activeTemplate\":false,\"accessRoleAssignments\":[{\"uid\":\"cloneowner\",\"email\":\"owner@cisco.com\",\"accessRole\":\"OWNER\",\"grantedBy\":\"owner@cisco.com\",\"grantedOn\":\"2020-12-16T14:00:00.000000Z\",\"topology\":{\"uid\":\"clonetopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/access-role-assignments/cloneowner\"},\"topology\":{\"href\":\"http://localhost/topologies/clonetopology\"}}}],\"warnings\":[],\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/clonetopology\"},\"delete\":{\"href\":\"http://localhost/topologies/clonetopology\"},\"clones\":{\"href\":\"http://localhost/topologies/clonetopology/clones\"},\"networks\":{\"href\":\"http://localhost/topologies/clonetopology/networks\"},\"licenses\":{\"href\":\"http://localhost/topologies/clonetopology/licenses\"},\"hardwareItems\":{\"href\":\"http://localhost/topologies/clonetopology/hardware-items\"},\"telephonyItems\":{\"href\":\"http://localhost/topologies/clonetopology/telephony-items\"},\"documentation\":{\"href\":\"http://localhost/documentation/clonetopology\"},\"diagram\":{\"href\":\"http://localhost/topologies/clonetopology/diagram\"},\"push\":{\"href\":\"http://localhost/demos\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "a45f55bb-0236-4c67-b22a-7f4886030ffc"
+  "uuid" : "8ee369a5-8cbe-4230-9e0b-bb25b8eddb26"
 }
