@@ -1,5 +1,5 @@
 {
-  "id" : "95995811-de00-427b-aeba-0abf078227d8",
+  "id" : "6cc281e7-4c75-49b0-b4ec-30cc34533dc9",
   "request" : {
     "urlPath" : "/nat-rules/notfound",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 404,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "95995811-de00-427b-aeba-0abf078227d8"
+  "uuid" : "6cc281e7-4c75-49b0-b4ec-30cc34533dc9"
 }

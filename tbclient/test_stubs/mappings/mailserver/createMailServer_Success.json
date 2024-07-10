@@ -1,5 +1,5 @@
 {
-  "id" : "bfdea2fe-478b-4b7d-95d7-65102281231c",
+  "id" : "84095f89-a68d-42c1-bf57-8ed1db35caaf",
   "request" : {
     "urlPath" : "/mail-servers",
     "method" : "POST",
@@ -21,12 +21,12 @@
   },
   "response" : {
     "status" : 201,
-    "body" : "{\"uid\":\"newmailserver\",\"vmNicTarget\":{\"uid\":\"{{{jsonPath request.body '$.vmNicTarget.uid'}}}\",\"ipAddress\":\"192.168.0.8\",\"vm\":{\"uid\":\"jFN4LQ5ghsb8VOd04wzM\",\"name\":\"QRAYMCRXKDADAONQQVCC\"},\"_links\":{\"vm\":{\"href\":\"http://localhost/vms/rtpvm1\"}}},\"inventoryDnsAsset\":{\"id\":\"{{{jsonPath request.body '$.inventoryDnsAsset.id'}}}\",\"name\":\"CollabEdge_Swiss\"},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}/newmailserver\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}/newmailserver\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"}}}",
+    "body" : "{\"uid\":\"newmailserver\",\"vmNicTarget\":{\"uid\":\"{{{jsonPath request.body '$.vmNicTarget.uid'}}}\",\"ipAddress\":\"192.168.0.3\",\"vm\":{\"uid\":\"LDU9tBp7g5Zd4nZE2aNj\",\"name\":\"HFDJPRCCGOZGHOMYSZGX\"},\"_links\":{\"vm\":{\"href\":\"http://localhost/vms/rtpvm1\"}}},\"inventoryDnsAsset\":{\"id\":\"{{{jsonPath request.body '$.inventoryDnsAsset.id'}}}\",\"name\":\"CollabEdge_Swiss\"},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}/newmailserver\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}/newmailserver\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "bfdea2fe-478b-4b7d-95d7-65102281231c"
+  "uuid" : "84095f89-a68d-42c1-bf57-8ed1db35caaf"
 }

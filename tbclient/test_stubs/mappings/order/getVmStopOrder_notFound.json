@@ -1,5 +1,5 @@
 {
-  "id" : "3a561af5-13be-4baa-b3cc-6dfe8e277c8f",
+  "id" : "412b55b4-754c-4727-8d2c-00fc6235852c",
   "request" : {
     "urlPath" : "/topologies/notfound/vm-stop-order",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"VTEHDSRFJZLRTDKLEQYZ\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"EHHYBKAYGQNWRBGMLBNP\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "3a561af5-13be-4baa-b3cc-6dfe8e277c8f"
+  "uuid" : "412b55b4-754c-4727-8d2c-00fc6235852c"
 }

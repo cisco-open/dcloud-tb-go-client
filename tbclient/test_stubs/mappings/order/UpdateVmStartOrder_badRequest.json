@@ -1,5 +1,5 @@
 {
-  "id" : "070ef0e5-6bdb-413e-9ba5-a3698194bc9d",
+  "id" : "5f5edc79-0d36-411c-a7e8-d7b89553124a",
   "request" : {
     "urlPath" : "/vm-start-order/lontopologyv1sso",
     "method" : "PUT",
@@ -34,11 +34,11 @@
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"ADGRGQYLGCRBUOFVERFD\",\"message\":\"Payload uid does not match the path variable uid\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"MFRTTIRDSBQLWQUMJAZG\",\"message\":\"Payload uid does not match the path variable uid\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "070ef0e5-6bdb-413e-9ba5-a3698194bc9d"
+  "uuid" : "5f5edc79-0d36-411c-a7e8-d7b89553124a"
 }

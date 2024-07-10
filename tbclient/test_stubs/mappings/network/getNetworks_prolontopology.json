@@ -1,5 +1,5 @@
 {
-  "id" : "9a8bf21a-c805-4aa3-8381-07f684713463",
+  "id" : "78fe898c-009e-43c6-90a2-0f7762837a7e",
   "request" : {
     "urlPath" : "/topologies/prolontopology/networks",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 200,
-    "body" : "{\"_embedded\":{\"networks\":[{\"uid\":\"prolontopologyv2nwk\",\"name\":\"Default Network\",\"description\":\"Default Network description\",\"inventoryNetwork\":{\"id\":\"VLAN-PRIMARY\",\"type\":\"ROUTED\",\"subnet\":\"198.18.128.0 /18\"},\"vmConnectionInfo\":{\"maxConnections\":29,\"currentConnections\":[{\"uid\":\"prolonvm1nic1\",\"ipAddress\":\"198.18.133.111\",\"name\":\"Network adapter 0\",\"macAddress\":\"00:50:56:00:00:09\",\"type\":\"VIRTUAL_E1000\"},{\"uid\":\"prolonvm1nic2\",\"ipAddress\":\"198.18.133.111\",\"name\":\"Network adapter 1\",\"macAddress\":\"00:50:56:00:00:10\",\"type\":\"VIRTUAL_E1000\"}]},\"topology\":{\"uid\":\"prolontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/networks/prolontopologyv2nwk\"},\"topology\":{\"href\":\"http://localhost/topologies/prolontopology\"}}}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
+    "body" : "{\"_embedded\":{\"networks\":[{\"uid\":\"prolontopologyv2nwk\",\"name\":\"Default Network\",\"description\":\"Default Network description\",\"inventoryNetwork\":{\"id\":\"VLAN-PRIMARY\",\"type\":\"ROUTED\",\"subnet\":\"198.18.128.0 /18\"},\"vmConnectionInfo\":{\"maxConnections\":29,\"currentConnections\":[{\"uid\":\"prolonvm1nic1\",\"ipAddress\":\"198.18.133.111\",\"name\":\"Network adapter 0\",\"macAddress\":\"00:50:56:00:00:09\",\"type\":\"VIRTUAL_E1000\"},{\"uid\":\"prolonvm1nic2\",\"ipAddress\":\"198.18.133.111\",\"name\":\"Network adapter 1\",\"macAddress\":\"00:50:56:00:00:10\",\"type\":\"VIRTUAL_E1000\"}]},\"topology\":{\"uid\":\"prolontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/networks/prolontopologyv2nwk\"},\"topology\":{\"href\":\"http://localhost/topologies/prolontopology\"},\"node\":{\"href\":\"http://localhost/nodes/prolonv2defnetworknode\"}}}]},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"}}}",
     "headers" : {
       "Content-Type" : "application/json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "9a8bf21a-c805-4aa3-8381-07f684713463"
+  "uuid" : "78fe898c-009e-43c6-90a2-0f7762837a7e"
 }

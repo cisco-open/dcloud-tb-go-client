@@ -1,5 +1,5 @@
 {
-  "id" : "061eb9a9-a869-46ac-a407-ac7cadfae694",
+  "id" : "f85e2e9b-7638-4b70-aa6d-76ac4cd31955",
   "request" : {
     "urlPath" : "/datacenters/lon/templated-inventory-vms",
     "method" : "GET",
@@ -17,5 +17,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "061eb9a9-a869-46ac-a407-ac7cadfae694"
+  "uuid" : "f85e2e9b-7638-4b70-aa6d-76ac4cd31955"
 }

@@ -1,16 +1,16 @@
 {
-  "id" : "22386a8e-deab-431c-89cd-9d498ad7f626",
+  "id" : "68c13ca3-01ba-4759-8482-ccb78b2ec57d",
   "request" : {
     "urlPath" : "/topologies/noreader/scenario",
     "method" : "DELETE"
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"XGHJQFIKKWNEEHGVEKGI\",\"message\":\"The requested Scenario resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"UWFVMQWLUJGWNACCGMSG\",\"message\":\"The requested Scenario resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "22386a8e-deab-431c-89cd-9d498ad7f626"
+  "uuid" : "68c13ca3-01ba-4759-8482-ccb78b2ec57d"
 }

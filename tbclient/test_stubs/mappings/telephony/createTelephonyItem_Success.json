@@ -1,5 +1,5 @@
 {
-  "id" : "11b6660d-a691-46c6-bb0f-ca4fe2ae7f6a",
+  "id" : "b4bb2990-8720-436a-a49c-f4eb1831828f",
   "request" : {
     "urlPath" : "/telephony-items",
     "method" : "POST",
@@ -23,5 +23,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "11b6660d-a691-46c6-bb0f-ca4fe2ae7f6a"
+  "uuid" : "b4bb2990-8720-436a-a49c-f4eb1831828f"
 }

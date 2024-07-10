@@ -1,5 +1,5 @@
 {
-  "id" : "3c3d0d40-07f1-4727-b301-f8f2c5594c94",
+  "id" : "8ee83614-c6ff-40d0-80ad-58e97170f40c",
   "request" : {
     "urlPath" : "/external-dns-records",
     "method" : "POST",
@@ -23,11 +23,11 @@
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"IOIRAAPHIGBJLJMLHROF\",\"message\":\"The requested dCloud DNS asset resource 'notfound' was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"ANGLCKGQMOKLFSNCIVHZ\",\"message\":\"The requested dCloud DNS asset resource 'notfound' was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "3c3d0d40-07f1-4727-b301-f8f2c5594c94"
+  "uuid" : "8ee83614-c6ff-40d0-80ad-58e97170f40c"
 }

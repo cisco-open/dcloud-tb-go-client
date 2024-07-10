@@ -1,5 +1,5 @@
 {
-  "id" : "667ea916-2391-45c7-b3ed-13df181334fe",
+  "id" : "7460f481-0968-4958-8b70-bb4584bbd44b",
   "request" : {
     "urlPath" : "/topologies/lontopology",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 204,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "667ea916-2391-45c7-b3ed-13df181334fe"
+  "uuid" : "7460f481-0968-4958-8b70-bb4584bbd44b"
 }

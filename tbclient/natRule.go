@@ -17,6 +17,7 @@ type natRule struct {
 	Uid      string    `json:"uid"`
 	Topology *Topology `json:"topology"`
 	EastWest bool      `json:"eastWest"`
+	Scope    *string   `json:"scope"`
 	Target   struct {
 		Type      string `json:"type"`
 		VmNic     *VmNic `json:"targetItem"`
@@ -50,6 +51,7 @@ func (c *Client) GetAllIpNatRules(topologyUid string) ([]IpNatRule, error) {
 			ipNatRule := IpNatRule{
 				Uid:      natRule.Uid,
 				EastWest: natRule.EastWest,
+				Scope:    natRule.Scope,
 				Target: IpNatTarget{
 					IpAddress: natRule.Target.IpAddress,
 					Name:      natRule.Target.Name,
@@ -80,6 +82,7 @@ func (c *Client) GetIpNatRule(uid string) (*IpNatRule, error) {
 	return &IpNatRule{
 		Uid:      natRule.Uid,
 		EastWest: natRule.EastWest,
+		Scope:    natRule.Scope,
 		Target: IpNatTarget{
 			IpAddress: natRule.Target.IpAddress,
 			Name:      natRule.Target.Name,
@@ -130,6 +133,7 @@ func (c *Client) GetAllVmNatRules(topologyUid string) ([]VmNatRule, error) {
 			vmNatRule := VmNatRule{
 				Uid:      natRule.Uid,
 				EastWest: natRule.EastWest,
+				Scope:    natRule.Scope,
 				Target: VmNatTarget{
 					VmNic:     natRule.Target.VmNic,
 					IpAddress: natRule.Target.IpAddress,
@@ -161,6 +165,7 @@ func (c *Client) GetVmNatRule(uid string) (*VmNatRule, error) {
 	return &VmNatRule{
 		Uid:      natRule.Uid,
 		EastWest: natRule.EastWest,
+		Scope:    natRule.Scope,
 		Target: VmNatTarget{
 			VmNic:     natRule.Target.VmNic,
 			IpAddress: natRule.Target.IpAddress,

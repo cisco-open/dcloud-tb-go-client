@@ -1,5 +1,5 @@
 {
-  "id" : "f3eb8e6b-6173-4fd2-aba6-f9a965ef4c2a",
+  "id" : "040953d7-1a23-44b8-bbbc-96ae702cc990",
   "request" : {
     "urlPath" : "/topologies",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 500,
-    "body" : "[{\"logref\":\"JZEZLLNICXPMGFZRGOHP\",\"message\":\"Something went wrong. This error has been logged and will be looked at by our team asap\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"IPIBOGZYKPGMZSUIGDYK\",\"message\":\"Something went wrong. This error has been logged and will be looked at by our team asap\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "f3eb8e6b-6173-4fd2-aba6-f9a965ef4c2a"
+  "uuid" : "040953d7-1a23-44b8-bbbc-96ae702cc990"
 }

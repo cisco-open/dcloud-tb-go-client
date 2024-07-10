@@ -1,5 +1,5 @@
 {
-  "id" : "8e3c1fed-5f6c-4944-b189-b1e86f11cb3a",
+  "id" : "0fbefdd1-4c53-43d7-961e-95ce4fdbcd40",
   "request" : {
     "urlPath" : "/topologies/notfound/hardware-items",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"MGZKCDFWALGWYVDMAZYN\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"VXZOOAHBLKJOLNRNKJOS\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "8e3c1fed-5f6c-4944-b189-b1e86f11cb3a"
+  "uuid" : "0fbefdd1-4c53-43d7-961e-95ce4fdbcd40"
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "218a5964-f3f0-44db-901c-092d5633323a",
+  "id" : "5d4b4b64-4843-47fc-a9bb-983ee3e085d9",
   "request" : {
     "urlPath" : "/networks/routednetwork",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 204,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "218a5964-f3f0-44db-901c-092d5633323a"
+  "uuid" : "5d4b4b64-4843-47fc-a9bb-983ee3e085d9"
 }

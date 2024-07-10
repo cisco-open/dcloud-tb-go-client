@@ -1,0 +1,16 @@
+{
+  "id" : "1835c506-b405-4498-b8c0-3f71b3488164",
+  "request" : {
+    "urlPath" : "/topologies/rtptopology/nat-rules",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"natRules\":[{\"uid\":\"rtpipnatrule1\",\"eastWest\":false,\"inUse\":false,\"target\":{\"type\":\"IP\",\"name\":\"Cross vPod Traffic\",\"ipAddress\":\"198.18.131.50\"},\"scope\":\"INTERNAL\",\"topology\":{\"uid\":\"rtptopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/nat-rules/rtpipnatrule1\"},\"topology\":{\"href\":\"http://localhost/topologies/rtptopology\"},\"delete\":{\"href\":\"http://localhost/nat-rules/rtpipnatrule1\"}}}]},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/rtptopology/nat-rules\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "1835c506-b405-4498-b8c0-3f71b3488164"
+}

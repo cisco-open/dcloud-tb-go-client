@@ -1,5 +1,5 @@
 {
-  "id" : "c80c6e2e-27ba-4be3-821e-2218cd244ec0",
+  "id" : "bf17f159-0193-4a6a-8c43-afbc42e1a2e3",
   "request" : {
     "urlPath" : "/ip-nat-rules",
     "method" : "POST",
@@ -18,17 +18,19 @@
     }, {
       "matchesJsonPath" : "$.['target'][?(@.['ipAddress'] =~ /([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])/)]"
     }, {
+      "matchesJsonPath" : "$[?(@.['scope'] =~ /^PUBLIC$|^INTERNAL$/)]"
+    }, {
       "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
     } ]
   },
   "response" : {
     "status" : 201,
-    "body" : "{\"uid\":\"newipnat\",\"eastWest\":{{{jsonPath request.body '$.eastWest'}}} ,\"inUse\":false,\"target\":{\"type\":\"IP\",\"name\":\"{{{jsonPath request.body '$.target.name'}}}\",\"ipAddress\":\"{{{jsonPath request.body '$.target.ipAddress'}}}\"},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost/nat-rules/newipnat\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"delete\":{\"href\":\"http://localhost/nat-rules/newipnat\"}}}",
+    "body" : "{\"uid\":\"newipnat\",\"eastWest\":{{{jsonPath request.body '$.eastWest'}}} ,\"inUse\":false,\"target\":{\"type\":\"IP\",\"name\":\"{{{jsonPath request.body '$.target.name'}}}\",\"ipAddress\":\"{{{jsonPath request.body '$.target.ipAddress'}}}\"},\"scope\":\"{{{jsonPath request.body '$.scope'}}}\",\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost/nat-rules/newipnat\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"delete\":{\"href\":\"http://localhost/nat-rules/newipnat\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "c80c6e2e-27ba-4be3-821e-2218cd244ec0"
+  "uuid" : "bf17f159-0193-4a6a-8c43-afbc42e1a2e3"
 }

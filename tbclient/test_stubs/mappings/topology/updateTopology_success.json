@@ -1,5 +1,5 @@
 {
-  "id" : "2bbbf3c8-a06f-4bab-9bba-7b645af7d412",
+  "id" : "ea0fab10-2a8d-44a3-9718-2294e08633c4",
   "request" : {
     "urlPath" : "/topologies/lontopology",
     "method" : "PUT",
@@ -28,12 +28,12 @@
   },
   "response" : {
     "status" : 200,
-    "body" : "{\"uid\":\"lontopology\",\"name\":\"{{{jsonPath request.body '$.name'}}}\",\"description\":\"{{{jsonPath request.body '$.description'}}}\",\"datacenter\":\"{{{jsonPath request.body '$.datacenter'}}}\",\"notes\":\"{{{jsonPath request.body '$.notes'}}}\",\"lastUpdated\":\"2021-01-01T14:00:00.000000Z\",\"status\":\"DRAFT\",\"sharedWithCurrentUser\":false,\"inSyncWithDcloud\":false,\"activeTemplate\":false,\"accessRoleAssignments\":[{\"uid\":\"lontopologyown\",\"email\":\"owner@cisco.com\",\"accessRole\":\"OWNER\",\"grantedBy\":\"owner@cisco.com\",\"grantedOn\":\"2020-12-16T14:00:00.000000Z\",\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/access-role-assignments/lontopologyown\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"}}}],\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"},\"clones\":{\"href\":\"http://localhost{{{request.url}}}/clones\"},\"networks\":{\"href\":\"http://localhost{{{request.url}}}/networks\"},\"licenses\":{\"href\":\"http://localhost{{{request.url}}}/licenses\"},\"hardwareItems\":{\"href\":\"http://localhost{{{request.url}}}/hardware-items\"},\"telephonyItems\":{\"href\":\"http://localhost{{{request.url}}}/telephony-items\"},\"documentation\":{\"href\":\"http://localhost/documentation/lontopology\"},\"diagram\":{\"href\":\"http://localhost{{{request.url}}}/diagram\"},\"push\":{\"href\":\"http://localhost/demos\"}}}",
+    "body" : "{\"uid\":\"lontopology\",\"name\":\"{{{jsonPath request.body '$.name'}}}\",\"description\":\"{{{jsonPath request.body '$.description'}}}\",\"datacenter\":\"{{{jsonPath request.body '$.datacenter'}}}\",\"notes\":\"{{{jsonPath request.body '$.notes'}}}\",\"lastUpdated\":\"2021-01-01T14:00:00.000000Z\",\"status\":\"DRAFT\",\"sharedWithCurrentUser\":false,\"inSyncWithDcloud\":false,\"activeTemplate\":false,\"accessRoleAssignments\":[{\"uid\":\"lontopologyown\",\"email\":\"owner@cisco.com\",\"accessRole\":\"OWNER\",\"grantedBy\":\"owner@cisco.com\",\"grantedOn\":\"2020-12-16T14:00:00.000000Z\",\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/access-role-assignments/lontopologyown\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"}}}],\"warnings\":[],\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"},\"clones\":{\"href\":\"http://localhost{{{request.url}}}/clones\"},\"networks\":{\"href\":\"http://localhost{{{request.url}}}/networks\"},\"licenses\":{\"href\":\"http://localhost{{{request.url}}}/licenses\"},\"hardwareItems\":{\"href\":\"http://localhost{{{request.url}}}/hardware-items\"},\"telephonyItems\":{\"href\":\"http://localhost{{{request.url}}}/telephony-items\"},\"documentation\":{\"href\":\"http://localhost/documentation/lontopology\"},\"diagram\":{\"href\":\"http://localhost{{{request.url}}}/diagram\"},\"push\":{\"href\":\"http://localhost/demos\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "2bbbf3c8-a06f-4bab-9bba-7b645af7d412"
+  "uuid" : "ea0fab10-2a8d-44a3-9718-2294e08633c4"
 }

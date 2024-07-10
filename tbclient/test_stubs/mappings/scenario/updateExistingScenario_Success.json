@@ -1,5 +1,5 @@
 {
-  "id" : "d5d47498-e66a-4b50-920e-239420668e4e",
+  "id" : "00218b66-cd40-4055-9659-5e40f90a2e4b",
   "request" : {
     "urlPath" : "/topologies/lontopology/scenario",
     "method" : "PUT",
@@ -34,5 +34,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "d5d47498-e66a-4b50-920e-239420668e4e"
+  "uuid" : "00218b66-cd40-4055-9659-5e40f90a2e4b"
 }

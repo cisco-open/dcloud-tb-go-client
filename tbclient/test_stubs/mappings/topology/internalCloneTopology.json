@@ -1,5 +1,5 @@
 {
-  "id" : "7c9602c6-6235-4808-ab32-dd8035141606",
+  "id" : "9bcf9e5e-c0b4-4458-9523-65e93db7387c",
   "request" : {
     "urlPath" : "/internal/topologies/rtptopology/clones",
     "method" : "POST",
@@ -48,5 +48,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "7c9602c6-6235-4808-ab32-dd8035141606"
+  "uuid" : "9bcf9e5e-c0b4-4458-9523-65e93db7387c"
 }

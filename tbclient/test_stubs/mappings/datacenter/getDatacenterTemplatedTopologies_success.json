@@ -1,5 +1,5 @@
 {
-  "id" : "6ba93818-70d1-494b-8704-45aa2177bc35",
+  "id" : "65d6e068-4af4-4d60-b3e7-a0a6a4ca3ad4",
   "request" : {
     "urlPath" : "/datacenters/lon/templated-topologies",
     "method" : "GET"
@@ -12,5 +12,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "6ba93818-70d1-494b-8704-45aa2177bc35"
+  "uuid" : "65d6e068-4af4-4d60-b3e7-a0a6a4ca3ad4"
 }

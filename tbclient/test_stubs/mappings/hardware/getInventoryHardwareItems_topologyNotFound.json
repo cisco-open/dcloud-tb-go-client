@@ -1,5 +1,5 @@
 {
-  "id" : "085b2b5d-6674-440a-88c7-752a54515f35",
+  "id" : "3579429b-0250-4764-aea3-8f1a63cfa6e0",
   "request" : {
     "urlPath" : "/topologies/notfound/inventory-hardware-items",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"EJXKHFALUSSYWGSFAUQH\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"EVKFKVACZHIPTAGMYFFF\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "085b2b5d-6674-440a-88c7-752a54515f35"
+  "uuid" : "3579429b-0250-4764-aea3-8f1a63cfa6e0"
 }

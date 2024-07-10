@@ -1,5 +1,5 @@
 {
-  "id" : "0fa5e459-b1c4-44f9-9ceb-8526b8acde79",
+  "id" : "b2ae2ba6-41a2-4612-85fb-24c5226a2d4e",
   "request" : {
     "urlPath" : "/mail-servers",
     "method" : "POST",
@@ -21,11 +21,11 @@
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"ROFVAHVIHUIILWJUUXEH\",\"message\":\"The requested dCloud DNS asset resource 'notfound' was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"VQLQRRIWHQUPJSJPMJDY\",\"message\":\"The requested dCloud DNS asset resource 'notfound' was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "0fa5e459-b1c4-44f9-9ceb-8526b8acde79"
+  "uuid" : "b2ae2ba6-41a2-4612-85fb-24c5226a2d4e"
 }

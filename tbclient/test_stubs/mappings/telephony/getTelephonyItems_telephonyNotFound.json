@@ -1,5 +1,5 @@
 {
-  "id" : "62ebd742-ac7c-4393-901a-0143f187532f",
+  "id" : "04f11819-7f68-489a-b928-99b773c2df00",
   "request" : {
     "urlPath" : "/topologies/loninsync/telephony-items",
     "method" : "GET"
@@ -12,5 +12,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "62ebd742-ac7c-4393-901a-0143f187532f"
+  "uuid" : "04f11819-7f68-489a-b928-99b773c2df00"
 }

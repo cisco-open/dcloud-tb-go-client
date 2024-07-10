@@ -1,5 +1,5 @@
 {
-  "id" : "9ce9e82c-75b7-4daf-b87f-61619e63f2a0",
+  "id" : "2b09f222-a4fa-4c02-a54a-fda59645c058",
   "request" : {
     "urlPath" : "/hardware-items/notfound",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"DFKTQPJTJWCOTYGCRFXR\",\"message\":\"The requested Hardware resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"IHYKNLAILFVOLEHEMTWU\",\"message\":\"The requested Hardware resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "9ce9e82c-75b7-4daf-b87f-61619e63f2a0"
+  "uuid" : "2b09f222-a4fa-4c02-a54a-fda59645c058"
 }

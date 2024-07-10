@@ -1,5 +1,5 @@
 {
-  "id" : "114992d4-6cc6-4c7e-af4b-c4d2c08df96d",
+  "id" : "646b0f41-8766-4dec-8edb-a198c16fcdd8",
   "request" : {
     "urlPath" : "/topologies/lontopology/inventory-networks",
     "method" : "GET",
@@ -17,5 +17,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "114992d4-6cc6-4c7e-af4b-c4d2c08df96d"
+  "uuid" : "646b0f41-8766-4dec-8edb-a198c16fcdd8"
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "114a3374-4f5a-440a-9ecf-606a8b99516f",
+  "id" : "aa70f4c3-9e0e-4fdc-ae79-8aac5ae39f46",
   "request" : {
     "urlPath" : "/documentation/notfound",
     "method" : "PUT",
@@ -19,11 +19,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"BUXWZIBNOHVKDAYVMAVJ\",\"message\":\"The requested Documentation resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"IWJKBULHFDFPMSLVEDIA\",\"message\":\"The requested Documentation resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "114a3374-4f5a-440a-9ecf-606a8b99516f"
+  "uuid" : "aa70f4c3-9e0e-4fdc-ae79-8aac5ae39f46"
 }

@@ -1,1 +1,3 @@
-Contract Version 1.11.0
+Contract Version 1.21.3
+
+Note: VM Contracts are on 1.11.0 pending implementation of DHCP Config

@@ -1,5 +1,5 @@
 {
-  "id" : "b515e72a-2ef6-469e-b0cb-e3ee0b3658e4",
+  "id" : "9f8be9bd-5e45-49b3-bb9e-c554dc9c2427",
   "request" : {
     "urlPath" : "/topologies/noreader/licenses",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 503,
-    "body" : "[{\"logref\":\"BILSFNUTRKXLMBFPNVEW\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"HSAIDPZGMPZCCSWRGQTJ\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "b515e72a-2ef6-469e-b0cb-e3ee0b3658e4"
+  "uuid" : "9f8be9bd-5e45-49b3-bb9e-c554dc9c2427"
 }

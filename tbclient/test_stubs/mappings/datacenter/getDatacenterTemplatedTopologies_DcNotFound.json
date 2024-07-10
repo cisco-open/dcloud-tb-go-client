@@ -1,16 +1,16 @@
 {
-  "id" : "f6ee4586-e237-40a1-9959-61f1934c3ece",
+  "id" : "5292a3c5-2abc-4e5a-af5d-d9910ae7a81f",
   "request" : {
     "urlPath" : "/datacenters/notfound/templated-topologies",
     "method" : "GET"
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"JATVWCRFFPBMVECKNSPA\",\"message\":\"The requested Datacenter resource 'notfound' was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"DDGQKCDNBKNUAHFZVNTH\",\"message\":\"The requested Datacenter resource 'notfound' was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "f6ee4586-e237-40a1-9959-61f1934c3ece"
+  "uuid" : "5292a3c5-2abc-4e5a-af5d-d9910ae7a81f"
 }

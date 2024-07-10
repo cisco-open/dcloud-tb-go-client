@@ -1,5 +1,5 @@
 {
-  "id" : "79089550-fede-428d-adf9-a91d8e9b964c",
+  "id" : "569ac4c1-06df-43b9-a15a-8f5b2ec08a85",
   "request" : {
     "urlPath" : "/topologies/notfound/remote-access",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"VOCEQILGIYOTBHWKGWLA\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"HVFQSWCZGBDTWIMJZVYC\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "79089550-fede-428d-adf9-a91d8e9b964c"
+  "uuid" : "569ac4c1-06df-43b9-a15a-8f5b2ec08a85"
 }

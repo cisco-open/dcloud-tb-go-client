@@ -1,5 +1,5 @@
 {
-  "id" : "0ea59417-a1a8-41aa-86f3-3fa249fef465",
+  "id" : "02471b30-9040-4156-a3fd-3b48cf4fa6e7",
   "request" : {
     "urlPath" : "/documentation/lontopology",
     "method" : "PUT",
@@ -26,5 +26,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "0ea59417-a1a8-41aa-86f3-3fa249fef465"
+  "uuid" : "02471b30-9040-4156-a3fd-3b48cf4fa6e7"
 }
