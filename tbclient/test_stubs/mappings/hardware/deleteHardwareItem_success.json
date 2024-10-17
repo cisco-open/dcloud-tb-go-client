@@ -1,5 +1,5 @@
 {
-  "id" : "10c92075-ebc8-49e0-bb87-620f4b355655",
+  "id" : "db3874ae-9469-4106-83f9-b3cfc84efc33",
   "request" : {
     "urlPath" : "/hardware-items/lonhardwareitem1",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 204,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "10c92075-ebc8-49e0-bb87-620f4b355655"
+  "uuid" : "db3874ae-9469-4106-83f9-b3cfc84efc33"
 }

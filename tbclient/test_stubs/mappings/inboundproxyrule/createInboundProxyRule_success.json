@@ -1,5 +1,5 @@
 {
-  "id" : "f99d2c54-1710-4abf-97ab-49ac018f6133",
+  "id" : "ca0b422e-3835-4ea3-8797-55184d583c00",
   "request" : {
     "urlPath" : "/inbound-proxy-rules",
     "method" : "POST",
@@ -29,12 +29,12 @@
   },
   "response" : {
     "status" : 201,
-    "body" : "{\"uid\":\"newloninboundproxy\",\"vmNicTarget\":{\"uid\":\"{{{jsonPath request.body '$.vmNicTarget.uid'}}}\",\"ipAddress\":\"192.168.0.8\",\"vm\":{\"uid\":\"pcVmayo2nx7fQr8V21xO\",\"name\":\"MWRGFTMMILZNATVKXRSM\"},\"_links\":{\"vm\":{\"href\":\"http://localhost/vms/lonvm2\"}}},\"tcpPort\":{{{jsonPath request.body '$.tcpPort'}}} ,\"ssl\":{{{jsonPath request.body '$.ssl'}}} ,\"urlPath\":\"{{{jsonPath request.body '$.urlPath'}}}\",\"hyperlink\":{\"show\":{{{jsonPath request.body '$.hyperlink.show'}}} ,\"text\":\"{{{jsonPath request.body '$.hyperlink.text'}}}\"},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}/newloninboundproxy\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}/newloninboundproxy\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"}}}",
+    "body" : "{\"uid\":\"newloninboundproxy\",\"vmNicTarget\":{\"uid\":\"{{{jsonPath request.body '$.vmNicTarget.uid'}}}\",\"ipAddress\":\"192.168.0.9\",\"vm\":{\"uid\":\"HIahoglmRva1DNeuYAII\",\"name\":\"MHJOGANCZJKHQFWFVSXD\"},\"_links\":{\"vm\":{\"href\":\"http://localhost/vms/lonvm2\"}}},\"tcpPort\":{{{jsonPath request.body '$.tcpPort'}}} ,\"ssl\":{{{jsonPath request.body '$.ssl'}}} ,\"urlPath\":\"{{{jsonPath request.body '$.urlPath'}}}\",\"hyperlink\":{\"show\":{{{jsonPath request.body '$.hyperlink.show'}}} ,\"text\":\"{{{jsonPath request.body '$.hyperlink.text'}}}\"},\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}/newloninboundproxy\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}/newloninboundproxy\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "f99d2c54-1710-4abf-97ab-49ac018f6133"
+  "uuid" : "ca0b422e-3835-4ea3-8797-55184d583c00"
 }

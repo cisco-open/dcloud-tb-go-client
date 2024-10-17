@@ -1,5 +1,5 @@
 {
-  "id" : "68bf8dd2-e2ac-42a6-9d1c-cd674d17fae1",
+  "id" : "cf6fff57-9b1d-45a7-ab62-173013b45d68",
   "request" : {
     "urlPath" : "/inbound-proxy-rules/loninboundproxy1",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 204,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "68bf8dd2-e2ac-42a6-9d1c-cd674d17fae1"
+  "uuid" : "cf6fff57-9b1d-45a7-ab62-173013b45d68"
 }

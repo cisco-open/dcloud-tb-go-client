@@ -1,16 +1,16 @@
 {
-  "id" : "e42c5316-26d9-4fcb-8628-fc00a449e375",
+  "id" : "f79075e5-b9bf-4a7d-b193-ccb6c081e91b",
   "request" : {
     "urlPath" : "/datacenters/sng/templated-topologies",
     "method" : "GET"
   },
   "response" : {
     "status" : 503,
-    "body" : "[{\"logref\":\"NKMCHXHOXSWEOBAVYSGN\",\"message\":\"Connectivity to the Metadata service has not been configured\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"NMTCRJASSVEPESYZANMJ\",\"message\":\"Connectivity to the Metadata service has not been configured\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "e42c5316-26d9-4fcb-8628-fc00a449e375"
+  "uuid" : "f79075e5-b9bf-4a7d-b193-ccb6c081e91b"
 }

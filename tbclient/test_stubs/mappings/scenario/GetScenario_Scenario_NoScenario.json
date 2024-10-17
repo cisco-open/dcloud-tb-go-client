@@ -1,5 +1,5 @@
 {
-  "id" : "9c98b430-4bdc-4de3-9189-8c4efb60ff5e",
+  "id" : "748282f6-ed5b-479f-9523-1de60d101fd5",
   "request" : {
     "urlPath" : "/topologies/rtptopology/scenario",
     "method" : "GET"
@@ -13,5 +13,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "9c98b430-4bdc-4de3-9189-8c4efb60ff5e"
+  "uuid" : "748282f6-ed5b-479f-9523-1de60d101fd5"
 }

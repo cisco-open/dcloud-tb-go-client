@@ -1,7 +1,7 @@
 {
-  "id" : "6abab6ab-6b28-4453-bac2-cc14ec7641c4",
+  "id" : "c96fc23b-a2b9-4041-8d52-539120704190",
   "request" : {
-    "urlPath" : "/nat-rules/lonvmnatrule1",
+    "urlPath" : "/nat-rules/lonvmpublicnat",
     "method" : "DELETE",
     "headers" : {
       "Authorization" : {
@@ -13,5 +13,5 @@
     "status" : 204,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "6abab6ab-6b28-4453-bac2-cc14ec7641c4"
+  "uuid" : "c96fc23b-a2b9-4041-8d52-539120704190"
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "10829f33-b64f-4a2f-bee8-b88bac96a16f",
+  "id" : "8b2fc0a3-afa7-462f-8e62-74fa993f2f4b",
   "request" : {
     "urlPath" : "/topologies/notfound/inventory-dns-assets",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"QQVKFMPNIJDPNTOOSIMP\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"SLHHGISIFITQVXGORTSB\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "10829f33-b64f-4a2f-bee8-b88bac96a16f"
+  "uuid" : "8b2fc0a3-afa7-462f-8e62-74fa993f2f4b"
 }

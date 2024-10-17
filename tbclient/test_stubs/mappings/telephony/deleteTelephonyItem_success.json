@@ -1,5 +1,5 @@
 {
-  "id" : "0feca6ba-d9c9-498f-9ecb-9b2574bdc781",
+  "id" : "bd5717cb-5288-41dd-a9a5-8cd75826705b",
   "request" : {
     "urlPath" : "/telephony-items/lontelephonyitem1",
     "method" : "DELETE"
@@ -8,5 +8,5 @@
     "status" : 204,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "0feca6ba-d9c9-498f-9ecb-9b2574bdc781"
+  "uuid" : "bd5717cb-5288-41dd-a9a5-8cd75826705b"
 }

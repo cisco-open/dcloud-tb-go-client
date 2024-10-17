@@ -1,5 +1,5 @@
 {
-  "id" : "6b2a3205-5344-4697-8584-a79d473f3a1d",
+  "id" : "f32bb3c0-fc66-4462-a91a-f89e5b5bd887",
   "request" : {
     "urlPath" : "/topologies/noreader/inventory-hardware-items",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 503,
-    "body" : "[{\"logref\":\"AZOLJIZHMZDNWEQOJKBI\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"ESVGNMVZROWSHLENTHVK\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "6b2a3205-5344-4697-8584-a79d473f3a1d"
+  "uuid" : "f32bb3c0-fc66-4462-a91a-f89e5b5bd887"
 }

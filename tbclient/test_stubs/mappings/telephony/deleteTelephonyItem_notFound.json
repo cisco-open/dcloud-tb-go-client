@@ -1,5 +1,5 @@
 {
-  "id" : "40ec2a34-b5ed-410c-8e86-7491dc9579b9",
+  "id" : "687299ee-c624-4452-8c4d-6bcc92d1b26b",
   "request" : {
     "urlPath" : "/telephony-items/notfound",
     "method" : "DELETE"
@@ -8,5 +8,5 @@
     "status" : 404,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "40ec2a34-b5ed-410c-8e86-7491dc9579b9"
+  "uuid" : "687299ee-c624-4452-8c4d-6bcc92d1b26b"
 }

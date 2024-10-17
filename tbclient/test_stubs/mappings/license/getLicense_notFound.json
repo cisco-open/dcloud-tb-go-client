@@ -1,5 +1,5 @@
 {
-  "id" : "5a9385ba-d0f3-48f5-980d-98c5bd2fd562",
+  "id" : "a353a9b3-c9d5-4ba9-9de9-416ffe7e5078",
   "request" : {
     "urlPath" : "/licenses/notfound",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"QIYQCFWIBMCZYIUQKJMK\",\"message\":\"The requested License resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"RLQRBSPKHZNNCCHTQPDH\",\"message\":\"The requested License resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "5a9385ba-d0f3-48f5-980d-98c5bd2fd562"
+  "uuid" : "a353a9b3-c9d5-4ba9-9de9-416ffe7e5078"
 }

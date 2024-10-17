@@ -1,5 +1,5 @@
 {
-  "id" : "f8f2da2b-755f-489c-943f-64337d0d954b",
+  "id" : "0ca84545-8f48-4343-9248-d9815955aed9",
   "request" : {
     "urlPath" : "/topologies/notfound/nat-rules",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"PWWJPOZVBCTBKUINXHQQ\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"MGPTBTHOVAATLOVMCINV\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "f8f2da2b-755f-489c-943f-64337d0d954b"
+  "uuid" : "0ca84545-8f48-4343-9248-d9815955aed9"
 }

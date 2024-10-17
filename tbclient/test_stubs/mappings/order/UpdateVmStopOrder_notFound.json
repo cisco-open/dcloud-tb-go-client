@@ -1,5 +1,5 @@
 {
-  "id" : "50f854d2-a7d3-4467-9593-934989781c7b",
+  "id" : "65f01df9-e6dc-4d11-82bb-077584a0c735",
   "request" : {
     "urlPath" : "/vm-stop-order/notfound",
     "method" : "PUT",
@@ -32,11 +32,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"GDFXFSLSTOXFDHDCIVJP\",\"message\":\"The requested Start Stop Order resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"WTTLEROWVQDBPXCNXHED\",\"message\":\"The requested Start Stop Order resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "50f854d2-a7d3-4467-9593-934989781c7b"
+  "uuid" : "65f01df9-e6dc-4d11-82bb-077584a0c735"
 }

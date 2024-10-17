@@ -47,6 +47,12 @@ var lonTopology = Topology{
 	Status:      "DRAFT",
 }
 
+var westmereEvcMode = EvcMode{
+	Id:           "WESTMERE",
+	Name:         "Westmere",
+	DisplayOrder: 1,
+}
+
 var linuxOsFamily = OsFamily{
 	Id:   "LINUX",
 	Name: "Linux",
@@ -108,6 +114,7 @@ var inventoryVm = InventoryVm{
 	OriginalDescription: "na-edge1",
 	CpuQty:              2,
 	MemoryMb:            4096,
+	EvcMode:             evcModeSkylake,
 	NetworkInterfaces: []InventoryVmNic{
 		// TODO - contract needs to specify additional fields
 		{
@@ -136,6 +143,8 @@ var inventoryVm = InventoryVm{
 }
 
 var nestedHypervisor = false
+var evcModeHaswell = "HASWELL"
+var evcModeSkylake = "SKYLAKE"
 
 var vm = Vm{
 	Uid:              "lonvm1",
@@ -183,17 +192,45 @@ var vm = Vm{
 			},
 		},
 		{
-			Uid:        "lonvm1natnic",
-			IpAddress:  "198.18.131.201",
-			Name:       "Network adapter 2",
-			MacAddress: "00:50:56:00:00:08",
+			Uid:        "lonvm1natnic1",
+			IpAddress:  "198.18.131.211",
+			Name:       "Network adapter 11",
+			MacAddress: "00:50:56:00:00:11",
 			Type:       "VIRTUAL_E1000",
+			InUse:      true,
+			AssignDhcp: false,
+			Network: &Network{
+				// Contract is missing 'inventoryNetwork' field
+				Uid:  lonDefaultNetwork.Uid,
+				Name: lonDefaultNetwork.Name,
+			},
+		},
+		{
+			Uid:        "lonvm1natnic2",
+			IpAddress:  "198.18.131.212",
+			Name:       "Network adapter 12",
+			MacAddress: "00:50:56:00:00:12",
+			Type:       "VIRTUAL_E1000",
+			InUse:      true,
 			AssignDhcp: false,
 			Network: &Network{
 				// Contract is missing 'description' field
-				Uid:              lonDefaultNetwork.Uid,
-				Name:             lonDefaultNetwork.Name,
-				InventoryNetwork: lonDefaultNetwork.InventoryNetwork,
+				Uid:  lonDefaultNetwork.Uid,
+				Name: lonDefaultNetwork.Name,
+			},
+		},
+		{
+			Uid:        "lonvm1natnic3",
+			IpAddress:  "198.18.131.213",
+			Name:       "Network adapter 13",
+			MacAddress: "00:50:56:00:00:13",
+			Type:       "VIRTUAL_E1000",
+			InUse:      true,
+			AssignDhcp: false,
+			Network: &Network{
+				// Contract is missing 'description' field
+				Uid:  lonDefaultNetwork.Uid,
+				Name: lonDefaultNetwork.Name,
 			},
 		},
 	},
@@ -202,6 +239,10 @@ var vm = Vm{
 		BiosUuid:              "61 62 63 64 65 66 67 68-69 6a 6b 6c 6d 6e 6f 70",
 		NotStarted:            false,
 		AllDisksNonPersistent: false,
+		EvcMode:               &evcModeHaswell,
+	},
+	DhcpConfig: &VmDhcpConfig{
+		DefaultGatewayIp: "198.18.130.2",
 	},
 	GuestAutomation: &VmGuestAutomation{
 		Command:   "cd /var/; sh script.sh",
@@ -254,9 +295,12 @@ var createVm = Vm{
 		BiosUuid:              "61 62 63 64 65 66 67 68-69 6a 6b 6c 6d 6e 6f 70",
 		NotStarted:            false,
 		AllDisksNonPersistent: false,
+		EvcMode:               &evcModeWestmere,
 	},
 	Topology: &Topology{Uid: lonTopology.Uid},
 }
+
+var evcModeWestmere = "WESTMERE"
 
 var inventoryHw = InventoryHw{
 	Id:                       "86",
@@ -425,12 +469,12 @@ var ipNatRule = IpNatRule{
 }
 
 var vmNatRule = VmNatRule{
-	Uid:      "lonvmnatrule1",
+	Uid:      "lonvmpublicnat",
 	EastWest: false,
 	Scope:    &publicScope,
 	Target: VmNatTarget{
-		VmNic:     &VmNic{Uid: "lonvm1natnic"},
-		IpAddress: "198.18.131.201",
+		VmNic:     &VmNic{Uid: "lonvm1natnic1"},
+		IpAddress: "198.18.131.211",
 		Name:      "Mail Server 1",
 	},
 	Topology: &Topology{Uid: lonTopology.Uid},
@@ -471,7 +515,7 @@ var externalDnsRecord = ExternalDnsRecord{
 	Hostname:          "lonhost",
 	ARecord:           "lonhost.<subdomain>.dc-03.com",
 	InventoryDnsAsset: &inventoryDnsAsset,
-	NatRule:           &ExternalDnsNatRule{Uid: "lonvmnatrule1"},
+	NatRule:           &ExternalDnsNatRule{Uid: "lonvmpublicnat"},
 	SrvRecords: []ExternalDnsSrvRecord{
 		{
 			Service:  "_sip",
@@ -693,10 +737,10 @@ func (suite *ContractTestSuite) TestGetVm() {
 	// Given
 	expectedVm := vm
 	// Work around contract data inconsistencies
-	nic := vm.VmNetworkInterfaces[1]
-	nic.InUse = true
-	nic.Network.InventoryNetwork = nil
-	expectedVm.VmNetworkInterfaces[1] = nic
+	//nic := vm.VmNetworkInterfaces[1]
+	//nic.InUse = true
+	//nic.Network.InventoryNetwork = nil
+	//expectedVm.VmNetworkInterfaces[1] = nic
 
 	// When
 	actualVm, err := suite.tbClient.GetVm(vm.Uid)
@@ -711,6 +755,8 @@ func (suite *ContractTestSuite) TestUpdateVm() {
 	// Given
 	expectedVm := vm
 	expectedVm.DhcpConfig = &VmDhcpConfig{DefaultGatewayIp: "198.18.130.1"} // Match Contract
+	expectedVm.DhcpConfig.PrimaryDnsIp = &primaryDnsIp
+	expectedVm.DhcpConfig.SecondaryDnsIp = &secondaryDnsIp
 
 	// Change Value
 	expectedVm.Name = "New Name"
@@ -722,20 +768,19 @@ func (suite *ContractTestSuite) TestUpdateVm() {
 	// Then
 
 	// Work around contract data inconsistencies
-	nic0 := vm.VmNetworkInterfaces[0]
-	nic0.Uid = ""
-	nic0.Name = ""
-	nic0.Network.InventoryNetwork = nil
-	expectedVm.VmNetworkInterfaces[0] = nic0
+	expectedNics := expectedVm.VmNetworkInterfaces
 
-	nic1 := vm.VmNetworkInterfaces[1]
-	nic1.Uid = ""
-	nic1.Name = ""
-	nic1.Network.InventoryNetwork = nil
-	nic1.InUse = true
-	expectedVm.VmNetworkInterfaces[1] = nic1
+	for i := range expectedNics {
+		expectedNics[i].Uid = ""
+		expectedNics[i].Name = ""
+	}
+	expectedNics[0].Network.InventoryNetwork = nil
+
 	suite.Equal(expectedVm, *actualVm)
 }
+
+var primaryDnsIp = "198.18.130.111"
+var secondaryDnsIp = "198.18.130.112"
 
 func (suite *ContractTestSuite) TestCreateVm() {
 	// Given
@@ -1114,8 +1159,9 @@ func (suite *ContractTestSuite) TestGetAllVmNatRules() {
 	suite.handleError(err)
 
 	// Then
-	suite.Equal(1, len(vmNatRules))
-	suite.Contains(vmNatRules, vmNatRule)
+	suite.Equal(2, len(vmNatRules))
+	expected := vmNatRule
+	suite.Contains(vmNatRules, expected)
 }
 
 // TODO - "Get One" Tests when Contracts are updated
@@ -1165,10 +1211,10 @@ func (suite *ContractTestSuite) TestCreateInboundProxyRule() {
 	expectedInboundProxyRule.Uid = "newloninboundproxy"
 	expectedInboundProxyRule.VmNicTarget = &TrafficVmNicTarget{
 		Uid:       inboundProxyRule.VmNicTarget.Uid,
-		IpAddress: "192.168.0.8",
+		IpAddress: "192.168.0.9",
 		Vm: &Vm{
-			Uid:  "pcVmayo2nx7fQr8V21xO",
-			Name: "MWRGFTMMILZNATVKXRSM",
+			Uid:  "HIahoglmRva1DNeuYAII",
+			Name: "MHJOGANCZJKHQFWFVSXD",
 		},
 	}
 	suite.Equal(expectedInboundProxyRule, *actualInboundProxyRule)
@@ -1271,10 +1317,10 @@ func (suite *ContractTestSuite) TestCreateMailServer() {
 	expectedMailServer := mailServer
 	expectedMailServer.VmNicTarget = &TrafficVmNicTarget{
 		Uid:       expectedMailServer.VmNicTarget.Uid,
-		IpAddress: "192.168.0.3",
+		IpAddress: "192.168.0.9",
 		Vm: &Vm{
-			Uid:  "LDU9tBp7g5Zd4nZE2aNj",
-			Name: "HFDJPRCCGOZGHOMYSZGX",
+			Uid:  "INLc0eWy1do3Xlk5GOdj",
+			Name: "UZARRCZGMJSBXUAGLOLJ",
 		},
 	}
 	expectedMailServer.InventoryDnsAsset = &InventoryDnsAsset{
@@ -1382,6 +1428,17 @@ func (suite *ContractTestSuite) TestGetAllOsFamilies() {
 	suite.Contains(osFamilies, linuxOsFamily)
 }
 
+func (suite *ContractTestSuite) TestGetAllEvcModes() {
+
+	// When
+	evcModes, err := suite.tbClient.GetAllEvcModes()
+	suite.handleError(err)
+
+	// Then
+	suite.Equal(3, len(evcModes))
+	suite.Contains(evcModes, westmereEvcMode)
+}
+
 func (suite *ContractTestSuite) TestGetAllNicTypes() {
 
 	// When
@@ -1433,7 +1490,7 @@ func (suite *ContractTestSuite) TestGetAllInventoryVms() {
 	suite.handleError(err)
 
 	// Then
-	suite.Equal(4, len(inventoryVms))
+	suite.Equal(3, len(inventoryVms))
 	suite.Contains(inventoryVms, inventoryVm)
 }
 
@@ -1566,8 +1623,8 @@ func createTbClient(suite *ContractTestSuite) Client {
 			suite.T().Log("Timeout starting wiremock")
 			suite.handleError(err)
 		}
-		fmt.Println("Waiting another 5s for wiremock...")
-		time.Sleep(5 * time.Second)
+		fmt.Println("Waiting another 2s for wiremock...")
+		time.Sleep(2 * time.Second)
 	}
 
 	return c

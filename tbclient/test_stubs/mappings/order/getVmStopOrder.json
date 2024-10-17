@@ -1,5 +1,5 @@
 {
-  "id" : "8e6c513c-9298-47f0-b7d9-8ef138c47033",
+  "id" : "5f2fc7ff-16cb-4b7a-b757-6660657bebee",
   "request" : {
     "urlPath" : "/topologies/lontopology/vm-stop-order",
     "method" : "GET",
@@ -18,5 +18,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "8e6c513c-9298-47f0-b7d9-8ef138c47033"
+  "uuid" : "5f2fc7ff-16cb-4b7a-b757-6660657bebee"
 }

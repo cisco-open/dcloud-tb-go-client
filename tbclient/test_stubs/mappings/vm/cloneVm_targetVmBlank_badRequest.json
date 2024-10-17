@@ -1,5 +1,5 @@
 {
-  "id" : "6f132359-f7fe-4033-9357-8443c4ec7cf5",
+  "id" : "b9c95288-587f-4fdf-9e19-b0231d52577b",
   "request" : {
     "urlPath" : "/vm-clones",
     "method" : "POST",
@@ -25,11 +25,11 @@
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"BPUTBHZEFOFXNKFQJGHO\",\"message\":\"Field 'vmUid' must not be blank\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"GJGRWATKHNGAPBXJSVDG\",\"message\":\"Field 'vmUid' must not be blank\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "6f132359-f7fe-4033-9357-8443c4ec7cf5"
+  "uuid" : "b9c95288-587f-4fdf-9e19-b0231d52577b"
 }

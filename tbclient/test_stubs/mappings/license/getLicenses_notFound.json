@@ -1,5 +1,5 @@
 {
-  "id" : "be378594-a59c-45bd-b6b3-bd98285e6a68",
+  "id" : "872c7d94-6405-4cb4-a496-1d6fe20e2a10",
   "request" : {
     "urlPath" : "/topologies/notfound/licenses",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"IGPMNYDEZFHZSCIUVEDB\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"ENEFQUEZFQSAGAGIHYFN\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "be378594-a59c-45bd-b6b3-bd98285e6a68"
+  "uuid" : "872c7d94-6405-4cb4-a496-1d6fe20e2a10"
 }

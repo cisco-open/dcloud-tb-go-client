@@ -1,5 +1,5 @@
 {
-  "id" : "7977b5ab-d110-44da-9f0b-1a227ea19916",
+  "id" : "eeac1523-5eed-484c-aba7-0a0ef5fb5f37",
   "request" : {
     "urlPath" : "/topologies/lontopology/inventory-telephony-items",
     "method" : "GET"
@@ -12,5 +12,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "7977b5ab-d110-44da-9f0b-1a227ea19916"
+  "uuid" : "eeac1523-5eed-484c-aba7-0a0ef5fb5f37"
 }

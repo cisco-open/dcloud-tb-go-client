@@ -1,0 +1,16 @@
+{
+  "id" : "9971f428-3341-4511-96ae-562c6c89d17e",
+  "request" : {
+    "urlPath" : "/evc-modes",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"_embedded\":{\"evcModes\":[{\"id\":\"WESTMERE\",\"name\":\"Westmere\",\"displayOrder\":1},{\"id\":\"HASWELL\",\"name\":\"Haswell\",\"displayOrder\":2},{\"id\":\"SKYLAKE\",\"name\":\"Skylake\",\"displayOrder\":3}]},\"_links\":{\"self\":{\"href\":\"http://localhost/evc-modes\"}}}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template", "spring-cloud-contract" ]
+  },
+  "uuid" : "9971f428-3341-4511-96ae-562c6c89d17e"
+}

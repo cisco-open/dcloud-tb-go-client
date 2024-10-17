@@ -1,5 +1,5 @@
 {
-  "id" : "d961e825-e7ea-45f2-95b4-ca3137ed3818",
+  "id" : "725bd6e9-09a1-4014-a6a4-fd652dcc4884",
   "request" : {
     "urlPath" : "/vms/notfound",
     "method" : "PUT",
@@ -21,29 +21,15 @@
     }, {
       "matchesJsonPath" : "$[?(@.['description'] =~ /^\\s*\\S[\\S\\s]*/)]"
     }, {
-      "matchesJsonPath" : "$[?(@.['cpuQty'] == 3)]"
+      "matchesJsonPath" : "$[?(@.['cpuQty'] =~ /-?(\\d+)/)]"
     }, {
-      "matchesJsonPath" : "$[?(@.['memoryMb'] == 6144)]"
-    }, {
-      "matchesJsonPath" : "$[?(@.['nestedHypervisor'] =~ /(true|false)/)]"
-    }, {
-      "matchesJsonPath" : "$[?(@.['osFamily'] =~ /^WINDOWS$|^LINUX$|^VMWARE$|^UCSM$/)]"
+      "matchesJsonPath" : "$[?(@.['memoryMb'] =~ /-?(\\d+)/)]"
     }, {
       "matchesJsonPath" : "$[?(@.['inventoryVmId'] == 'templatevm2')]"
-    }, {
-      "matchesJsonPath" : "$.['remoteAccess'][?(@.['vmConsoleEnabled'] =~ /(true|false)/)]"
     }, {
       "matchesJsonPath" : "$.['remoteAccess'][?(@.['username'] =~ /[\\S\\s]*/)]"
     }, {
       "matchesJsonPath" : "$.['remoteAccess'][?(@.['password'] =~ /[\\S\\s]*/)]"
-    }, {
-      "matchesJsonPath" : "$.['guestAutomation'][?(@.['command'] =~ /[\\S\\s]*/)]"
-    }, {
-      "matchesJsonPath" : "$.['guestAutomation'][?(@.['delaySecs'] =~ /^[0-9]\\d*$/)]"
-    }, {
-      "matchesJsonPath" : "$.['shutdownAutomation'][?(@.['command'] =~ /[\\S\\s]*/)]"
-    }, {
-      "matchesJsonPath" : "$.['shutdownAutomation'][?(@.['delaySecs'] =~ /^[0-9]\\d*$/)]"
     }, {
       "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['ipAddress'] == '198.18.131.200')]"
     }, {
@@ -63,16 +49,18 @@
     }, {
       "matchesJsonPath" : "$.['advancedSettings'][?(@.['allDisksNonPersistent'] =~ /(true|false)/)]"
     }, {
+      "matchesJsonPath" : "$.['advancedSettings'][?(@.['evcMode'] =~ /^HASWELL$|^SKYLAKE$|^WESTMERE$/)]"
+    }, {
       "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
     } ]
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"ORXZPJOYKYPIFDLWSRWN\",\"message\":\"The requested VM resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"BSLSOHQKANZTVPITRCAR\",\"message\":\"The requested VM resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "d961e825-e7ea-45f2-95b4-ca3137ed3818"
+  "uuid" : "725bd6e9-09a1-4014-a6a4-fd652dcc4884"
 }

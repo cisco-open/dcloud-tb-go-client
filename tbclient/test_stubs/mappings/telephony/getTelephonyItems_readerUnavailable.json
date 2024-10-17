@@ -1,16 +1,16 @@
 {
-  "id" : "26098453-ac8d-4733-82a2-2eab3a70a534",
+  "id" : "4a5c8179-e951-4182-a3fa-673cbef0a1be",
   "request" : {
     "urlPath" : "/topologies/noreader/telephony-items",
     "method" : "GET"
   },
   "response" : {
     "status" : 503,
-    "body" : "[{\"logref\":\"JYCAPUGYMOHSJLAORBGU\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"BAQPBCTKDENUESHNHQRC\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "26098453-ac8d-4733-82a2-2eab3a70a534"
+  "uuid" : "4a5c8179-e951-4182-a3fa-673cbef0a1be"
 }

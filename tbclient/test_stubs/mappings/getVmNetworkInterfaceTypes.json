@@ -1,5 +1,5 @@
 {
-  "id" : "3179b126-ed13-493a-ac1e-9a70a5c0f1bf",
+  "id" : "75fd9257-c075-41cf-8084-dcdedda7af44",
   "request" : {
     "urlPath" : "/vm-network-interface-types",
     "method" : "GET",
@@ -17,5 +17,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "3179b126-ed13-493a-ac1e-9a70a5c0f1bf"
+  "uuid" : "75fd9257-c075-41cf-8084-dcdedda7af44"
 }

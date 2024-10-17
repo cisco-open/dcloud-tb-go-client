@@ -1,5 +1,5 @@
 {
-  "id" : "37436b33-162e-4240-ab8b-b0c35524881a",
+  "id" : "d9e77a01-616d-44a6-8948-f3b934345da2",
   "request" : {
     "urlPath" : "/topologies/prolontopology",
     "method" : "GET",
@@ -18,5 +18,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "37436b33-162e-4240-ab8b-b0c35524881a"
+  "uuid" : "d9e77a01-616d-44a6-8948-f3b934345da2"
 }

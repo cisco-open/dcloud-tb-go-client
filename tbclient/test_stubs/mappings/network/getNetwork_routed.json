@@ -1,5 +1,5 @@
 {
-  "id" : "af8bd6e2-4add-439c-bce2-0e0688f0458f",
+  "id" : "b16f0a74-44ee-435a-a9ad-183fbc940fa5",
   "request" : {
     "urlPath" : "/networks/routednetwork",
     "method" : "GET",
@@ -11,12 +11,12 @@
   },
   "response" : {
     "status" : 200,
-    "body" : "{\"uid\":\"routednetwork\",\"name\":\"Routed Network\",\"description\":\"Routed Network description\",\"inventoryNetwork\":{\"id\":\"L3-VLAN-1\",\"type\":\"ROUTED\",\"subnet\":\"198.18.1.0 /24\"},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"},\"node\":{\"href\":\"http://localhost/nodes/lonroutedretworknode\"}}}",
+    "body" : "{\"uid\":\"routednetwork\",\"name\":\"Routed Network\",\"description\":\"Routed Network description\",\"inventoryNetwork\":{\"id\":\"L3-VLAN-1\",\"type\":\"ROUTED\",\"subnet\":\"198.18.1.0 /24\"},\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"},\"node\":{\"href\":\"http://localhost/nodes/lonroutednetworknode\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "af8bd6e2-4add-439c-bce2-0e0688f0458f"
+  "uuid" : "b16f0a74-44ee-435a-a9ad-183fbc940fa5"
 }

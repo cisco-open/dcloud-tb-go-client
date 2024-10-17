@@ -1,5 +1,5 @@
 {
-  "id" : "a429a463-42f1-47a4-b965-333f94d69bac",
+  "id" : "e5b0015c-4e0a-4358-920a-0a1e5415c343",
   "request" : {
     "urlPath" : "/internal/topologies/loninsync/vm-replacements",
     "method" : "POST",
@@ -18,5 +18,5 @@
     "status" : 201,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "a429a463-42f1-47a4-b965-333f94d69bac"
+  "uuid" : "e5b0015c-4e0a-4358-920a-0a1e5415c343"
 }

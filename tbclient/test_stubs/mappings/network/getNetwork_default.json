@@ -1,5 +1,5 @@
 {
-  "id" : "f520c8a9-389a-40d0-b23b-775956361aac",
+  "id" : "cbf6e211-9833-458b-96a5-fc5627267d31",
   "request" : {
     "urlPath" : "/networks/lontopologyv1nwk",
     "method" : "GET",
@@ -18,5 +18,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "f520c8a9-389a-40d0-b23b-775956361aac"
+  "uuid" : "cbf6e211-9833-458b-96a5-fc5627267d31"
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "4e79db4f-b521-4662-aa22-93714b1c08d8",
+  "id" : "202c3a0b-8b4c-4a44-a4de-6fe58c0fd635",
   "request" : {
     "urlPath" : "/datacenters/syd/inventory-template-topologies",
     "method" : "GET"
@@ -12,5 +12,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "4e79db4f-b521-4662-aa22-93714b1c08d8"
+  "uuid" : "202c3a0b-8b4c-4a44-a4de-6fe58c0fd635"
 }

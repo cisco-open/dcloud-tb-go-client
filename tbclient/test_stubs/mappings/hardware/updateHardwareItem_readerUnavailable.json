@@ -1,5 +1,5 @@
 {
-  "id" : "5aedebaa-6e4e-4fa6-8863-c08134abb2bb",
+  "id" : "b11651e0-3cbd-45bd-af9d-25056405db25",
   "request" : {
     "urlPath" : "/hardware-items/noreader",
     "method" : "PUT",
@@ -26,11 +26,11 @@
   },
   "response" : {
     "status" : 503,
-    "body" : "[{\"logref\":\"FGPNKLBFBYRWNZGLNFFH\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"HCCWPBLHOGXUPJQOTJAK\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "5aedebaa-6e4e-4fa6-8863-c08134abb2bb"
+  "uuid" : "b11651e0-3cbd-45bd-af9d-25056405db25"
 }

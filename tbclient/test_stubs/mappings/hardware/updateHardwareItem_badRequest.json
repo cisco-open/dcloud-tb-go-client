@@ -1,5 +1,5 @@
 {
-  "id" : "2cb50adf-15ed-447c-9dd8-b897492bb8d2",
+  "id" : "e33b0f75-aa0c-4209-8cd8-0ca3ae5754ef",
   "request" : {
     "urlPath" : "/hardware-items/lonhardwareitem1",
     "method" : "PUT",
@@ -26,11 +26,11 @@
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"JBNTHRRAVLWAOXQKWZEZ\",\"message\":\"Payload uid does not match the path variable uid\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"ODPSYXIDVZKLFJTGVEKP\",\"message\":\"Payload uid does not match the path variable uid\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "2cb50adf-15ed-447c-9dd8-b897492bb8d2"
+  "uuid" : "e33b0f75-aa0c-4209-8cd8-0ca3ae5754ef"
 }

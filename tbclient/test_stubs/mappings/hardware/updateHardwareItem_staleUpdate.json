@@ -1,5 +1,5 @@
 {
-  "id" : "368b6826-c239-4932-8518-16da74a46832",
+  "id" : "470efbcf-186b-4c7b-84a4-2db4588a0cf5",
   "request" : {
     "urlPath" : "/hardware-items/lonhardwareitem1",
     "method" : "PUT",
@@ -26,11 +26,11 @@
   },
   "response" : {
     "status" : 412,
-    "body" : "[{\"logref\":\"DVEZFEWCDFQLSPTIEJUB\",\"message\":\"This object has been modified by another user and has changed before your save. Please refresh and make your changes and save again\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"COTNZWMWOTXEVJIILGCR\",\"message\":\"This object has been modified by another user and has changed before your save. Please refresh and make your changes and save again\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "368b6826-c239-4932-8518-16da74a46832"
+  "uuid" : "470efbcf-186b-4c7b-84a4-2db4588a0cf5"
 }

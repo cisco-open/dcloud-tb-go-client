@@ -1,5 +1,5 @@
 {
-  "id" : "5ef182bf-9c37-4375-9417-44149fe53a79",
+  "id" : "bef458b0-7944-4fa2-9ac1-ce0308cc1963",
   "request" : {
     "urlPath" : "/datacenters/lon/inventory-demos",
     "method" : "GET",
@@ -17,5 +17,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "5ef182bf-9c37-4375-9417-44149fe53a79"
+  "uuid" : "bef458b0-7944-4fa2-9ac1-ce0308cc1963"
 }

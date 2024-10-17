@@ -1,5 +1,5 @@
 {
-  "id" : "c4efe2e6-7bd1-4543-ad55-0323f3b3c576",
+  "id" : "ab59b427-543c-4f7e-8f37-dc8366cbe9a7",
   "request" : {
     "urlPath" : "/external-dns-records/lonextdnsrec1",
     "method" : "GET",
@@ -11,11 +11,11 @@
   },
   "response" : {
     "status" : 200,
-    "body" : "{\"uid\":\"lonextdnsrec1\",\"hostname\":\"lonhost\",\"aRecord\":\"lonhost.<subdomain>.dc-03.com\",\"natRule\":{\"uid\":\"lonvmnatrule1\",\"target\":{\"name\":\"Mail Server 1\",\"ipAddress\":\"198.18.131.201\"}},\"inventoryDnsAsset\":{\"id\":\"3\",\"name\":\"Collab Edge v2\"},\"srvRecords\":[{\"service\":\"_sip\",\"protocol\":\"TCP\",\"port\":5060}],\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/external-dns-records/lonextdnsrec1\"},\"delete\":{\"href\":\"http://localhost/external-dns-records/lonextdnsrec1\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"natRule\":{\"href\":\"http://localhost/nat-rules/lonvmnatrule1\"}}}",
+    "body" : "{\"uid\":\"lonextdnsrec1\",\"hostname\":\"lonhost\",\"aRecord\":\"lonhost.<subdomain>.dc-03.com\",\"natRule\":{\"uid\":\"lonvmpublicnat\",\"target\":{\"name\":\"Mail Server 1\",\"ipAddress\":\"198.18.131.211\"}},\"inventoryDnsAsset\":{\"id\":\"3\",\"name\":\"Collab Edge v2\"},\"srvRecords\":[{\"service\":\"_sip\",\"protocol\":\"TCP\",\"port\":5060}],\"topology\":{\"uid\":\"lontopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/external-dns-records/lonextdnsrec1\"},\"delete\":{\"href\":\"http://localhost/external-dns-records/lonextdnsrec1\"},\"topology\":{\"href\":\"http://localhost/topologies/lontopology\"},\"natRule\":{\"href\":\"http://localhost/nat-rules/lonvmpublicnat\"}}}",
     "headers" : {
       "Content-Type" : "application/json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "c4efe2e6-7bd1-4543-ad55-0323f3b3c576"
+  "uuid" : "ab59b427-543c-4f7e-8f37-dc8366cbe9a7"
 }

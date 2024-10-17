@@ -1,5 +1,5 @@
 {
-  "id" : "e6e22b6c-de4a-4c13-82c9-952e18790e83",
+  "id" : "1232b5aa-02c5-4fc0-82a9-bc584234de63",
   "request" : {
     "urlPath" : "/ip-nat-rules",
     "method" : "POST",
@@ -25,11 +25,11 @@
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"ABPHFUQBPEIAJZSGFOTR\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"ASEHZOXSLLJQIYSDTXEI\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "e6e22b6c-de4a-4c13-82c9-952e18790e83"
+  "uuid" : "1232b5aa-02c5-4fc0-82a9-bc584234de63"
 }

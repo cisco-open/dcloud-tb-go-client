@@ -1,5 +1,5 @@
 {
-  "id" : "1d196780-e0ed-48c1-b378-4c672dddd8e1",
+  "id" : "656e33d5-8136-47af-a70d-8fe5bc6fc441",
   "request" : {
     "urlPath" : "/external-dns-records/lonextdnsrec1",
     "method" : "PUT",
@@ -28,11 +28,11 @@
   },
   "response" : {
     "status" : 412,
-    "body" : "[{\"logref\":\"WXEMVXXHMYWJCBJHOVYX\",\"message\":\"This object has been modified by another user and has changed before your save. Please refresh and make your changes and save again\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"UUDNXFWKPTTCAXTMZZNE\",\"message\":\"This object has been modified by another user and has changed before your save. Please refresh and make your changes and save again\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "1d196780-e0ed-48c1-b378-4c672dddd8e1"
+  "uuid" : "656e33d5-8136-47af-a70d-8fe5bc6fc441"
 }
