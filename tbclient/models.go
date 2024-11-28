@@ -122,6 +122,8 @@ type InventoryVmRemoteAccess struct {
 type InventoryVm struct {
 	Id                  string                   `json:"id,omitempty"`
 	Datacenter          string                   `json:"datacenter,omitempty"`
+	Name                string                   `json:"name,omitempty"`
+	Description         string                   `json:"description,omitempty"`
 	OriginalName        string                   `json:"originalName,omitempty"`
 	OriginalDescription string                   `json:"originalDescription,omitempty"`
 	CpuQty              uint64                   `json:"cpuQty,omitempty"`

@@ -102,36 +102,27 @@ var lonDefaultNetwork = Network{
 }
 
 var inventoryVm = InventoryVm{
-	Id:                  "templatevm3",
+	Id:                  "templatevm1",
 	Datacenter:          "LON",
-	OriginalName:        "na-edge1",
-	OriginalDescription: "na-edge1",
-	CpuQty:              2,
-	MemoryMb:            4096,
+	Name:                "vmtemplate1 name",
+	Description:         "vmtemplate1 description",
+	OriginalName:        "Collab-mssql1",
+	OriginalDescription: "Collab-mssql1",
+	CpuQty:              4,
+	MemoryMb:            8192,
 	NetworkInterfaces: []InventoryVmNic{
 		// TODO - contract needs to specify additional fields
 		{
 			InventoryNetworkId: "VLAN-PRIMARY",
-			Name:               "Network adapter 1",
+			Name:               "Network adapter 0",
 			IpAddress:          "198.18.133.115",
-		},
-		{
-			InventoryNetworkId: "VLAN-PRIMARY",
-			Name:               "Network adapter 2",
-		},
-		{
-			InventoryNetworkId: "L2-VLAN-15",
-			Name:               "Network adapter 3",
-		},
-		{
-			InventoryNetworkId: "L2-VLAN-20",
-			Name:               "Network adapter 4",
+			Type:               "VIRTUAL_E1000",
 		},
 	},
 	RemoteAccess: &InventoryVmRemoteAccess{
-		RdpAutoLogin: true,
-		RdpEnabled:   true,
-		SshEnabled:   true,
+		RdpAutoLogin: false,
+		RdpEnabled:   false,
+		SshEnabled:   false,
 	},
 }
 
@@ -1434,6 +1425,7 @@ func (suite *ContractTestSuite) TestGetAllInventoryVms() {
 
 	// Then
 	suite.Equal(4, len(inventoryVms))
+	suite.Equal(inventoryVms[2], inventoryVm)
 	suite.Contains(inventoryVms, inventoryVm)
 }
 
