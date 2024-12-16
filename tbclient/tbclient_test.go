@@ -116,7 +116,7 @@ var inventoryVm = InventoryVm{
 	OriginalDescription: "Collab-mssql1",
 	CpuQty:              4,
 	MemoryMb:            8192,
-	EvcMode:             evcModeSkylake,
+	EvcMode:             evcModeWestmere,
 	NetworkInterfaces: []InventoryVmNic{
 		// TODO - contract needs to specify additional fields
 		{
@@ -135,7 +135,7 @@ var inventoryVm = InventoryVm{
 
 var nestedHypervisor = false
 var evcModeHaswell = "HASWELL"
-var evcModeSkylake = "SKYLAKE"
+var evcModeWestmere = "WESTMERE"
 
 var vm = Vm{
 	Uid:              "lonvm1",
@@ -230,7 +230,7 @@ var vm = Vm{
 		BiosUuid:              "61 62 63 64 65 66 67 68-69 6a 6b 6c 6d 6e 6f 70",
 		NotStarted:            false,
 		AllDisksNonPersistent: false,
-		EvcMode:               &evcModeHaswell,
+		EvcMode:               evcModeHaswell,
 	},
 	DhcpConfig: &VmDhcpConfig{
 		DefaultGatewayIp: "198.18.130.2",
@@ -286,12 +286,10 @@ var createVm = Vm{
 		BiosUuid:              "61 62 63 64 65 66 67 68-69 6a 6b 6c 6d 6e 6f 70",
 		NotStarted:            false,
 		AllDisksNonPersistent: false,
-		EvcMode:               &evcModeWestmere,
+		EvcMode:               evcModeWestmere,
 	},
 	Topology: &Topology{Uid: lonTopology.Uid},
 }
-
-var evcModeWestmere = "WESTMERE"
 
 var inventoryHw = InventoryHw{
 	Id:                       "86",
@@ -727,11 +725,6 @@ func (suite *ContractTestSuite) TestGetVm() {
 
 	// Given
 	expectedVm := vm
-	// Work around contract data inconsistencies
-	//nic := vm.VmNetworkInterfaces[1]
-	//nic.InUse = true
-	//nic.Network.InventoryNetwork = nil
-	//expectedVm.VmNetworkInterfaces[1] = nic
 
 	// When
 	actualVm, err := suite.tbClient.GetVm(vm.Uid)

@@ -183,11 +183,11 @@ type VmNic struct {
 }
 
 type VmAdvancedSettings struct {
-	NameInHypervisor      string  `json:"nameInHypervisor,omitempty"`
-	BiosUuid              string  `json:"biosUuid,omitempty"`
-	NotStarted            bool    `json:"notStarted"`
-	AllDisksNonPersistent bool    `json:"allDisksNonPersistent"`
-	EvcMode               *string `json:"evcMode"`
+	NameInHypervisor      string `json:"nameInHypervisor,omitempty"`
+	BiosUuid              string `json:"biosUuid,omitempty"`
+	NotStarted            bool   `json:"notStarted"`
+	AllDisksNonPersistent bool   `json:"allDisksNonPersistent"`
+	EvcMode               string `json:"evcMode,omitempty"`
 }
 
 type VmRemoteAccessDisplayCredentials struct {
