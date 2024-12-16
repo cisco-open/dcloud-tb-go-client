@@ -1,5 +1,5 @@
 {
-  "id" : "0f795e07-e31d-4227-afb5-099a0f50fd0d",
+  "id" : "fd1f7584-3e95-4d29-8052-cc579f25e682",
   "request" : {
     "urlPath" : "/vm-nic-nat-rules",
     "method" : "POST",
@@ -30,5 +30,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "0f795e07-e31d-4227-afb5-099a0f50fd0d"
+  "uuid" : "fd1f7584-3e95-4d29-8052-cc579f25e682"
 }

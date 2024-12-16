@@ -1,5 +1,5 @@
 {
-  "id" : "7bef8738-a603-4753-8d6b-625d20b34bcb",
+  "id" : "a3212aa4-7426-49e2-a867-68369c66c619",
   "request" : {
     "urlPath" : "/internal/topologies/notfound",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 404,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "7bef8738-a603-4753-8d6b-625d20b34bcb"
+  "uuid" : "a3212aa4-7426-49e2-a867-68369c66c619"
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "f5bab9ec-7965-4abb-9151-ae3667ca7095",
+  "id" : "eb98cb37-e1e2-4fff-8229-c753c2ab44a6",
   "request" : {
     "urlPath" : "/networks/notfound",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 404,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "f5bab9ec-7965-4abb-9151-ae3667ca7095"
+  "uuid" : "eb98cb37-e1e2-4fff-8229-c753c2ab44a6"
 }

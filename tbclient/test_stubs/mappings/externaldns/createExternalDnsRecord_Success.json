@@ -1,5 +1,5 @@
 {
-  "id" : "da1101b2-53bc-487b-af77-25aee4ca9844",
+  "id" : "992c00bd-8547-4df2-8958-27fd860bd6ff",
   "request" : {
     "urlPath" : "/external-dns-records",
     "method" : "POST",
@@ -30,5 +30,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "da1101b2-53bc-487b-af77-25aee4ca9844"
+  "uuid" : "992c00bd-8547-4df2-8958-27fd860bd6ff"
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "484a79dc-511c-4bd9-bde4-6a5cf7ffb23b",
+  "id" : "b7373443-2286-4eab-a168-1714952c7735",
   "request" : {
     "urlPath" : "/vms/notfound",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 404,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "484a79dc-511c-4bd9-bde4-6a5cf7ffb23b"
+  "uuid" : "b7373443-2286-4eab-a168-1714952c7735"
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "c11de3aa-4b4c-4cf6-83ef-68daaed7380a",
+  "id" : "7657d0e9-d7c8-439c-9c25-5066e725cf48",
   "request" : {
     "urlPath" : "/vm-nic-nat-rules",
     "method" : "POST",
@@ -23,11 +23,11 @@
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"RDYDAWTBQZNHKBRYKXRH\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"PIYFRGTFMFABYPEJXRRL\",\"message\":\"The requested Topology resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "c11de3aa-4b4c-4cf6-83ef-68daaed7380a"
+  "uuid" : "7657d0e9-d7c8-439c-9c25-5066e725cf48"
 }

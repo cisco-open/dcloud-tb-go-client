@@ -1,5 +1,5 @@
 {
-  "id" : "b6512103-9cf7-4a0a-9fc5-4361cc3416b1",
+  "id" : "8414577a-8523-4616-9688-d7bd5c6cefd2",
   "request" : {
     "urlPath" : "/vms/existingvmtempvm",
     "method" : "PUT",
@@ -34,7 +34,7 @@
     }, {
       "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['ipAddress'] == '198.18.133.2')]"
     }, {
-      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['name'] == 'Network adapter 0')]"
+      "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['name'] =~ /^\\s*\\S[\\S\\s]*/)]"
     }, {
       "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['macAddress'] =~ /00:50:56(:[a-f0-9]{2}){3}/)]"
     }, {
@@ -49,16 +49,18 @@
       "matchesJsonPath" : "$.['advancedSettings'][?(@.['notStarted'] =~ /(true|false)/)]"
     }, {
       "matchesJsonPath" : "$.['advancedSettings'][?(@.['allDisksNonPersistent'] =~ /(true|false)/)]"
+    }, {
+      "matchesJsonPath" : "$.['advancedSettings'][?(@.['evcMode'] =~ /^HASWELL$|^SKYLAKE$|^WESTMERE$/)]"
     } ]
   },
   "response" : {
     "status" : 200,
-    "body" : "{\"uid\":\"existingvmtempvm\",\"name\":\"{{{jsonPath request.body '$.name'}}}\",\"description\":\"{{{jsonPath request.body '$.description'}}}\",\"cpuQty\":{{{jsonPath request.body '$.cpuQty'}}} ,\"memoryMb\":{{{jsonPath request.body '$.memoryMb'}}} ,\"nestedHypervisor\":{{{jsonPath request.body '$.nestedHypervisor'}}} ,\"inventoryVmId\":\"{{{jsonPath request.body '$.inventoryVmId'}}}\",\"remoteAccess\":{\"username\":\"{{{jsonPath request.body '$.remoteAccess.username'}}}\",\"password\":\"{{{jsonPath request.body '$.remoteAccess.password'}}}\"},\"vmNetworkInterfaces\":[{\"ipAddress\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].ipAddress'}}}\",\"name\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].name'}}}\",\"macAddress\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].macAddress'}}}\",\"type\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].type'}}}\",\"inUse\":false,\"assignDhcp\":{{{jsonPath request.body '$.vmNetworkInterfaces.[0].assignDhcp'}}} }],\"advancedSettings\":{\"nameInHypervisor\":\"{{{jsonPath request.body '$.advancedSettings.nameInHypervisor'}}}\",\"biosUuid\":\"{{{jsonPath request.body '$.advancedSettings.biosUuid'}}}\",\"notStarted\":{{{jsonPath request.body '$.advancedSettings.notStarted'}}} ,\"allDisksNonPersistent\":{{{jsonPath request.body '$.advancedSettings.allDisksNonPersistent'}}} },\"_links\":{\"self\":{\"href\":\"http://localhost/vms/existingvmtempvm\"}}}",
+    "body" : "{\"uid\":\"existingvmtempvm\",\"name\":\"{{{jsonPath request.body '$.name'}}}\",\"description\":\"{{{jsonPath request.body '$.description'}}}\",\"cpuQty\":{{{jsonPath request.body '$.cpuQty'}}} ,\"memoryMb\":{{{jsonPath request.body '$.memoryMb'}}} ,\"nestedHypervisor\":{{{jsonPath request.body '$.nestedHypervisor'}}} ,\"inventoryVmId\":\"{{{jsonPath request.body '$.inventoryVmId'}}}\",\"remoteAccess\":{\"username\":\"{{{jsonPath request.body '$.remoteAccess.username'}}}\",\"password\":\"{{{jsonPath request.body '$.remoteAccess.password'}}}\"},\"vmNetworkInterfaces\":[{\"ipAddress\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].ipAddress'}}}\",\"name\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].name'}}}\",\"macAddress\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].macAddress'}}}\",\"type\":\"{{{jsonPath request.body '$.vmNetworkInterfaces.[0].type'}}}\",\"inUse\":false,\"assignDhcp\":{{{jsonPath request.body '$.vmNetworkInterfaces.[0].assignDhcp'}}} }],\"advancedSettings\":{\"nameInHypervisor\":\"{{{jsonPath request.body '$.advancedSettings.nameInHypervisor'}}}\",\"biosUuid\":\"{{{jsonPath request.body '$.advancedSettings.biosUuid'}}}\",\"notStarted\":{{{jsonPath request.body '$.advancedSettings.notStarted'}}} ,\"allDisksNonPersistent\":{{{jsonPath request.body '$.advancedSettings.allDisksNonPersistent'}}} ,\"evcMode\":\"{{{jsonPath request.body '$.advancedSettings.evcMode'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost/vms/existingvmtempvm\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "b6512103-9cf7-4a0a-9fc5-4361cc3416b1"
+  "uuid" : "8414577a-8523-4616-9688-d7bd5c6cefd2"
 }

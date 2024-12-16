@@ -1,5 +1,5 @@
 {
-  "id" : "7cdba564-90c7-4557-bdee-8feceeadde0f",
+  "id" : "a0959ff2-3a68-4738-a04a-ddaada4959d7",
   "request" : {
     "urlPath" : "/vms/lonvm1",
     "method" : "PUT",
@@ -21,29 +21,15 @@
     }, {
       "matchesJsonPath" : "$[?(@.['description'] =~ /^\\s*\\S[\\S\\s]*/)]"
     }, {
-      "matchesJsonPath" : "$[?(@.['cpuQty'] == 3)]"
+      "matchesJsonPath" : "$[?(@.['cpuQty'] =~ /-?(\\d+)/)]"
     }, {
-      "matchesJsonPath" : "$[?(@.['memoryMb'] == 6144)]"
-    }, {
-      "matchesJsonPath" : "$[?(@.['nestedHypervisor'] =~ /(true|false)/)]"
-    }, {
-      "matchesJsonPath" : "$[?(@.['osFamily'] =~ /^WINDOWS$|^LINUX$|^VMWARE$|^UCSM$/)]"
+      "matchesJsonPath" : "$[?(@.['memoryMb'] =~ /-?(\\d+)/)]"
     }, {
       "matchesJsonPath" : "$[?(@.['inventoryVmId'] == 'templatevm2')]"
-    }, {
-      "matchesJsonPath" : "$.['remoteAccess'][?(@.['vmConsoleEnabled'] =~ /(true|false)/)]"
     }, {
       "matchesJsonPath" : "$.['remoteAccess'][?(@.['username'] =~ /[\\S\\s]*/)]"
     }, {
       "matchesJsonPath" : "$.['remoteAccess'][?(@.['password'] =~ /[\\S\\s]*/)]"
-    }, {
-      "matchesJsonPath" : "$.['guestAutomation'][?(@.['command'] =~ /[\\S\\s]*/)]"
-    }, {
-      "matchesJsonPath" : "$.['guestAutomation'][?(@.['delaySecs'] =~ /^[0-9]\\d*$/)]"
-    }, {
-      "matchesJsonPath" : "$.['shutdownAutomation'][?(@.['command'] =~ /[\\S\\s]*/)]"
-    }, {
-      "matchesJsonPath" : "$.['shutdownAutomation'][?(@.['delaySecs'] =~ /^[0-9]\\d*$/)]"
     }, {
       "matchesJsonPath" : "$.['vmNetworkInterfaces'][*][?(@.['ipAddress'] == '198.18.131.200')]"
     }, {
@@ -63,16 +49,18 @@
     }, {
       "matchesJsonPath" : "$.['advancedSettings'][?(@.['allDisksNonPersistent'] =~ /(true|false)/)]"
     }, {
+      "matchesJsonPath" : "$.['advancedSettings'][?(@.['evcMode'] =~ /^HASWELL$|^SKYLAKE$|^WESTMERE$/)]"
+    }, {
       "matchesJsonPath" : "$.['topology'][?(@.['uid'] == 'lontopology')]"
     } ]
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"HJDIDXCJSQUJPNSFPPFU\",\"message\":\"Payload uid does not match the path variable uid\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"UZAKCTOSJLLHSGTTVLJA\",\"message\":\"Payload uid does not match the path variable uid\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "7cdba564-90c7-4557-bdee-8feceeadde0f"
+  "uuid" : "a0959ff2-3a68-4738-a04a-ddaada4959d7"
 }

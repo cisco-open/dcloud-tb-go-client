@@ -1,5 +1,5 @@
 {
-  "id" : "a297f70a-f458-4576-8e15-55511f77b992",
+  "id" : "7db825e5-342b-4761-a2c1-b1e647772a97",
   "request" : {
     "urlPath" : "/licenses/license1",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 204,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "a297f70a-f458-4576-8e15-55511f77b992"
+  "uuid" : "7db825e5-342b-4761-a2c1-b1e647772a97"
 }

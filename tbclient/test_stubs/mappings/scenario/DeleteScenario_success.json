@@ -1,5 +1,5 @@
 {
-  "id" : "d730d3c0-d497-4f77-9933-a87be5724819",
+  "id" : "1ff9a7b6-36e5-4837-bef5-608ebf05b250",
   "request" : {
     "urlPath" : "/topologies/lontopology/scenario",
     "method" : "DELETE"
@@ -8,5 +8,5 @@
     "status" : 204,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "d730d3c0-d497-4f77-9933-a87be5724819"
+  "uuid" : "1ff9a7b6-36e5-4837-bef5-608ebf05b250"
 }

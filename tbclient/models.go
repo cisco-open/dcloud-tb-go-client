@@ -88,6 +88,7 @@ func (n nicTypeCollection) getData() []NicType {
 }
 
 // OS Family
+
 type OsFamily struct {
 	Id   string `json:"id"`
 	Name string `json:"name"`
@@ -98,6 +99,22 @@ type osFamilyCollection struct {
 }
 
 func (o osFamilyCollection) getData() []OsFamily {
+	return o.Data
+}
+
+// EVC Mode
+
+type EvcMode struct {
+	Id           string `json:"id"`
+	Name         string `json:"name"`
+	DisplayOrder int    `json:"displayOrder"`
+}
+
+type evcModeCollection struct {
+	Data []EvcMode `json:"evcModes"`
+}
+
+func (o evcModeCollection) getData() []EvcMode {
 	return o.Data
 }
 
@@ -128,6 +145,7 @@ type InventoryVm struct {
 	OriginalDescription string                   `json:"originalDescription,omitempty"`
 	CpuQty              uint64                   `json:"cpuQty,omitempty"`
 	MemoryMb            uint64                   `json:"memoryMb,omitempty"`
+	EvcMode             string                   `json:"evcMode,omitempty"`
 	NetworkInterfaces   []InventoryVmNic         `json:"networkInterfaces,omitempty"`
 	RemoteAccess        *InventoryVmRemoteAccess `json:"remoteAccess,omitempty"`
 }
@@ -169,6 +187,7 @@ type VmAdvancedSettings struct {
 	BiosUuid              string `json:"biosUuid,omitempty"`
 	NotStarted            bool   `json:"notStarted"`
 	AllDisksNonPersistent bool   `json:"allDisksNonPersistent"`
+	EvcMode               string `json:"evcMode,omitempty"`
 }
 
 type VmRemoteAccessDisplayCredentials struct {
@@ -195,7 +214,9 @@ type VmGuestAutomation struct {
 }
 
 type VmDhcpConfig struct {
-	DefaultGatewayIp string `json:"defaultGatewayIp"`
+	DefaultGatewayIp string  `json:"defaultGatewayIp"`
+	PrimaryDnsIp     *string `json:"primaryDnsIp"`
+	SecondaryDnsIp   *string `json:"secondaryDnsIp"`
 }
 
 type Vm struct {

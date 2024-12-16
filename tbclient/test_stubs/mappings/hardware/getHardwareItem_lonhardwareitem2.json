@@ -1,5 +1,5 @@
 {
-  "id" : "53518902-c3bb-44cd-8b01-f5f15ccefd02",
+  "id" : "bf8d83e5-fe9b-49f0-b5e4-c8df022f4133",
   "request" : {
     "urlPath" : "/hardware-items/lonhardwareitem2",
     "method" : "GET",
@@ -18,5 +18,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "53518902-c3bb-44cd-8b01-f5f15ccefd02"
+  "uuid" : "bf8d83e5-fe9b-49f0-b5e4-c8df022f4133"
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "b6d7ca23-7b55-4785-bb62-41a8174d4f14",
+  "id" : "741adc0d-4d0f-4236-9dc4-e0b422b108ef",
   "request" : {
     "urlPath" : "/vms",
     "method" : "POST",
@@ -25,11 +25,11 @@
   },
   "response" : {
     "status" : 503,
-    "body" : "[{\"logref\":\"XAGZDWNHPVRCZXVBQFLB\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"LMBXXMPTDCSWBMAACSCL\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "b6d7ca23-7b55-4785-bb62-41a8174d4f14"
+  "uuid" : "741adc0d-4d0f-4236-9dc4-e0b422b108ef"
 }

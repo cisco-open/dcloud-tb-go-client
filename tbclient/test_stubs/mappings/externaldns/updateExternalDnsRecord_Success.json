@@ -1,5 +1,5 @@
 {
-  "id" : "c9ac6c1e-b523-4344-a51d-4f1799455825",
+  "id" : "597ef55f-30f4-4db9-9964-f607aa7bf5f1",
   "request" : {
     "urlPath" : "/external-dns-records/lonextdnsrec1",
     "method" : "PUT",
@@ -19,7 +19,7 @@
     }, {
       "matchesJsonPath" : "$[?(@.['hostname'] == 'lonhost')]"
     }, {
-      "matchesJsonPath" : "$.['natRule'][?(@.['uid'] == 'lonvmnatrule1')]"
+      "matchesJsonPath" : "$.['natRule'][?(@.['uid'] == 'lonvmpublicnat')]"
     }, {
       "matchesJsonPath" : "$.['inventoryDnsAsset'][?(@.['id'] == '3')]"
     }, {
@@ -34,12 +34,12 @@
   },
   "response" : {
     "status" : 200,
-    "body" : "{\"uid\":\"lonextdnsrec1\",\"hostname\":\"{{{jsonPath request.body '$.hostname'}}}\",\"aRecord\":\"{{{jsonPath request.body '$.hostname'}}}.<subdomain>.dc-03.com\",\"natRule\":{\"uid\":\"lonvmnatrule1\",\"target\":{\"name\":\"Mail Server 1\",\"ipAddress\":\"198.18.131.201\"}},\"inventoryDnsAsset\":{\"id\":\"{{{jsonPath request.body '$.inventoryDnsAsset.id'}}}\",\"name\":\"Collab Edge v2\"},\"srvRecords\":[{\"service\":\"{{{jsonPath request.body '$.srvRecords[0].service'}}}\",\"protocol\":\"{{{jsonPath request.body '$.srvRecords[0].protocol'}}}\",\"port\":{{{jsonPath request.body '$.srvRecords[0].port'}}} }],\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"natRule\":{\"href\":\"http://localhost/nat-rules/{{{jsonPath request.body '$.natRule.uid'}}}\"}}}",
+    "body" : "{\"uid\":\"lonextdnsrec1\",\"hostname\":\"{{{jsonPath request.body '$.hostname'}}}\",\"aRecord\":\"{{{jsonPath request.body '$.hostname'}}}.<subdomain>.dc-03.com\",\"natRule\":{\"uid\":\"lonvmpublicnat\",\"target\":{\"name\":\"Mail Server 1\",\"ipAddress\":\"198.18.131.211\"}},\"inventoryDnsAsset\":{\"id\":\"{{{jsonPath request.body '$.inventoryDnsAsset.id'}}}\",\"name\":\"CollabEdge_Swiss\"},\"srvRecords\":[{\"service\":\"{{{jsonPath request.body '$.srvRecords[0].service'}}}\",\"protocol\":\"{{{jsonPath request.body '$.srvRecords[0].protocol'}}}\",\"port\":{{{jsonPath request.body '$.srvRecords[0].port'}}} }],\"topology\":{\"uid\":\"{{{jsonPath request.body '$.topology.uid'}}}\"},\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"},\"topology\":{\"href\":\"http://localhost/topologies/{{{jsonPath request.body '$.topology.uid'}}}\"},\"natRule\":{\"href\":\"http://localhost/nat-rules/{{{jsonPath request.body '$.natRule.uid'}}}\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "c9ac6c1e-b523-4344-a51d-4f1799455825"
+  "uuid" : "597ef55f-30f4-4db9-9964-f607aa7bf5f1"
 }

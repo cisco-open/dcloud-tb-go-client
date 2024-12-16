@@ -1,5 +1,5 @@
 {
-  "id" : "7801d310-20aa-41db-8a60-b2e0f49a948e",
+  "id" : "556454fd-03ec-4a3d-a23e-fcded9057e01",
   "request" : {
     "urlPath" : "/telephony-items",
     "method" : "POST",
@@ -16,11 +16,11 @@
   },
   "response" : {
     "status" : 400,
-    "body" : "[{\"logref\":\"LRSELTKOIRHNRUFHCZQM\",\"message\":\"The requested dCloud Telephony resource 'notfound' was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"DHLLPAMJHHHGIMFHAHLF\",\"message\":\"The requested dCloud Telephony resource 'notfound' was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "7801d310-20aa-41db-8a60-b2e0f49a948e"
+  "uuid" : "556454fd-03ec-4a3d-a23e-fcded9057e01"
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "90151111-e82b-41d5-b0d7-8b0c7c4712fc",
+  "id" : "1e5a2428-2b7a-47c5-ad17-7c7ac8822317",
   "request" : {
     "urlPath" : "/topologies/lontopology/scenario",
     "method" : "PUT",
@@ -27,11 +27,11 @@
   },
   "response" : {
     "status" : 412,
-    "body" : "[{\"logref\":\"VSXFYQCSCQLPXAZVMCSL\",\"message\":\"This object has been modified by another user and has changed before your save. Please refresh and make your changes and save again\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"ETAPHHNGBNDFYGKRBOZU\",\"message\":\"This object has been modified by another user and has changed before your save. Please refresh and make your changes and save again\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "90151111-e82b-41d5-b0d7-8b0c7c4712fc"
+  "uuid" : "1e5a2428-2b7a-47c5-ad17-7c7ac8822317"
 }

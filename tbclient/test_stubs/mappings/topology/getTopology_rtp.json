@@ -1,5 +1,5 @@
 {
-  "id" : "1a95630e-e059-4cf1-ae39-90f7fef62118",
+  "id" : "0679e6e2-8df9-4e96-b426-6395883cdd79",
   "request" : {
     "urlPath" : "/topologies/rtptopology",
     "method" : "GET",
@@ -11,12 +11,12 @@
   },
   "response" : {
     "status" : 200,
-    "body" : "{\"uid\":\"rtptopology\",\"name\":\"rtptopology name\",\"description\":\"rtptopology description\",\"datacenter\":\"RTP\",\"notes\":\"Notes\",\"demoId\":103677486,\"demoPromoted\":true,\"demoPublished\":true,\"status\":\"CUSTOM_CONTENT\",\"sharedWithCurrentUser\":false,\"inSyncWithDcloud\":true,\"activeTemplate\":false,\"lastUpdated\":\"2020-12-15T14:00:00.000000Z\",\"accessRoleAssignments\":[{\"uid\":\"rtptopologyown\",\"email\":\"owner@cisco.com\",\"accessRole\":\"OWNER\",\"grantedBy\":\"owner@cisco.com\",\"grantedOn\":\"2020-12-16T14:00:00.000000Z\",\"topology\":{\"uid\":\"rtptopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/access-role-assignments/rtptopologyown\"},\"topology\":{\"href\":\"http://localhost/topologies/rtptopology\"}}}],\"warnings\":[{\"uid\":\"unavailintegration1\",\"assetType\":\"SAAS\",\"message\":\"The SaaS resource 'My Unavailable' has a problem\",\"detail\":\"This integration is bad for your health\",\"_links\":{\"asset\":{\"href\":\"http://localhost/saas-integrations/unavailintegration1\"}}}],\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"},\"clones\":{\"href\":\"http://localhost{{{request.url}}}/clones\"},\"networks\":{\"href\":\"http://localhost{{{request.url}}}/networks\"},\"licenses\":{\"href\":\"http://localhost{{{request.url}}}/licenses\"},\"hardwareItems\":{\"href\":\"http://localhost{{{request.url}}}/hardware-items\"},\"telephonyItems\":{\"href\":\"http://localhost{{{request.url}}}/telephony-items\"},\"saasIntegrations\":{\"href\":\"http://localhost{{{request.url}}}/saas-integrations\"},\"documentation\":{\"href\":\"http://localhost/documentation/rtptopology\"},\"diagram\":{\"href\":\"http://localhost{{{request.url}}}/diagram\"}}}",
+    "body" : "{\"uid\":\"rtptopology\",\"name\":\"rtptopology name\",\"description\":\"rtptopology description\",\"datacenter\":\"RTP\",\"notes\":\"Notes\",\"demoId\":1412943561,\"demoPromoted\":true,\"demoPublished\":true,\"status\":\"CUSTOM_CONTENT\",\"sharedWithCurrentUser\":false,\"inSyncWithDcloud\":true,\"activeTemplate\":false,\"lastUpdated\":\"2020-12-15T14:00:00.000000Z\",\"accessRoleAssignments\":[{\"uid\":\"rtptopologyown\",\"email\":\"owner@cisco.com\",\"accessRole\":\"OWNER\",\"grantedBy\":\"owner@cisco.com\",\"grantedOn\":\"2020-12-16T14:00:00.000000Z\",\"topology\":{\"uid\":\"rtptopology\"},\"_links\":{\"self\":{\"href\":\"http://localhost/access-role-assignments/rtptopologyown\"},\"topology\":{\"href\":\"http://localhost/topologies/rtptopology\"}}}],\"warnings\":[{\"uid\":\"unavailintegration1\",\"assetType\":\"SAAS\",\"message\":\"The SaaS resource 'My Unavailable' has a problem\",\"detail\":\"This integration is bad for your health\",\"_links\":{\"asset\":{\"href\":\"http://localhost/saas-integrations/unavailintegration1\"}}}],\"_links\":{\"self\":{\"href\":\"http://localhost{{{request.url}}}\"},\"delete\":{\"href\":\"http://localhost{{{request.url}}}\"},\"clones\":{\"href\":\"http://localhost{{{request.url}}}/clones\"},\"networks\":{\"href\":\"http://localhost{{{request.url}}}/networks\"},\"licenses\":{\"href\":\"http://localhost{{{request.url}}}/licenses\"},\"hardwareItems\":{\"href\":\"http://localhost{{{request.url}}}/hardware-items\"},\"telephonyItems\":{\"href\":\"http://localhost{{{request.url}}}/telephony-items\"},\"saasIntegrations\":{\"href\":\"http://localhost{{{request.url}}}/saas-integrations\"},\"documentation\":{\"href\":\"http://localhost/documentation/rtptopology\"},\"diagram\":{\"href\":\"http://localhost{{{request.url}}}/diagram\"}}}",
     "headers" : {
       "Content-Type" : "application/json",
       "ETag" : "FIX_ETAG_FOR_TESTS"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "1a95630e-e059-4cf1-ae39-90f7fef62118"
+  "uuid" : "0679e6e2-8df9-4e96-b426-6395883cdd79"
 }

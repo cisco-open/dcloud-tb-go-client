@@ -1,16 +1,16 @@
 {
-  "id" : "1abcabb5-7066-4657-b5ee-e7d418c6daf5",
+  "id" : "57c18085-4f76-4dac-b296-27ade560fd4b",
   "request" : {
     "urlPath" : "/nat-rules/notfound",
     "method" : "GET"
   },
   "response" : {
     "status" : 404,
-    "body" : "[{\"logref\":\"JOEEBOHIPNXWZDMGEUZI\",\"message\":\"The requested NatRule resource was not found\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"FJFPGLIDNUYUCZTHDBNF\",\"message\":\"The requested NatRule resource was not found\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "1abcabb5-7066-4657-b5ee-e7d418c6daf5"
+  "uuid" : "57c18085-4f76-4dac-b296-27ade560fd4b"
 }

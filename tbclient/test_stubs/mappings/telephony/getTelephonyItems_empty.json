@@ -1,5 +1,5 @@
 {
-  "id" : "b6d70b81-1e5c-499f-a4de-55f5f62f7558",
+  "id" : "c3748b70-90ee-434b-9256-39fca851ef30",
   "request" : {
     "urlPath" : "/topologies/rtptopology/telephony-items",
     "method" : "GET"
@@ -12,5 +12,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "b6d70b81-1e5c-499f-a4de-55f5f62f7558"
+  "uuid" : "c3748b70-90ee-434b-9256-39fca851ef30"
 }

@@ -1,16 +1,16 @@
 {
-  "id" : "0c58eb10-0839-4db2-8fdd-af51cbee34f0",
+  "id" : "bbc74e06-c2ea-4e1a-a1b9-070ff527388a",
   "request" : {
     "urlPath" : "/topologies/lontopology/limits",
     "method" : "GET"
   },
   "response" : {
     "status" : 200,
-    "body" : "{\"cpuCores\":{\"current\":23,\"limit\":100},\"memoryMb\":{\"current\":33792,\"limit\":204800},\"natRules\":{\"current\":2,\"limit\":1},\"hardware\":{\"current\":3,\"limit\":1},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/lontopology/limits\"}}}",
+    "body" : "{\"cpuCores\":{\"current\":19,\"limit\":100},\"memoryMb\":{\"current\":15360,\"limit\":204800},\"natRules\":{\"current\":2,\"limit\":1},\"hardware\":{\"current\":3,\"limit\":1},\"_links\":{\"self\":{\"href\":\"http://localhost/topologies/lontopology/limits\"}}}",
     "headers" : {
       "Content-Type" : "application/json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "0c58eb10-0839-4db2-8fdd-af51cbee34f0"
+  "uuid" : "bbc74e06-c2ea-4e1a-a1b9-070ff527388a"
 }

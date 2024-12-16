@@ -1,5 +1,5 @@
 {
-  "id" : "08c0e5e6-56c4-406b-aba9-72281e840db1",
+  "id" : "41fffaf9-61a3-425e-a643-98caedab8ba4",
   "request" : {
     "urlPath" : "/nat-rules/rtpipnatrule1",
     "method" : "GET"
@@ -12,5 +12,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "08c0e5e6-56c4-406b-aba9-72281e840db1"
+  "uuid" : "41fffaf9-61a3-425e-a643-98caedab8ba4"
 }

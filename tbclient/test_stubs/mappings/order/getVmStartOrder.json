@@ -1,5 +1,5 @@
 {
-  "id" : "8dcc656a-4f6c-4d80-8688-3010af9d550b",
+  "id" : "954588b0-bcbd-4507-9908-f9b1663ad0e2",
   "request" : {
     "urlPath" : "/topologies/lontopology/vm-start-order",
     "method" : "GET",
@@ -18,5 +18,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "8dcc656a-4f6c-4d80-8688-3010af9d550b"
+  "uuid" : "954588b0-bcbd-4507-9908-f9b1663ad0e2"
 }

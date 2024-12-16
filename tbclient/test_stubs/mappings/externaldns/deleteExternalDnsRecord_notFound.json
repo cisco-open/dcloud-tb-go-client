@@ -1,5 +1,5 @@
 {
-  "id" : "50525952-c458-4066-9e2c-ce7addf98757",
+  "id" : "da4927e6-67c5-4fb0-ba81-93798648f415",
   "request" : {
     "urlPath" : "/external-dns-records/notfound",
     "method" : "DELETE",
@@ -13,5 +13,5 @@
     "status" : 404,
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "50525952-c458-4066-9e2c-ce7addf98757"
+  "uuid" : "da4927e6-67c5-4fb0-ba81-93798648f415"
 }

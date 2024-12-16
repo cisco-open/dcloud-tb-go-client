@@ -1,5 +1,5 @@
 {
-  "id" : "1835c506-b405-4498-b8c0-3f71b3488164",
+  "id" : "13fbf78a-0ffc-4e70-a310-e2baf0385239",
   "request" : {
     "urlPath" : "/topologies/rtptopology/nat-rules",
     "method" : "GET"
@@ -12,5 +12,5 @@
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "1835c506-b405-4498-b8c0-3f71b3488164"
+  "uuid" : "13fbf78a-0ffc-4e70-a310-e2baf0385239"
 }

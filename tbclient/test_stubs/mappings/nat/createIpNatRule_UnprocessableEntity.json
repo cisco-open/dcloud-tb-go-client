@@ -1,5 +1,5 @@
 {
-  "id" : "e22b465b-2611-4690-8f0f-279cb3070f92",
+  "id" : "a0d443af-0c4d-48d8-86dd-8f746f53a37c",
   "request" : {
     "urlPath" : "/ip-nat-rules",
     "method" : "POST",
@@ -25,11 +25,11 @@
   },
   "response" : {
     "status" : 422,
-    "body" : "[{\"logref\":\"SFKAHPUEBHCVNKZKPMRQ\",\"message\":\"You have reached the maximum number of Internal Nat Rules for a Topology\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"ZFFOALDUUMSWINYYVKJK\",\"message\":\"You have reached the maximum number of Internal Nat Rules for a Topology\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "e22b465b-2611-4690-8f0f-279cb3070f92"
+  "uuid" : "a0d443af-0c4d-48d8-86dd-8f746f53a37c"
 }

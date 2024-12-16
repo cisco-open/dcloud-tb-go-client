@@ -1,16 +1,16 @@
 {
-  "id" : "526d14bf-5822-4508-8b4b-21c2d9dcf931",
+  "id" : "0f040cf0-3f61-4ef4-991b-db7ecfa722e6",
   "request" : {
     "urlPath" : "/topologies/noreader/inventory-telephony-items",
     "method" : "GET"
   },
   "response" : {
     "status" : 503,
-    "body" : "[{\"logref\":\"MIEPVWDABFDZGDNUTMHH\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
+    "body" : "[{\"logref\":\"FRLXVLKPMQJMMZGGOJHD\",\"message\":\"Connectivity to the SNG V2 Reader service has not been configured\",\"links\":[]}]",
     "headers" : {
       "Content-Type" : "application/vnd.error+json"
     },
     "transformers" : [ "response-template", "spring-cloud-contract" ]
   },
-  "uuid" : "526d14bf-5822-4508-8b4b-21c2d9dcf931"
+  "uuid" : "0f040cf0-3f61-4ef4-991b-db7ecfa722e6"
 }
