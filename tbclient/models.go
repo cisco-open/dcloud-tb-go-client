@@ -214,7 +214,7 @@ type VmGuestAutomation struct {
 }
 
 type VmDhcpConfig struct {
-	DefaultGatewayIp string  `json:"defaultGatewayIp"`
+	DefaultGatewayIp *string `json:"defaultGatewayIp"`
 	PrimaryDnsIp     *string `json:"primaryDnsIp"`
 	SecondaryDnsIp   *string `json:"secondaryDnsIp"`
 }

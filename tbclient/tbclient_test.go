@@ -233,7 +233,7 @@ var vm = Vm{
 		EvcMode:               evcModeHaswell,
 	},
 	DhcpConfig: &VmDhcpConfig{
-		DefaultGatewayIp: "198.18.130.2",
+		DefaultGatewayIp: &defaultGatewayIp,
 	},
 	GuestAutomation: &VmGuestAutomation{
 		Command:   "cd /var/; sh script.sh",
@@ -738,7 +738,7 @@ func (suite *ContractTestSuite) TestUpdateVm() {
 
 	// Given
 	expectedVm := vm
-	expectedVm.DhcpConfig = &VmDhcpConfig{DefaultGatewayIp: "198.18.130.1"} // Match Contract
+	expectedVm.DhcpConfig = &VmDhcpConfig{DefaultGatewayIp: &updatedDefaultGatewayIp} // Match Contract
 	expectedVm.DhcpConfig.PrimaryDnsIp = &primaryDnsIp
 	expectedVm.DhcpConfig.SecondaryDnsIp = &secondaryDnsIp
 
@@ -763,6 +763,8 @@ func (suite *ContractTestSuite) TestUpdateVm() {
 	suite.Equal(expectedVm, *actualVm)
 }
 
+var defaultGatewayIp = "198.18.130.2"
+var updatedDefaultGatewayIp = "198.18.130.1"
 var primaryDnsIp = "198.18.130.111"
 var secondaryDnsIp = "198.18.130.112"
 
